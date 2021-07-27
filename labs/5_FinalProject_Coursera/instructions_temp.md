@@ -65,17 +65,6 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 
     Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. 	
 
-# Task 3 - Deploy guestbook app from the OpenShift internal registry
-As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
-
-1. Create an image stream that points to your image in IBM Cloud Container Registry.
-```
-oc tag us.icr.io/$MY_NAMESPACE/guestbook:v1 guestbook:v1 --reference-policy=local --scheduled
-```
-{: codeblock}
-
-With the `--reference-policy=local` option, a copy of the image from IBM Cloud Container Registry is imported into the local cache of the internal registry and made available to the cluster's projects as an image stream. The `--schedule` option sets up periodic importing of the image from IBM Cloud Container Registry into the internal registry. The default frequency is 15 minutes.
-
 
 # Delete the guestbook
 In order to deploy a more complex version of the guestbook, delete this simple version.
@@ -86,6 +75,19 @@ In order to deploy a more complex version of the guestbook, delete this simple v
 
 3. Type in the application name and click **Delete**.
 
+# Create a Tone Analyzer service instance
+
+1. Go to the [IBM Cloud catalog](https://cloud.ibm.com/catalog).
+
+2. Sign in with your personal account. You should have created one during a lab in the first module of this course.
+
+3. In the search box, type "tone analyzer". A dropdown should show appear and show services. Click the "Tone Analyzer" service as seen in the image below.
+![Catalog search Tone Analyzer](images/catalog-search-tone-analyzer.png)
+
+4. You'll create an instance on the Lite plan, which is free. Take note of the resource group, as you'll need this later. It may be something like "Default". Leave all the default options and click **Create**. This will take you to a details page for the service instance.
+
+5. Now that you have an instance, you need credentials with which you can access it. Click **Service credentials** on the left navigation to view credentials that are automatically generated for you.
+
 # Deploy Redis master and slave
 We've demonstrated that we need persistent storage in order for the guestbook to be effective. Let's deploy Redis so that we get just that. Redis is an open source, in-memory data structure store, used as a database, cache and message broker.
 
@@ -93,7 +95,7 @@ This application uses the v2 version of the guestbook web front end and adds on 
 
 In a multi-tier application, there are two primary ways that service dependencies can be resolved. The `v2/guestbook/main.go` code provides examples of each. For Redis, the master endpoint is discovered through environment variables. These environment variables are set when the Redis services are started, so the service resources need to be created before the guestbook Pods start. For the analyzer service, an HTTP request is made to a hostname, which allows for resource discovery at the time when the request is made. Consequently, we'll follow a specific order when creating the application components. First, the Redis components will be created, then the guestbook application, and finally the analyzer microservice.
 
-1. In your github repository, navigate to `guestbook/v2/analyzer-deployment.yaml`. Replace `<my_namespace>` on line 19, with `sn-labs-<your username>` and commit the file. 
+1. In your github repository, navigate to `guestbook/v2/analyzer-deployment.yaml`. Replace `<my_namespace>` on line 19, with `sn-labs-<your username>` and commit the file. Now, edit `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. You need to insert the name of your IBM Cloud Tone Analyzer service where it says `<you tone analyzer service name>`. You need to insert your OpenShift project where it says `<my_project>`with `sn-labs-<your username>` . Make sure to commit the file when you're done.
 
 2. Copy the clone URL from your github copy of the guestbook repository.
 
@@ -211,7 +213,7 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 
 2. Click the **From Dockerfile** option.
 
-3. Paste the URL https://github.com/ajp-io/guestbook in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
+3. Paste the Forked repository URL `<your_repo_url>` in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
 
 4. Click **Show Advanced Git Options**.
 
@@ -228,19 +230,9 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 
 But remember that we still need a Watson Tone Analyzer service to complete the application.
 
-# Create a Tone Analyzer service instance
-1. Go to the [IBM Cloud catalog](https://cloud.ibm.com/catalog).
+# Create a Secret for your Tone Analyzer service
 
-2. Sign in with your personal account. You should have created one during a lab in the first module of this course.
-
-3. In the search box, type "tone analyzer". A dropdown should show appear and show services. Click the "Tone Analyzer" service as seen in the image below.
-![Catalog search Tone Analyzer](images/catalog-search-tone-analyzer.png)
-
-4. You'll create an instance on the Lite plan, which is free. Take note of the resource group, as you'll need this later. It may be something like "Default". Leave all the default options and click **Create**. This will take you to a details page for the service instance.
-
-5. Now that you have an instance, you need credentials with which you can access it. Click **Service credentials** on the left navigation to view credentials that are automatically generated for you.
-
-6. We need to store these credentials in a Kubernetes secret in order for our analyzer microservice to utilize them. From the terminal in the lab environment, login to your IBM Cloud account with your username. When prompted enter you password to login.
+1. We need to store these credentials in a Kubernetes secret in order for our analyzer microservice to utilize them. From the terminal in the lab environment, login to your IBM Cloud account with your username. When prompted enter you password to login.
 ```
 ibmcloud login -u <your_email_address> 
 ```
@@ -248,15 +240,15 @@ ibmcloud login -u <your_email_address>
 
 >If you are a federated user that uses a corporate or enterprise single sign-on ID, you can log in to IBM Cloud® from the console by using a federated ID and password. Use the provided URL in your CLI output to retrieve your one-time passcode. You know you have a federated ID when the login fails without the `--sso` and succeeds with the `--sso` option.
 
-7. Ensure that you target the resource group in which you created the Tone Analyzer service. Remember that you noted this resource group in a previous step.
+2. Ensure that you target the resource group in which you created the Tone Analyzer service. Remember that you noted this resource group in a previous step.
 ```
 ibmcloud target -g <resource_group>
 ```
 {: codeblock}
 
-8. Use the Explorer to edit `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. You need to insert the name of your IBM Cloud Tone Analyzer service where it says `<you tone analyzer service name>`. You need to insert your OpenShift project where it says `<my_project>`. If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
+3. Use the Explorer to check the `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. Make sure the name of your IBM Cloud Tone Analyzer service and OpenShift project where it says `sn-labs-<your username>` is updated. 
 
-9. Run the script to create a Secret containing credentials for your Tone Analyzer service.
+4. Run the script to create a Secret containing credentials for your Tone Analyzer service.
 ```
 ./binding-hack.sh
 ```
@@ -264,48 +256,51 @@ ibmcloud target -g <resource_group>
 
 You should see the following output: `secret/tone-binding created`.
 
-10. Log back into the lab account.
+5. Log back into the lab account.
 ```
 ibmcloud login --apikey $IBMCLOUD_API_KEY
 ```
 {: codeblock}
 
 # Deploy the analyzer microservice
-Now that the Tone Analyzer service is created and its credentials are provided in a Kubernetes Secret, we can deploy the analyzer microservice.
+Now it's time to deploy the analyzer microservice.
 
-1. Change to the `analyzer` directory.
-```
-cd analyzer
-```
-{: codeblock}
+1. Click the **+Add** button to add a new application to this project.
 
-2. Build and push the analyzer image.
-```
-docker build . -t us.icr.io/$MY_NAMESPACE/analyzer:v1 && docker push us.icr.io/$MY_NAMESPACE/analyzer:v1
-```
-{: codeblock}
+2. Click the **From Dockerfile** option.
 
-3. Return to the `v2` directory.
+3. Paste the Forked repository URL `<your_repo_url>` in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
+
+4. Click **Show Advanced Git Options**.
+
+5. Since the Dockerfile isn't at the root of the repository, we need to tell OpenShift where it is. Enter `/v2/analyzer` in the **Context Dir** box.
+
+6. Under **Container Port**, enter 5000.
+
+7. Leave the rest of the default options and click **Create**.
+Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build that will build an image using the Dockerfile, push it to the internal registry, and use that image for a Deployment.
+
+8. Return to the `v2` directory.
 ```
 cd ..
 ```
 {: codeblock}
 
-4. Use the Explorer to edit `analyzer-deployment.yaml`. The path to this file is `guestbook/v2/analyzer-deployment.yaml`. You need to insert your Container Registry namespace where it says `<my_namespace>`. If you don't remember your namespace, run `echo $MY_NAMESPACE`. Make sure to save the file when you're done. Also notice the `env` section, which indicates that environment variables will be set using the `binding-tone` Secret you created.
+9. Use the Explorer to check `analyzer-deployment.yaml`. The path to this file is `guestbook/v2/analyzer-deployment.yaml`. You need to ensure your Container Registry namespace `<my_namespace>` is updated. Also notice the `env` section, which indicates that environment variables will be set using the `binding-tone` Secret you created.
 
-5. Create the `analyzer` Deployment.
+10. Create the `analyzer` Deployment.
 ```
 oc apply -f analyzer-deployment.yaml
 ```
 {: codeblock}
 
-6. Create the `analyzer` Service.
+11. Create the `analyzer` Service.
 ```
 oc apply -f analyzer-service.yaml
 ```
 {: codeblock}
 
-7. Return to the guestbook in the browser, refresh the page, and submit a new entry. You should see your entry appear along with a tone analysis.
+12. Return to the guestbook in the browser, refresh the page, and submit a new entry. You should see your entry appear along with a tone analysis.
 
 # Autoscale guestbook
 Now that guestbook is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way. Make sure to keep the guestbook open in a browser tab so that it continues to make requests and consume resources so that it can be successfully autoscaled.
