@@ -58,7 +58,7 @@ We've demonstrated that we need persistent storage in order for the health app t
 To begin, we will build and deploy the web front end for the guestbook app.
 
 1. Open the Open shift console. 
-<img src="images/openshift_console.png"/>
+<img src="images/openshift_console.png" style="width:100%"/>
 
 2. Ensure that you are in `Developer` view and  click the **+Add** button to add a new application to this project.
 <img src="images/add_docker.png" style="width:50%"/>
