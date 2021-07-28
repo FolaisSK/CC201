@@ -22,6 +22,9 @@ We will deploy and manage this entire application on OpenShift.
 # Fork the remote repo and make changes 
 1. Fork the repository `https://github.com/ajp-io/patient-ui.git`, to your github account.
 
+<img src="images/fork_patient.png" style="border:solid 1px grey;margin-left:30px"/>
+
+
 2. In your git repo, navigate to `login.html` in the `public` directory. The path to this file is `patient-ui/public/login.html`.
 
 3. Let's edit the name beneath the logo to be more specific. On the line that says `<div class="Fictionalname">Example Health</div>`, change it to include your name. Something like `<div class="Fictionalname">Alex's Example Health</div>`.
