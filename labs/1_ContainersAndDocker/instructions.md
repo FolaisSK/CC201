@@ -144,7 +144,7 @@ CMD node app.js
 {: codeblock}
 
 If you don't understand any of the instructions in the Dockerfile, review the module videos.
-![Dockerfile in Explorer](images/dockerfile-explorer.png)
+![Dockerfile in Explorer](images/docker_temp.png)
 
 3. Run the following command to build the image:
 ```
