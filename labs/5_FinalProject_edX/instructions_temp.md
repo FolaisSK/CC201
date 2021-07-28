@@ -54,7 +54,7 @@ We've demonstrated that we need persistent storage in order for the health app t
 10. Let's edit `binding-hack.sh`. The path to this file is `patient-ui/binding-hack.sh`. You need to insert your OpenShift project where it says `<my_project>`. Your project is `sn-labs-` followed by your username.
 
 
-# Task 2 - Build the guestbook app
+# Build the patient-ui app
 To begin, we will build and deploy the web front end for the guestbook app.
 
 1. Open the Open shift console. 
