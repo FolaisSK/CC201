@@ -48,13 +48,13 @@ cd /home/project
 
 4. Clone the git repository that contains the artifacts needed for this lab.
 ```
-git clone https://gitlab.com/ibm/skills-network/courses/cc201.git
+git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
 
 5. Change to the directory for this lab.
 ```
-cd cc201/labs/1_ContainersAndDocker/
+cd CC201/labs/1_ContainersAndDocker/
 ```
 {: codeblock}
 
@@ -128,7 +128,7 @@ npm install --save
 tar cvf node_modules.tar node_modules
 ```
 
-4. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `cc201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the Dockerfile we'll use to build an image. Replace the content with the following code. 
+4. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the Dockerfile we'll use to build an image. Replace the content with the following code. 
 
 >Note: If you are not doing it in the sanbox lab environment, you may skip this step.
 

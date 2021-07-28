@@ -35,19 +35,7 @@ cd /home/project
 
 4. Clone the git repository that contains the artifacts needed for this lab, if it doesn't already exist.
 ```
-[ ! -d 'cc201' ] && git clone https://gitlab.com/ibm/skills-network/courses/cc201.git
-```
-{: codeblock}
-
-5. Change to the directory for this lab.
-```
-cd cc201/labs/4_IntroOpenShift/
-```
-{: codeblock}
-
-6. List the contents of this directory to see the artifacts for this lab.
-```
-ls
+[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
 

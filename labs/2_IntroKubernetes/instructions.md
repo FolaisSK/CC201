@@ -38,13 +38,13 @@ cd /home/project
 
 4. Clone the git repository that contains the artifacts needed for this lab, if it doesn't already exist.
 ```
-[ ! -d 'cc201' ] && git clone https://gitlab.com/ibm/skills-network/courses/cc201.git
+[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
 
 5. Change to the directory for this lab.
 ```
-cd cc201/labs/2_IntroKubernetes/
+cd CC201/labs/2_IntroKubernetes/
 ```
 {: codeblock}
 
@@ -162,7 +162,7 @@ kubectl get pods
 # Create a Pod with imperative object configuration
 Imperative object configuration lets you create objects by specifying the action to take (e.g., create, update, delete) while using a configuration file. A configuration file, `hello-world-create.yaml`, is provided to you in this directory.
 
-1. Use the Explorer to view and edit the configuration file. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `cc201 > labs > 2_IntroKubernetes`. Click `hello-world-create.yaml` to view the configuration file.
+1. Use the Explorer to view and edit the configuration file. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 2_IntroKubernetes`. Click `hello-world-create.yaml` to view the configuration file.
 ![Imperative object configuration file in Explorer](images/imperative-obj-config-explorer.png)
 
 2. Use the Explorer to edit `hello-world-create.yaml`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
