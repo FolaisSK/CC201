@@ -86,26 +86,15 @@ export MY_NAMESPACE=sn-labs-$USERNAME
 ```
 {: codeblock}
 
-2. Run the following command to install the packages. 
-```
-npm install --save
-```
-{: codeblock}
+2. Use the Explorer to view the Dockerfile we'll use to build an image. 
 
-3. Create a tar file with the node_modules for use inside the docker.
-```
-tar cvf node_modules.tar node_modules
-```
-
-4. Use the Explorer to view the Dockerfile we'll use to build an image. 
-
-5. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
+3. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
 ```
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:1 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:1
 ```
 {: codeblock}
 
-6. Run the `hello-world` image as a container in Kubernetes.
+4. Run the `hello-world` image as a container in Kubernetes.
 ```
 kubectl run hello-world --image us.icr.io/$MY_NAMESPACE/hello-world:1 --overrides='{"spec":{"template":{"spec":{"imagePullSecrets":[{"name":"icr"}]}}}}'
 ```
@@ -113,7 +102,7 @@ kubectl run hello-world --image us.icr.io/$MY_NAMESPACE/hello-world:1 --override
 
 The `--overrides` option here enables us to specify the needed credentials to pull this image from IBM Cloud Container Registry. Note that this is an imperative command, as we told Kubernetes explicitly what to do: run `hello-world`.
 
-7. List the Pods in your namespace.
+5. List the Pods in your namespace.
 ```
 kubectl get pods
 ```
@@ -127,19 +116,19 @@ kubectl get pods -o wide
 ```
 {: codeblock}
 
-8. Describe the Pod to get more details about it.
+6. Describe the Pod to get more details about it.
 ```
 kubectl describe pod hello-world
 ```
 {: codeblock}
 
-9. Delete the Pod.
+7. Delete the Pod.
 ```
 kubectl delete pod hello-world
 ```
 {: codeblock}
 
-10. List the Pods to verify that none exist.
+8. List the Pods to verify that none exist.
 ```
 kubectl get pods
 ```
