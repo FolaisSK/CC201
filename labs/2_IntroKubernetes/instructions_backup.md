@@ -38,13 +38,13 @@ cd /home/project
 
 4. Clone the git repository that contains the artifacts needed for this lab, if it doesn't already exist.
 ```
-[ ! -d 'cc201' ] && git clone https://gitlab.com/ibm/skills-network/courses/cc201.git
+[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
 
 5. Change to the directory for this lab.
 ```
-cd cc201/labs/2_IntroKubernetes/
+cd CC201/labs/2_IntroKubernetes/
 ```
 {: codeblock}
 
@@ -86,13 +86,40 @@ export MY_NAMESPACE=sn-labs-$USERNAME
 ```
 {: codeblock}
 
-2. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
+2. Run the following command to install the packages. 
+```
+npm install --save
+```
+{: codeblock}
+
+3. Create a tar file with the node_modules for use inside the docker.
+```
+tar cvf node_modules.tar node_modules
+```
+
+4. Use the Explorer to view the Dockerfile we'll use to build an image. Replace the content with the following code. 
+
+>Note: If you are not doing it in the sanbox lab environment, you may skip this step.
+
+```
+FROM node:9.4.0-alpine
+COPY app.js .
+COPY package.json .
+COPY node_modules.tar .
+RUN tar xvf node_modules.tar
+EXPOSE  8080
+CMD node app.js
+```
+{: codeblock}
+
+
+5. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
 ```
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:1 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:1
 ```
 {: codeblock}
 
-3. Run the `hello-world` image as a container in Kubernetes.
+6. Run the `hello-world` image as a container in Kubernetes.
 ```
 kubectl run hello-world --image us.icr.io/$MY_NAMESPACE/hello-world:1 --overrides='{"spec":{"template":{"spec":{"imagePullSecrets":[{"name":"icr"}]}}}}'
 ```
@@ -100,7 +127,7 @@ kubectl run hello-world --image us.icr.io/$MY_NAMESPACE/hello-world:1 --override
 
 The `--overrides` option here enables us to specify the needed credentials to pull this image from IBM Cloud Container Registry. Note that this is an imperative command, as we told Kubernetes explicitly what to do: run `hello-world`.
 
-4. List the Pods in your namespace.
+7. List the Pods in your namespace.
 ```
 kubectl get pods
 ```
@@ -114,19 +141,19 @@ kubectl get pods -o wide
 ```
 {: codeblock}
 
-5. Describe the Pod to get more details about it.
+8. Describe the Pod to get more details about it.
 ```
 kubectl describe pod hello-world
 ```
 {: codeblock}
 
-6. Delete the Pod.
+9. Delete the Pod.
 ```
 kubectl delete pod hello-world
 ```
 {: codeblock}
 
-7. List the Pods to verify that none exist.
+10. List the Pods to verify that none exist.
 ```
 kubectl get pods
 ```
@@ -135,7 +162,7 @@ kubectl get pods
 # Create a Pod with imperative object configuration
 Imperative object configuration lets you create objects by specifying the action to take (e.g., create, update, delete) while using a configuration file. A configuration file, `hello-world-create.yaml`, is provided to you in this directory.
 
-1. Use the Explorer to view and edit the configuration file. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `cc201 > labs > 2_IntroKubernetes`. Click `hello-world-create.yaml` to view the configuration file.
+1. Use the Explorer to view and edit the configuration file. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 2_IntroKubernetes`. Click `hello-world-create.yaml` to view the configuration file.
 ![Imperative object configuration file in Explorer](images/imperative-obj-config-explorer.png)
 
 2. Use the Explorer to edit `hello-world-create.yaml`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.

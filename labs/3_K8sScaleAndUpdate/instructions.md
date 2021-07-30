@@ -56,20 +56,7 @@ npm install --save
 tar cvf node_modules.tar node_modules
 ```
 
-4. Use the Explorer to view the Dockerfile we'll use to build an image. Replace the content with the following code. 
-
->Note: If you are not doing it in the sanbox lab environment, you may skip this step.
-
-```
-FROM node:9.4.0-alpine
-COPY app.js .
-COPY package.json .
-COPY node_modules.tar .
-RUN tar xvf node_modules.tar
-EXPOSE  8080
-CMD node app.js
-```
-{: codeblock}
+4. Use the Explorer to view the Dockerfile we'll use to build an image.
 
 5. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
 ```

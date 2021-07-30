@@ -8,6 +8,7 @@
 In this lab, you will:
 - Build and deploy a simple health application
 - Use OpenShift image streams to roll out an update
+- Redeploy the health app using an OpenShift build
 - Create a Cloudant service instance on IBM Cloud
 - Bind the Cloudant service instance to your application
 - Autoscale the health app
@@ -19,15 +20,132 @@ The health application is a simple, multi-tier web application that we will buil
 
 We will deploy and manage this entire application on OpenShift.
 
-# Fork the remote repo and make changes 
-1. Fork the repository `https://github.com/ajp-io/patient-ui.git`, to your github account.
+# Verify the environment and command line tools
+1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
+![New terminal](images/new-terminal.png)
 
-<img src="images/fork_patient.png" style="border:solid 1px grey;margin-left:30px"/>
+2. Change to your project folder.
+```
+cd /home/project
+```
+{: codeblock}
 
+3. Clone the git repository that contains the artifacts needed for this lab.
+```
+git clone https://github.com/ajp-io/patient-ui.git
+```
+{: codeblock}
 
-2. In your git repo, navigate to `login.html` in the `public` directory. The path to this file is `patient-ui/public/login.html`.
+4. Change to the directory for this lab.
+```
+cd patient-ui
+```
+{: codeblock}
 
-3. Let's edit the name beneath the logo to be more specific. On the line that says `<div class="Fictionalname">Example Health</div>`, change it to include your name. Something like `<div class="Fictionalname">Alex's Example Health</div>`.
+5. List the contents of this directory to see the artifacts for this lab.
+```
+ls
+```
+{: codeblock}
+
+# Build the health app
+To begin, we will build and deploy the web front end for the health app.
+
+1. Run the following command or open the Dockerfile in the Explorer to familiarize yourself with it. The path to this file is `patient-ui/Dockerfile`.
+```
+cat Dockerfile
+```
+{: codeblock}
+
+2. Export your namespace as an environment variable so that it can be used in subsequent commands.
+```
+export MY_NAMESPACE=sn-labs-$USERNAME
+
+```
+{: codeblock}
+
+3. Build the health app.
+```
+docker build . -t us.icr.io/$MY_NAMESPACE/patient-ui:v1
+```
+{: codeblock}
+
+4. Push the image to IBM Cloud Container Registry.
+```
+docker push us.icr.io/$MY_NAMESPACE/patient-ui:v1
+```
+{: codeblock}
+
+5. Verify that the image was pushed successfully.
+```
+ibmcloud cr images
+```
+{: codeblock}
+
+# Deploy health app from the OpenShift internal registry
+As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
+
+1. Create an image stream that points to your image in IBM Cloud Container Registry.
+```
+oc tag us.icr.io/$MY_NAMESPACE/patient-ui:v1 patient-ui:v1 --reference-policy=local --scheduled
+```
+{: codeblock}
+
+With the `--reference-policy=local` option, a copy of the image from IBM Cloud Container Registry is imported into the local cache of the internal registry and made available to the cluster's projects as an image stream. The `--schedule` option sets up periodic importing of the image from IBM Cloud Container Registry into the internal registry. The default frequency is 15 minutes.
+
+Now let's head over to the OpenShift web console to deploy the health app using this image stream.
+
+2. Open the OpenShift web console using the link at the top of the lab environment.
+
+3. From the Developer perspective, click the **+Add** button to add a new application to this project.
+
+4. Click the **Container Image** option so that we can deploy the application using an image in the internal registry.
+
+5. Under **Image**, switch to "Image name from internal registry".
+
+6. Select your project, and the image stream and tag you just created (`patient-ui` and `v1`, respectively). You should have only have one option for each of these fields anyway since you only have access to a single project and you only created one image stream and one image stream tag.
+
+7. Keep all the default values and hit **Create** at the bottom. This will create the application and take you to the Topology view.
+
+8. From the Topology view, click the `patient-ui` Deployment. This should take you to the **Resources** tab for this Deployment, where you can see the Pod that is running the application as well as the Service and Route that expose it.
+
+9. Click the Route location (the link) to view the health app in action.
+
+10. Log into the health app using any credentials. Since the app is in demo mode right now, it will accept any credentials you enter.
+
+# Update the health app
+Let's update the health app and see how OpenShift's image streams can help us update our apps with ease.
+
+1. Use the Explorer to edit `login.html` in the `public` directory. The path to this file is `patient-ui/public/login.html`.
+
+2. Let's edit the name beneath the logo to be more specific. On the line that says `<div class="Fictionalname">Example Health</div>`, change it to include your name. Something like `<div class="Fictionalname">Alex's Example Health</div>`. Make sure to save the file when you're done.
+
+3. Build and push the app again using the same tag. This will overwrite the previous image.
+```
+docker build . -t us.icr.io/$MY_NAMESPACE/patient-ui:v1 && docker push us.icr.io/$MY_NAMESPACE/patient-ui:v1
+```
+{: codeblock}
+
+4. Recall the `--schedule` option we specified when we imported our image into the OpenShift internal registry. As a result, OpenShift will regularly import new images pushed to the specified tag. Since we pushed our newly built image to the same tag, OpenShift will import the updated image within about 15 minutes. If you don't want to wait for OpenShift to automatically import the updated image, run the following command.
+```
+oc import-image patient-ui:v1 --from=us.icr.io/$MY_NAMESPACE/patient-ui:v1 --confirm
+```
+{: codeblock}
+
+5. Switch to the Administrator perspective so that you can view image streams.
+
+6. Click **Builds** > **Image Streams** in the navigation.
+
+7. Click the `patient-ui` image stream.
+
+8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes.
+
+9. Return to the Developer perspective.
+
+10. View the health app in the browser again. If you still have the tab open, go there. If not, click the Route again from the `patient-ui` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well.
+
+# Health app storage
+1. From the health app in the browser, click the **Settings** link. If you're on the login page, this is beneath the login box. If you have already logged in, this is in the top navigation. This shows the current settings for the health app. Currently, the app is running in demo mode, which means that it serves static information on one mock patient. We want the app to require valid login credentials and to store patient details in a database instead of in memory.
 
 # Create a Cloudant service instance
 We've demonstrated that we need persistent storage in order for the health app to be effective. Let's deploy Cloudant so that we get just that. IBM Cloudant is a fully managed, distributed database that is optimized for handling heavy workloads that are typical of large, fast-growing web and mobile apps. Cloudant is built on open source Apache CouchDB.
@@ -49,74 +167,7 @@ We've demonstrated that we need persistent storage in order for the health app t
 
 8. Name the new credential "cloudant-health-creds". Leave the role as **Manager** and click **Add**.
 
-9. We need to store this credential in a Kubernetes secret in order for our patient database microservice to utilize it.
-
-10. Let's edit `binding-hack.sh`. The path to this file is `patient-ui/binding-hack.sh`. You need to insert your OpenShift project where it says `<my_project>`. Your project is `sn-labs-` followed by your username.
-
-
-# Build the patient-ui app
-To begin, we will build and deploy the web front end for the guestbook app.
-
-1. Open the Open shift console. 
-<img src="images/openshift_console.png" style="width:100%"/>
-
-2. Ensure that you are in `Developer` view and  click the **+Add** button to add a new application to this project.
-<img src="images/add_docker.png" style="width:50%"/>
-
-3. Click the **From Git** option.
-
-4. Paste the URL **Git Repo URL**. Click **Show Advanced Git Options**. You should see a validated checkmark once you click out of the box.
-
-5. The Builder image will be autimatically detected. 
-
-6. Leave the rest of the default options and click **Create**. This will create the application and take you to the Topology view.
-
-8. From the Topology view, click the patient-ui Deployment. This should take you to the Resources tab for this Deployment, where you can see the Pod that is running the application as well as the Service and Route that expose it.
-
-9. Click the Route location (the link) to view the health app in action.
-
-10. Log into the health app using any credentials. Since the app is in demo mode right now, it will accept any credentials you enter.
-
-
-# Health app storage
-1. From the health app in the browser, click the **Settings** link. If you're on the login page, this is beneath the login box. If you have already logged in, this is in the top navigation. This shows the current settings for the health app. Currently, the app is running in demo mode, which means that it serves static information on one mock patient. We want the app to require valid login credentials and to store patient details in a database instead of in memory.
-
-
-# Create a Secret for your IBM Cloudant.
-1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
-![New terminal](images/new-terminal.png)
-
-2. Change to your project folder.
-```
-cd /home/project
-```
-{: codeblock}
-
-3. Clone the git repository that contains the artifacts needed for this lab.
-```
-git clone <your repo name>
-```
-{: codeblock}
-
-4. Change to the directory for this lab.
-```
-cd patient-ui
-```
-{: codeblock}
-
-5. List the contents of this directory to see the artifacts for this lab.
-```
-ls
-```
-{: codeblock}
-
-6. Export your namespace as an environment variable so that it can be used in subsequent commands.
-```
-export MY_NAMESPACE=sn-labs-$USERNAME
-```
-{: codeblock}
-
-7. From the terminal in the lab environment, login to your IBM Cloud account with your username and password.
+9. We need to store this credential in a Kubernetes secret in order for our patient database microservice to utilize it. From the terminal in the lab environment, login to your IBM Cloud account with your username and password.
 ```
 ibmcloud login -u <your_email_address>
 ```
@@ -124,15 +175,15 @@ ibmcloud login -u <your_email_address>
 
 >If you are a federated user that uses a corporate or enterprise single sign-on ID, you can log in to IBM Cloud® from the console by using a federated ID and password. Use the provided URL in your CLI output to retrieve your one-time passcode. You know you have a federated ID when the login fails without the `--sso` and succeeds with the `--sso` option.
 
-8. Ensure that you target the resource group in which you created the Cloudant service. Remember that you noted this resource group in a previous step.
+10. Ensure that you target the resource group in which you created the Cloudant service. Remember that you noted this resource group in a previous step.
 ```
 ibmcloud target -g <resource_group>
 ```
 {: codeblock}
 
+11. Use the Explorer to edit `binding-hack.sh`. The path to this file is `patient-ui/binding-hack.sh`. You need to insert your OpenShift project where it says `<my_project>`. Your project is `sn-labs-` followed by your username. If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
 
-
-9. Run the script to create a Secret containing credentials for your Cloudant service.
+12. Run the script to create a Secret containing credentials for your Cloudant service.
 ```
 ./binding-hack.sh
 ```
@@ -140,12 +191,11 @@ ibmcloud target -g <resource_group>
 
 You should see the following output: `secret/cloudant-binding created`.
 
-10. Log back into the lab account. You have to use your lab account to use the Open Shift console; it will not work with your IBM Cloud credentials.
+13. Log back into the lab account. You have to use your lab account to use the Open Shift console; it will not work with your IBM Cloud credentials.
 ```
 ibmcloud login --apikey $IBMCLOUD_API_KEY
 ```
 {: codeblock}
-
 
 # Deploy the patient database microservice
 Now that the Cloudant service instance is created and its credentials are provided in a Kubernetes Secret, we can deploy the patient database microservice. This microservice populates your Cloudant instance with patient data on startup, and it also serves that data to the front end application that you have already deployed.

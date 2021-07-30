@@ -22,13 +22,13 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab, if it doesn't already exist.
 ```
-[ ! -d 'cc201' ] && git clone https://gitlab.com/ibm/skills-network/courses/cc201.git
+[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
 
 4. Change to the directory for this lab.
 ```
-cd cc201/labs/3_K8sScaleAndUpdate/
+cd CC201/labs/3_K8sScaleAndUpdate/
 ```
 {: codeblock}
 
@@ -45,14 +45,40 @@ export MY_NAMESPACE=sn-labs-$USERNAME
 ```
 {: codeblock}
 
-2. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
+2. Run the following command to install the packages. 
+```
+npm install --save
+```
+{: codeblock}
+
+3. Create a tar file with the node_modules for use inside the docker.
+```
+tar cvf node_modules.tar node_modules
+```
+
+4. Use the Explorer to view the Dockerfile we'll use to build an image. Replace the content with the following code. 
+
+>Note: If you are not doing it in the sanbox lab environment, you may skip this step.
+
+```
+FROM node:9.4.0-alpine
+COPY app.js .
+COPY package.json .
+COPY node_modules.tar .
+RUN tar xvf node_modules.tar
+EXPOSE  8080
+CMD node app.js
+```
+{: codeblock}
+
+5. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
 ```
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:1 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:1
 ```
 {: codeblock}
 
 # Deploy the application to Kubernetes
-1. Use the Explorer to edit `deployment.yaml` in this directory. The path to this file is `cc201/labs/3_K8sScaleAndUpdate/`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
+1. Use the Explorer to edit `deployment.yaml` in this directory. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
 
 2. Run your image as a Deployment.
 ```
@@ -128,7 +154,7 @@ kubectl get pods
 # Perform rolling updates
 Rolling updates are an easy way to update our application in an automated and controlled fashion. To simulate an update, let's first build a new version of our application and push it to Container Registry.
 
-1. Use the Explorer to edit `app.js`. The path to this file is `cc201/labs/3_K8sScaleAndUpdate/`. Change the welcome message from `'Hello world from ' + hostname + '! Your app is up and running!\n'` to `'Welcome to ' + hostname + '! Your app is up and running!\n'`. Make sure to save the file when you're done.
+1. Use the Explorer to edit `app.js`. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. Change the welcome message from `'Hello world from ' + hostname + '! Your app is up and running!\n'` to `'Welcome to ' + hostname + '! Your app is up and running!\n'`. Make sure to save the file when you're done.
 
 2. Build and push this new version to Container Registry. Update the tag to indicate that this is a second version of this application. Make sure to use the window that isn't running the `proxy` command.
 ```
@@ -202,7 +228,7 @@ kubectl create configmap app-config --from-literal=MESSAGE="This message came fr
 ```
 {: codeblock}
 
-2. Use the Explorer to edit `deployment-configmap-env-var.yaml`. The path to this file is `cc201/labs/3_K8sScaleAndUpdate/`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
+2. Use the Explorer to edit `deployment-configmap-env-var.yaml`. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
 
 3. In the same file, notice the section reproduced below. The bottom portion indicates that environment variables should be defined in the container from the data in a ConfigMap named `app-config`.
 ```
@@ -216,7 +242,7 @@ containers:
     name: app-config
 ```
 
-4. Use the Explorer to open the `app.js` file. The path to this file is `cc201/labs/3_K8sScaleAndUpdate/`. Find the line that says, `res.send('Hello world from ' + hostname + '! Your app is up and running!\n')`. Edit this line to look like the following:
+4. Use the Explorer to open the `app.js` file. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. Find the line that says, `res.send('Hello world from ' + hostname + '! Your app is up and running!\n')`. Edit this line to look like the following:
 ```
 res.send(process.env.MESSAGE + '\n')
 ```

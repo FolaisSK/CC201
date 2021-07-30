@@ -128,23 +128,10 @@ npm install --save
 tar cvf node_modules.tar node_modules
 ```
 
-4. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the Dockerfile we'll use to build an image. Replace the content with the following code. 
-
->Note: If you are not doing it in the sanbox lab environment, you may skip this step.
-
-```
-FROM node:9.4.0-alpine
-COPY app.js .
-COPY package.json .
-COPY node_modules.tar .
-RUN tar xvf node_modules.tar
-EXPOSE  8080 
-CMD node app.js
-```
-{: codeblock}
+4. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the Dockerfile we'll use to build an image. 
 
 If you don't understand any of the instructions in the Dockerfile, review the module videos.
-![Dockerfile in Explorer](images/docker_temp.png)
+![Dockerfile in Explorer](images/dockerfile-explorer.png)
 
 3. Run the following command to build the image:
 ```
