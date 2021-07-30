@@ -253,7 +253,7 @@ kubectl get services
 ```
 {: codeblock}
 
-3. Open a new terminal window using `Terminal > New Terminal`.
+3. Open a new terminal window using `Terminal > Split Terminal`.
 
 4. Since the cluster IP is not accessible outside of the cluster, we need to create a proxy. Note that this is not how you would make an application externally accessible in a production scenario. Run this command in the new terminal window since your environment variables need to be accessible in the original window for subsequent commands.
 ```
