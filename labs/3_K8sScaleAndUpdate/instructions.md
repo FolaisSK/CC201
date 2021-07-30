@@ -45,20 +45,9 @@ export MY_NAMESPACE=sn-labs-$USERNAME
 ```
 {: codeblock}
 
-2. Run the following command to install the packages. 
-```
-npm install --save
-```
-{: codeblock}
+2. Use the Explorer to view the Dockerfile we'll use to build an image.
 
-3. Create a tar file with the node_modules for use inside the docker.
-```
-tar cvf node_modules.tar node_modules
-```
-
-4. Use the Explorer to view the Dockerfile we'll use to build an image.
-
-5. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
+3. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
 ```
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:1 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:1
 ```
