@@ -6,8 +6,6 @@
 
 ## Objectives
 In this lab, you will:
-- Sign up for an IBM Cloud account
-- View the IBM Cloud catalog
 - View the IBM Cloud Container Registry service
 - Create a Container Registry namespace
 
@@ -21,17 +19,6 @@ The platform is built to support your needs, whether it's working only in the pu
 
 ## About IBM Cloud Container Registry namespaces
 IBM Cloud Container Registry is a multi-tenant registry in the public cloud. Namespaces are used to provide isolation for users' images. The namespace is a slice of the registry to which you can push your images. The namespace will be a part of the image name when you tag and push an image. For example, `us.icr.io/<my_namespace>/<my_repo>:<my_tag>`.
-
-# Create an IBM Cloud account
-1. Go to [IBM Cloud sign-up page](https://cloud.ibm.com/registration?target=%2Fkubernetes%2Fregistry%2Fmain%2Fstart).
-
-2. Follow the steps to create your account. You will need to provide an email address and password, as well as some personal information. You'll have to verify your account by accessing your email.<br>
-![IBM Cloud signup page](images/signup-page.png){ width=840 height=482 }
-
-3. Once you have created an account, go to the [IBM Cloud login page](https://cloud.ibm.com/login) and log in to your account.<br>
-![IBM Cloud login page](images/login-page.png){ width=840 height=482 }
-
-Congratulations! You can now explore the [IBM Cloud catalog](https://cloud.ibm.com/catalog) and provision various services.
 
 # Create a Container Registry namespace
 1. Click the **Catalog** button in the top navigation to go to the [IBM Cloud catalog](https://cloud.ibm.com/catalog).
