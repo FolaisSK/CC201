@@ -116,7 +116,7 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 8. From the Topology view, click the `guestbook` Deployment. This should take you to the **Resources** tab for this Deployment, where you can see the Pod that is running the application as well as the Service and Route that expose it.
 
-9. Click the Route location (the link) to view the guestbook in action.
+9. Click the Route location (the link) to view the guestbook in action. **Kindly take the screenshot of the guestbook for the final assignment.**
 
 10. Try out the guestbook by putting in a few entries. You should see them appear above the input box after you hit **Submit**.
 
@@ -145,14 +145,14 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 7. Click the `guestbook` image stream.
 
-8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes.
+8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes. **Kindly take the screenshot of the image stream showing two distinct version for the final assignment.**
 
 9. Return to the Developer perspective.
 
-10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well.
+10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well. **Kindly take the screenshot of the updated guestbook for the final assignment.**
 
 # Guestbook storage
-1. From the guestbook in the browser, click the `/info` link beneath the input box. This is an information endpoint for the guestbook. Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this.
+1. From the guestbook in the browser, click the `/info` link beneath the input box. This is an information endpoint for the guestbook. Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this. **Kindly take the screenshot of the In-memory datastore for the final assignment.**
 
 2. Return to the guestbook application in the browser by clicking the Route location again. You should see that your previous entries appear no more. This is because the guestbook was restarted when your update was deployed in the last section. We need a way to persist the guestbook entries even after restarts.
 
@@ -280,9 +280,9 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 7. Leave the rest of the default options and click **Create**.
 Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build that will build an image using the Dockerfile, push it to the internal registry, and use that image for a Deployment.
 
-8. From the Topology view, click the `guestbook` Deployment. In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
+8. From the Topology view, click the `guestbook` Deployment. **Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.** In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
 
-9. From the guestbook in the browser, click the `/info` link beneath the input box. Notice that it now gives information on Redis since we're no longer using the in-memory datastore.
+9. From the guestbook in the browser, click the `/info` link beneath the input box. Notice that it now gives information on Redis since we're no longer using the in-memory datastore. **Kindly take the screenshot of the `/info` showing redis instead of in-memory datastore for the final assignment.**
 
 But remember that we still need a Watson Tone Analyzer service to complete the application.
 
@@ -363,7 +363,9 @@ oc apply -f analyzer-service.yaml
 ```
 {: codeblock}
 
-7. Return to the guestbook in the browser, refresh the page, and submit a new entry. You should see your entry appear along with a tone analysis.
+7. **Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. Return to the guestbook in the browser, refresh the page, and submit a new entry. You should see your entry appear along with a tone analysis.
+
+8. **Kindly take the screenshot of the entries to the guestbook and have their tone analyzed. Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
 
 # Autoscale guestbook
 Now that guestbook is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way. Make sure to keep the guestbook open in a browser tab so that it continues to make requests and consume resources so that it can be successfully autoscaled.
@@ -419,7 +421,7 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 8. Click **Create**.
 
-9. If you wait, you'll see both **Current Replicas** and **Desired Replicas** become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the **Last Scale Time** as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up.
+9. If you wait, you'll see both **Current Replicas** and **Desired Replicas** become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the **Last Scale Time** as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up. **Kindly take the screenshot of Horizontal Pod Autoscaler that shows guestbook as the scale target, the current and desired replicas as three, and the last scale time as the time the deployment was scaled up to three replicas.**
 
 10. If you click the `guestbook` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
 
