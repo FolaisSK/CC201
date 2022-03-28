@@ -62,7 +62,11 @@ cd CC201/labs/1_ContainersAndDocker/
 ```
 ls
 ```
+
 {: codeblock}
+
+<img src="images/w1_env & cmd line tools.png">
+
 
 # Pull an image from Docker Hub and run it as a container
 1. Use the `docker` CLI to list your images.
@@ -103,11 +107,16 @@ docker ps -a
 
 Among other things, for this container you should see a container ID, the image name (`hello-world`), and a status that indicates that the container exited successfully.
 
+
+<img src="images/w1_pull img, container 1-5.png">
+
 6. Note the container ID from the previous step, and remove the container now that we've run it.
 ```
 docker container rm <container_id>
 ```
 {: codeblock}
+
+<img src="images/w1_pull img, container 6.png">
 
 Congratulations on pulling an image and running your first container! Now let's build an image on our own instead of using one pulled from Docker Hub.
 
@@ -136,6 +145,8 @@ docker images
 ```
 {: codeblock}
 
+<img src="images/w1_build img.png">
+
 Note that compared to the `hello-world` image, this image has a different image ID. This means that the two images consist of different layers -- in other words, they're not the same image.
 
 You should also see a `node` image in the images output. This is because the `docker build` command pulled `node:9.4.0-alpine` to use it as the base image for the image you built.
@@ -158,6 +169,8 @@ curl localhost:8080
 ```
 {: codeblock}
 
+<img src="images/w1_run img as ctr 3.png">
+
 The output should indicate that your app is up and running.
 
 4. In the second terminal window, stop the container. The following command uses `docker ps -q` to pass in the list of all running containers:
@@ -166,11 +179,15 @@ docker stop $(docker ps -q)
 ```
 {: codeblock}
 
+<img src="images/w1_run img as ctr 4.png">
+
 5. Close the second terminal window, as it is no longer needed.
 ```
 exit
 ```
 {: codeblock}
+
+
 
 In the original terminal window, the `docker run` command has exited and you are able to type commands in that terminal window again.
 
@@ -228,11 +245,15 @@ ibmcloud cr images
 ```
 {: codeblock}
 
+<img src="images/w1_run img as ctr 7.png">
+
 Optionally, to only view images within a specific namespace.
 ```
 ibmcloud cr images --restrict $MY_NAMESPACE
 ```
 {: codeblock}
+
+<img src="images/w1_run img as ctr 8.png">
 
 You should see your image name in the output. Recall from the module videos that we discussed Vulnerability Advisor, which scans images in IBM Cloud Container Registry for common vulnerabilities and exposures. In the last column of the output, note that Vulnerability Advisor is either scanning your image or it has provided a security status, depending on how quickly you list the images and how long the scan takes.
 
