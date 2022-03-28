@@ -23,7 +23,7 @@ The IBM Cloud platform is deployed across data centers around the world. It comb
 The platform is built to support your needs, whether it's working only in the public cloud or taking advantage of a multicloud deployment model. IBM Cloud offers a variety of services, including Compute, Network, Storage, Management, Security, Databases, Analytics, AI, and Cloud Paks.
 
 ## About IBM Cloud Container Registry namespaces
-IBM Cloud Container Registry is a multi-tenant registry in the public cloud. Namespaces are used to provide isolation for users' images. The namespace is a slice of the registry to which you can push your images. The namespace will be a part of the image name when you tag and push an image. For example, `us.icr.io/<my_namespace>/<my_repo>:<my_tag>`.
+IBM Cloud® Container Registry provides a multi-tenant, encrypted private image registry that you can use to store and access your container images in a highly available and scalable architecture. The namespace is a slice of the registry to which you can push your images. The namespace will be a part of the image name when you tag and push an image. For example, `us.icr.io/<my_namespace>/<my_repo>:<my_tag>`.
 
 # Create a Container Registry namespace
 1. Go to the [IBM Cloud catalog](https://cloud.ibm.com/catalog) page. 
@@ -38,22 +38,26 @@ IBM Cloud Container Registry is a multi-tenant registry in the public cloud. Nam
 <img src="images/registry-catalog.png" width="600" alt="Registry catalog"/>
 
 5. At the top right, click **Get started**.
+<img src="images/Step5(w1).jpg"/>
 
 6. Ensure that the location is set to **Dallas**.<br>
 <img src="images/registry-location.png" width="600" alt="Container Registry location"/>
 
-7. Click the **Namespaces** tab.<br>
+7. On the left hand side panel, click the **Namespaces** tab.<br>
 <img src="images/registry-namespaces-menu.png" width="300" alt="Container Registry namespaces menu"/>
 
 8. On the right side of the Namespaces panel, click **Create**. A **Create namespace** panel opens.
+<img src="images/Step7(w1).jpg"/>
 
 9. In the **Resource group** field, select the name of the resource group you would like this namespace to reside in. For this lab, you can simply leave the selection as **default**.
-
-10. In the **Name** field, type a unique name for the namespace. The name must be unique across all users of the Container Registry service in this region.<br>
-
 <img src="images/registry-namespace-create.png" width="600" alt="Container Registry namespace create"/>
 
+10. In the **Name** field, type a unique name for the namespace. The name must be unique across all users of the Container Registry service in this region.<br>
+<img src="images/step8(w1).jpg"/>
+
 11. Click **Create** at the bottom of the panel to create the namespace.
+<img src="images/Step9(w1).jpg"/>
+
 
 You now have a namespace to which you can push images.
 
