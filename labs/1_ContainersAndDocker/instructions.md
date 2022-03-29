@@ -128,8 +128,9 @@ Congratulations on pulling an image and running your first container! Now let's 
 
 2. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the Dockerfile we'll use to build an image. 
 
-If you don't understand any of the instructions in the Dockerfile, review the module videos.
 ![Dockerfile in Explorer](images/dockerfile-explorer.png)
+If you don't understand any of the instructions in the Dockerfile, review the module videos.
+
 
 3. Run the following command to build the image:
 ```
