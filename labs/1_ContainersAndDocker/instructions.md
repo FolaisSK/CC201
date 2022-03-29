@@ -11,6 +11,8 @@ In this lab, you will:
 - Build an image using a Dockerfile
 - Push an image to IBM Cloud Container Registry
 
+>> **Note: Kindly complete the lab in a single session without any break because the lab may go on offline mode and may cause errors. If you face any issues/errors during the lab process, please logout from the lab environment. Then clear your system cache and cookies and try to complete the lab.**
+
 **Important:**
 You may already have an IBM Cloud account and may even have a namespace in the IBM Container Registry (ICR). However, in this lab **you will not be using your own IBM Cloud account or your own ICR namespace**. You will be using an IBM Cloud account that has been automatically generated for you for this excercise. The lab environment will _not_ have access to any resources within your personal IBM Cloud account, including ICR namespaces and images.
 
@@ -128,8 +130,9 @@ Congratulations on pulling an image and running your first container! Now let's 
 
 2. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the Dockerfile we'll use to build an image. 
 
-If you don't understand any of the instructions in the Dockerfile, review the module videos.
 ![Dockerfile in Explorer](images/dockerfile-explorer.png)
+If you don't understand any of the instructions in the Dockerfile, review the module videos.
+
 
 3. Run the following command to build the image:
 ```

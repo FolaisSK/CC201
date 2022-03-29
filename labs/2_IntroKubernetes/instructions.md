@@ -4,6 +4,7 @@
 
 # Introduction to Kubernetes
 
+
 ## Objectives
 In this lab, you will:
 - Use the `kubectl` CLI
@@ -11,6 +12,10 @@ In this lab, you will:
 - Create a Kubernetes Deployment
 - Create a ReplicaSet that maintains a set number of replicas
 - Witness Kubernetes load balancing in action
+
+>> **Note: Kindly complete the lab in a single session without any break because the lab may go on offline mode and may cause errors. If you face any issues/errors during the lab process, please logout from the lab environment. Then clear your system cache and cookies and try to complete the lab.**
+
+
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
@@ -48,11 +53,13 @@ cd CC201/labs/2_IntroKubernetes/
 ```
 {: codeblock}
 
+
 6. List the contents of this directory to see the artifacts for this lab.
 ```
 ls
 ```
 {: codeblock}
+
 
 # Use the `kubectl` CLI
 Recall that Kubernetes namespaces enable you to virtualize a cluster. You already have access to one namespace in a Kubernetes cluster, and `kubectl` is already set to target that cluster and namespace.
@@ -76,6 +83,8 @@ kubectl config get-contexts
 kubectl get pods
 ```
 {: codeblock}
+
+<img src="images/w2_kubectl_cli.png">
 
 # Create a Pod with an imperative command
 Now it's time to create your first Pod. This Pod will run the `hello-world` image you built and pushed to IBM Cloud Container Registry in the last lab. As explained in the videos for this module, you can create a Pod imperatively or declaratively. Let's do it imperatively first.
@@ -102,6 +111,8 @@ kubectl run hello-world --image us.icr.io/$MY_NAMESPACE/hello-world:1 --override
 
 The `--overrides` option here enables us to specify the needed credentials to pull this image from IBM Cloud Container Registry. Note that this is an imperative command, as we told Kubernetes explicitly what to do: run `hello-world`.
 
+<img src="images/w2_impcmd_4.png">
+
 5. List the Pods in your namespace.
 ```
 kubectl get pods
@@ -122,6 +133,8 @@ kubectl describe pod hello-world
 ```
 {: codeblock}
 
+<img src="images/w2_impcmd_6.png">
+
 7. Delete the Pod.
 ```
 kubectl delete pod hello-world
@@ -134,13 +147,16 @@ kubectl get pods
 ```
 {: codeblock}
 
+<img src="images/w2_impcmd_8.png">
+
 # Create a Pod with imperative object configuration
 Imperative object configuration lets you create objects by specifying the action to take (e.g., create, update, delete) while using a configuration file. A configuration file, `hello-world-create.yaml`, is provided to you in this directory.
 
 1. Use the Explorer to view and edit the configuration file. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 2_IntroKubernetes`. Click `hello-world-create.yaml` to view the configuration file.
-![Imperative object configuration file in Explorer](images/imperative-obj-config-explorer.png)
 
 2. Use the Explorer to edit `hello-world-create.yaml`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
+
+<img src="images/w2_impconf_2.png" width=800>
 
 3. Imperatively create a Pod using the provided configuration file.
 ```
@@ -164,6 +180,8 @@ kubectl delete pod hello-world
 
 This command can take some time to run.
 
+<img src="images/w2_impconf_5.png">
+
 # Create a Pod with a declarative command
 The previous two ways to create a Pod were imperative -- we explicitly told `kubectl` what to do. While the imperative commands are easy to understand and run, they are not ideal for a production environment. Let's look at declarative commands.
 
@@ -174,6 +192,8 @@ The previous two ways to create a Pod were imperative -- we explicitly told `kub
 You can ignore the rest for now. We will get to a lot of those concepts in the next lab.
 
 2. Use the Explorer to edit `hello-world-apply.yaml`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
+
+<img src="images/w2_declrcmd_2.png">
 
 3. Use the `kubectl apply` command to set this configuration as the desired state in Kubernetes.
 ```
@@ -252,6 +272,8 @@ kubectl proxy
 
 This command doesn't terminate until you terminate it. Keep it running so that you can continue to access your app.
 
+<img src="images/w2_loadbln_4.png">
+
 5. In the original terminal window, ping the application to get a response.
 ```
 curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy
@@ -266,11 +288,15 @@ for i in `seq 10`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME
 
 You should see more than one Pod name, and quite possibly all three Pod names, in the output. This is because Kubernetes load balances the requests across the three replicas, so each request could hit a different instance of our application.
 
+<img src="images/w2_loadbln_6.png">
+
 7. Delete the Deployment and Service. This can be done in a single command by using slashes.
 ```
 kubectl delete deployment/hello-world service/hello-world
 ```
 {: codeblock}
+
+<img src="images/w2_loadbln_7.png">
 
 8. Return to the terminal window running the `proxy` command and kill it using `Ctrl+C`.
 
