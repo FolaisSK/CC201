@@ -4,6 +4,7 @@
 
 # Introduction to Kubernetes
 
+
 ## Objectives
 In this lab, you will:
 - Use the `kubectl` CLI
@@ -11,6 +12,10 @@ In this lab, you will:
 - Create a Kubernetes Deployment
 - Create a ReplicaSet that maintains a set number of replicas
 - Witness Kubernetes load balancing in action
+
+>> **Note: Kindly complete the lab in a single session without any break because the lab may go on offline mode and may cause errors. If you face any issues/errors during the lab process, please logout from the lab environment. Then clear your system cache and cookies and try to complete the lab.**
+
+
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
@@ -48,11 +53,13 @@ cd CC201/labs/2_IntroKubernetes/
 ```
 {: codeblock}
 
+
 6. List the contents of this directory to see the artifacts for this lab.
 ```
 ls
 ```
 {: codeblock}
+
 
 # Use the `kubectl` CLI
 Recall that Kubernetes namespaces enable you to virtualize a cluster. You already have access to one namespace in a Kubernetes cluster, and `kubectl` is already set to target that cluster and namespace.
