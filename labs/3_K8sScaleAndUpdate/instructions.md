@@ -227,7 +227,7 @@ containers:
 
 4. Use the Explorer to open the `app.js` file. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. Find the line that says, `res.send('Welcome to ' + hostname + '! Your app is up and running!\n')`.
 
-<img src="images/store config 4.jpg">
+<img src="images/store config 4.jpg" width="800">
 
 Edit this line to look like the following:
 ```
