@@ -113,6 +113,8 @@ for i in `seq 10`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME
 ```
 {: codeblock}
 
+<img src="images/scaling rs 3.jpg">
+
 You should see that the queries are going to different Pods.
 
 4. Similarly, you can use the `scale` command to scale down your Deployment.
@@ -149,6 +151,8 @@ ibmcloud cr images
 kubectl set image deployment/hello-world hello-world=us.icr.io/$MY_NAMESPACE/hello-world:2
 ```
 {: codeblock}
+
+<img src="images/rolling update 4.jpg">
 
 5. Get a status of the rolling update by using the following command:
 ```
@@ -193,7 +197,10 @@ kubectl get deployments -o wide
 ```
 {: codeblock}
 
+<img src="images/rolling update 10.jpg">
+
 Look for the `IMAGES` column and ensure that the tag is `1`.
+
 
 # Using a ConfigMap to store configuration
 ConfigMaps and Secrets are used to store configuration information separate from the code so that nothing is hardcoded. It also lets the application pick up configuration changes without needing to be redeployed. To demonstrate this, we'll store the application's message in a ConfigMap so that the message can be updated simply by updating the ConfigMap.
@@ -218,7 +225,11 @@ containers:
     name: app-config
 ```
 
-4. Use the Explorer to open the `app.js` file. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. Find the line that says, `res.send('Hello world from ' + hostname + '! Your app is up and running!\n')`. Edit this line to look like the following:
+4. Use the Explorer to open the `app.js` file. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. Find the line that says, `res.send('Welcome to ' + hostname + '! Your app is up and running!\n')`.
+
+<img src="images/store config 4.jpg" width="800">
+
+Edit this line to look like the following:
 ```
 res.send(process.env.MESSAGE + '\n')
 ```
@@ -277,6 +288,8 @@ kubectl delete -f deployment-configmap-env-var.yaml
 kubectl delete service hello-world
 ```
 {: codeblock}
+
+<img src="images/store config 12.jpg">
 
 13. Return to the terminal window running the `proxy` command and kill it using `Ctrl+C`.
 
