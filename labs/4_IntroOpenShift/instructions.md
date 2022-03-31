@@ -91,16 +91,17 @@ The Developer perspective provides workflows specific to developer use cases, su
 2. There are several ways to add a new application in OpenShift. Choose the **From Catalog** option.
 
 3.  Uncheck all checkboxes under **Type**.
-<img>
+
+<img src="images/deploy app 3.png">
 
 
 4. Search for "node" and click the **Node.js** tile.
 
-<img >
+<img src="images/deploy app 4.png">
 
 5. Click **Create Application** in the window that pops up.
 
-<img>
+<img src="images/deploy app 5.png">
 
 6. You should now be on a screen to create a source-to-image application. Recall that this means OpenShift will deploy an application using only one input from you: the application source. Beneath the **Git Repo URL** box, click **Try Sample**. This will populate the field with the URL of a sample application.
 
@@ -108,7 +109,7 @@ The Developer perspective provides workflows specific to developer use cases, su
 7. Keep the rest of the default options and click **Create**.
 In the Topology view, you should now see your newly created application.
 
-<img>
+<img src="images/deploy app 7.png">
 
 # View application in the web console
 The Topology view provides quick links to a lot of important parts of an application. You can:
