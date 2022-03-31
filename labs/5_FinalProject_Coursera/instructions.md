@@ -24,7 +24,7 @@ We will deploy and manage this entire application on OpenShift.
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
-![New terminal](images/new-terminal.png)
+![New terminal](images/new-terminal.png )
 
 2. Change to your project folder.
 ```
