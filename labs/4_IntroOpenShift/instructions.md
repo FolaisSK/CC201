@@ -134,17 +134,17 @@ Let's try some specific steps:
 
 <img src="images/viewapp_4.png">
 
-5. Click the **Overview** tab for this Build.
+5. Click the **Details** tab for this Build.
 
 6. Click the link to the owning BuildConfig under **Owner**.
 
 <img src="images/viewapp_6.png">
 
-7. If you look at the **Overview** and **YAML** tabs, you'll see many concepts that we talked about in this module: triggers, build strategy, webhooks, and more.
+7. If you look at the **Details** and **YAML** tabs, you'll see many concepts that we talked about in this module: triggers, build strategy, webhooks, and more.
 
 <img src="images/viewapp_7.png">
 
-8. From the **Overview** tab, click the link to the ImageStreamTag under **Output To**.
+8. From the **Details** tab, click the link to the ImageStreamTag under **Output To**.
 
 <img src="images/viewapp_8.png">
 
