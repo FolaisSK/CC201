@@ -89,7 +89,7 @@ ibmcloud cr images
 ```
 {: codeblock}
 
-<img src="images/Build-guestbook6.jpg">
+<img src="images/Build-guestbook6.jpg" width="800">
 
 # Deploy guestbook app from the OpenShift internal registry
 As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
@@ -116,7 +116,7 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 7. Keep all the default values and hit **Create** at the bottom. This will create the application and take you to the Topology view.
 
-<img src="images/Deploy-step7.jpg">
+<img src="images/Deploy-step7.jpg" width="800">
 
 8. From the Topology view, click the `guestbook` Deployment. This should take you to the **Resources** tab for this Deployment, where you can see the Pod that is running the application as well as the Service and Route that expose it.
 
@@ -131,7 +131,7 @@ Let's update the guestbook and see how OpenShift's image streams can help us upd
 
 2. Let's edit the title to be more specific. On the line that says `<h1>Guestbook - v1</h1>`, change it to include your name. Something like `<h1>Alex's Guestbook - v1</h1>`. Make sure to save the file when you're done.
 
-<img src="images/update2.jpg">
+<img src="images/update2.jpg" width="800">
 
 3. Build and push the app again using the same tag. This will overwrite the previous image.
 ```
@@ -153,7 +153,6 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes. **Kindly take the screenshot of the image stream showing two distinct version for the final assignment.**
 
-<img src="images/update8.jpg">
 
 9. Return to the Developer perspective.
 
@@ -252,7 +251,7 @@ oc get pods
 ```
 {: codeblock}
 
-<img src="images/deployredis11.jpg">
+<img src="images/deployredis11.jpg" width="800">
 
 You can also return to the Topology view in the OpenShift web console and see that the Deployment has appeared there.
 
@@ -290,7 +289,7 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 7. Leave the rest of the default options and click **Create**.
 Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build that will build an image using the Dockerfile, push it to the internal registry, and use that image for a Deployment.
 
-<img src="images/deployv2s7.jpg">
+<img src="images/deployv2s7.jpg" width="800">
 
 8. From the Topology view, click the `guestbook` Deployment. **Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.** In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
 
@@ -340,7 +339,7 @@ ibmcloud login --apikey $IBMCLOUD_API_KEY
 ```
 {: codeblock}
 
-<img src="images/Tonestep10.jpg">
+<img src="images/Tonestep10.jpg" width="800">
 
 # Deploy the analyzer microservice
 Now that the Tone Analyzer service is created and its credentials are provided in a Kubernetes Secret, we can deploy the analyzer microservice.
@@ -377,7 +376,7 @@ oc apply -f analyzer-service.yaml
 ```
 {: codeblock}
 
-<img src="images/Deploy-micro6.jpg">
+<img src="images/Deploy-micro6.jpg" width="800">
 
 7. **Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. Return to the guestbook in the browser, refresh the page, and submit a new entry. You should see your entry appear along with a tone analysis.
 
@@ -406,7 +405,7 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 
 3. Click **Save**.
 
-<img src="images/Autoscale3.jpg">
+<img src="images/Autoscale3.jpg" width="800">
 
 4. Switch to the Administrator perspective.
 
