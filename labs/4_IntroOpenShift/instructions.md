@@ -90,13 +90,26 @@ The Developer perspective provides workflows specific to developer use cases, su
 
 2. There are several ways to add a new application in OpenShift. Choose the **From Catalog** option.
 
-3. Search for "node" and click the **Node.js** tile. Click **Create Application** in the window that pops up.
-![Node in catalog](images/node-in-catalog.png)
+3.  Uncheck all checkboxes under **Type**.
 
-4. You should now be on a screen to create a source-to-image application. Recall that this means OpenShift will deploy an application using only one input from you: the application source. Beneath the **Git Repo URL** box, click **Try Sample**. This will populate the field with the URL of a sample application.
+<img src="images/deploy app 3.png">
 
-5. Keep the rest of the default options and click **Create**.
+
+4. Search for "node" and click the **Node.js** tile.
+
+<img src="images/deploy app 4.png">
+
+5. Click **Create Application** in the window that pops up.
+
+<img src="images/deploy app 5.png">
+
+6. You should now be on a screen to create a source-to-image application. Recall that this means OpenShift will deploy an application using only one input from you: the application source. Beneath the **Git Repo URL** box, click **Try Sample**. This will populate the field with the URL of a sample application.
+
+
+7. Keep the rest of the default options and click **Create**.
 In the Topology view, you should now see your newly created application.
+
+<img src="images/deploy app 7.png">
 
 # View application in the web console
 The Topology view provides quick links to a lot of important parts of an application. You can:
@@ -111,21 +124,37 @@ Let's try some specific steps:
 
 2. Observe the four resources associated with this Deployment: a Pod that runs the containerized application; a Build that uses the s2i strategy to build the application into a container image; a Service that exposes the application as a network service; and a Route that provides an externally reachable hostname.
 
+<img src="images/viewapp_2.png">
+
 3. Click **View logs** on the line that says **Build #1**.
+
+<img src="images/viewapp_3.png">
 
 4. Read the logs to see a few key completed steps. The repository is cloned, a Dockerfile is generated, an image is built, and the image is pushed to the internal registry.
 
-5. Click the **Overview** tab for this Build.
+<img src="images/viewapp_4.png">
+
+5. Click the **Details** tab for this Build.
 
 6. Click the link to the owning BuildConfig under **Owner**.
 
-7. If you look at the **Overview** and **YAML** tabs, you'll see many concepts that we talked about in this module: triggers, build strategy, webhooks, and more.
+<img src="images/viewapp_6.png">
 
-8. From the **Overview** tab, click the link to the ImageStreamTag under **Output To**.
+7. If you look at the **Details** and **YAML** tabs, you'll see many concepts that we talked about in this module: triggers, build strategy, webhooks, and more.
+
+<img src="images/viewapp_7.png">
+
+8. From the **Details** tab, click the link to the ImageStreamTag under **Output To**.
+
+<img src="images/viewapp_8.png">
 
 9. You can now see the ImageStreamTag that was created as an output of the build. Click the **History** tab to see the image in the internal registry to which this ImageStreamTag points.
 
+<img src="images/viewapp_9.png">
+
 10. Return to the Topology view and click on your Deployment info. Click the Route that OpenShift automatically created for you. This will open the application in the browser.
+
+<img src="images/viewapp_10.png">
 
 Wow! OpenShift did some pretty incredible work on your behalf. All it needed was a code repository and it was able to build the code into a container image, push that image to a registry, create a Deployment that references that image, and also expose the application to the internet with a hostname.
 
