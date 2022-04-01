@@ -146,7 +146,6 @@ oc import-image patient-ui:v1 --from=us.icr.io/$MY_NAMESPACE/patient-ui:v1 --con
 
 8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes.
 
-<img src="images/update_app_8.png">
 
 9. Return to the Developer perspective.
 
@@ -154,8 +153,6 @@ oc import-image patient-ui:v1 --from=us.icr.io/$MY_NAMESPACE/patient-ui:v1 --con
 
 # Health app storage
 1. From the health app in the browser, click the **Settings** link. If you're on the login page, this is beneath the login box. If you have already logged in, this is in the top navigation. This shows the current settings for the health app. Currently, the app is running in demo mode, which means that it serves static information on one mock patient. We want the app to require valid login credentials and to store patient details in a database instead of in memory.
-
-<img src="images/storage-1.png">
 
 # Create a Cloudant service instance
 We've demonstrated that we need persistent storage in order for the health app to be effective. Let's deploy Cloudant so that we get just that. IBM Cloudant is a fully managed, distributed database that is optimized for handling heavy workloads that are typical of large, fast-growing web and mobile apps. Cloudant is built on open source Apache CouchDB.
@@ -241,8 +238,6 @@ oc new-app --name=patient-db centos/nodejs-10-centos7~https://github.com/ajp-io/
 10. Click the **Pods** tab and look at the newly created Pod. Its status should be **Running** now since it has the Cloudant URL and is able to start. Click the Pod name.
 
 11. Click the **Logs** tab. If you have set up everything correctly so far, you should see in the logs that the patient db adapter connected to Cloudant and created a bunch of databases like "allergies", "appointments", etc.
-
-<img src="images/deploy_patientdb_11.png">
 
 # Configure health app to use Cloudant
 Now that the database adapter has populated the database with patient data, we need to configure the front end applciation to use that application to serve patient data.
@@ -352,7 +347,5 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 12. If you wait, you'll see both **Current Replicas** and **Desired Replicas** become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the **Last Scale Time** as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up.
 
 13. If you click the `patient-ui` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
-
-<img src="images/autoscale_13.png">
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
