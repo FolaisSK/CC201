@@ -314,7 +314,7 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 ```
 {: codeblock}
 
-6. Click **Save**.
+6. Click **Save**. Then click on **Reload** to view the updated YAML file.
 
 <img src="images/autoscale_6.png">
 
