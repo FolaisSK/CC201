@@ -82,6 +82,8 @@ ibmcloud cr images
 ```
 {: codeblock}
 
+<img src="images/buildapp_6.png">
+
 # Deploy health app from the OpenShift internal registry
 As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
 
@@ -113,12 +115,16 @@ Now let's head over to the OpenShift web console to deploy the health app using 
 
 10. Log into the health app using any credentials. Since the app is in demo mode right now, it will accept any credentials you enter.
 
+<img src="images/deploy_osreg_10.png">
+
 # Update the health app
 Let's update the health app and see how OpenShift's image streams can help us update our apps with ease.
 
 1. Use the Explorer to edit `login.html` in the `public` directory. The path to this file is `patient-ui/public/login.html`.
 
 2. Let's edit the name beneath the logo to be more specific. On the line that says `<div class="Fictionalname">Example Health</div>`, change it to include your name. Something like `<div class="Fictionalname">Alex's Example Health</div>`. Make sure to save the file when you're done.
+
+<img src="images/update_app_2.png">
 
 3. Build and push the app again using the same tag. This will overwrite the previous image.
 ```
@@ -140,12 +146,16 @@ oc import-image patient-ui:v1 --from=us.icr.io/$MY_NAMESPACE/patient-ui:v1 --con
 
 8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes.
 
+<img src="images/update_app_8.png">
+
 9. Return to the Developer perspective.
 
 10. View the health app in the browser again. If you still have the tab open, go there. If not, click the Route again from the `patient-ui` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well.
 
 # Health app storage
 1. From the health app in the browser, click the **Settings** link. If you're on the login page, this is beneath the login box. If you have already logged in, this is in the top navigation. This shows the current settings for the health app. Currently, the app is running in demo mode, which means that it serves static information on one mock patient. We want the app to require valid login credentials and to store patient details in a database instead of in memory.
+
+<img src="images/storage-1.png">
 
 # Create a Cloudant service instance
 We've demonstrated that we need persistent storage in order for the health app to be effective. Let's deploy Cloudant so that we get just that. IBM Cloudant is a fully managed, distributed database that is optimized for handling heavy workloads that are typical of large, fast-growing web and mobile apps. Cloudant is built on open source Apache CouchDB.
@@ -166,6 +176,8 @@ We've demonstrated that we need persistent storage in order for the health app t
 7. Now that you have an instance, you need credentials with which you can access it. Click **Service credentials** on the left navigation, and click **New credential**.
 
 8. Name the new credential "cloudant-health-creds". Leave the role as **Manager** and click **Add**.
+
+<img src="images/cloudant_8.png">
 
 9. We need to store this credential in a Kubernetes secret in order for our patient database microservice to utilize it. From the terminal in the lab environment, login to your IBM Cloud account with your username and password.
 ```
@@ -197,6 +209,8 @@ ibmcloud login --apikey $IBMCLOUD_API_KEY
 ```
 {: codeblock}
 
+<img src="images/cloudant_13.png">
+
 # Deploy the patient database microservice
 Now that the Cloudant service instance is created and its credentials are provided in a Kubernetes Secret, we can deploy the patient database microservice. This microservice populates your Cloudant instance with patient data on startup, and it also serves that data to the front end application that you have already deployed.
 
@@ -222,9 +236,13 @@ oc new-app --name=patient-db centos/nodejs-10-centos7~https://github.com/ajp-io/
 
 9. Click **Save** at the bottom.
 
+<img src="images/deploy_patientdb_9.png">
+
 10. Click the **Pods** tab and look at the newly created Pod. Its status should be **Running** now since it has the Cloudant URL and is able to start. Click the Pod name.
 
 11. Click the **Logs** tab. If you have set up everything correctly so far, you should see in the logs that the patient db adapter connected to Cloudant and created a bunch of databases like "allergies", "appointments", etc.
+
+<img src="images/deploy_patientdb_11.png">
 
 # Configure health app to use Cloudant
 Now that the database adapter has populated the database with patient data, we need to configure the front end applciation to use that application to serve patient data.
@@ -248,6 +266,8 @@ Now that the database adapter has populated the database with patient data, we n
 9. Click on one of the documents stored in this database.
 
 10. In the document, you should see `user_id` and `password` fields. These are the credentials for this user.
+
+<img src="images/config_app_10.png">
 
 11. Return to the login page and test out these credentials. You should get logged in and see this patient's data appear in the health app.
 
@@ -274,6 +294,8 @@ while sleep 1; do curl -s http://$HEALTH_ROUTE > /dev/null; done
 ```
 {: codeblock}
 
+<img src="images/autoscale_3.png">
+
 Now we need to set resource requests and limits for the containers that run. If a container requests a resource like CPU or memory, Kubernetes will only schedule it on a node that can give it that resource. On the other hand, limits prevent a container from consuming more than a certain amount of a resource.
 
 In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll limit the containers to 30 millicores and 100 MB. These numbers are contrived in order to ensure that the app scales.
@@ -293,6 +315,8 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 {: codeblock}
 
 6. Click **Save**.
+
+<img src="images/autoscale_6.png">
 
 7. Switch to the Administrator perspective.
 
@@ -328,5 +352,7 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 12. If you wait, you'll see both **Current Replicas** and **Desired Replicas** become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the **Last Scale Time** as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up.
 
 13. If you click the `patient-ui` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
+
+<img src="images/autoscale_13.png">
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
