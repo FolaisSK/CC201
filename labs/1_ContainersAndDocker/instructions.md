@@ -20,11 +20,15 @@ You may already have an IBM Cloud account and may even have a namespace in the I
 1. Open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 ![New terminal](images/new-terminal.png)
 
+<img src="images/env&cmdlinetools_1.png">
+
 2. Verify that `docker` CLI is installed.
 ```
 docker --version
 ```
 {: codeblock}
+
+<img src="images/env&cmdlinetools_2.png">
 
 You should see output similar to this, though the version may be different:
 ```
@@ -37,6 +41,8 @@ ibmcloud version
 ```
 {: codeblock}
 
+<img src="images/env&cmdlinetools_3.png">
+
 You should see output similar to this, though the version may be different:
 ```
 ibmcloud version 1.0.0+908f90a-2020-03-30T06:37:22+00:00
@@ -48,17 +54,23 @@ cd /home/project
 ```
 {: codeblock}
 
+<img src="images/env&cmdlinetools_4.png">
+
 4. Clone the git repository that contains the artifacts needed for this lab.
 ```
 git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
 
+<img src="images/env&cmdlinetools_5.png">
+
 5. Change to the directory for this lab.
 ```
 cd CC201/labs/1_ContainersAndDocker/
 ```
 {: codeblock}
+
+<img src="images/env&cmdlinetools_6.png">
 
 6. List the contents of this directory to see the artifacts for this lab.
 ```
@@ -67,7 +79,7 @@ ls
 
 {: codeblock}
 
-<img src="images/w1_env & cmd line tools.png">
+<img src="images/env&cmdlinetools_7.png">
 
 
 # Pull an image from Docker Hub and run it as a container
