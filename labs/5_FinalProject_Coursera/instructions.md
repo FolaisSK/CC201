@@ -9,8 +9,8 @@ In this lab, you will:
 - Build and deploy a simple guestbook application
 - Use OpenShift image streams to roll out an update
 - Deploy a multi-tier version of the guestbook application
-- Create a Watson Tone Analyzer service instance on IBM Cloud
-- Bind the Tone Analyzer service instance to your application
+- Create a Watson Natural Language Understanding service instance on IBM Cloud
+- Bind the Natural Language Understanding service instance to your application
 - Autoscale the guestbook app
 
 # Project Overview
@@ -18,7 +18,7 @@ In this lab, you will:
 ## Guestbook application
 Guestbook is a simple, multi-tier web application that we will build and deploy with Docker and Kubernetes. The application consists of a web front end, a Redis master for storage, a replicated set of Redis slaves, and an analyzer that will analyze the tone of the comments left in the guestbook. For all of these we will create Kubernetes Deployments, Pods, and Services.
 
-There are two versions of this application. Version 1 (in the v1 directory) is the simple application itself, while version 2 (in the v2 directory) extends the application by adding additional features that leverage the Watson Tone Analyzer service.
+There are two versions of this application. Version 1 (in the v1 directory) is the simple application itself, while version 2 (in the v2 directory) extends the application by adding additional features that leverage the Watson Natural Language Understanding service.
 
 We will deploy and manage this entire application on OpenShift.
 
@@ -34,7 +34,7 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab.
 ```
-git clone https://github.com/ajp-io/guestbook.git
+git clone https://github.com/ibm-developer-skills-network/guestbook.git
 ```
 {: codeblock}
 
@@ -278,7 +278,7 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 
 2. Click the **From Dockerfile** option.
 
-3. Paste the URL https://github.com/ajp-io/guestbook in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
+3. Paste the URL https://github.com/ibm-developer-skills-network/guestbook.git in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
 
 4. Click **Show Advanced Git Options**.
 
