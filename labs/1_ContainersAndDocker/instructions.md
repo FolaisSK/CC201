@@ -30,7 +30,7 @@ docker --version
 
 <img src="images/env&cmdlinetools_2.png">
 
-You should see output similar to this, though the version may be different:
+You should see the following output, although the version may be different:
 ```
 Docker version 18.09.7, build 2d0083d
 ```
@@ -43,7 +43,7 @@ ibmcloud version
 
 <img src="images/env&cmdlinetools_3.png">
 
-You should see output similar to this, though the version may be different:
+You should see the following output, though the version may be different:
 ```
 ibmcloud version 1.0.0+908f90a-2020-03-30T06:37:22+00:00
 ```
