@@ -85,6 +85,8 @@ docker images
 ```
 {: codeblock}
 
+<img src="images/env&cmdlinetools_6.png">
+
 You should see an empty table since you don't have any images yet.
 
 2. Pull your first image from Docker Hub.
