@@ -222,6 +222,7 @@ docker stop $(docker ps -q)
 ```
 docker ps
 ```
+<img src="images/run_img_as_ctr_5.png"> <br>
 
 6. Close the second terminal window, as it is no longer needed.
 ```
@@ -229,11 +230,11 @@ exit
 ```
 {: codeblock}
 
-<img src="images/run_img_as_ctr_5.png"> <br>
+<img src="images/run_img_as_ctr_6.png"> <br>
 
 In the original terminal window, the `docker run` command has exited and you are able to type commands in that terminal window again. If there is any issue in loading the terminal, press Enter.
 
-<img src="images/run_img_as_ctr_6.png"> <br>
+<img src="images/run_img_as_ctr_7.png"> <br>
 
 
 # Push the image to IBM Cloud Container Registry
