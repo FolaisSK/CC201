@@ -30,35 +30,51 @@ IBM Cloud® Container Registry provides a multi-tenant, encrypted private image 
 
 2. In the **Search the catalog…** box, type <code>Container Registry</code> and press Enter on your keyboard.
 
+<img src="images/createns_2.png"/>
+
 3. Click the **Container Registry** tile in the search results.<br>
 
-<img src="images/registry-tile.png" width="600" alt="Container Registry tile"/>
+<img src="images/createns_3.png"/>
 
 4. You can now read about the Container Registry service and visit links for API documentation and docs about how to use the service.<br>
+
 <img src="images/registry-catalog.png" width="600" alt="Registry catalog"/>
 
 5. At the top right, click **Get started**.
-<img src="images/Step5(w1).jpg"/>
+
+<img src="images/createns_5.png"/>
 
 6. Ensure that the location is set to **Dallas**.<br>
+
 <img src="images/registry-location.png" width="600" alt="Container Registry location"/>
 
 7. On the left hand side panel, click the **Namespaces** tab.<br>
+
 <img src="images/registry-namespaces-menu.png" width="300" alt="Container Registry namespaces menu"/>
 
-8. On the right side of the Namespaces panel, click **Create**. A **Create namespace** panel opens.
-<img src="images/Step7(w1).jpg"/>
+8. On the right side of the Namespaces panel, click **Create**.
 
-9. In the **Resource group** field, select the name of the resource group you would like this namespace to reside in. For this lab, you can simply leave the selection as **default**.
-<img src="images/registry-namespace-create.png" width="600" alt="Container Registry namespace create"/>
+<img src="images/createns_8.png"/>
 
-10. In the **Name** field, type a unique name for the namespace. The name must be unique across all users of the Container Registry service in this region.<br>
-<img src="images/step8(w1).jpg"/>
+9. A **Create namespace** panel opens.
 
-11. Click **Create** at the bottom of the panel to create the namespace.
-<img src="images/Step9(w1).jpg"/>
+<img src="images/createns_9.png"/>
+
+10. In the **Resource group** field, select the name of the resource group you would like this namespace to reside in. For this lab, you can simply leave the selection as **default**.
+
+<img src="images/createns_10.png"/>
+
+11. In the **Name** field, type a unique name for the namespace. The name must be unique across all users of the Container Registry service in this region.<br>
+
+<img src="images/createns_11.png"/>
+
+12. Click **Create** at the bottom of the panel to create the namespace.
+
+<img src="images/createns_12.png"/>
 
 
-You now have a namespace to which you can push images.
+You now have a namespace (as below) to which you can push images.
+
+<img src="images/createns_13.png"/>
 
 Congratulations! You have completed the first lab for the first module of this course.
