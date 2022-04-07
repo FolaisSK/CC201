@@ -218,7 +218,12 @@ docker stop $(docker ps -q)
 
 <img src="images/run_img_as_ctr_4.png"> <br>
 
-5. Close the second terminal window, as it is no longer needed.
+5. In the second terminal window, check if the container has stooped by running the following command.
+```
+docker ps
+```
+
+6. Close the second terminal window, as it is no longer needed.
 ```
 exit
 ```
