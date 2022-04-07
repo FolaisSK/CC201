@@ -48,13 +48,11 @@ You should see output similar to this, though the version may be different:
 ibmcloud version 1.0.0+908f90a-2020-03-30T06:37:22+00:00
 ```
 
-3. Change to your project folder.
+3. Change to your project folder. If you are already on the '/home/project' folder, please skip this step.
 ```
 cd /home/project
 ```
 {: codeblock}
-
-<img src="images/env&cmdlinetools_4.png">
 
 4. Clone the git repository that contains the artifacts needed for this lab.
 ```
@@ -70,8 +68,6 @@ cd CC201/labs/1_ContainersAndDocker/
 ```
 {: codeblock}
 
-<img src="images/env&cmdlinetools_6.png">
-
 6. List the contents of this directory to see the artifacts for this lab.
 ```
 ls
@@ -79,7 +75,7 @@ ls
 
 {: codeblock}
 
-<img src="images/env&cmdlinetools_7.png">
+<img src="images/env&cmdlinetools_6.png">
 
 
 # Pull an image from Docker Hub and run it as a container
