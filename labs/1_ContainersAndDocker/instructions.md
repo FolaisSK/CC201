@@ -87,7 +87,7 @@ docker images
 
 <img src="images/env&cmdlinetools_6.png">
 
-You should see an empty table since you don't have any images yet.
+You should see an empty table (with only headings) since you don't have any images yet.
 
 2. Pull your first image from Docker Hub.
 ```
@@ -95,7 +95,7 @@ docker pull hello-world
 ```
 {: codeblock}
 
-3. List images again to see this image in the local environment.
+3. List the images again.
 ```
 docker images
 ```
@@ -109,7 +109,7 @@ docker run hello-world
 ```
 {: codeblock}
 
-This command prints out a simple hello message and some explanation of what Docker did to generate this message.
+You should see a 'Hello from Docker!' message and some explanation of what Docker did to generate this message.
 
 5. List the containers to see that your container ran and exited successfully.
 ```
@@ -122,15 +122,22 @@ Among other things, for this container you should see a container ID, the image 
 
 <img src="images/w1_pull img, container 1-5.png">
 
-6. Note the container ID from the previous step, and remove the container now that we've run it.
+6. "Note the CONTAINER ID from the previous output and replace the <container_id> in the command below with this value." This command removes your container.
 ```
 docker container rm <container_id>
 ```
 {: codeblock}
 
+7. "Verify that that the container has been removed". Run the following command.
+
+```
+docker ps -a
+```
+{: codeblock}
+
 <img src="images/w1_pull img, container 6.png">
 
-Congratulations on pulling an image and running your first container! Now let's build an image on our own instead of using one pulled from Docker Hub.
+Congratulations on pulling an image from Docker Hub and running your first container! Now let's try and build our own image.
 
 # Build an image using a Dockerfile
 1. The current working directory contains a simple Node.js application that we will run in a container. The app will print a hello message along with the hostname. The following files are needed to run the app in a container:
@@ -140,8 +147,16 @@ Congratulations on pulling an image and running your first container! Now let's 
 
 2. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the Dockerfile we'll use to build an image. 
 
+Click Dockerfile to view the commands required to build an image.
+
 ![Dockerfile in Explorer](images/dockerfile-explorer.png)
 If you don't understand any of the instructions in the Dockerfile, review the module videos.
+
+In the FROM instruction node:9.4.0-alpine is the Base Image.
+The COPY instruction copies the app.js and package.json files as new image layers.
+The RUN command installs the mentioned packages.
+The EXPOSE command sets the application port to 8080.
+The CMD instruction sets the running of the app.js file as the default for executing this container.
 
 
 3. Run the following command to build the image:
