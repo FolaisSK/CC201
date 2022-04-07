@@ -17,10 +17,9 @@ In this lab, you will:
 You may already have an IBM Cloud account and may even have a namespace in the IBM Container Registry (ICR). However, in this lab **you will not be using your own IBM Cloud account or your own ICR namespace**. You will be using an IBM Cloud account that has been automatically generated for you for this excercise. The lab environment will _not_ have access to any resources within your personal IBM Cloud account, including ICR namespaces and images.
 
 # Verify the environment and command line tools
-1. Open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
-![New terminal](images/new-terminal.png)
+1. Open a terminal window by using the menu in the editor: `Terminal > New Terminal`. **If the terminal is already opened, please skip this step.**
 
-<img src="images/env&cmdlinetools_1.png"> <br>
+<img src="images/env&cmdlinetools_1.png" width='800'> <br>
 
 2. Verify that `docker` CLI is installed.
 ```
@@ -29,9 +28,7 @@ docker --version
 {: codeblock}
 
 You should see the following output, although the version may be different:
-```
-Docker version 18.09.7, build 2d0083d
-```
+
 <img src="images/env&cmdlinetools_2.png"> <br>
 
 
@@ -42,13 +39,11 @@ ibmcloud version
 {: codeblock}
 
 You should see the following output, although the version may be different:
-```
-ibmcloud version 1.0.0+908f90a-2020-03-30T06:37:22+00:00
-```
+
 <img src="images/env&cmdlinetools_3.png"> <br>
 
 
-4. Change to your project folder. If you are already on the '/home/project' folder, please skip this step.
+4. Change to your project folder. **If you are already on the '/home/project' folder, please skip this step.**
 ```
 cd /home/project
 ```
@@ -98,7 +93,7 @@ docker pull hello-world
 
 <img src="images/pullimg_ctr_2.png"> <br>
 
-3. List the images again.
+3. List images again.
 ```
 docker images
 ```
@@ -114,7 +109,7 @@ docker run hello-world
 ```
 {: codeblock}
 
-You should see a 'Hello from Docker!' message and some explanation of what Docker did to generate this message.
+You should see a **'Hello from Docker!'** message and some explanation of what Docker did to generate this message.
 
 <img src="images/pullimg_ctr_4.png"> <br>
 
@@ -128,7 +123,7 @@ Among other things, for this container you should see a container ID, the image 
 
 <img src="images/pullimg_ctr_5.png"> <br>
 
-6. "Note the CONTAINER ID from the previous output and replace the <container_id> in the command below with this value." This command removes your container.
+6. Note the CONTAINER ID from the previous output and replace the <container_id> in the command below with this value. This command removes your container.
 ```
 docker container rm <container_id>
 ```
@@ -136,7 +131,7 @@ docker container rm <container_id>
 
 <img src="images/pullimg_ctr_6.png"> <br>
 
-7. "Verify that that the container has been removed". Run the following command.
+7. Verify that that the container has been removed. Run the following command.
 
 ```
 docker ps -a
@@ -153,17 +148,19 @@ Congratulations on pulling an image from Docker Hub and running your first conta
 - package.json defines the dependencies of the application.
 - Dockerfile defines the instructions Docker uses to build the image.
 
-2. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the Dockerfile we'll use to build an image. 
+2. Use the Explorer to view the files needed for this app. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 1_ContainersAndDocker`. Click `Dockerfile` to view the commands required to build an image.
 
-Click Dockerfile to view the commands required to build an image.
 
 ![Dockerfile in Explorer](images/dockerfile-explorer.png)
 
-In the FROM instruction node:9.4.0-alpine is the Base Image.
-The COPY instruction copies the app.js and package.json files as new image layers.
-The RUN command installs the mentioned packages.
-The EXPOSE command sets the application port to 8080.
-The CMD instruction sets the running of the app.js file as the default for executing this container.
+If you don't understand any of the instructions in the Dockerfile, kindly go through the below commands:
+
+**The FROM command is used to define the base image whihc is node:9.4.0-alpine. <br>
+The COPY instruction copies the app.js and package.json files as new image layers. <br>
+The RUN command installs the mentioned packages. <br>
+The EXPOSE command sets the application port to 8080. <br>
+The CMD instruction sets the running of the app.js file as the default for executing this container. <br>**
+
 
 
 3. Run the following command to build the image:
@@ -195,7 +192,7 @@ docker run -p 8080:8080 myimage:v1
 ```
 {: codeblock}
 
-The output should indicate that your application is listening on port 8080. This command will continue running until it is quit, since the container runs a web app that continually listens for requests. To query the app, we need to open another terminal window.
+The output should indicate that your application is listening on port 8080. This command will continue running until it exits, since the container runs a web app that continually listens for requests. To query the app, we need to open another terminal window.
 
 <img src="images/run_img_as_ctr_1.png"> <br>
 
@@ -209,7 +206,7 @@ curl localhost:8080
 ```
 {: codeblock}
 
-The output should indicate that your app is up and running.
+The output should indicate that **'Your app is up and running!'.**
 
 <img src="images/run_img_as_ctr_3.png"> <br>
 
@@ -229,9 +226,10 @@ exit
 
 <img src="images/run_img_as_ctr_5.png"> <br>
 
-In the original terminal window, the `docker run` command has exited and you are able to type commands in that terminal window again.
+In the original terminal window, the `docker run` command has exited and you are able to type commands in that terminal window again. If there is any issue in loading the terminal, press Enter.
 
 <img src="images/run_img_as_ctr_6.png"> <br>
+
 
 # Push the image to IBM Cloud Container Registry
 1. The environment should have already logged you into the IBM Cloud account that has been automatically generated for you by the Skills Network Labs environment. The following command will give you information about the account you're targeting:
@@ -242,7 +240,7 @@ ibmcloud target
 
 <img src="images/push_img_1.png"> <br>
 
-2. The environment also created an IBM Cloud Container Registry (ICR) namespace for you. Since Container Registry is multi-tenant, namespaces are used to divvy up the registry among several users. Use the following command to see the namespaces you have access to:
+2. The environment also created an IBM Cloud Container Registry (ICR) namespace for you. Since Container Registry is multi-tenant, namespaces are used to share out the registry among several users. Use the following command to see the namespaces you have access to:
 ```
 ibmcloud cr namespaces
 ```
@@ -251,7 +249,7 @@ ibmcloud cr namespaces
 You should see two namespaces listed starting with `sn-labs`:
 
 - The first one with your username is a namespace just for you. You have full _read_ and _write_ access to this namespace.
-- The second one is a shared namespace you only have _read_ access to.
+- The second namespace, which is a shared namespace, provides you with only Read Access 
 
 <img src="images/push_img_2.png"> <br>
 
