@@ -155,14 +155,12 @@ Congratulations on pulling an image from Docker Hub and running your first conta
 
 ![Dockerfile in Explorer](images/dockerfile-explorer.png)
 
-If you don't understand any of the instructions in the Dockerfile, kindly go through the below commands:
-
-**The FROM command is used to define the base image whihc is node:9.4.0-alpine. <br>
-The COPY instruction copies the app.js and package.json files as new image layers. <br>
-The RUN command installs the mentioned packages. <br>
-The EXPOSE command sets the application port to 8080. <br>
-The CMD instruction sets the running of the app.js file as the default for executing this container. <br>**
-
+>> **Given below is an overview of the commands mentioned in the Dockerfile.**
+>> **The FROM instruction initializes a new build stage and specifies the base image that subsequent instructions will build upon. <br>**
+>> **The COPY command enables us to copy files to our image. <br>**
+>> **The RUN instruction executes commands.** <br>
+>> **The EXPOSE instruction exposes a particular port with a specified protocol inside a Docker Container. <br>**
+>> **The CMD instruction provides a default for executing a container, or in other words, an executable that should run in your container. <br>**
 
 
 3. Run the following command to build the image:
@@ -242,7 +240,7 @@ ibmcloud target
 
 <img src="images/push_img_1.png"> <br>
 
-2. The environment also created an IBM Cloud Container Registry (ICR) namespace for you. Since Container Registry is multi-tenant, namespaces are used to share out the registry among several users. Use the following command to see the namespaces you have access to:
+2. The environment also created an IBM Cloud Container Registry (ICR) namespace for you. Since Container Registry is multi-tenant, namespaces are used to divide the registry among several users. Use the following command to see the namespaces you have access to:
 ```
 ibmcloud cr namespaces
 ```
