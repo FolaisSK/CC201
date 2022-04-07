@@ -17,7 +17,8 @@ In this lab, you will:
 You may already have an IBM Cloud account and may even have a namespace in the IBM Container Registry (ICR). However, in this lab **you will not be using your own IBM Cloud account or your own ICR namespace**. You will be using an IBM Cloud account that has been automatically generated for you for this excercise. The lab environment will _not_ have access to any resources within your personal IBM Cloud account, including ICR namespaces and images.
 
 # Verify the environment and command line tools
-1. Open a terminal window by using the menu in the editor: `Terminal > New Terminal`. **If the terminal is already opened, please skip this step.**
+1. Open a terminal window by using the menu in the editor: `Terminal > New Terminal`. 
+>> **Note:If the terminal is already opened, please skip this step.**
 
 <img src="images/env&cmdlinetools_1.png" width='800'> <br>
 
@@ -43,7 +44,8 @@ You should see the following output, although the version may be different:
 <img src="images/env&cmdlinetools_3.png"> <br>
 
 
-4. Change to your project folder. **If you are already on the '/home/project' folder, please skip this step.**
+4. Change to your project folder. 
+>> **Note: If you are already on the '/home/project' folder, please skip this step.**
 ```
 cd /home/project
 ```
@@ -123,7 +125,7 @@ Among other things, for this container you should see a container ID, the image 
 
 <img src="images/pullimg_ctr_5.png"> <br>
 
-6. Note the CONTAINER ID from the previous output and replace the <container_id> in the command below with this value. This command removes your container.
+6. Note the CONTAINER ID from the previous output and replace the **<container_id>** in the command below with this value. This command removes your container.
 ```
 docker container rm <container_id>
 ```
