@@ -49,6 +49,8 @@ cd /home/project
 
 <img src="images/env_cmd_4.png"/> <br>
 
+<img src="images/env_cmd_4b.png"/> <br>
+
 5. Change to the directory for this lab.
 ```
 cd CC201/labs/2_IntroKubernetes/
@@ -203,7 +205,7 @@ kubectl delete pod hello-world
 ```
 {: codeblock}
 
-This command can take some time to run.
+ This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
 
 <img src="images/imp_confg_5.png"/> <br>
 
@@ -255,7 +257,7 @@ kubectl delete pod <pod_name>
 ```
 {: codeblock}
 
-This command can take some time to run.
+ This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
 
 <img src="images/create_pod_declr_6.png"/> <br>
 
@@ -273,7 +275,7 @@ hello-world-dd6b5d745-f9xjk   1/1     Running             0          35s
 hello-world-dd6b5d745-m89fc   0/1     ContainerCreating   0          8s
 hello-world-dd6b5d745-qvs9t   1/1     Running             0          35s
 ```
-Otherwise, the status of each will be the same, but the age of one Pod will be less than the others.
+Otherwise, the status of each will be the same, but the age of one Pod will be less than the others and the Pod name will be a new name.
 ```
 NAME                    READY   STATUS    RESTARTS   AGE
 hello-world-dd6b5d745-f9xjk   1/1     Running   0          39s
