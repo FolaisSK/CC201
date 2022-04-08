@@ -154,6 +154,8 @@ kubectl describe pod hello-world
 
 <img src="images/imp_cmd_6.png"/> <br>
 
+**The output shows the pod parameters like namespace, pod name, IP address, the time when the pod started running and also the container parameters like container ID, image name & ID, running status and the memory/CPU limits.**
+
 7. Delete the Pod.
 ```
 kubectl delete pod hello-world
