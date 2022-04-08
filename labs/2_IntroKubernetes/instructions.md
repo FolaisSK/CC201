@@ -19,7 +19,7 @@ In this lab, you will:
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
->> Note: Please skip this step if the terminal already appears.
+>> **Note: Please skip this step if the terminal already appears.**
 
 <img src="images/env_cmd_1.png"/> <br>
 
@@ -34,7 +34,7 @@ You should see the following output, although the versions may be different:
 <img src="images/env_cmd_2.png"/> <br>
 
 3. Change to your project folder.
->> Note: Please skip this step if you are already on the '/home/project' directory
+>> **Note: Please skip this step if you are already on the '/home/project' directory**
 
 ```
 cd /home/project
@@ -162,7 +162,10 @@ kubectl delete pod hello-world
 ```
 {: codeblock}
 
+This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
+
 <img src="images/imp_cmd_7.png"/> <br>
+
 
 8. List the Pods to verify that none exist.
 ```
