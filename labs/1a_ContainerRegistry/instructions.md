@@ -28,7 +28,7 @@ IBM Cloud® Container Registry provides a multi-tenant, encrypted private image 
 # Create a Container Registry namespace
 1. Go to the [IBM Cloud catalog](https://cloud.ibm.com/catalog) page. 
 
-2. In the **Search the catalog…** box, type <code>Container Registry</code>.
+2. In the **Catalog** search box, type <code>Container Registry</code>.
 
 <img src="images/createns_2.png"/>
 
