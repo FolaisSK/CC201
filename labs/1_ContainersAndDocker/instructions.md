@@ -156,11 +156,12 @@ Congratulations on pulling an image from Docker Hub and running your first conta
 ![Dockerfile in Explorer](images/dockerfile-explorer.png)
 
 >> **Given below is an overview of the commands mentioned in the Dockerfile.**
->> **The FROM instruction initializes a new build stage and specifies the base image that subsequent instructions will build upon. <br>**
->> **The COPY command enables us to copy files to our image. <br>**
->> **The RUN instruction executes commands.** <br>
->> **The EXPOSE instruction exposes a particular port with a specified protocol inside a Docker Container. <br>**
->> **The CMD instruction provides a default for executing a container, or in other words, an executable that should run in your container. <br>**
+
+>> The FROM instruction initializes a new build stage and specifies the base image that subsequent instructions will build upon. <br>
+>> The COPY command enables us to copy files to our image. <br>
+>> The RUN instruction executes commands. <br>
+>> The EXPOSE instruction exposes a particular port with a specified protocol inside a Docker Container. <br>
+>> The CMD instruction provides a default for executing a container, or in other words, an executable that should run in your container. <br>
 
 
 3. Run the following command to build the image:
@@ -232,7 +233,8 @@ exit
 
 <img src="images/run_img_as_ctr_6.png"> <br>
 
-In the original terminal window, the `docker run` command has exited and you are able to type commands in that terminal window again. If there is any issue in loading the terminal, press Enter.
+In the original terminal window, the `docker run` command has exited and you are able to type commands in that terminal window again.
+>>**Note: If you face any issues in typing further commands in the terminal, press Enter.**
 
 <img src="images/run_img_as_ctr_7.png"> <br>
 
