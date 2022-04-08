@@ -91,14 +91,16 @@ kubectl expose deployment/hello-world
 ```
 {: codeblock}
 
-This creates a service of type ClusterIP.
+This creates a service of type **ClusterIP**.
 
 <img src="images/step_3.4.png"><br/>
 
 5. Open a new terminal window using `Terminal > New Terminal`.
 <img src="images/step_3.5.png"><br/>
 
-6. Cluster IPs are only accesible within the cluster. To make this externally accessible, we will create a proxy. Note that this is not how you would make an application externally accessible in a production scenario. Run this command in the new terminal window since your environment variables need to be accessible in the original window for subsequent commands.
+6. Cluster IPs are only accesible within the cluster. To make this externally accessible, we will create a proxy. 
+>> **Note:** This is not how you would make an application externally accessible in a production scenario. 
+Run this command in the new terminal window since your environment variables need to be accessible in the original window for subsequent commands.
 ```
 kubectl proxy
 ```
@@ -160,7 +162,9 @@ Rolling updates are an easy way to update our application in an automated and co
 1. Use the Explorer to edit `app.js`. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. Change the welcome message from `'Hello world from ' + hostname + '! Your app is up and running!\n'` to `'Welcome to ' + hostname + '! Your app is up and running!\n'`. Make sure to save the file when you're done.
 <img src="images/step_5.1.png"><br/>
 
-2. Build and push this new version to Container Registry. Update the tag to indicate that this is a second version of this application. Make sure to use the window that isn't running the `proxy` command.
+2. Build and push this new version to Container Registry. Update the tag to indicate that this is a second version of this application. Make sure to use the terminal window that isn't running the `proxy` command.
+>> **NOTE:" Do not close the terminal that is running the `proxy` command
+
 ```
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:2 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:2
 ```
@@ -186,9 +190,9 @@ kubectl set image deployment/hello-world hello-world=us.icr.io/$MY_NAMESPACE/hel
 kubectl rollout status deployment/hello-world
 ```
 {: codeblock}
+You should see an output like this, indicating that the rollout succeeded:
 <img src="images/step_5.5.png"><br/>
 
-You should see an output like this, indicating that the rollout succeeded:
 ```
 deployment "hello-world" successfully rolled out
 ```
@@ -198,15 +202,16 @@ deployment "hello-world" successfully rolled out
 kubectl get deployments -o wide
 ```
 {: codeblock}
-<img src="images/step_5.6.png"><br/>
 
 Look for the `IMAGES` column and ensure that the tag is `2`.
+<img src="images/step_5.6.png"><br/>
 
 7. Ping your application to ensure that the new welcome message is displayed.
 ```
 curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy
 ```
 {: codeblock}
+
 <img src="images/step_5.7.png"><br/>
 
 8. It's possible that a new version of an application contains a bug. In that case, Kubernetes can roll back the Deployment like this:
@@ -214,6 +219,7 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 kubectl rollout undo deployment/hello-world
 ```
 {: codeblock}
+
 <img src="images/step_5.8.png"><br/>
 
 9. Get a status of the rolling update by using the following command:
@@ -221,6 +227,7 @@ kubectl rollout undo deployment/hello-world
 kubectl rollout status deployment/hello-world
 ```
 {: codeblock}
+
 <img src="images/step_5.9.png"><br/>
 
 10. Get the Deployment with the `wide` option to see that the old tag is used.
@@ -265,9 +272,9 @@ Edit this line to look like the following:
 res.send(process.env.MESSAGE + '\n')
 ```
 {: codeblock}
-<img src="images/step_6.4.png"><br/>
 
 Make sure to save the file when you're done. This change indicates that requests to the app will return the environment variable `MESSAGE`.
+<img src="images/step_6.4.png"><br/>
 
 5. Build and push a new image that contains your new application code.
 ```
@@ -286,6 +293,7 @@ kubectl apply -f deployment-configmap-env-var.yaml
 <img src="images/step_6.6.png"><br/>
 
 7. Ping your application again to see if the message from the environment variable is returned.
+>> **NOTE:** You can run this command again. As it may not show the `"This message came from a ConfigMap!"` message right away.
 ```
 curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy
 ```
