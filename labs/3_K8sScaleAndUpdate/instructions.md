@@ -99,10 +99,12 @@ This creates a service of type **ClusterIP**.
 
 5. Open a new terminal window using `Terminal > New Terminal`.
 >> **NOTE:** Do not close the terminal window you were working on.
+
 <img src="images/step_3.5.png"><br/>
 
 6. Cluster IPs are only accesible within the cluster. To make this externally accessible, we will create a proxy. 
 >> **Note:** This is not how you would make an application externally accessible in a production scenario. 
+
 Run this command in the new terminal window since your environment variables need to be accessible in the original window for subsequent commands.
 ```
 kubectl proxy
