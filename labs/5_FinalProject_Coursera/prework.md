@@ -28,19 +28,6 @@ You will need an IBM Cloud account to do this lab. If you have not created one a
 
 ![](./images/10.png)
 
-3. Once the service is created, take a screenshot of the service showing your name. Save this file as **watsonnluservice.jpg.** You will have to submit this image for peer-review.
-
-<details>
-<summary>A screenshot with name masked has been given below as a sample. </summary>
-<img src="images/screenshot-NLUService.png"/>
-</details>
-
-4. Identify the screen with credentials of the NLU service you have to use in the server application and take the screenshot of the page with your name showing on top. Save this file as **watsonnlucreds.jpg**. You will have to submit this image for peer-review.
-
-<details>
-<summary>A screenshot with name masked has been given below as a sample. </summary>
-<img src="images/screenshot-NLUCreds.png"/>
-</details>
 
 # Checklist for lab completion
 
