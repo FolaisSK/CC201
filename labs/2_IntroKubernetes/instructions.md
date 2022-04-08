@@ -19,7 +19,9 @@ In this lab, you will:
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
-![New terminal](images/new-terminal.png)
+>> Note: Please skip this step if you are already seeing the terminal.
+
+<img src="images/env_cmd_1.png"/> <br>
 
 2. Verify that `kubectl` CLI is installed.
 ```
@@ -27,15 +29,13 @@ kubectl version
 ```
 {: codeblock}
 
-You should see output similar to this, though the versions may be different:
-```
-Client Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.2", GitCommit:"59603c6e503c87169aea6106f57b9f242f64df89", G
-itTreeState:"clean", BuildDate:"2020-01-18T23:30:10Z", GoVersion:"go1.13.5", Compiler:"gc", Platform:"linux/amd64"}
-Server Version: version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.10+IKS", GitCommit:"a0052bd119c067cf48e8a19f0ab7d5a5e2ca0a1
-8", GitTreeState:"clean", BuildDate:"2020-05-20T20:48:06Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
-```
+You should see the following output, although the versions may be different:
+
+<img src="images/env_cmd_2.png"/> <br>
 
 3. Change to your project folder.
+>> Note: Please skip this step if you are already on the '/home/project' directory
+
 ```
 cd /home/project
 ```
@@ -46,6 +46,8 @@ cd /home/project
 [ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
+
+<img src="images/env_cmd_4.png"/> <br>
 
 5. Change to the directory for this lab.
 ```
@@ -60,6 +62,7 @@ ls
 ```
 {: codeblock}
 
+<img src="images/env_cmd_6.png"/> <br>
 
 # Use the `kubectl` CLI
 Recall that Kubernetes namespaces enable you to virtualize a cluster. You already have access to one namespace in a Kubernetes cluster, and `kubectl` is already set to target that cluster and namespace.
