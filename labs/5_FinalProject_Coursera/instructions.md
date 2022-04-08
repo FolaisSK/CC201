@@ -175,7 +175,7 @@ In order to deploy a more complex version of the guestbook, delete this simple v
 # Deploy Redis master and slave
 We've demonstrated that we need persistent storage in order for the guestbook to be effective. Let's deploy Redis so that we get just that. Redis is an open source, in-memory data structure store, used as a database, cache and message broker.
 
-This application uses the v2 version of the guestbook web front end and adds on 1) a Redis master for storage, 2) a replicated set of Redis slaves, and 3) a Python Flask application that calls a Watson Natural Language Understanding service deployed in IBM Cloud. For all of these components, there are Kubernetes Deployments, Pods, and Services. One of the main concerns with building a multi-tier application on Kubernetes is resolving dependencies between all of these separately deployed components.
+This application uses the v2 version of the guestbook web front end and adds on 1) a Redis master for storage, 2) a replicated set of Redis slaves, and 3) a Python Flask application that calls a Watson Natural Language Understanding service deployed in IBM Cloud to analyze the tone. For all of these components, there are Kubernetes Deployments, Pods, and Services. One of the main concerns with building a multi-tier application on Kubernetes is resolving dependencies between all of these separately deployed components.
 
 In a multi-tier application, there are two primary ways that service dependencies can be resolved. The `v2/guestbook/main.go` code provides examples of each. For Redis, the master endpoint is discovered through environment variables. These environment variables are set when the Redis services are started, so the service resources need to be created before the guestbook Pods start. For the analyzer service, an HTTP request is made to a hostname, which allows for resource discovery at the time when the request is made. Consequently, we'll follow a specific order when creating the application components. First, the Redis components will be created, then the guestbook application, and finally the analyzer microservice.
 
@@ -297,7 +297,7 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 
 # Login to IBM CLOUD
 
->**Note:** In the prework you have already created an Natural Language Understanding service instance. Kindly save the service name as it will be required.
+>**Note:** In the prework you have already created an Natural Language Understanding service instance. Kindly note the service name as it will be required.
 
 We need to store these credentials in a Kubernetes secret in order for our analyzer microservice to utilize them. From the terminal in the lab environment, login to your IBM Cloud account with your username. When prompted enter you password to login.
 ```
@@ -313,7 +313,7 @@ ibmcloud target -g <resource_group>
 ```
 {: codeblock}
 
-8. Use the Explorer to edit `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. You need to insert the name of your IBM Cloud Natural Language Understanding service where it says `<you tone analyzer service name>`. You need to insert your OpenShift project where it says `<my_project>`. If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
+8. Use the Explorer to edit `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. You need to insert the name of your IBM Cloud Natural Language Understanding service where it says `<your nlu service name>`. You need to insert your OpenShift project where it says `<my_project>`. If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
 
 9. Run the script to create a Secret containing credentials for your Natural Language Understanding  service.
 ```
