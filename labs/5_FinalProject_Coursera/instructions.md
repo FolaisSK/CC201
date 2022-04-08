@@ -9,8 +9,8 @@ In this lab, you will:
 - Build and deploy a simple guestbook application
 - Use OpenShift image streams to roll out an update
 - Deploy a multi-tier version of the guestbook application
-- Create a Watson Tone Analyzer service instance on IBM Cloud
-- Bind the Tone Analyzer service instance to your application
+- Create a Watson Natural Language Understanding service instance on IBM Cloud
+- Bind the Natural Language Understanding service instance to your application
 - Autoscale the guestbook app
 
 # Project Overview
@@ -18,7 +18,7 @@ In this lab, you will:
 ## Guestbook application
 Guestbook is a simple, multi-tier web application that we will build and deploy with Docker and Kubernetes. The application consists of a web front end, a Redis master for storage, a replicated set of Redis slaves, and an analyzer that will analyze the tone of the comments left in the guestbook. For all of these we will create Kubernetes Deployments, Pods, and Services.
 
-There are two versions of this application. Version 1 (in the v1 directory) is the simple application itself, while version 2 (in the v2 directory) extends the application by adding additional features that leverage the Watson Tone Analyzer service.
+There are two versions of this application. Version 1 (in the v1 directory) is the simple application itself, while version 2 (in the v2 directory) extends the application by adding additional features that leverage the Watson Natural Language Understanding service.
 
 We will deploy and manage this entire application on OpenShift.
 
@@ -34,7 +34,7 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab.
 ```
-git clone https://github.com/ajp-io/guestbook.git
+git clone https://github.com/ibm-developer-skills-network/guestbook.git
 ```
 {: codeblock}
 
@@ -175,7 +175,7 @@ In order to deploy a more complex version of the guestbook, delete this simple v
 # Deploy Redis master and slave
 We've demonstrated that we need persistent storage in order for the guestbook to be effective. Let's deploy Redis so that we get just that. Redis is an open source, in-memory data structure store, used as a database, cache and message broker.
 
-This application uses the v2 version of the guestbook web front end and adds on 1) a Redis master for storage, 2) a replicated set of Redis slaves, and 3) a Python Flask application that calls a Watson Tone Analyzer service deployed in IBM Cloud. For all of these components, there are Kubernetes Deployments, Pods, and Services. One of the main concerns with building a multi-tier application on Kubernetes is resolving dependencies between all of these separately deployed components.
+This application uses the v2 version of the guestbook web front end and adds on 1) a Redis master for storage, 2) a replicated set of Redis slaves, and 3) a Python Flask application that calls a Watson Natural Language Understanding service deployed in IBM Cloud to analyze the tone. For all of these components, there are Kubernetes Deployments, Pods, and Services. One of the main concerns with building a multi-tier application on Kubernetes is resolving dependencies between all of these separately deployed components.
 
 In a multi-tier application, there are two primary ways that service dependencies can be resolved. The `v2/guestbook/main.go` code provides examples of each. For Redis, the master endpoint is discovered through environment variables. These environment variables are set when the Redis services are started, so the service resources need to be created before the guestbook Pods start. For the analyzer service, an HTTP request is made to a hostname, which allows for resource discovery at the time when the request is made. Consequently, we'll follow a specific order when creating the application components. First, the Redis components will be created, then the guestbook application, and finally the analyzer microservice.
 
@@ -278,7 +278,7 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 
 2. Click the **From Dockerfile** option.
 
-3. Paste the URL https://github.com/ajp-io/guestbook in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
+3. Paste the URL https://github.com/ibm-developer-skills-network/guestbook.git in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
 
 4. Click **Show Advanced Git Options**.
 
@@ -295,21 +295,11 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 
 9. From the guestbook in the browser, click the `/info` link beneath the input box. Notice that it now gives information on Redis since we're no longer using the in-memory datastore. **Kindly take the screenshot of the `/info` showing redis instead of in-memory datastore for the final assignment.**
 
-But remember that we still need a Watson Tone Analyzer service to complete the application.
+# Login to IBM CLOUD
 
-# Create a Tone Analyzer service instance
-1. Go to the [IBM Cloud catalog](https://cloud.ibm.com/catalog).
+>**Note:** In the prework you have already created an Natural Language Understanding service instance. Kindly note the service name as it will be required.
 
-2. Sign in with your personal account. You should have created one during a lab in the first module of this course.
-
-3. In the search box, type "tone analyzer". A dropdown should show appear and show services. Click the "Tone Analyzer" service as seen in the image below.
-![Catalog search Tone Analyzer](images/catalog-search-tone-analyzer.png)
-
-4. You'll create an instance on the Lite plan, which is free. Take note of the resource group, as you'll need this later. It may be something like "Default". Leave all the default options and click **Create**. This will take you to a details page for the service instance.
-
-5. Now that you have an instance, you need credentials with which you can access it. Click **Service credentials** on the left navigation to view credentials that are automatically generated for you.
-
-6. We need to store these credentials in a Kubernetes secret in order for our analyzer microservice to utilize them. From the terminal in the lab environment, login to your IBM Cloud account with your username. When prompted enter you password to login.
+We need to store these credentials in a Kubernetes secret in order for our analyzer microservice to utilize them. From the terminal in the lab environment, login to your IBM Cloud account with your username. When prompted enter you password to login.
 ```
 ibmcloud login -u <your_email_address> 
 ```
@@ -317,15 +307,15 @@ ibmcloud login -u <your_email_address>
 
 >If you are a federated user that uses a corporate or enterprise single sign-on ID, you can log in to IBM Cloud® from the console by using a federated ID and password. Use the provided URL in your CLI output to retrieve your one-time passcode. You know you have a federated ID when the login fails without the `--sso` and succeeds with the `--sso` option.
 
-7. Ensure that you target the resource group in which you created the Tone Analyzer service. Remember that you noted this resource group in a previous step.
+7. Ensure that you target the resource group in which you created the Natural Language Understanding service. Remember that you noted this resource group in a previous step.
 ```
 ibmcloud target -g <resource_group>
 ```
 {: codeblock}
 
-8. Use the Explorer to edit `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. You need to insert the name of your IBM Cloud Tone Analyzer service where it says `<you tone analyzer service name>`. You need to insert your OpenShift project where it says `<my_project>`. If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
+8. Use the Explorer to edit `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. You need to insert the name of your IBM Cloud Natural Language Understanding service where it says `<your nlu service name>`. You need to insert your OpenShift project where it says `<my_project>`. If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
 
-9. Run the script to create a Secret containing credentials for your Tone Analyzer service.
+9. Run the script to create a Secret containing credentials for your Natural Language Understanding  service.
 ```
 ./binding-hack.sh
 ```
@@ -342,7 +332,7 @@ ibmcloud login --apikey $IBMCLOUD_API_KEY
 <img src="images/Tonestep10.jpg" width="800">
 
 # Deploy the analyzer microservice
-Now that the Tone Analyzer service is created and its credentials are provided in a Kubernetes Secret, we can deploy the analyzer microservice.
+Now that the Natural Language Understanding service is created and its credentials are provided in a Kubernetes Secret, we can deploy the analyzer microservice.
 
 1. Change to the `analyzer` directory.
 ```
