@@ -209,7 +209,7 @@ kubectl delete pod hello-world
 
  This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
 
-<img src="images/imp_confg_5.png"/> <br>
+<img src="images/imp_confg-5.png"/> <br>
 
 # Create a Pod with a declarative command
 The previous two ways to create a Pod were imperative -- we explicitly told `kubectl` what to do. While the imperative commands are easy to understand and run, they are not ideal for a production environment. Let's look at declarative commands.
