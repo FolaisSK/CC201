@@ -51,7 +51,7 @@ cd /home/project
 ```
 {: codeblock}
 
-5. Clone the git repository that contains the artifacts needed for this lab.
+5. Clone the git repository that contains the artifacts needed for this lab, if it doesn't already exist.
 ```
 [ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
