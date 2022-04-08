@@ -49,8 +49,6 @@ cd /home/project
 
 <img src="images/env_cmd_4.png"/> <br>
 
-<img src="images/env_cmd_4b.png"/> <br>
-
 5. Change to the directory for this lab.
 ```
 cd CC201/labs/2_IntroKubernetes/
@@ -275,22 +273,18 @@ kubectl get pods
 If you do this quickly enough, you can see one Pod being terminated and another Pod being created.
 ```
 NAME                    READY   STATUS              RESTARTS   AGE
-hello-world-dd6b5d745-2jw5s   0/1     Terminating         0          35s
-hello-world-dd6b5d745-f9xjk   1/1     Running             0          35s
-hello-world-dd6b5d745-m89fc   0/1     ContainerCreating   0          8s
-hello-world-dd6b5d745-qvs9t   1/1     Running             0          35s
+hello-world-774ddf45b5-86gn6   0/1     Terminating         0          35s
+hello-world-774ddf45b5-9cbv2   1/1     Running             0          35s
+hello-world-774ddf45b5-28k7j   0/1     ContainerCreating   0          8s
+hello-world-774ddf45b5-svpf7   1/1     Running             0          35s
 ```
 Otherwise, the status of each will be the same, but the age of one Pod will be less than the others and the Pod name will be a new name.
 ```
 NAME                    READY   STATUS    RESTARTS   AGE
-hello-world-dd6b5d745-f9xjk   1/1     Running   0          39s
-hello-world-dd6b5d745-m89fc   1/1     Running   0          12s
-hello-world-dd6b5d745-qvs9t   1/1     Running   0          39s
+hello-world-774ddf45b5-28k7j   1/1     Running   0          36s
+hello-world-774ddf45b5-9cbv2   1/1     Running   0          112s
+hello-world-774ddf45b5-svpf7   1/1     Running   0          112s
 ```
-
-List the Pods to see a new one being created.
-
-<img src="images/create_pod_declr_7b.png"/> <br>
 
 # Load balancing the application
 Since there are three replicas of this application deployed in the cluster, Kubernetes will load balance requests across these three instances. Let's expose our application to the internet and see how Kubernetes load balances requests.

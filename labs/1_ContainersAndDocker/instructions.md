@@ -51,9 +51,9 @@ cd /home/project
 ```
 {: codeblock}
 
-5. Clone the git repository that contains the artifacts needed for this lab.
+5. Clone the git repository that contains the artifacts needed for this lab, if it doesn't already exist.
 ```
-git clone https://github.com/ibm-developer-skills-network/CC201.git
+[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
 
@@ -111,7 +111,9 @@ docker run hello-world
 ```
 {: codeblock}
 
-You should see a **'Hello from Docker!'** message and some explanation of what Docker did to generate this message.
+You should see a **'Hello from Docker!'** message.
+
+There will also be an explanation of what Docker did to generate this message.
 
 <img src="images/pullimg_ctr_4.png"> <br>
 
@@ -169,7 +171,7 @@ docker build . -t myimage:v1
 ```
 {: codeblock}
 
-As seen in the module videos, the output should include a step for each instruction in the Dockerfile. Each step creates a new layer in the image.
+As seen in the module videos, the output creates a new layer for each instruction in the Dockerfile.
 
 <img src="images/buildimg_3.png"> <br>
 
