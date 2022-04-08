@@ -75,11 +75,15 @@ kubectl config get-clusters
 ```
 {: codeblock}
 
+<img src="images/kubectlCLI_1.png"/> <br>
+
 2. A `kubectl` context is a group of access parameters, including a cluster, a user, and a namespace. View your current context with the following command:
 ```
 kubectl config get-contexts
 ```
 {: codeblock}
+
+<img src="images/kubectlCLI_2.png"/> <br>
 
 3. List all the Pods in your namespace. If this is a new session for you, you will not see any Pods.
 ```
@@ -87,7 +91,7 @@ kubectl get pods
 ```
 {: codeblock}
 
-<img src="images/w2_kubectl_cli.png">
+<img src="images/kubectlCLI_3.png"/> <br>
 
 # Create a Pod with an imperative command
 Now it's time to create your first Pod. This Pod will run the `hello-world` image you built and pushed to IBM Cloud Container Registry in the last lab. As explained in the videos for this module, you can create a Pod imperatively or declaratively. Let's do it imperatively first.
@@ -98,13 +102,19 @@ export MY_NAMESPACE=sn-labs-$USERNAME
 ```
 {: codeblock}
 
+<img src="images/imp_cmd_1.png"/> <br>
+
 2. Use the Explorer to view the Dockerfile we'll use to build an image. 
+
+<img src="images/imp_cmd_2.png"/> <br>
 
 3. Build and push the image again, as it may have been deleted automatically since you completed the first lab.
 ```
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:1 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:1
 ```
 {: codeblock}
+
+<img src="images/imp_cmd_3.png"/> <br>
 
 4. Run the `hello-world` image as a container in Kubernetes.
 ```
@@ -114,13 +124,15 @@ kubectl run hello-world --image us.icr.io/$MY_NAMESPACE/hello-world:1 --override
 
 The `--overrides` option here enables us to specify the needed credentials to pull this image from IBM Cloud Container Registry. Note that this is an imperative command, as we told Kubernetes explicitly what to do: run `hello-world`.
 
-<img src="images/w2_impcmd_4.png">
+<img src="images/imp_cmd_4.png"/> <br>
 
 5. List the Pods in your namespace.
 ```
 kubectl get pods
 ```
 {: codeblock}
+
+<img src="images/imp_cmd_5a.png"/> <br>
 
 Great, the previous command indeed created a Pod for us. You can see an auto-generated name was given to this Pod.
 
@@ -130,13 +142,15 @@ kubectl get pods -o wide
 ```
 {: codeblock}
 
+<img src="images/imp_cmd_5b.png"/> <br>
+
 6. Describe the Pod to get more details about it.
 ```
 kubectl describe pod hello-world
 ```
 {: codeblock}
 
-<img src="images/w2_impcmd_6.png">
+<img src="images/imp_cmd_6.png"/> <br>
 
 7. Delete the Pod.
 ```
@@ -144,22 +158,26 @@ kubectl delete pod hello-world
 ```
 {: codeblock}
 
+<img src="images/imp_cmd_7.png"/> <br>
+
 8. List the Pods to verify that none exist.
 ```
 kubectl get pods
 ```
 {: codeblock}
 
-<img src="images/w2_impcmd_8.png">
+<img src="images/imp_cmd_8.png"/> <br>
 
 # Create a Pod with imperative object configuration
 Imperative object configuration lets you create objects by specifying the action to take (e.g., create, update, delete) while using a configuration file. A configuration file, `hello-world-create.yaml`, is provided to you in this directory.
 
 1. Use the Explorer to view and edit the configuration file. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 2_IntroKubernetes`. Click `hello-world-create.yaml` to view the configuration file.
 
+<img src="images/imp_confg_1.png"/> <br>
+
 2. Use the Explorer to edit `hello-world-create.yaml`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
 
-<img src="images/w2_impconf_2.png" width=800>
+<img src="images/imp_confg_2.png"/> <br>
 
 3. Imperatively create a Pod using the provided configuration file.
 ```
@@ -169,11 +187,15 @@ kubectl create -f hello-world-create.yaml
 
 Note that this is indeed imperative, as you explicitly told Kubernetes to *create* the resources defined in the file.
 
+<img src="images/imp_confg_3.png"/> <br>
+
 4. List the Pods in your namespace.
 ```
 kubectl get pods
 ```
 {: codeblock}
+
+<img src="images/imp_confg_4.png"/> <br>
 
 5. Delete the Pod.
 ```
@@ -183,7 +205,7 @@ kubectl delete pod hello-world
 
 This command can take some time to run.
 
-<img src="images/w2_impconf_5.png">
+<img src="images/imp_confg_5.png"/> <br>
 
 # Create a Pod with a declarative command
 The previous two ways to create a Pod were imperative -- we explicitly told `kubectl` what to do. While the imperative commands are easy to understand and run, they are not ideal for a production environment. Let's look at declarative commands.
@@ -192,11 +214,14 @@ The previous two ways to create a Pod were imperative -- we explicitly told `kub
 - We are creating a Deployment (`kind: Deployment`).
 - There will be three replica Pods for this Deployment (`replicas: 3`).
 - The Pods should run the `hello-world` image (`- image: us.icr.io/<my_namespace>/hello-world:1`).
+
+<img src="images/create_pod_declr_1.png"/> <br>
+
 You can ignore the rest for now. We will get to a lot of those concepts in the next lab.
 
 2. Use the Explorer to edit `hello-world-apply.yaml`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
 
-<img src="images/w2_declrcmd_2.png">
+<img src="images/create_pod_declr_2.png"/> <br>
 
 3. Use the `kubectl apply` command to set this configuration as the desired state in Kubernetes.
 ```
@@ -204,17 +229,23 @@ kubectl apply -f hello-world-apply.yaml
 ```
 {: codeblock}
 
+<img src="images/create_pod_declr_3.png"/> <br>
+
 4. Get the Deployments to ensure that a Deployment was created.
 ```
 kubectl get deployments
 ```
 {: codeblock}
 
+<img src="images/create_pod_declr_4.png"/> <br>
+
 5. List the Pods to ensure that three replicas exist.
 ```
 kubectl get pods
 ```
 {: codeblock}
+
+<img src="images/create_pod_declr_5.png"/> <br>
 
 With declarative management, we did not tell Kubernetes which actions to perform. Instead, `kubectl` inferred that this Deployment needed to be created. If you delete a Pod now, a new one will be created in its place to maintain three replicas.
 
@@ -225,6 +256,8 @@ kubectl delete pod <pod_name>
 {: codeblock}
 
 This command can take some time to run.
+
+<img src="images/create_pod_declr_6.png"/> <br>
 
 7. List the Pods to see a new one being created.
 ```
@@ -248,6 +281,8 @@ hello-world-dd6b5d745-m89fc   1/1     Running   0          12s
 hello-world-dd6b5d745-qvs9t   1/1     Running   0          39s
 ```
 
+<img src="images/create_pod_declr_7b.png"/> <br>
+
 # Load balancing the application
 Since there are three replicas of this application deployed in the cluster, Kubernetes will load balance requests across these three instances. Let's expose our application to the internet and see how Kubernetes load balances requests.
 
@@ -259,13 +294,19 @@ kubectl expose deployment/hello-world
 
 This command creates what is called a ClusterIP Service. This creates an IP address that accessible within the cluster.
 
+<img src="images/load_balancing_1.png"/> <br>
+
 2. List Services in order to see that this service was created.
 ```
 kubectl get services
 ```
 {: codeblock}
 
+<img src="images/load_balancing_2.png"/> <br>
+
 3. Open a new terminal window using `Terminal > Split Terminal`.
+
+<img src="images/load_balancing_3.png"/> <br>
 
 4. Since the cluster IP is not accessible outside of the cluster, we need to create a proxy. Note that this is not how you would make an application externally accessible in a production scenario. Run this command in the new terminal window since your environment variables need to be accessible in the original window for subsequent commands.
 ```
@@ -275,7 +316,7 @@ kubectl proxy
 
 This command doesn't terminate until you terminate it. Keep it running so that you can continue to access your app.
 
-<img src="images/w2_loadbln_4.png">
+<img src="images/load_balancing_4.png"/> <br>
 
 5. In the original terminal window, ping the application to get a response.
 ```
@@ -283,7 +324,11 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 ```
 {: codeblock}
 
-6. Notice that this output includes the Pod name. Run the command ten times and note the different Pod names in each line of output.
+<img src="images/load_balancing_5.png"/> <br>
+
+Notice that this output includes the Pod name.
+
+6. Run the command ten times and note the different Pod names in each line of output.
 ```
 for i in `seq 10`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy; done
 ```
@@ -291,7 +336,7 @@ for i in `seq 10`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME
 
 You should see more than one Pod name, and quite possibly all three Pod names, in the output. This is because Kubernetes load balances the requests across the three replicas, so each request could hit a different instance of our application.
 
-<img src="images/w2_loadbln_6.png">
+<img src="images/load_balancing_6.png"/> <br>
 
 7. Delete the Deployment and Service. This can be done in a single command by using slashes.
 ```
@@ -299,8 +344,10 @@ kubectl delete deployment/hello-world service/hello-world
 ```
 {: codeblock}
 
-<img src="images/w2_loadbln_7.png">
+<img src="images/load_balancing_7.png"/> <br>
 
 8. Return to the terminal window running the `proxy` command and kill it using `Ctrl+C`.
+
+<img src="images/load_balancing_8.png"/> <br>
 
 Congratulations! You have completed the lab for the second module of this course.
