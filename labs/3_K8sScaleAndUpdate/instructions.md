@@ -98,6 +98,7 @@ This creates a service of type **ClusterIP**.
 <img src="images/step_3.4.png"><br/>
 
 5. Open a new terminal window using `Terminal > New Terminal`.
+>> **NOTE:** Do not close the terminal window you were working on.
 <img src="images/step_3.5.png"><br/>
 
 6. Cluster IPs are only accesible within the cluster. To make this externally accessible, we will create a proxy. 
@@ -111,11 +112,14 @@ kubectl proxy
 This command will continue running until it exits. Keep it running so that you can continue to access your app.
 <img src="images/step_3.6.png"><br/>
 
-7. In the original terminal window, ping the application to get a response.
+7. Go back to your original terminal window, ping the application to get a response.
+>> **NOTE:** Do not close the terminal window where the `proxy` command is still running.
+
 ```
 curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy
 ```
 {: codeblock}
+
 <img src="images/step_3.7.png"><br/>
 
 # Scaling the application using a ReplicaSet
@@ -126,6 +130,7 @@ In real-world situations, load on an application can vary over time. If our appl
 kubectl scale deployment hello-world --replicas=3
 ```
 {: codeblock}
+
 <img src="images/step_4.1.png"><br/>
 
 2. Get Pods to ensure that there are now three Pods instead of just one. In addition, the status should eventually update to "Running" for all three.
@@ -165,7 +170,7 @@ Rolling updates are an easy way to update our application in an automated and co
 <img src="images/step_5.1.png"><br/>
 
 2. Build and push this new version to Container Registry. Update the tag to indicate that this is a second version of this application. Make sure to use the terminal window that isn't running the `proxy` command.
->> **NOTE:" Do not close the terminal that is running the `proxy` command
+>> **NOTE:** Do not close the terminal that is running the `proxy` command
 
 ```
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:2 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:2
@@ -194,10 +199,6 @@ kubectl rollout status deployment/hello-world
 {: codeblock}
 You should see an output like this, indicating that the rollout succeeded:
 <img src="images/step_5.5.png"><br/>
-
-```
-deployment "hello-world" successfully rolled out
-```
 
 6. You can also get the Deployment with the `wide` option to see that the new tag is used for the image.
 ```
