@@ -19,7 +19,7 @@ In this lab, you will:
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
->> Note: Please skip this step if you are already seeing the terminal.
+>> Note: Please skip this step if the terminal already appears.
 
 <img src="images/env_cmd_1.png"/> <br>
 
