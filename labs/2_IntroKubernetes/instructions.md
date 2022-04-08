@@ -106,7 +106,7 @@ export MY_NAMESPACE=sn-labs-$USERNAME
 
 <img src="images/imp_cmd_1.png"/> <br>
 
-2. Use the Explorer to view the Dockerfile we'll use to build an image. 
+2. Click the Explorer icon (it looks like a sheet of paper) on the left side of the window, and then navigate to the directory for this lab: `CC201 > labs > 2_IntroKubernetes`. Click on `Dockerfile`. This is the file that will be used to build our image.
 
 <img src="images/imp_cmd_2.png"/> <br>
 
@@ -355,8 +355,19 @@ kubectl delete deployment/hello-world service/hello-world
 
 <img src="images/load_balancing_7.png"/> <br>
 
+>> **Note: If you face any issues in typing further commands in the terminal, press Enter.**
+
 8. Return to the terminal window running the `proxy` command and kill it using `Ctrl+C`.
 
 <img src="images/load_balancing_8.png"/> <br>
 
 Congratulations! You have completed the lab for the second module of this course.
+
+## Changelog
+| Date | Version | Changed by | Change Description |
+|------|--------|--------|---------|
+| 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
+|   |   |   |   |
+
+
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
