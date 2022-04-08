@@ -319,3 +319,12 @@ You should see your image name in the output. Recall from the module videos that
 <img src="images/push_img_9.png"> <br>
 
 Congratulations! You have completed the second lab for the first module of this course.
+
+## Changelog
+| Date | Version | Changed by | Change Description |
+|------|--------|--------|---------|
+| 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
+|   |   |   |   |
+
+
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
