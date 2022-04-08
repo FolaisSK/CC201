@@ -155,8 +155,7 @@ Congratulations on pulling an image from Docker Hub and running your first conta
 
 ![Dockerfile in Explorer](images/dockerfile-explorer.png)
 
->> **Given below is an overview of the commands mentioned in the Dockerfile.**
-
+>> **You can refresh your understanding of the commands mentioned in the Dockerfile below:**<br>
 >> The FROM instruction initializes a new build stage and specifies the base image that subsequent instructions will build upon. <br>
 >> The COPY command enables us to copy files to our image. <br>
 >> The RUN instruction executes commands. <br>
@@ -219,7 +218,7 @@ docker stop $(docker ps -q)
 
 <img src="images/run_img_as_ctr_4.png"> <br>
 
-5. In the second terminal window, check if the container has stooped by running the following command.
+5. In the second terminal window, check if the container has stopped by running the following command.
 ```
 docker ps
 ```
