@@ -154,7 +154,7 @@ kubectl describe pod hello-world
 
 <img src="images/imp_cmd_6.png"/> <br>
 
-**The output shows the pod parameters like namespace, pod name, IP address, the time when the pod started running and also the container parameters like container ID, image name & ID, running status and the memory/CPU limits.**
+>>Note: The output shows the pod parameters like **Namespace, Pod Name, IP address, the time when the pod started running** and also the container parameters like **container ID, image name & ID, running status and the memory/CPU limits.**
 
 7. Delete the Pod.
 ```
@@ -287,6 +287,8 @@ hello-world-dd6b5d745-f9xjk   1/1     Running   0          39s
 hello-world-dd6b5d745-m89fc   1/1     Running   0          12s
 hello-world-dd6b5d745-qvs9t   1/1     Running   0          39s
 ```
+
+List the Pods to see a new one being created.
 
 <img src="images/create_pod_declr_7b.png"/> <br>
 
