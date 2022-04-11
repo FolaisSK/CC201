@@ -119,8 +119,6 @@ https://github.com/sclorg/nodejs-ex.git
 
 6. Keep the rest of the default options and click **Create**.
 
-<img src="images/deploy app 7.png">
-
 In the Topology view, you should now see your newly created application.
 
 # View application in the web console
@@ -149,7 +147,7 @@ Let's try some specific steps:
 
 5. Click the **Details** tab for this Build.
 
-6. Click the link to the owning BuildConfig under **Owner**.
+6. And then Click the link to the owning BuildConfig under **Owner**.
 
 <img src="images/week4_Step5.6.png" /> <br>
 
