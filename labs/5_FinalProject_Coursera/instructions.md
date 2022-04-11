@@ -24,7 +24,8 @@ We will deploy and manage this entire application on OpenShift.
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
-![New terminal](images/new-terminal.png )
+
+<img src="images/env_cmd_1.png"/> <br>
 
 2. Change to your project folder.
 ```
@@ -38,6 +39,8 @@ git clone https://github.com/ibm-developer-skills-network/guestbook.git
 ```
 {: codeblock}
 
+<img src="images/env_cmd_3.png"/> <br>
+
 4. Change to the directory for this lab.
 ```
 cd guestbook
@@ -49,6 +52,8 @@ cd guestbook
 ls
 ```
 {: codeblock}
+
+<img src="images/env_cmd_5.png"/> <br>
 
 # Build the guestbook app
 To begin, we will build and deploy the web front end for the guestbook app.
@@ -65,11 +70,15 @@ cat Dockerfile
 ```
 {: codeblock}
 
+<img src="images/build_guestbook_2.png"/> <br>
+
 3. Export your namespace as an environment variable so that it can be used in subsequent commands. 
 ```
 export MY_NAMESPACE=sn-labs-$USERNAME
 ```
 {: codeblock}
+
+<img src="images/build_guestbook_3.png"/> <br>
 
 4. Build the guestbook app.
 ```
@@ -77,11 +86,15 @@ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
 {: codeblock}
 
+<img src="images/build_guestbook_4.png"/> <br>
+
 5. Push the image to IBM Cloud Container Registry.
 ```
 docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
 {: codeblock}
+
+<img src="images/build_guestbook_5.png"/> <br>
 
 6. Verify that the image was pushed successfully.
 ```
@@ -89,7 +102,7 @@ ibmcloud cr images
 ```
 {: codeblock}
 
-<img src="images/Build-guestbook6.jpg" width="800">
+<img src="images/build_guestbook_6.png"/> <br>
 
 # Deploy guestbook app from the OpenShift internal registry
 As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
@@ -102,27 +115,45 @@ oc tag us.icr.io/$MY_NAMESPACE/guestbook:v1 guestbook:v1 --reference-policy=loca
 
 With the `--reference-policy=local` option, a copy of the image from IBM Cloud Container Registry is imported into the local cache of the internal registry and made available to the cluster's projects as an image stream. The `--schedule` option sets up periodic importing of the image from IBM Cloud Container Registry into the internal registry. The default frequency is 15 minutes.
 
+<img src="images/deploy_app_osr_1.png"/> <br>
+
 Now let's head over to the OpenShift web console to deploy the guestbook app using this image stream.
 
 2. Open the OpenShift web console using the link at the top of the lab environment.
 
+<img src="images/deploy_app_osr_2.png"/> <br>
+
 3. From the Developer perspective, click the **+Add** button to add a new application to this project.
+
+<img src="images/deploy_app_osr_3.png"/> <br>
 
 4. Click the **Container Image** option so that we can deploy the application using an image in the internal registry.
 
+<img src="images/deploy_app_osr_4.png"/> <br>
+
 5. Under **Image**, switch to "Image name from internal registry".
+
+<img src="images/deploy_app_osr_5.png"/> <br>
 
 6. Select your project, and the image stream and tag you just created (`guestbook` and `v1`, respectively). You should have only have one option for each of these fields anyway since you only have access to a single project and you only created one image stream and one image stream tag.
 
+<img src="images/deploy_app_osr_6.png"/> <br>
+
 7. Keep all the default values and hit **Create** at the bottom. This will create the application and take you to the Topology view.
 
-<img src="images/Deploy-step7.jpg" width="800">
+<img src="images/deploy_app_osr_7.png"/> <br>
 
 8. From the Topology view, click the `guestbook` Deployment. This should take you to the **Resources** tab for this Deployment, where you can see the Pod that is running the application as well as the Service and Route that expose it.
 
+<img src="images/deploy_app_osr_8.png"/> <br>
+
 9. Click the Route location (the link) to view the guestbook in action. **Kindly take the screenshot of the guestbook for the final assignment.**
 
+<img src="images/deploy_app_osr_9.png"/> <br>
+
 10. Try out the guestbook by putting in a few entries. You should see them appear above the input box after you hit **Submit**.
+
+<img src="images/deploy_app_osr_10.png"/> <br>
 
 # Update the guestbook
 Let's update the guestbook and see how OpenShift's image streams can help us update our apps with ease.
