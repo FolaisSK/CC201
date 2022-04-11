@@ -160,9 +160,11 @@ Let's update the guestbook and see how OpenShift's image streams can help us upd
 
 1. Use the Explorer to edit `index.html` in the `public` directory. The path to this file is `guestbook/v1/guestbook/public/index.html`.
 
+<img src="images/update_guestbook_1.png"/> <br>
+
 2. Let's edit the title to be more specific. On the line that says `<h1>Guestbook - v1</h1>`, change it to include your name. Something like `<h1>Alex's Guestbook - v1</h1>`. Make sure to save the file when you're done.
 
-<img src="images/update2.jpg" width="800">
+<img src="images/update_guestbook_2.png"/> <br>
 
 3. Build and push the app again using the same tag. This will overwrite the previous image.
 ```
@@ -170,27 +172,44 @@ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/
 ```
 {: codeblock}
 
+<img src="images/update_guestbook_3.png"/> <br>
+
 4. Recall the `--schedule` option we specified when we imported our image into the OpenShift internal registry. As a result, OpenShift will regularly import new images pushed to the specified tag. Since we pushed our newly built image to the same tag, OpenShift will import the updated image within about 15 minutes. If you don't want to wait for OpenShift to automatically import the image, run the following command.
 ```
 oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confirm
 ```
 {: codeblock}
 
+<img src="images/update_guestbook_4.png"/> <br>
+
 5. Switch to the Administrator perspective so that you can view image streams.
+
+<img src="images/update_guestbook_5.png"/> <br>
 
 6. Click **Builds** > **Image Streams** in the navigation.
 
+<img src="images/update_guestbook_6.png"/> <br>
+
 7. Click the `guestbook` image stream.
+
+<img src="images/update_guestbook_7.png"/> <br>
 
 8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes. **Kindly take the screenshot of the image stream showing two distinct version for the final assignment.**
 
+<img src="images/update_guestbook_8.png"/> <br>
 
 9. Return to the Developer perspective.
 
+<img src="images/update_guestbook_9.png"/> <br>
+
 10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well. **Kindly take the screenshot of the updated guestbook for the final assignment.**
+
+<img src="images/update_guestbook_10.png"/> <br>
 
 # Guestbook storage
 1. From the guestbook in the browser, click the `/info` link beneath the input box. This is an information endpoint for the guestbook. Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this. **Kindly take the screenshot of the In-memory datastore for the final assignment.**
+
+<img src="images/update_guestbook_10.png"/> <br>
 
 2. Return to the guestbook application in the browser by clicking the Route location again. You should see that your previous entries appear no more. This is because the guestbook was restarted when your update was deployed in the last section. We need a way to persist the guestbook entries even after restarts.
 
