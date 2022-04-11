@@ -595,7 +595,7 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 10. If you click the `guestbook` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
 
-<img src="images/autoscale_10.png"/> <br>
+<img src="images/autoscale_10.png" width=800/> <br>
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
