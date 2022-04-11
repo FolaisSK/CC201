@@ -28,6 +28,9 @@ We will deploy and manage this entire application on OpenShift.
 <img src="images/env_cmd_1.png"/> <br>
 
 2. Change to your project folder.
+
+>> **Note: If you are already on the `/home/project` folder, please skip this step.**
+
 ```
 cd /home/project
 ```
@@ -131,7 +134,7 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 <img src="images/deploy_app_osr_4.png"/> <br>
 
-5. Under **Image**, switch to "Image name from internal registry".
+5. Under **Image**, switch to "**Image stream tag from internal registry**".
 
 <img src="images/deploy_app_osr_5.png"/> <br>
 
@@ -146,6 +149,8 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 8. From the Topology view, click the `guestbook` Deployment. This should take you to the **Resources** tab for this Deployment, where you can see the Pod that is running the application as well as the Service and Route that expose it.
 
 <img src="images/deploy_app_osr_8.png"/> <br>
+
+>> **Note: Kindly do not delete the `opensh.console` deployment in the Topogrpahy view as this is essential for the OpenShift console to function properly.**
 
 9. Click the Route location (the link) to view the guestbook in action. **Kindly take the screenshot of the guestbook for the final assignment.**
 
@@ -182,7 +187,7 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 <img src="images/update_guestbook_4.png"/> <br>
 
-5. Switch to the Administrator perspective so that you can view image streams.
+5. Switch to the **Administrator** perspective so that you can view image streams.
 
 <img src="images/update_guestbook_5.png"/> <br>
 
@@ -198,9 +203,11 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 <img src="images/update_guestbook_8.png"/> <br>
 
-9. Return to the Developer perspective.
+9. Return to the **Developer** perspective.
 
 <img src="images/update_guestbook_9.png"/> <br>
+
+>> **Note: Please wait for some time for the OpenShift console & the Developer perspective to load.**
 
 10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well. **Kindly take the screenshot of the updated guestbook for the final assignment.**
 
