@@ -189,11 +189,11 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 5. Switch to the **Administrator** perspective so that you can view image streams.
 
-<img src="images/update_guestbook_5.png"/> <br>
+<img src="images/update_guestbook_5.png" width='400'/> <br>
 
 6. Click **Builds** > **Image Streams** in the navigation.
 
-<img src="images/update_guestbook_6.png"/> <br>
+<img src="images/update_guestbook_6.png" width='400'/> <br>
 
 7. Click the `guestbook` image stream.
 
