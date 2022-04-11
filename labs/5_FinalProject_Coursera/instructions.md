@@ -150,7 +150,7 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 <img src="images/deploy_app_osr_8.png"/> <br>
 
->> **Note: Kindly do not delete the `opensh.console` deployment in the Topogrpahy view as this is essential for the OpenShift console to function properly.**
+>> **Note: Kindly do not delete the `opensh.console` deployment in the Topography view as this is essential for the OpenShift console to function properly.**
 
 9. Click the Route location (the link) to view the guestbook in action. **Kindly take the screenshot of the guestbook for the final assignment.**
 
