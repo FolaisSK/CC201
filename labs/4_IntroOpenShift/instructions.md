@@ -107,7 +107,7 @@ The Developer perspective provides workflows specific to developer use cases, su
 
 4. You will be redirected to **Import from Git** window. OpenShift will deploy an application using only one input from you: the application source.
 
-5. In the **Git Repo URL** box, paste the sample one mentioned below. And Select **NodeJs* as a **Builder Image*
+5. In the **Git Repo URL** box, paste the sample one mentioned below. And Select **NodeJs** as a Builder Image
 
 ```
 https://github.com/sclorg/nodejs-ex.git
