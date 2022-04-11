@@ -34,7 +34,7 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab.
 ```
-git clone https://github.com/ibm-developer-skills-network/guestbook.git
+git clone https://github.com/ibm-developer-skills-network/guestbook
 ```
 {: codeblock}
 
@@ -278,7 +278,7 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 
 2. Click the **From Dockerfile** option.
 
-3. Paste the URL **https://github.com/ibm-developer-skills-network/guestbook.git** in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
+3. Paste the URL **https://github.com/ibm-developer-skills-network/guestbook** in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
 
 4. Click **Show Advanced Git Options**.
 
