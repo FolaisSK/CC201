@@ -600,3 +600,12 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 <img src="images/autoscale_10.png"/> <br>
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
+
+## Changelog
+| Date | Version | Changed by | Change Description |
+|------|--------|--------|---------|
+| 2022-04-11 | 1.1 | K Sundararajan | Updated Lab instructions |
+|   |   |   |   |
+
+
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
