@@ -124,7 +124,7 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 2. Open the OpenShift web console using the link at the top of the lab environment.
 
-<img src="images/deploy_app_osr_2.png"/> <br>
+<img src="images/deploy_app_osr_2.png" width='800'/> <br>
 
 3. From the Developer perspective, click the **+Add** button to add a new application to this project.
 
@@ -513,11 +513,9 @@ oc apply -f analyzer-service.yaml
 
 <img src="images/deploy_analyzer_7a.png"/> <br>
 
-Return to the guestbook in the browser, refresh the page, and submit a new entry. You should see your entry appear along with a tone analysis.
+Return to the guestbook in the browser, refresh the page, and submit a new entry.
 
-<img src="images/deploy_analyzer_7b.png"/> <br>
-
-8. **Kindly take the screenshot of the entries to the guestbook and have their tone analyzed. Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
+8. You should see your entry appear along with a tone analysis. **Kindly take the screenshot of the entries to the guestbook and have their tone analyzed. Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
 
 <img src="images/deploy_analyzer_8.png"/> <br>
 
