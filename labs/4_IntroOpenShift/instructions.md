@@ -23,9 +23,12 @@ oc version
 
 You should see output similar to this, although the versions may be different:
 
-<img src="week4_Step1.2.png" /> <br>
+<img src="images/week4_Step1.2.png" /> <br>
 
 3. Change to your project folder.
+
+> **NOTE:** If you are already on `home/project` please skip this step
+
 ```
 cd /home/project
 ```
@@ -36,6 +39,8 @@ cd /home/project
 [ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 {: codeblock}
+
+<img src="images/week4_Step1.4.png" /> <br>
 
 # Use the `oc` CLI
 OpenShift projects are Kubernetes namespaces with additional administrative functions. Therefore, projects also provide isolation within an OpenShift cluster. You already have access to one project in an OpenShift cluster, and `oc` is already set to target that cluster and project.
@@ -50,6 +55,8 @@ oc get pods
 
 You will likely see a few Pods that are part of the environment. You don't need to worry about these.
 
+<img src="images/week4_Step2.1.png" /> <br>
+
 2. In addition to Kubernetes objects, you can get OpenShift specific objects.
 ```
 oc get buildconfigs
@@ -58,6 +65,8 @@ oc get buildconfigs
 
 Because you haven't created a BuildConfig yet, this will not return any resources.
 
+<img src="images/week4_Step2.2.png" /> <br>
+
 3. View the OpenShift project that is currently in use.
 ```
 oc project
@@ -65,6 +74,8 @@ oc project
 {: codeblock}
 
 This project is specific to you and provides isolation within the cluster so that you can deploy your own applications.
+
+<img src="images/week4_Step2.3.png" /> <br>
 
 # Use the OpenShift web console
 In addition to the CLI, OpenShift provides an intuitive web console. This is a useful and powerful feature because it enables you to deploy applications, view resources, monitor applications and view logs, and much more right in the console.
@@ -78,7 +89,7 @@ Let's open up the console and have a look around.
 
 3. Familiarize yourself with the items in the left navigation menu. You can see Operators, many different Kubernetes objects, and some OpenShift-specific objects, all of which we have talked about in this course. There won't yet be many instances of these objects, but they will fill up once we deploy our application.
 
-4. Notice the word "Administrator" at the top left. This indicates that you are in the Administrator perspective. There is also a Developer perspective. Each perspective provides workflows specific to that persona. Switch to the Developer perspective to begin deploying an application. (If it says "Developer" already, don't change it.)
+4. Notice the word **"Administrator"** at the top left. This indicates that you are in the Administrator perspective. There is also a Developer perspective. Each perspective provides workflows specific to that persona. **Switch to the Developer perspective** to begin deploying an application. (If it says "Developer" already, don't change it.)
 ![Web console perspectives](images/console-perspectives.png)
 
 # Deploy an application in the web console
@@ -86,28 +97,31 @@ The Developer perspective provides workflows specific to developer use cases, su
 
 1. Click the **+Add** button to add a new application to this project.
 
-2. There are several ways to add a new application in OpenShift. Choose the **From Catalog** option.
+2. There are several ways to add a new application in OpenShift.
 
-3.  Uncheck all checkboxes under **Type**.
-
-<img src="images/deploy app 3.png">
+3. Select **From Git** among the options.
 
 
-4. Search for "node" and click the **Node.js** tile.
-
-<img src="images/deploy app 4.png">
-
-5. Click **Create Application** in the window that pops up.
-
-<img src="images/deploy app 5.png">
-
-6. You should now be on a screen to create a source-to-image application. Recall that this means OpenShift will deploy an application using only one input from you: the application source. Beneath the **Git Repo URL** box, click **Try Sample**. This will populate the field with the URL of a sample application.
+<img src="images/week4_Step4.3.png" /> <br>
 
 
-7. Keep the rest of the default options and click **Create**.
-In the Topology view, you should now see your newly created application.
+4. You will be redirected to **Import from Git** window. OpenShift will deploy an application using only one input from you: the application source.
+
+5. In the **Git Repo URL** box, paste the sample one mentioned below. And Select **NodeJs* as a **Builder Image*
+
+```
+https://github.com/sclorg/nodejs-ex.git
+```
+{: codeblock}
+
+<img src="images/week4_Step4.5.png" /> <br>
+
+
+6. Keep the rest of the default options and click **Create**.
 
 <img src="images/deploy app 7.png">
+
+In the Topology view, you should now see your newly created application.
 
 # View application in the web console
 The Topology view provides quick links to a lot of important parts of an application. You can:
@@ -122,7 +136,8 @@ Let's try some specific steps:
 
 2. Observe the four resources associated with this Deployment: a Pod that runs the containerized application; a Build that uses the s2i strategy to build the application into a container image; a Service that exposes the application as a network service; and a Route that provides an externally reachable hostname.
 
-<img src="images/viewapp_2.png">
+<img src="images/week4_Step5.2.png" /> <br>
+
 
 3. Click **View logs** on the line that says **Build #1**.
 
@@ -130,13 +145,13 @@ Let's try some specific steps:
 
 4. Read the logs to see a few key completed steps. The repository is cloned, a Dockerfile is generated, an image is built, and the image is pushed to the internal registry.
 
-<img src="images/viewapp_4.png">
+<img src="images/week4_Step5.4.png" /> <br>
 
 5. Click the **Details** tab for this Build.
 
 6. Click the link to the owning BuildConfig under **Owner**.
 
-<img src="images/viewapp_6.png">
+<img src="images/week4_Step5.6.png" /> <br>
 
 7. If you look at the **Details** and **YAML** tabs, you'll see many concepts that we talked about in this module: triggers, build strategy, webhooks, and more.
 
@@ -144,15 +159,15 @@ Let's try some specific steps:
 
 8. From the **Details** tab, click the link to the ImageStreamTag under **Output To**.
 
-<img src="images/viewapp_8.png">
+<img src="images/week4_Step5.8.png" /> <br>
 
 9. You can now see the ImageStreamTag that was created as an output of the build. Click the **History** tab to see the image in the internal registry to which this ImageStreamTag points.
 
-<img src="images/viewapp_9.png">
+<img src="images/week4_Step5.9.png" /> <br>
 
 10. Return to the Topology view and click on your Deployment info. Click the Route that OpenShift automatically created for you. This will open the application in the browser.
 
-<img src="images/viewapp_10.png">
+<img src="images/week4_Step5.10.png" /> <br>
 
 Wow! OpenShift did some pretty incredible work on your behalf. All it needed was a code repository and it was able to build the code into a container image, push that image to a registry, create a Deployment that references that image, and also expose the application to the internet with a hostname.
 
