@@ -207,20 +207,32 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 <img src="images/update_guestbook_10.png"/> <br>
 
 # Guestbook storage
-1. From the guestbook in the browser, click the `/info` link beneath the input box. This is an information endpoint for the guestbook. Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this. **Kindly take the screenshot of the In-memory datastore for the final assignment.**
+1. From the guestbook in the browser, click the `/info` link beneath the input box. This is an information endpoint for the guestbook.
 
-<img src="images/update_guestbook_10.png"/> <br>
+<img src="images/storage_1a.png"/> <br>
+
+ Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this. **Kindly take the screenshot of the In-memory datastore for the final assignment.**
+
+<img src="images/storage_1b.png"/> <br>
 
 2. Return to the guestbook application in the browser by clicking the Route location again. You should see that your previous entries appear no more. This is because the guestbook was restarted when your update was deployed in the last section. We need a way to persist the guestbook entries even after restarts.
+
+<img src="images/storage_2.png"/> <br>
 
 # Delete the guestbook
 In order to deploy a more complex version of the guestbook, delete this simple version.
 
 1. From the Topology view, click the `guestbook-app` application. This is the light gray circle that surrounds the `guestbook` Deployment.
 
+<img src="images/delete_1.png"/> <br>
+
 2. Click **Actions** > **Delete Application**.
 
+<img src="images/delete_2.png"/> <br>
+
 3. Type in the application name and click **Delete**.
+
+<img src="images/delete_3.png"/> <br>
 
 # Deploy Redis master and slave
 We've demonstrated that we need persistent storage in order for the guestbook to be effective. Let's deploy Redis so that we get just that. Redis is an open source, in-memory data structure store, used as a database, cache and message broker.
@@ -235,11 +247,15 @@ cd ../../v2
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_1.png"/> <br>
+
 2. Run the following command or open the `redis-master-deployment.yaml` in the Explorer to familiarize yourself with the Deployment configuration for the Redis master.
 ```
 cat redis-master-deployment.yaml
 ```
 {: codeblock}
+
+<img src="images/deploy_redis_2.png"/> <br>
 
 3. Create the Redis master Deployment.
 ```
@@ -247,17 +263,23 @@ oc apply -f redis-master-deployment.yaml
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_3.png"/> <br>
+
 4. Verify that the Deployment was created.
 ```
 oc get deployments
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_4.png"/> <br>
+
 5. List Pods to see the Pod created by the Deployment.
 ```
 oc get pods
 ```
 {: codeblock}
+
+<img src="images/deploy_redis_5.png"/> <br>
 
 You can also return to the Topology view in the OpenShift web console and see that the Deployment has appeared there.
 
@@ -267,6 +289,8 @@ cat redis-master-service.yaml
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_6.png"/> <br>
+
 Services find the Pods to load balance based on Pod labels. The Pod that you created in previous step has the labels `app=redis` and `role=master`. The selector field of the Service determines which Pods will receive the traffic sent to the Service.
 
 7. Create the Redis master Service.
@@ -275,7 +299,11 @@ oc apply -f redis-master-service.yaml
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_7a.png"/> <br>
+
 If you click on the `redis-master` Deployment in the Topology view, you should now see the `redis-master` Service in the **Resources** tab.
+
+<img src="images/deploy_redis_7b.png"/> <br>
 
 8. Run the following command or open the `redis-slave-deployment.yaml` in the Explorer to familiarize yourself with the Deployment configuration for the Redis slave.
 ```
@@ -283,11 +311,15 @@ cat redis-slave-deployment.yaml
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_8.png"/> <br>
+
 9. Create the Redis slave Deployment.
 ```
 oc apply -f redis-slave-deployment.yaml
 ```
 {: codeblock}
+
+<img src="images/deploy_redis_9.png"/> <br>
 
 10. Verify that the Deployment was created.
 ```
@@ -295,13 +327,15 @@ oc get deployments
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_10.png"/> <br>
+
 11. List Pods to see the Pod created by the Deployment.
 ```
 oc get pods
 ```
 {: codeblock}
 
-<img src="images/deployredis11.jpg" width="800">
+<img src="images/deploy_redis_11.png"/> <br>
 
 You can also return to the Topology view in the OpenShift web console and see that the Deployment has appeared there.
 
@@ -311,61 +345,99 @@ cat redis-slave-service.yaml
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_12.png"/> <br>
+
 13. Create the Redis slave Service.
 ```
 oc apply -f redis-slave-service.yaml
 ```
 {: codeblock}
 
+<img src="images/deploy_redis_13a.png"/> <br>
+
 If you click on the `redis-slave` Deployment in the Topology view, you should now see the `redis-slave` Service in the **Resources** tab.
+
+<img src="images/deploy_redis_13b.png"/> <br>
 
 # Deploy v2 guestbook app
 Now it's time to deploy the second version of the guestbook app, which will leverage Redis for persistent storage.
 
 1. Click the **+Add** button to add a new application to this project.
 
+<img src="images/v2app_1.png"/> <br>
+
 To demonstrate the various options available in OpenShift, we'll deploy this guestbook app using an OpenShift build and the Dockerfile from the repo.
 
 2. Click the **From Dockerfile** option.
 
+<img src="images/v2app_2.png"/> <br>
+
 3. Paste the URL **https://github.com/ibm-developer-skills-network/guestbook.git** in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
+
+<img src="images/v2app_3.png"/> <br>
 
 4. Click **Show Advanced Git Options**.
 
+<img src="images/v2app_4.png"/> <br>
+
 5. Since the Dockerfile isn't at the root of the repository, we need to tell OpenShift where it is. Enter `/v2/guestbook` in the **Context Dir** box.
 
+<img src="images/v2app_5.png"/> <br>
+
 6. Under **Container Port**, enter 3000.
+
+<img src="images/v2app_6.png"/> <br>
 
 7. Leave the rest of the default options and click **Create**.
 Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build that will build an image using the Dockerfile, push it to the internal registry, and use that image for a Deployment.
 
 <img src="images/deployv2s7.jpg" width="800">
 
+<img src="images/v2app_7.png"/> <br>
+
 8. From the Topology view, click the `guestbook` Deployment. **Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.** In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
 
-9. From the guestbook in the browser, click the `/info` link beneath the input box. Notice that it now gives information on Redis since we're no longer using the in-memory datastore. **Kindly take the screenshot of the `/info` showing redis instead of in-memory datastore for the final assignment.**
+<img src="images/v2app_8.png"/> <br>
+
+9. From the guestbook in the browser, click the `/info` link beneath the input box. 
+
+<img src="images/v2app_9a.png"/> <br>
+
+Notice that it now gives information on Redis since we're no longer using the in-memory datastore. **Kindly take the screenshot of the `/info` showing redis instead of in-memory datastore for the final assignment.**
+
+<img src="images/v2app_9b.png"/> <br>
 
 # Login to IBM CLOUD
 
 >**Note:** In the prework you have already created an Natural Language Understanding service instance. Kindly note the service name as it will be required.
 
-We need to store these credentials in a Kubernetes secret in order for our analyzer microservice to utilize them. From the terminal in the lab environment, login to your IBM Cloud account with your username. When prompted enter you password to login.
+1. We need to store these credentials in a Kubernetes secret in order for our analyzer microservice to utilize them. From the terminal in the lab environment, login to your IBM Cloud account with your username. When prompted enter you password to login.
 ```
 ibmcloud login -u <your_email_address> 
 ```
 {: codeblock}
 
+<img src="images/login_ibmcloud_1.png"/> <br>
+
 >If you are a federated user that uses a corporate or enterprise single sign-on ID, you can log in to IBM Cloud® from the console by using a federated ID and password. Use the provided URL in your CLI output to retrieve your one-time passcode. You know you have a federated ID when the login fails without the `--sso` and succeeds with the `--sso` option.
 
-7. Ensure that you target the resource group in which you created the Natural Language Understanding service. Remember that you noted this resource group in a previous step.
+2. Ensure that you target the resource group in which you created the Natural Language Understanding service. Remember that you noted this resource group in a previous step.
 ```
 ibmcloud target -g <resource_group>
 ```
 {: codeblock}
 
-8. Use the Explorer to edit `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. You need to insert the name of your IBM Cloud Natural Language Understanding service where it says `<your nlu service name>`. You need to insert your OpenShift project where it says `<my_project>`. If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
+<img src="images/login_ibmcloud_2.png"/> <br>
 
-9. Run the script to create a Secret containing credentials for your Natural Language Understanding  service.
+3. Use the Explorer to edit `binding-hack.sh`. The path to this file is `guestbook/v2/binding-hack.sh`. You need to insert the name of your IBM Cloud Natural Language Understanding service where it says `<your nlu service name>`. You need to insert your OpenShift project where it says `<my_project>`.
+
+<img src="images/login_ibmcloud_3a.png"/> <br>
+
+ If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
+
+ <img src="images/login_ibmcloud_3b.png"/> <br>
+
+4. Run the script to create a Secret containing credentials for your Natural Language Understanding  service.
 ```
 ./binding-hack.sh
 ```
@@ -373,13 +445,15 @@ ibmcloud target -g <resource_group>
 
 You should see the following output: `secret/tone-binding created`.
 
+<img src="images/login_ibmcloud_4.png"/> <br>
+
 10. Log back into the lab account.
 ```
 ibmcloud login --apikey $IBMCLOUD_API_KEY
 ```
 {: codeblock}
 
-<img src="images/Tonestep10.jpg" width="800">
+<img src="images/login_ibmcloud_5.png"/> <br>
 
 # Deploy the analyzer microservice
 Now that the Natural Language Understanding service is created and its credentials are provided in a Kubernetes Secret, we can deploy the analyzer microservice.
