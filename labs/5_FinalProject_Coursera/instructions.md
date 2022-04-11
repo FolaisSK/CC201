@@ -393,8 +393,6 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 
 <img src="images/deployv2s7.jpg" width="800">
 
-<img src="images/v2app_7.png"/> <br>
-
 8. From the Topology view, click the `guestbook` Deployment. **Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.** In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
 
 <img src="images/v2app_8.png"/> <br>
@@ -470,13 +468,23 @@ docker build . -t us.icr.io/$MY_NAMESPACE/analyzer:v1 && docker push us.icr.io/$
 ```
 {: codeblock}
 
+<img src="images/deploy_analyzer_2.png"/> <br>
+
+<img src="images/deploy_analyzer_2b.png"/> <br>
+
 3. Return to the `v2` directory.
 ```
 cd ..
 ```
 {: codeblock}
 
-4. Use the Explorer to edit `analyzer-deployment.yaml`. The path to this file is `guestbook/v2/analyzer-deployment.yaml`. You need to insert your Container Registry namespace where it says `<my_namespace>`. If you don't remember your namespace, run `echo $MY_NAMESPACE`. Make sure to save the file when you're done. Also notice the `env` section, which indicates that environment variables will be set using the `binding-tone` Secret you created.
+4. Use the Explorer to edit `analyzer-deployment.yaml`. The path to this file is `guestbook/v2/analyzer-deployment.yaml`. You need to insert your Container Registry namespace where it says `<my_namespace>`. 
+
+<img src="images/deploy_analyzer_4a.png"/> <br>
+
+If you don't remember your namespace, run `echo $MY_NAMESPACE`. Make sure to save the file when you're done. Also notice the `env` section, which indicates that environment variables will be set using the `binding-tone` Secret you created.
+
+<img src="images/deploy_analyzer_4b.png"/> <br>
 
 5. Create the `analyzer` Deployment.
 ```
@@ -484,17 +492,27 @@ oc apply -f analyzer-deployment.yaml
 ```
 {: codeblock}
 
+<img src="images/deploy_analyzer_5.png"/> <br>
+
 6. Create the `analyzer` Service.
 ```
 oc apply -f analyzer-service.yaml
 ```
 {: codeblock}
 
-<img src="images/Deploy-micro6.jpg" width="800">
+<img src="images/deploy_analyzer_6.png"/> <br>
 
-7. **Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. Return to the guestbook in the browser, refresh the page, and submit a new entry. You should see your entry appear along with a tone analysis.
+7. **Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. 
+
+<img src="images/deploy_analyzer_7a.png"/> <br>
+
+Return to the guestbook in the browser, refresh the page, and submit a new entry. You should see your entry appear along with a tone analysis.
+
+<img src="images/deploy_analyzer_7b.png"/> <br>
 
 8. **Kindly take the screenshot of the entries to the guestbook and have their tone analyzed. Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
+
+<img src="images/deploy_analyzer_8.png"/> <br>
 
 # Autoscale guestbook
 Now that guestbook is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way. Make sure to keep the guestbook open in a browser tab so that it continues to make requests and consume resources so that it can be successfully autoscaled.
@@ -504,6 +522,8 @@ First, we need to set resource requests and limits for the containers that will 
 In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll limit the containers to 30 millicores and 100 MB. These numbers are contrived in order to ensure that the app scales.
 
 1. From the Topology view, click the `guestbook` Deployment. Then click **Actions** > **Edit Deployment**.
+
+<img src="images/autoscale_1.png"/> <br>
 
 2. In the **template.spec.containers** section, find `resources: {}`. Replace that with the following text. Make sure the spacing is correct as YAML uses strict indentation.
 ```
@@ -517,15 +537,23 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 ```
 {: codeblock}
 
+<img src="images/autoscale_2.png"/> <br>
+
 3. Click **Save**.
 
-<img src="images/Autoscale3.jpg" width="800">
+<img src="images/autoscale_3.png"/> <br>
 
 4. Switch to the Administrator perspective.
 
+<img src="images/autoscale_4.png"/> <br>
+
 5. Select **Workloads** > **Horizontal Pod Autoscalers**.
 
+<img src="images/autoscale_5.png"/> <br>
+
 6. Click **Create Horizontal Pod Autoscaler**.
+
+<img src="images/autoscale_6.png"/> <br>
 
 7. Paste the following YAML into the editor.
 ```
@@ -548,12 +576,20 @@ spec:
 ```
 {: codeblock}
 
+<img src="images/autoscale_7.png"/> <br>
+
 This HPA indicates that we're going to scale based on CPU usage. Generally you want to scale when your CPU utilization is in the 50-90% range. For this example, we're going to use 1% so that the app is more likely to need scaling. The `minReplicas` and `maxReplicas` fields indicate that the Deployment should have between one and three replicas at any given time depending on load.
 
 8. Click **Create**.
 
+<img src="images/autoscale_8.png"/> <br>
+
 9. If you wait, you'll see both **Current Replicas** and **Desired Replicas** become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the **Last Scale Time** as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up. **Kindly take the screenshot of Horizontal Pod Autoscaler that shows guestbook as the scale target, the current and desired replicas as three, and the last scale time as the time the deployment was scaled up to three replicas.**
 
+<img src="images/autoscale_9.png"/> <br>
+
 10. If you click the `guestbook` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
+
+<img src="images/autoscale_10.png"/> <br>
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
