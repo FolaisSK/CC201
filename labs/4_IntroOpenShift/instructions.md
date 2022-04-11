@@ -22,10 +22,8 @@ oc version
 {: codeblock}
 
 You should see output similar to this, although the versions may be different:
-```
-Client Version: 4.5.0-202002280431-79259a8
-Kubernetes Version: v1.16.2+45a4ac4
-```
+
+<img src="week4_Step1.2.png" /> <br>
 
 3. Change to your project folder.
 ```
