@@ -205,7 +205,7 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 9. Return to the **Developer** perspective.
 
-<img src="images/update_guestbook_9.png"/> <br>
+<img src="images/update_guestbook_9.png"/ width='400'> <br>
 
 >> **Note: Please wait for some time for the OpenShift console & the Developer perspective to load.**
 
