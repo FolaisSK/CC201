@@ -220,9 +220,9 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 # Guestbook storage
 1. From the guestbook in the browser, click the `/info` link beneath the input box. This is an information endpoint for the guestbook.
 
-<img src="images/storage_1a.png"/> <br>
+<img src="images/storage_1a.png"/> <br> <br>
 
- Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this.
+Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this.
 >📷**Kindly take the screenshot of the In-memory datastore for the final assignment.**
 
 <img src="images/storage_1b.png"/> <br>
@@ -414,7 +414,7 @@ In the **Resources** tab, click the Route location to load the guestbook in the 
 
 9. From the guestbook in the browser, click the `/info` link beneath the input box. 
 
-<img src="images/v2app_9a.png"/> <br>
+<img src="images/v2app_9a.png"/> <br> <br>
 
 Notice that it now gives information on Redis since we're no longer using the in-memory datastore.
 >📷**Kindly take the screenshot of the `/info` showing redis instead of in-memory datastore for the final assignment.**
@@ -529,7 +529,7 @@ Return to the guestbook in the browser, refresh the page, and submit a new entry
 
 <img src="images/deploy_analyzer_8.png"/> <br>
 
->> **Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
+>> **Note: Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
 
 # Autoscale guestbook
 Now that guestbook is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way. Make sure to keep the guestbook open in a browser tab so that it continues to make requests and consume resources so that it can be successfully autoscaled.
@@ -608,7 +608,7 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 10. If you click the `guestbook` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
 
-<img src="images/autoscale_10.png"/> <br>
+<img src="images/autoscale_10.png" width='800'/> <br>
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
