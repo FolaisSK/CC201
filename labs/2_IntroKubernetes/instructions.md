@@ -218,7 +218,7 @@ kubectl get pods
 ```
 {: codeblock}
 
-<img src="images/imp_confg_6.png"/> <br
+<img src="images/imp_confg_6.png"/> <br>
 
 # Create a Pod with a declarative command
 The previous two ways to create a Pod were imperative -- we explicitly told `kubectl` what to do. While the imperative commands are easy to understand and run, they are not ideal for a production environment. Let's look at declarative commands.
@@ -371,6 +371,7 @@ Congratulations! You have completed the lab for the second module of this course
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
+| 2022-04-12 | 1.2 | K Sundararajan | Updated Lab instructions |
 |   |   |   |   |
 
 
