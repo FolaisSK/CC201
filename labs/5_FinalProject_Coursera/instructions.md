@@ -124,7 +124,7 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 2. Open the OpenShift web console using the link at the top of the lab environment.
 
-<img src="images/deploy_app_osr_2.png" width='600'/> <br>
+<img src="images/deploy_app_osr_2.png" width='500'/> <br>
 
 3. From the Developer perspective, click the **+Add** button to add a new application to this project.
 
@@ -147,12 +147,14 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 <img src="images/deploy_app_osr_7.png"/> <br>
 
 8. From the Topology view, click the `guestbook` Deployment. This should take you to the **Resources** tab for this Deployment, where you can see the Pod that is running the application as well as the Service and Route that expose it.
+>> **Kindly wait as the Topology builds may take time to complete.**
 
 <img src="images/deploy_app_osr_8.png"/> <br>
 
 >> **Note: Kindly do not delete the `opensh.console` deployment in the Topography view as this is essential for the OpenShift console to function properly.**
 
-9. Click the Route location (the link) to view the guestbook in action. **Kindly take the screenshot of the guestbook for the final assignment.**
+9. Click the Route location (the link) to view the guestbook in action. 
+>📷**Kindly take the screenshot of the guestbook for the final assignment.**
 
 <img src="images/deploy_app_osr_9.png"/> <br>
 
@@ -199,7 +201,8 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 <img src="images/update_guestbook_7.png"/> <br>
 
-8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes. **Kindly take the screenshot of the image stream showing two distinct version for the final assignment.**
+8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes. 
+>📷**Kindly take the screenshot of the image stream showing two distinct version for the final assignment.**
 
 <img src="images/update_guestbook_8.png"/> <br>
 
@@ -209,7 +212,8 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 >> **Note: Please wait for some time for the OpenShift console & the Developer perspective to load.**
 
-10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well. **Kindly take the screenshot of the updated guestbook for the final assignment.**
+10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well.
+>📷**Kindly take the screenshot of the updated guestbook for the final assignment.**
 
 <img src="images/update_guestbook_10.png"/> <br>
 
@@ -218,7 +222,8 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 <img src="images/storage_1a.png"/> <br>
 
- Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this. **Kindly take the screenshot of the In-memory datastore for the final assignment.**
+ Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this.
+>📷**Kindly take the screenshot of the In-memory datastore for the final assignment.**
 
 <img src="images/storage_1b.png"/> <br>
 
@@ -400,7 +405,10 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 
 <img src="images/deployv2s7.jpg" width="800">
 
-8. From the Topology view, click the `guestbook` Deployment. **Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.** In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
+8. From the Topology view, click the `guestbook` Deployment.
+>📷**Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.** 
+
+In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
 
 <img src="images/v2app_8.png"/> <br>
 
@@ -408,7 +416,8 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 
 <img src="images/v2app_9a.png"/> <br>
 
-Notice that it now gives information on Redis since we're no longer using the in-memory datastore. **Kindly take the screenshot of the `/info` showing redis instead of in-memory datastore for the final assignment.**
+Notice that it now gives information on Redis since we're no longer using the in-memory datastore.
+>📷**Kindly take the screenshot of the `/info` showing redis instead of in-memory datastore for the final assignment.**
 
 <img src="images/v2app_9b.png"/> <br>
 
@@ -509,15 +518,18 @@ oc apply -f analyzer-service.yaml
 
 <img src="images/deploy_analyzer_6.png"/> <br>
 
-7. **Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. 
+7. >📷**Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. 
 
 <img src="images/deploy_analyzer_7a.png"/> <br>
 
 Return to the guestbook in the browser, refresh the page, and submit a new entry.
 
-8. You should see your entry appear along with a tone analysis. **Kindly take the screenshot of the entries to the guestbook and have their tone analyzed. Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
+8. You should see your entry appear along with a tone analysis.
+>📷**Kindly take the screenshot of the entries to the guestbook and have their tone analyzed.**
 
 <img src="images/deploy_analyzer_8.png"/> <br>
+
+>> **Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
 
 # Autoscale guestbook
 Now that guestbook is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way. Make sure to keep the guestbook open in a browser tab so that it continues to make requests and consume resources so that it can be successfully autoscaled.
@@ -589,7 +601,8 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 <img src="images/autoscale_8.png"/> <br>
 
-9. If you wait, you'll see both **Current Replicas** and **Desired Replicas** become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the **Last Scale Time** as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up. **Kindly take the screenshot of Horizontal Pod Autoscaler that shows guestbook as the scale target, the current and desired replicas as three, and the last scale time as the time the deployment was scaled up to three replicas.**
+9. If you wait, you'll see both **Current Replicas** and **Desired Replicas** become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the **Last Scale Time** as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up.
+>📷**Kindly take the screenshot of Horizontal Pod Autoscaler that shows guestbook as the scale target, the current and desired replicas as three, and the last scale time as the time the deployment was scaled up to three replicas.**
 
 <img src="images/autoscale_9.png"/> <br>
 
