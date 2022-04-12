@@ -38,7 +38,7 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab.
 ```
-[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/guestbook.git
+[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
 ```
 {: codeblock}
 
@@ -384,7 +384,7 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 
 <img src="images/v2app_2.png"/> <br>
 
-3. Paste the URL **https://github.com/ibm-developer-skills-network/guestbook.git** in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
+3. Paste the URL **https://github.com/ibm-developer-skills-network/guestbook** in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
 
 <img src="images/v2app_3.png"/> <br>
 
