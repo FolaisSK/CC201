@@ -212,6 +212,14 @@ kubectl delete pod hello-world
 
 <img src="images/imp_confg-5.png"/> <br>
 
+6. List the Pods to verify that none exist.
+```
+kubectl get pods
+```
+{: codeblock}
+
+<img src="images/imp_confg_6.png"/> <br>
+
 # Create a Pod with a declarative command
 The previous two ways to create a Pod were imperative -- we explicitly told `kubectl` what to do. While the imperative commands are easy to understand and run, they are not ideal for a production environment. Let's look at declarative commands.
 
@@ -278,6 +286,8 @@ hello-world-774ddf45b5-9cbv2   1/1     Running             0          35s
 hello-world-774ddf45b5-28k7j   0/1     ContainerCreating   0          8s
 hello-world-774ddf45b5-svpf7   1/1     Running             0          35s
 ```
+>>** Note: In case you are not able to see the above output, you can move on to the next step**
+
 Otherwise, the status of each will be the same, but the age of one Pod will be less than the others and the Pod name will be a new name.
 ```
 NAME                    READY   STATUS    RESTARTS   AGE
@@ -361,6 +371,7 @@ Congratulations! You have completed the lab for the second module of this course
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
+| 2022-04-12 | 1.2 | K Sundararajan | Updated Lab instructions |
 |   |   |   |   |
 
 
