@@ -208,7 +208,7 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 9. Return to the **Developer** perspective.
 
-<img src="images/update_guestbook_9.png"/ width='400'> <br>
+<img src="images/update_guestbook_9.png" width='400'/> <br>
 
 >> **Note: Please wait for some time for the OpenShift console & the Developer perspective to load.**
 
@@ -403,14 +403,14 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 7. Leave the rest of the default options and click **Create**.
 Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build that will build an image using the Dockerfile, push it to the internal registry, and use that image for a Deployment.
 
-<img src="images/deployv2s7.jpg" width="800">
+<img src="images/deployv2s7.jpg" width="800"> <br><br>
 
 8. From the Topology view, click the `guestbook` Deployment.
 >📷**Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.** 
 
 In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
 
-<img src="images/v2app_8.png"/> <br>
+<img src="images/v2app_8.png"/> <br> 
 
 9. From the guestbook in the browser, click the `/info` link beneath the input box. 
 
@@ -608,7 +608,7 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 10. If you click the `guestbook` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
 
-<img src="images/autoscale_10.png" width=500/> <br>
+<img src="images/autoscale_10.png"/> <br>
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
