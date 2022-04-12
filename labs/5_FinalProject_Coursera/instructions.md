@@ -124,7 +124,7 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 2. Open the OpenShift web console using the link at the top of the lab environment.
 
-<img src="images/deploy_app_osr_2.png" width='800'/> <br>
+<img src="images/deploy_app_osr_2.png" width='600'/> <br>
 
 3. From the Developer perspective, click the **+Add** button to add a new application to this project.
 
