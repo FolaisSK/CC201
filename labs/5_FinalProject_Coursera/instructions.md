@@ -147,7 +147,7 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 <img src="images/deploy_app_osr_7.png"/> <br>
 
 8. From the Topology view, click the `guestbook` Deployment. This should take you to the **Resources** tab for this Deployment, where you can see the Pod that is running the application as well as the Service and Route that expose it.
->> **Kindly wait as the Topology deployments may take time to complete.**
+>> **Kindly wait as the deployments in the Topology view may take time to get running.**
 
 <img src="images/deploy_app_osr_8.png"/> <br>
 
@@ -615,7 +615,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
-| 2022-04-11 | 1.1 | K Sundararajan | Updated Lab instructions |
+| 2022-04-12 | 1.1 | K Sundararajan | Updated Lab instructions |
 |   |   |   |   |
 
 
