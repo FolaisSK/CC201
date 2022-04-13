@@ -130,9 +130,9 @@ In the Topology view, you should now see your newly created application.
 
 # View application in the web console
 The Topology view provides quick links to a lot of important parts of an application:
-* The outer circle gets information on the application.
-* The inner circle with the Node.js logo gives the information about the Deployment.
-* The GitHub icon is used access the code repository.
+* The outer circle gets the information on the application.
+* The inner circle with the Node.js logo gives information about the Deployment.
+* The GitHub icon is used to access the code repository.
 * The check mark shows the most recent build (you will see circular arrows if the build is in progress).
 * The arrow coming out of a box can be used to view the application in the browser if the application is externally available.
 
@@ -177,6 +177,9 @@ Let's try some specific steps:
 
 Wow! OpenShift did some pretty incredible work on your behalf. All it needed was a code repository and it was able to build the code into a container image, push that image to a registry, create a Deployment that references that image, and also expose the application to the internet with a hostname.
 
+
+<img src="images/week4_Step5.11.png" /> <br>
+
 Congratulations! You have completed the lab for the fourth module of this course.
 
 
@@ -188,4 +191,4 @@ Congratulations! You have completed the lab for the fourth module of this course
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
 |            |         |                |                                   |
 
-## <h3 align="center"> Â© IBM Corporation 2022. All rights reserved. <h3/>
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
