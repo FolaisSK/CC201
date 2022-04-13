@@ -97,9 +97,9 @@ Let's open up the console and have a look around.
 # Deploy an application in the web console
 The Developer perspective provides workflows specific to developer use cases, such as the ability to create and deploy applications. Let's start here! You are likely in the "Topology" view, which provides a visual representation of applications. If not, switch to it to take a look.
 
-1. Click the **+Add** button to add a new application to this project.
+1. Let us add a new application to this project. There are several ways to add a new application in Openshift.
 
-2. There are several ways to add a new application in OpenShift.
+2. Click the **+Add** button to add a new application.
 
 3. Select **From Git** among the options.
 
