@@ -492,7 +492,8 @@ docker build . -t us.icr.io/$MY_NAMESPACE/analyzer:v1 && docker push us.icr.io/$
 ```
 {: codeblock}
 
->> Note: If the above step doesn’t run in the first time please logout from the lab environment and clear your browser cache and cookies before relaunchin the lab. 
+>> **Note: If the above step doesn’t run in the first time, please logout from the lab environment and clear your browser cache and cookies & relaunch the lab. Kindly do the lab from the beginning to get the correct output.**
+
 
 <img src="images/deploy_analyzer_2.png"/> <br>
 
@@ -626,6 +627,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-04-12 | 1.1 | K Sundararajan | Updated Lab instructions |
+| 2022-04-13 | 1.2 | K Sundararajan | Updated Lab instructions |
 |   |   |   |   |
 
 
