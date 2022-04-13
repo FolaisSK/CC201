@@ -140,6 +140,7 @@ kubectl scale deployment hello-world --replicas=3
 kubectl get pods
 ```
 {: codeblock}
+
 <img src="images/step_4.2.png"><br/>
 
 3. As you did in the last lab, ping your application multiple times to ensure that Kubernetes is load-balancing across the replicas.
@@ -147,6 +148,7 @@ kubectl get pods
 for i in `seq 10`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy; done
 ```
 {: codeblock}
+
 <img src="images/step_4.3.png"><br/>
 
 You should see that the queries are going to different Pods.
@@ -156,6 +158,7 @@ You should see that the queries are going to different Pods.
 kubectl scale deployment hello-world --replicas=1
 ```
 {: codeblock}
+
 <img src="images/step_4.4.png"><br/>
 
 5. Check the Pods to see that two are deleted or being deleted.
@@ -163,6 +166,7 @@ kubectl scale deployment hello-world --replicas=1
 kubectl get pods
 ```
 {: codeblock}
+
 <img src="images/step_4.5.png"><br/>
 
 # Perform rolling updates
@@ -178,6 +182,7 @@ Rolling updates are an easy way to update our application in an automated and co
 docker build -t us.icr.io/$MY_NAMESPACE/hello-world:2 . && docker push us.icr.io/$MY_NAMESPACE/hello-world:2
 ```
 {: codeblock}
+
 <img src="images/step_5.2.png"><br/>
 
 3. List images in Container Registry to see all the different versions of this application that you have pushed so far.
@@ -185,6 +190,7 @@ docker build -t us.icr.io/$MY_NAMESPACE/hello-world:2 . && docker push us.icr.io
 ibmcloud cr images
 ```
 {: codeblock}
+
 <img src="images/step_5.3.png"><br/>
 
 4. Update the deployment to use this version instead.
@@ -192,6 +198,7 @@ ibmcloud cr images
 kubectl set image deployment/hello-world hello-world=us.icr.io/$MY_NAMESPACE/hello-world:2
 ```
 {: codeblock}
+
 <img src="images/step_5.4.png"><br/>
 
 5. Get a status of the rolling update by using the following command:
@@ -199,6 +206,7 @@ kubectl set image deployment/hello-world hello-world=us.icr.io/$MY_NAMESPACE/hel
 kubectl rollout status deployment/hello-world
 ```
 {: codeblock}
+
 You should see an output like this, indicating that the rollout succeeded:
 <img src="images/step_5.5.png"><br/>
 
@@ -253,6 +261,7 @@ ConfigMaps and Secrets are used to store configuration information separate from
 kubectl create configmap app-config --from-literal=MESSAGE="This message came from a ConfigMap!"
 ```
 {: codeblock}
+
 <img src="images/step_6.1.png"><br/>
 
 2. Use the Explorer to edit `deployment-configmap-env-var.yaml`. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
@@ -295,6 +304,7 @@ The `deployment-configmap-env-var.yaml` file is already configured to use the ta
 kubectl apply -f deployment-configmap-env-var.yaml
 ```
 {: codeblock}
+
 <img src="images/step_6.6.png"><br/>
 
 7. Ping your application again to see if the message from the environment variable is returned.
@@ -312,6 +322,7 @@ If you see the message, "This message came from a ConfigMap!", then great job!
 kubectl delete configmap app-config && kubectl create configmap app-config --from-literal=MESSAGE="This message is different, and you didn't have to rebuild the image!"
 ```
 {: codeblock}
+
 <img src="images/step_6.8.png"><br/>
 
 9. Restart the Deployment so that the containers restart. This is necessary since the environment variables are set at start time.
@@ -319,6 +330,7 @@ kubectl delete configmap app-config && kubectl create configmap app-config --fro
 kubectl rollout restart deployment hello-world
 ```
 {: codeblock}
+
 <img src="images/step_6.9.png"><br/>
 
 10. Ping your application again to see if the new message from the environment variable is returned.
@@ -326,6 +338,7 @@ kubectl rollout restart deployment hello-world
 curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy
 ```
 {: codeblock}
+
 <img src="images/step_6.10.png"><br/>
 
 11. Delete the Deployment.
@@ -333,6 +346,7 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 kubectl delete -f deployment-configmap-env-var.yaml
 ```
 {: codeblock}
+
 <img src="images/step_6.11.png"><br/>
 
 12. Delete the Service.
@@ -340,9 +354,21 @@ kubectl delete -f deployment-configmap-env-var.yaml
 kubectl delete service hello-world
 ```
 {: codeblock}
+
 <img src="images/step_6.12.png"><br/>
 
 13. Return to the other terminal window that is running the `proxy` command and kill it using `Ctrl+C`.
 <img src="images/step_6.13.png"><br/>
 
 Congratulations! You have completed the lab for the third module of this course.
+
+
+## Changelog
+
+| Date       | Version | Changed by     | Change Description                |
+| ---------- | ------- | -------------- | --------------------------------- |
+| 2022-04-08 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
+| 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions          |
+|            |         |                |                                   |
+
+## <h3 align="center"> Â© IBM Corporation 2022. All rights reserved. <h3/>
