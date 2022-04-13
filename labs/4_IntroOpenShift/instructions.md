@@ -109,12 +109,14 @@ The Developer perspective provides workflows specific to developer use cases, su
 
 4. You will be redirected to **Import from Git** window. OpenShift will deploy an application using only one input from you: the application source.
 
-5. In the **Git Repo URL** box, paste the sample one mentioned below. And Select **NodeJs** as a Builder Image
+5. In the **Git Repo URL** box, paste the sample one mentioned below. 
 
 ```
 https://github.com/sclorg/nodejs-ex.git
 ```
 {: codeblock}
+
+In the Builder section, scroll down to see the various builder images. We shall be using the Node.js image for our application. Ensure that this image has been selected.
 
 <img src="images/week4_Step4.5.png" /> <br>
 
@@ -122,52 +124,54 @@ https://github.com/sclorg/nodejs-ex.git
 6. Keep the rest of the default options as they already are. Then scroll down and click **Create**.
 
 In the Topology view, you should now see your newly created application.
+> **NOTE:** It will take several minutes for the application to appear. Refresh the browser if within 3 minutes, you don't see any application.
 
 <img src="images/week4_Step4.6.png" /> <br>
 
 # View application in the web console
-The Topology view provides quick links to a lot of important parts of an application. You can:
-* Click the outer circle to get information on the application.
-* Click the inner circle with the Node.js logo to get information on the Deployment.
-* Click the GitHub icon to access the code repository.
-* Click the check mark to view the most recent build (you will see circular arrows if the build is in progress).
-* Click the arrow coming out of a box to view the application in the browser if the application is externally available.
+The Topology view provides quick links to a lot of important parts of an application:
+* The outer circle gets information on the application.
+* The inner circle with the Node.js logo gives the information about the Deployment.
+* The GitHub icon is used access the code repository.
+* The check mark shows the most recent build (you will see circular arrows if the build is in progress).
+* The arrow coming out of a box can be used to view the application in the browser if the application is externally available.
 
 Let's try some specific steps:
-1. Click the inner circle with the Node.js logo to bring up information on the Deployment.
-
-2. Observe the four resources associated with this Deployment: a Pod that runs the containerized application; a Build that uses the s2i strategy to build the application into a container image; a Service that exposes the application as a network service; and a Route that provides an externally reachable hostname.
+<!-- Step 1 and 2 combined -->
+1. Click the inner circle with the Node.js logo to bring up information on the Deployment and observe the four resources associated with this Deployment: a Pod that runs the containerized application; a Build that uses the s2i strategy to build the application into a container image; a Service that exposes the application as a network service; and a Route that provides an externally reachable hostname.
 
 <img src="images/week4_Step5.2.png" /> <br>
 
 
-3. Click **View logs** on the line that says **Build #1**.
+2. Click **View logs** on the line that says **Build #1**.
+
+<!-- earlier step 3 now 2 and so on till the end -->
 
 <img src="images/viewapp_3.png">
 
-4. Read the logs to see a few key completed steps. The repository is cloned, a Dockerfile is generated, an image is built, and the image is pushed to the internal registry.
+3. Read the logs to see a few key completed steps. The repository is cloned, a Dockerfile is generated, an image is built, and the image is pushed to the internal registry.
 
 <img src="images/week4_Step5.4.png" /> <br>
 
-5. Click the **Details** tab for this Build.
+4. Click the **Details** tab for this Build.
 
-6. And then Click the link to the owning BuildConfig under **Owner**.
+5. And then click the link under **Owner** (at the very bottom) that says BC (Build Config).
 
 <img src="images/week4_Step5.6.png" /> <br>
 
-7. If you look at the **Details** and **YAML** tabs, you'll see many concepts that we talked about in this module: triggers, build strategy, webhooks, and more.
+6. If you look at the **Details** and **YAML** tabs, you'll see many concepts that we talked about in this module: triggers, build strategy, webhooks, and more.
 
 <img src="images/viewapp_7.png">
 
-8. From the **Details** tab, click the link to the ImageStreamTag under **Output To**.
+7. On the **Details** tab, click the link under **Output To** that says IST (ImageStreamTag).
 
 <img src="images/week4_Step5.8.png" /> <br>
 
-9. You can now see the ImageStreamTag that was created as an output of the build. Click the **History** tab to see the image in the internal registry to which this ImageStreamTag points.
+8. You can now see the ImageStreamTag that was created as an output of the build. Click the **History** tab to see the image in the internal registry to which this ImageStreamTag points.
 
 <img src="images/week4_Step5.9.png" /> <br>
 
-10. Return to the Topology view and click on your Deployment info. Click the Route that OpenShift automatically created for you. This will open the application in the browser.
+9. Return to the Topology view and click on your Deployment info. Click the Route that OpenShift automatically created for you. This will open the application in the browser.
 
 <img src="images/week4_Step5.10.png" /> <br>
 
