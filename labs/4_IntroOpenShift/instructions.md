@@ -117,9 +117,11 @@ https://github.com/sclorg/nodejs-ex.git
 <img src="images/week4_Step4.5.png" /> <br>
 
 
-6. Keep the rest of the default options and click **Create**.
+6. Keep the rest of the default options as they already are. Then scroll down and click **Create**.
 
 In the Topology view, you should now see your newly created application.
+
+<img src="images/week4_Step4.6.png" /> <br>
 
 # View application in the web console
 The Topology view provides quick links to a lot of important parts of an application. You can:
@@ -170,3 +172,14 @@ Let's try some specific steps:
 Wow! OpenShift did some pretty incredible work on your behalf. All it needed was a code repository and it was able to build the code into a container image, push that image to a registry, create a Deployment that references that image, and also expose the application to the internet with a hostname.
 
 Congratulations! You have completed the lab for the fourth module of this course.
+
+
+## Changelog
+
+| Date       | Version | Changed by     | Change Description                |
+| ---------- | ------- | -------------- | --------------------------------- |
+| 2022-04-08 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
+| 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
+|            |         |                |                                   |
+
+## <h3 align="center"> Â© IBM Corporation 2022. All rights reserved. <h3/>
