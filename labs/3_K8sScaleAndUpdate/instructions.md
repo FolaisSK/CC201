@@ -367,7 +367,7 @@ Congratulations! You have completed the lab for the third module of this course.
 
 | Date       | Version | Changed by     | Change Description                |
 | ---------- | ------- | -------------- | --------------------------------- |
-| 2022-04-08 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
+| 2022-04-07 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions          |
 |            |         |                |                                   |
 
