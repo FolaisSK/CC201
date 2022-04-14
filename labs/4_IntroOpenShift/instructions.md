@@ -182,6 +182,24 @@ Wow! OpenShift did some pretty incredible work on your behalf. All it needed was
 
 Congratulations! You have completed the lab for the fourth module of this course.
 
+>> Note: Please delete your project from Openshift Console & SN labs environment before signing out.
+
+For OpenShift project deletion:
+
+Go to the `Project` tab on OpenShift console. Click on `Actions` & select `Delete Project`.
+
+<img src="images/app_console_11a.png" /> <br>
+
+Type your project name to confirm deletion as below.
+
+<img src="images/app_console_11b.png" /> <br>
+
+For SN labs project deletion:
+
+Go to the Explorer view on SN labs and right click on the project name & select `Delete`.
+
+<img src="images/app_console_11c.png" /> <br>
+
 
 ## Changelog
 
@@ -189,6 +207,6 @@ Congratulations! You have completed the lab for the fourth module of this course
 | ---------- | ------- | -------------- | --------------------------------- |
 | 2022-04-08 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
-|            |         |                |                                   |
+| 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images                                  |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
