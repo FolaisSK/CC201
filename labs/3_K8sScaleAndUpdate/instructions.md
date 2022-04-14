@@ -83,7 +83,7 @@ kubectl apply -f deployment.yaml
 
 <img src="images/step_3.2.png"><br/>
 
-> **NOTE:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output. We would recommend you to continue the lab.
+> **NOTE:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output. We would recommend you to continue with the further steps of the lab..
 
 3. List Pods until the status is "Running".
 ```
@@ -290,7 +290,7 @@ kubectl create configmap app-config --from-literal=MESSAGE="This message came fr
 
 <img src="images/step_6.1.png"><br/>
 
-> **NOTE:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Already exists'** message instead of the **'Created'** message as below. We would recommend you to continue the lab.
+> **NOTE:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Already exists'** message instead of the **'Created'** message as below. We would recommend you to continue with the further steps of the lab..
 
 <img src="images/confmap_1b.png"><br/>
 
