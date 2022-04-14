@@ -91,7 +91,7 @@ kubectl get pods
 
 <img src="images/step_3.3.png"><br/>
 
->> Note: You may have to wait & run the above command again to see the pod status as 'Running'. Please move to the next step once you ee the pod status as 'Running'.
+>> Note: You may have to wait & run the above command again to see the pod status as 'Running'. Please move to the next step once you see the pod status as 'Running'.
 
 4. In order to access the application, we have to expose it to the internet via a Kubernetes Service.
 ```
