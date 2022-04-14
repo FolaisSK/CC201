@@ -186,7 +186,7 @@ Wow! OpenShift did some pretty incredible work on your behalf. All it needed was
 
 Congratulations! You have completed the lab for the fourth module of this course.
 
-> **Note:** Please delete your project from Openshift Console & SN labs environment before signing out to ensure that further labs requiring the use of OpenShift console run correctly. To do the same, click on this **Link**.
+> **Note:** Please delete your project from Openshift Console & SN labs environment before signing out to ensure that further labs requiring the use of OpenShift console run correctly. To do the same, click on <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>Link</a>
 
 ## Changelog
 
