@@ -11,7 +11,7 @@ In this lab, you will:
 - Build and deploy an application using s2i ('Source-to-image' build strategy)
 - Inspect a BuildConfig and an ImageStream
 
-> **Note:** Kindly click on the OpenShift console tab and check if you have any existing project. If yes, then follow this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a> to delete the same. Otherwise, you are ready to go for the lab.
+> **Note:** Kindly click on the OpenShift console tab and check if you have any existing project. If yes, then follow this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a> to delete the same first to avoid any issues with the lab. Otherwise, you are all set to perform the lab.
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
