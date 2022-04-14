@@ -6,9 +6,9 @@
 
 ## Objectives
 In this lab, you will:
-- Use the `oc` (OpenShift console) CLI
+- Use the `oc` CLI (OpenShift command line interface)
 - Use the OpenShift web console
-- Build and deploy an application using s2i ('source to image' build stratergy)
+- Build and deploy an application using s2i ('Source-to-image' build strategy)
 - Inspect a BuildConfig and an ImageStream
 
 # Verify the environment and command line tools
