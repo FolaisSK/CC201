@@ -67,7 +67,7 @@ docker build -t us.icr.io/$MY_NAMESPACE/hello-world:1 . && docker push us.icr.io
 
 <img src="images/step_2.3.png"><br/>
 
-> **NOTE:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We would recommend you to continue the lab.
+> **NOTE:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We would recommend you to continue with the further steps of the lab.
 
 # Deploy the application to Kubernetes
 1. Use the Explorer to edit `deployment.yaml` in this directory. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
