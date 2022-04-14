@@ -11,6 +11,8 @@ In this lab, you will:
 - Build and deploy an application using s2i ('Source-to-image' build strategy)
 - Inspect a BuildConfig and an ImageStream
 
+>> Note: Kindly click on the OpenShift console tab and check if you have any existing project running there. If yes, then follow this **link** to delete the same. Otherwise, you are ready to go for the lab.
+
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 ![New terminal](images/new-terminal.png)
@@ -182,7 +184,7 @@ Wow! OpenShift did some pretty incredible work on your behalf. All it needed was
 
 Congratulations! You have completed the lab for the fourth module of this course.
 
->**Note: Please delete your project from Openshift Console & SN labs environment before signing out to ensure that further labs requiring the use of OpenShift console run correctly.**
+>Note: Please delete your project from Openshift Console & SN labs environment before signing out to ensure that further labs requiring the use of OpenShift console run correctly. To do the same click on this **Link**.
 
 ## Changelog
 
@@ -190,6 +192,6 @@ Congratulations! You have completed the lab for the fourth module of this course
 | ---------- | ------- | -------------- | --------------------------------- |
 | 2022-04-08 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
-| 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images                                  |
+| 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
