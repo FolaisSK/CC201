@@ -14,6 +14,8 @@ In this lab, you will:
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 ![New terminal](images/new-terminal.png)
 
+>> **NOTE:** Please wait for some time for the terminal prompt to appear.
+
 2. Change to your project folder.
 >> **NOTE:** If you are already in the `/home/project` please skip this step.
 ```
@@ -79,6 +81,8 @@ kubectl apply -f deployment.yaml
 
 <img src="images/step_3.2.png"><br/>
 
+>> Note: If you get the output message as 'Deployment unchanged', you can still proceed to the next step.
+
 3. List Pods until the status is "Running".
 ```
 kubectl get pods
@@ -86,6 +90,8 @@ kubectl get pods
 {: codeblock}
 
 <img src="images/step_3.3.png"><br/>
+
+>> Note: You may have to wait & run the above command again to see the pod status as 'Running'. Please move to the next step once you see the pod status as 'Running'.
 
 4. In order to access the application, we have to expose it to the internet via a Kubernetes Service.
 ```
@@ -168,6 +174,15 @@ kubectl get pods
 {: codeblock}
 
 <img src="images/step_4.5.png"><br/>
+
+6. Please wait for some time & run the same command again to ensure that only one pod exists.
+
+```
+kubectl get pods
+```
+{: codeblock}
+
+<img src="images/scaleapp_rs_6.png"><br/>
 
 # Perform rolling updates
 Rolling updates are an easy way to update our application in an automated and controlled fashion. To simulate an update, let's first build a new version of our application and push it to Container Registry.
@@ -252,6 +267,15 @@ kubectl get deployments -o wide
 Look for the `IMAGES` column and ensure that the tag is `1`.
 <img src="images/step_5.10.png"><br/>
 
+11. Ping your application to ensure that the earlier '**Hello World..Your app is up & running!**' message is displayed.
+
+```
+curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy
+```
+{: codeblock}
+
+<img src="images/rolling_updates_11.png"><br/>
+
 
 # Using a ConfigMap to store configuration
 ConfigMaps and Secrets are used to store configuration information separate from the code so that nothing is hardcoded. It also lets the application pick up configuration changes without needing to be redeployed. To demonstrate this, we'll store the application's message in a ConfigMap so that the message can be updated simply by updating the ConfigMap.
@@ -263,6 +287,10 @@ kubectl create configmap app-config --from-literal=MESSAGE="This message came fr
 {: codeblock}
 
 <img src="images/step_6.1.png"><br/>
+
+>>Note: If you get a message as below, you can still proceed to the next step 
+
+<img src="images/confmap_1b.png"><br/>
 
 2. Use the Explorer to edit `deployment-configmap-env-var.yaml`. The path to this file is `CC201/labs/3_K8sScaleAndUpdate/`. You need to insert your namespace where it says `<my_namespace>`. Make sure to save the file when you're done.
 <img src="images/step_6.2.png"><br/>
@@ -317,6 +345,11 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 If you see the message, "This message came from a ConfigMap!", then great job!
 <img src="images/step_6.7.png"><br/>
 
+>>Note: If you get a message as below, you can still proceed to the next step 
+
+<img src="images/confmap_7b.png"><br/>
+
+
 8. Because the configuration is separate from the code, the message can be changed without rebuilding the image. Using the following command, delete the old ConfigMap and create a new one with the same name but a different message.
 ```
 kubectl delete configmap app-config && kubectl create configmap app-config --from-literal=MESSAGE="This message is different, and you didn't have to rebuild the image!"
@@ -369,6 +402,7 @@ Congratulations! You have completed the lab for the third module of this course.
 | ---------- | ------- | -------------- | --------------------------------- |
 | 2022-04-07 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions          |
+| 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
 |            |         |                |                                   |
 
 ## <h3 align="center"> Â© IBM Corporation 2022. All rights reserved. <h3/>
