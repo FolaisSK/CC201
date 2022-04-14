@@ -14,7 +14,7 @@ In this lab, you will:
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 ![New terminal](images/new-terminal.png)
 
->> **NOTE:** Please wait for some time for the terminal prompt to appear.
+>> **NOTE:** It might take sometime for the Termainal Prompt to appear. In case you are unable to see the terminal prompt even after 5 minutes, please close the browser tab and relaunch the lab again.
 
 2. Change to your project folder.
 >> **NOTE:** If you are already in the `/home/project` please skip this step.
