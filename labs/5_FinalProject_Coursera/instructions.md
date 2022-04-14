@@ -104,7 +104,7 @@ docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 
 <img src="images/build_guestbook_5.png"/> <br>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output.
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
 6. Verify that the image was pushed successfully.
 ```
@@ -227,6 +227,7 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 >> **Note: Please wait for some time for the OpenShift console & the Developer perspective to load.**
 
 10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well.
+
 >📷**Kindly take the screenshot of the updated guestbook for the final assignment.**
 
 <img src="images/update_guestbook_10.png"/> <br>
@@ -269,7 +270,7 @@ This application uses the v2 version of the guestbook web front end and adds on 
 
 In a multi-tier application, there are two primary ways that service dependencies can be resolved. The `v2/guestbook/main.go` code provides examples of each. For Redis, the master endpoint is discovered through environment variables. These environment variables are set when the Redis services are started, so the service resources need to be created before the guestbook Pods start. For the analyzer service, an HTTP request is made to a hostname, which allows for resource discovery at the time when the request is made. Consequently, we'll follow a specific order when creating the application components. First, the Redis components will be created, then the guestbook application, and finally the analyzer microservice.
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message when you run the **Apply** command for creating deployments.
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message when you run the **Apply** command for creating deployments. We recommend you to proceed with the next steps of the lab.
 
 1. From the terminal in the lab environment, change to the v2 directory.
 ```
@@ -491,7 +492,7 @@ You should see the following output: `secret/tone-binding created`.
 
 <img src="images/login_ibmcloud_4.png"/> <br>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Configured'** message in the above output.
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Configured'** message in the above output. We recommend you to proceed with the next steps of the lab.
 
 5. Log back into the lab account.
 ```
@@ -546,7 +547,7 @@ oc apply -f analyzer-deployment.yaml
 
 <img src="images/deploy_analyzer_5.png"/> <br>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output.
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
 6. Create the `analyzer` Service.
 ```
@@ -556,7 +557,7 @@ oc apply -f analyzer-service.yaml
 
 <img src="images/deploy_analyzer_6.png"/> <br>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output.
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
 7. >📷**Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. 
 
@@ -653,7 +654,7 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
-> **Note:** Please delete your project from Openshift Console & SN labs environment before signing out to ensure that further labs requiring the use of OpenShift console run correctly. To do the same, click on this Link.
+> **Note:** Please delete your project from Openshift Console & SN labs environment before signing out to ensure that further labs requiring the use of OpenShift console run correctly. To do the same, click on <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>Link</a>
 
 ## Changelog
 | Date | Version | Changed by | Change Description |
