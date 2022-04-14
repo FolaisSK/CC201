@@ -184,23 +184,6 @@ Congratulations! You have completed the lab for the fourth module of this course
 
 >**Note: Please delete your project from Openshift Console & SN labs environment before signing out to ensure that further labs requiring the use of OpenShift console run correctly.**
 
-> **For OpenShift project deletion:**
-
->> 1. Go to the `Project` tab on the OpenShift console. Click on `Actions` & select `Delete Project`.
-
->> <img src="images/app_console_11a.png" /> <br>
-
->> 2. Type your project name to confirm deletion as below.
-
->> <img src="images/app_console_11b.png" /> <br>
-
-> **For SN labs project deletion:**
-
->> 1. Go to the Explorer view on SN labs and right click on the project name & select `Delete`.
-
->> <img src="images/app_console_11c.png" /> <br>
-
-
 ## Changelog
 
 | Date       | Version | Changed by     | Change Description                |
