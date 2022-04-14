@@ -491,7 +491,7 @@ You should see the following output: `secret/tone-binding created`.
 
 <img src="images/login_ibmcloud_4.png"/> <br>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an 'Unchanged' message instead of the 'Created' message  in the above output.
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Configured'** message in the above output.
 
 5. Log back into the lab account.
 ```
@@ -546,7 +546,7 @@ oc apply -f analyzer-deployment.yaml
 
 <img src="images/deploy_analyzer_5.png"/> <br>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an 'Unchanged' message instead of the 'Created' message  in the above output.
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output.
 
 6. Create the `analyzer` Service.
 ```
@@ -556,7 +556,7 @@ oc apply -f analyzer-service.yaml
 
 <img src="images/deploy_analyzer_6.png"/> <br>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an 'Unchanged' message instead of the 'Created' message  in the above output.
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output.
 
 7. >📷**Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. 
 
@@ -660,6 +660,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 |------|--------|--------|---------|
 | 2022-04-12 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-04-13 | 1.2 | K Sundararajan | Updated Lab instructions |
+| 2022-04-14 | 1.3 | K Sundararajan | Updated Lab instructions |
 |   |   |   |   |
 
 
