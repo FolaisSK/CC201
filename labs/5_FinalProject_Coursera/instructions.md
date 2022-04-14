@@ -13,6 +13,8 @@ In this lab, you will:
 - Bind the Natural Language Understanding service instance to your application
 - Autoscale the guestbook app
 
+> **Note:** Kindly click on the OpenShift console tab and check if you have any existing project. If yes, then follow this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a> to delete the same first to avoid any issues with the lab. Otherwise, you are all set to perform the lab.
+
 # Project Overview
 
 ## Guestbook application
@@ -24,6 +26,8 @@ We will deploy and manage this entire application on OpenShift.
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
+
+> **Note:** Please wait for some time for the terminal prompt to appear.
 
 <img src="images/env_cmd_1.png"/> <br>
 
@@ -91,6 +95,7 @@ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1
 
 <img src="images/build_guestbook_4.png"/> <br>
 
+
 5. Push the image to IBM Cloud Container Registry.
 ```
 docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
@@ -99,6 +104,8 @@ docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 
 <img src="images/build_guestbook_5.png"/> <br>
 
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We recommend you to proceed with the next steps of the lab.
+
 6. Verify that the image was pushed successfully.
 ```
 ibmcloud cr images
@@ -106,6 +113,8 @@ ibmcloud cr images
 {: codeblock}
 
 <img src="images/build_guestbook_6.png"/> <br>
+
+> **Note:** If you see the status of the image as **'Scanning'**, please re-run the above command till the status gradually changes to **'No Issues'**.
 
 # Deploy guestbook app from the OpenShift internal registry
 As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
@@ -125,6 +134,8 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 2. Open the OpenShift web console using the link at the top of the lab environment.
 
 <img src="images/deploy_app_osr_2.png" width='500'/> <br>
+
+> **Note:** Currently we are experiencing certain difficulties with the OpenShift console . If your screen takes time in loading, please close the OpenShift console browser tab & re-launch the same. It may take upto 10 mins to load the screen.
 
 3. From the Developer perspective, click the **+Add** button to add a new application to this project.
 
@@ -154,7 +165,8 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 >> **Note: Kindly do not delete the `opensh.console` deployment in the Topography view as this is essential for the OpenShift console to function properly.**
 
 9. Click the Route location (the link) to view the guestbook in action. 
->> **Note: Please wait for the Builds to complete before clicking on the route link**
+
+> **Note:** Please wait for status of the pod to change to **'Running'** before launching the app.
 
 >📷**Kindly take the screenshot of the guestbook for the final assignment.**
 
@@ -171,7 +183,7 @@ Let's update the guestbook and see how OpenShift's image streams can help us upd
 
 <img src="images/update_guestbook_1.png"/> <br>
 
-2. Let's edit the title to be more specific. On the line that says `<h1>Guestbook - v1</h1>`, change it to include your name. Something like `<h1>Alex's Guestbook - v1</h1>`. Make sure to save the file when you're done.
+2. Let's edit the title to be more specific. On line number 12, that says `<h1>Guestbook - v1</h1>`, change it to include your name. Something like `<h1>Alex's Guestbook - v1</h1>`. Make sure to save the file when you're done.
 
 <img src="images/update_guestbook_2.png"/> <br>
 
@@ -215,6 +227,7 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 >> **Note: Please wait for some time for the OpenShift console & the Developer perspective to load.**
 
 10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well.
+
 >📷**Kindly take the screenshot of the updated guestbook for the final assignment.**
 
 <img src="images/update_guestbook_10.png"/> <br>
@@ -232,6 +245,8 @@ Notice that it says "In-memory datastore (not redis)". Currently, we have only d
 2. Return to the guestbook application in the browser by clicking the Route location again. You should see that your previous entries appear no more. This is because the guestbook was restarted when your update was deployed in the last section. We need a way to persist the guestbook entries even after restarts.
 
 <img src="images/storage_2.png"/> <br>
+
+> **Note:** Currently we are experiencing certain difficulties with the OpenShift console. There is a possibility that you will see your old entries because the image stream takes time in updating. You may move ahead with the further steps of lab.
 
 # Delete the guestbook
 In order to deploy a more complex version of the guestbook, delete this simple version.
@@ -254,6 +269,8 @@ We've demonstrated that we need persistent storage in order for the guestbook to
 This application uses the v2 version of the guestbook web front end and adds on 1) a Redis master for storage, 2) a replicated set of Redis slaves, and 3) a Python Flask application that calls a Watson Natural Language Understanding service deployed in IBM Cloud to analyze the tone. For all of these components, there are Kubernetes Deployments, Pods, and Services. One of the main concerns with building a multi-tier application on Kubernetes is resolving dependencies between all of these separately deployed components.
 
 In a multi-tier application, there are two primary ways that service dependencies can be resolved. The `v2/guestbook/main.go` code provides examples of each. For Redis, the master endpoint is discovered through environment variables. These environment variables are set when the Redis services are started, so the service resources need to be created before the guestbook Pods start. For the analyzer service, an HTTP request is made to a hostname, which allows for resource discovery at the time when the request is made. Consequently, we'll follow a specific order when creating the application components. First, the Redis components will be created, then the guestbook application, and finally the analyzer microservice.
+
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message when you run the **Apply** command for creating deployments. We recommend you to proceed with the next steps of the lab.
 
 1. From the terminal in the lab environment, change to the v2 directory.
 ```
@@ -386,7 +403,14 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 
 <img src="images/v2app_2.png"/> <br>
 
-3. Paste the URL **https://github.com/ibm-developer-skills-network/guestbook** in the **Git Repo URL** box. You should see a validated checkmark once you click out of the box.
+3. Paste the below URL in the **Git Repo URL** box. 
+
+```
+https://github.com/ibm-developer-skills-network/guestbook
+```
+{: codeblock}
+
+You should see a validated checkmark once you click out of the box.
 
 > **Note: Ensure there are no spaces in the Git Repo URL that is to be copied.**
 
@@ -423,6 +447,7 @@ In the **Resources** tab, click the Route location to load the guestbook in the 
 <img src="images/v2app_9a.png"/> <br> <br>
 
 Notice that it now gives information on Redis since we're no longer using the in-memory datastore.
+
 >📷**Kindly take the screenshot of the `/info` showing redis instead of in-memory datastore for the final assignment.**
 
 <img src="images/v2app_9b.png"/> <br>
@@ -467,6 +492,8 @@ You should see the following output: `secret/tone-binding created`.
 
 <img src="images/login_ibmcloud_4.png"/> <br>
 
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Configured'** message in the above output. We recommend you to proceed with the next steps of the lab.
+
 5. Log back into the lab account.
 ```
 ibmcloud login --apikey $IBMCLOUD_API_KEY
@@ -492,8 +519,7 @@ docker build . -t us.icr.io/$MY_NAMESPACE/analyzer:v1 && docker push us.icr.io/$
 ```
 {: codeblock}
 
->> **Note: If the above step doesn’t run in the first time, please logout from the lab environment and clear your browser cache and cookies & relaunch the lab. Kindly do the lab from the beginning to get the correct output.**
-
+>> **Note:** If the above step doesn’t run in the first time, please logout from the lab environment and clear your browser cache and cookies & relaunch the lab. Kindly do the lab from the beginning to get the correct output.
 
 <img src="images/deploy_analyzer_2.png"/> <br>
 
@@ -521,6 +547,8 @@ oc apply -f analyzer-deployment.yaml
 
 <img src="images/deploy_analyzer_5.png"/> <br>
 
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output. We recommend you to proceed with the next steps of the lab.
+
 6. Create the `analyzer` Service.
 ```
 oc apply -f analyzer-service.yaml
@@ -529,6 +557,8 @@ oc apply -f analyzer-service.yaml
 
 <img src="images/deploy_analyzer_6.png"/> <br>
 
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output. We recommend you to proceed with the next steps of the lab.
+
 7. >📷**Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. 
 
 <img src="images/deploy_analyzer_7a.png"/> <br>
@@ -536,6 +566,7 @@ oc apply -f analyzer-service.yaml
 Return to the guestbook in the browser, refresh the page, and submit a new entry.
 
 8. You should see your entry appear along with a tone analysis.
+
 >📷**Kindly take the screenshot of the entries to the guestbook and have their tone analyzed.**
 
 <img src="images/deploy_analyzer_8.png"/> <br>
@@ -623,11 +654,14 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
+> **Note:** Please delete your project from Openshift Console & SN labs environment before signing out to ensure that further labs requiring the use of OpenShift console run correctly. To do the same, click on this<a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a>
+
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-04-12 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-04-13 | 1.2 | K Sundararajan | Updated Lab instructions |
+| 2022-04-14 | 1.3 | K Sundararajan | Updated Lab instructions |
 |   |   |   |   |
 
 
