@@ -9,21 +9,21 @@ In this lab, you will:
 - Delete your existing project from OpenShift console.
 - Delete your existing project from SN labs.
 
-> **For OpenShift project deletion:**
+**For OpenShift project deletion:**
 
->> 1. Go to the `Project` tab on the OpenShift console. Click on `Actions` & select `Delete Project`.
+1. Go to the `Project` tab on the OpenShift console. Click on `Actions` & select `Delete Project`.
 
->> <img src="images/app_console_11a.png" /> <br>
+<img src="images/app_console_11a.png" /> <br>
 
->> 2. Type your project name to confirm deletion as below.
+2. Type your project name to confirm deletion as below.
 
->> <img src="images/app_console_11b.png" /> <br>
+<img src="images/app_console_11b.png" /> <br>
 
-> **For SN labs project deletion:**
+**For SN labs project deletion:**
 
->> 1. Go to the Explorer view on SN labs and right click on the project name & select `Delete`.
+1. Go to the Explorer view on SN labs and right click on the project name & select `Delete`.
 
->> <img src="images/app_console_11c.png" /> <br>
+<img src="images/app_console_11c.png" /> <br>
 
 
 ## Changelog
