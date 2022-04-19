@@ -120,7 +120,6 @@ kubectl proxy
 {: codeblock}
 
 This command will continue running until it exits. Keep it running so that you can continue to access your app.
-
 <img src="images/step_3.6.png"><br/>
 
 7. Go back to your original terminal window, ping the application to get a response.
@@ -226,7 +225,6 @@ kubectl rollout status deployment/hello-world
 {: codeblock}
 
 You should see an output like this, indicating that the rollout succeeded:
-
 <img src="images/step_5.5.png"><br/>
 
 6. You can also get the Deployment with the `wide` option to see that the new tag is used for the image.
@@ -236,7 +234,6 @@ kubectl get deployments -o wide
 {: codeblock}
 
 Look for the `IMAGES` column and ensure that the tag is `2`.
-
 <img src="images/step_5.6.png"><br/>
 
 7. Ping your application to ensure that the new welcome message is displayed.
@@ -270,7 +267,6 @@ kubectl get deployments -o wide
 {: codeblock}
 
 Look for the `IMAGES` column and ensure that the tag is `1`.
-
 <img src="images/step_5.10.png"><br/>
 
 11. Ping your application to ensure that the earlier '**Hello World..Your app is up & running!**' message is displayed.
@@ -322,7 +318,6 @@ res.send(process.env.MESSAGE + '\n')
 {: codeblock}
 
 Make sure to save the file when you're done. This change indicates that requests to the app will return the environment variable `MESSAGE`.
-
 <img src="images/step_6.4.png"><br/>
 
 5. Build and push a new image that contains your new application code.
@@ -332,9 +327,9 @@ docker build -t us.icr.io/$MY_NAMESPACE/hello-world:3 . && docker push us.icr.io
 {: codeblock}
 
 The `deployment-configmap-env-var.yaml` file is already configured to use the tag `3`.
-
 <img src="images/step_6.5.png"><br/>
 
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
 6. Apply the new Deployment configuration.
 ```
@@ -353,7 +348,6 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 {: codeblock}
 
 If you see the message, "This message came from a ConfigMap!", then great job!
-
 <img src="images/step_6.7.png"><br/>
 
 > **NOTE:** If your previous session is still persisting, you might see the below output. If so, we would recommend you to move to the further steps of the lab.
