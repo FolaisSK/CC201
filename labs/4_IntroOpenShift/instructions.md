@@ -146,6 +146,8 @@ Let's try some specific steps:
 
 <img src="images/week4_Step5.2.png" /> <br>
 
+> **Note:** Please wait for status of the pod to change to 'Running' and for the Build to complete.
+
 
 2. Click **View logs** on the line that says **Build #1**.
 
@@ -195,5 +197,6 @@ Congratulations! You have completed the lab for the fourth module of this course
 | 2022-04-08 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
 | 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
+| 2022-04-19 | 1.4     | K Sundararajan | Updated Lab instructions          |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

@@ -114,7 +114,7 @@ ibmcloud cr images
 
 <img src="images/build_guestbook_6.png"/> <br>
 
-> **Note:** If you see the status of the image as **'Scanning'**, please re-run the above command till the status gradually changes to **'No Issues'**.
+> **Note:** If you see the status of the image as **'Scanning'**, please wait for 10 minutes & re-run the above command till the status gradually changes to **'No Issues'**. Even if status shows as **'1 issue'**, you can still proceed with lab.
 
 # Deploy guestbook app from the OpenShift internal registry
 As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
@@ -662,7 +662,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-04-12 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-04-13 | 1.2 | K Sundararajan | Updated Lab instructions |
 | 2022-04-14 | 1.3 | K Sundararajan | Updated Lab instructions |
-|   |   |   |   |
+| 2022-04-19 | 1.4 | K Sundararajan | Updated Lab instructions |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

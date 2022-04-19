@@ -329,7 +329,6 @@ docker build -t us.icr.io/$MY_NAMESPACE/hello-world:3 . && docker push us.icr.io
 The `deployment-configmap-env-var.yaml` file is already configured to use the tag `3`.
 <img src="images/step_6.5.png"><br/>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
 6. Apply the new Deployment configuration.
 ```
@@ -412,6 +411,7 @@ Congratulations! You have completed the lab for the third module of this course.
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions          |
 | 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
 | 2022-04-18 | 1.4     | K Sundararajan | Updated Lab instructions          |
+| 2022-04-19 | 1.5     | K Sundararajan | Updated Lab instructions          |
 |            |         |                |                                   |
 
 ## <h3 align="center"> Â© IBM Corporation 2022. All rights reserved. <h3/>

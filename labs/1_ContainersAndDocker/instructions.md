@@ -302,6 +302,8 @@ docker push us.icr.io/$MY_NAMESPACE/hello-world:1
 
 <img src="images/push_img_7.png"> <br>
 
+> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We recommend you to proceed with the next steps of the lab.
+
 8. Verify that the image was successfully pushed by listing images in Container Registry.
 ```
 ibmcloud cr images
@@ -322,10 +324,14 @@ You should see your image name in the output. Recall from the module videos that
 
 Congratulations! You have completed the second lab for the first module of this course.
 
+> **Note:** Please delete your project from SN labs environment before signing out to ensure that further labs run correctly. To do the same, click on this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a>
+
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
+| 2022-04-19 | 1.2 | K Sundararajan | Updated Lab instructions |
+
 |   |   |   |   |
 
 
