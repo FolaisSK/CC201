@@ -84,5 +84,4 @@ Congratulations! You have completed the first lab for the first module of this c
 |------|--------|--------|---------|
 | 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
 
-
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
