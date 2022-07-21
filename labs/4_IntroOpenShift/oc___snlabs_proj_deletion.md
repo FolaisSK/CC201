@@ -10,7 +10,7 @@ In this lab, you will:
 - Delete your existing project from SN labs.
 
 **For OpenShift project deletion:**
->> **Note: This is only for labs in weeks 4 & 5. For weeks 1-3, this can be skipped & only SN labs project deletion needs to be done.**
+>> **Note: This is only for the lab in week 4. For weeks 1-3 and 5, this can be skipped & only SN labs project deletion needs to be done.**
 
 1. Go to the `Project` tab on the OpenShift console. Click on `Actions` & select `Delete Project`.
 
