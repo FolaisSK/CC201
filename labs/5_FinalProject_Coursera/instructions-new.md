@@ -40,7 +40,7 @@ cd /home/project
 ```
 {: codeblock}
 
-<img src="images/env_cmd_3.png"/> <br>
+<img src="images/new-repo-clone.jpg"/> <br>
 
 4. Change to the directory for this lab.
 ```
