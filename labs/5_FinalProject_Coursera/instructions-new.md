@@ -54,7 +54,6 @@ ls
 ```
 {: codeblock}
 
-<img src="images/env_cmd_5.png"/> <br>
 
 # Build the guestbook app
 To begin, we will build and deploy the web front end for the guestbook app.
