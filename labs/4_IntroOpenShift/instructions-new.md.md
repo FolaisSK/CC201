@@ -10,6 +10,7 @@ In this lab, you will:
 - Use the OpenShift web console
 - Build and deploy an application using s2i ('Source-to-image' build strategy)
 - Inspect a BuildConfig and an ImageStream
+- Autoscale the application
 
 > **Note:** Kindly click on the OpenShift console tab and check if you have any existing project. If yes, then follow this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a> to delete the same first to avoid any issues with the lab. Otherwise, you are all set to perform the lab.
 
@@ -184,7 +185,7 @@ Let's try some specific steps:
 <img src="images/week4_Step5.10.png" /> <br>
 
 
-# Autoscaling using Openshift
+# Autoscaling the `nodejs-ex-git` application
 
 Now that the `nodejs-ex-git` app is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way. Make sure to keep the `nodejs-ex-git` app open in a browser tab so that it continues to make requests and consume resources so that it can be successfully autoscaled.
 
