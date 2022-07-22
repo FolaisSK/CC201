@@ -235,19 +235,19 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: guestbook-hpa
+  name: nodejs-ex-git-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: guestbook
+    name: nodejs-ex-git
   minReplicas: 1
   maxReplicas: 3
   metrics:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: 1
+        targetAverageUtilization: 10
 ```
 {: codeblock}
 
