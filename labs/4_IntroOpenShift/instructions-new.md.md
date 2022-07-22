@@ -195,7 +195,7 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 
 1. From the Topology view, click the `nodejs-ex-git` Deployment. Then click Actions > Edit Deployment.
 
-<img src="images/" /> <br>
+<img src="images/deployment-on_oc_console.png" /> <br>
 
 2. In the template.spec.containers section, find resources: {}. Replace that with the following text. Make sure the spacing is correct as YAML uses strict indentation.
 
@@ -210,28 +210,27 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 ```
 {: codeblock}
 
-
-<img src="images/" /> <br>
+<img src="images/update-yaml-1.png" /> <br>
 
 3. Click Save.
 
-<img src="images/" /> <br>
+<img src="images/save-yaml-1.png" /> <br>
 
 4. Click Reload.
 
-<img src="images/" /> <br>
+<img src="images/reload-yaml-1.png" /> <br>
 
 5. Switch to the Administrator perspective.
 
-<img src="images/" /> <br>
+<img src="images/switch-to-admin.png" /> <br>
 
 6. Select Workloads > Horizontal Pod Autoscalers
 
-<img src="images/" /> <br>
+<img src="images/workloads---hpa.png" /> <br>
 
 7. Click Create Horizontal Pod Autoscaler
 
-<img src="images/" /> <br>
+<img src="images/create-hpa.png" /> <br>
 
 8. Paste the following YAML into the editor
 
@@ -255,32 +254,36 @@ spec:
 ```
 {: codeblock}
 
-<img src="images/" /> <br>
+<img src="images/update-yaml-hpa.png" /> <br>
 
 ## This HPA indicates that we're going to scale based on CPU usage. Generally you want to scale when your CPU utilization is in the 50-90% range. For this example, we're going to use 1% so that the app is more likely to need scaling. The minReplicas and maxReplicas fields indicate that the Deployment should have between one and three replicas at any given time depending on load.
 
 
 8. Click Create
 
-<img src="images/" /> <br>
+<img src="images/create-yaml-hpa.png" /> <br>
 
 
-9. Run the below command on the terminal in Theia to spam the application so as to increase its load:
+9. Run the below command on the terminal in Theia to increase the load on the `nodejs-ex-git` and view the Autoscaling:
 
 ```
 for i in `seq 1000`; do curl -L <your app URL>; done
 ```
 > **Note:** Replace `<your app URL>` with the URL that you obtained in Step 9 of the previous section.
 
-<img src="images/" /> <br>
+<img src="images/curl--load_generation.png" /> <br>
+
+The command will keep giving an output as below indicating successful load generation:
+
+<img src="images/load_generation_output.png" /> <br>
 
 10. Click on `nodejs-ex-git` under `Scale Target`.
 
-<img src="images/" /> <br>
+<img src="images/scale-target.png" /> <br>
 
 11. If you wait, you'll see both Current Replicas and Desired Replicas become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the Last Scale Time as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up.
 
-<img src="images/" /> <br>
+<img src="images/autoscaling-completed.png" /> <br>
 
 Wow! OpenShift did some pretty incredible work on your behalf. All it needed was a code repository and it was able to build the code into a container image, push that image to a registry, create a Deployment that references that image, and also expose the application to the internet with a hostname.
 
