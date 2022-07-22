@@ -179,13 +179,95 @@ Let's try some specific steps:
 
 9. Return to the Topology view and click on your Deployment info. Click the Route that OpenShift automatically created for you. This will open the application in the browser.
 
+> **Note:** Please note down this URL as it will be used in the next section
+
 <img src="images/week4_Step5.10.png" /> <br>
 
 
 # Autoscaling using Openshift
 
-1. 
+Now that the `nodejs-ex-git` app is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way. Make sure to keep the `nodejs-ex-git` app open in a browser tab so that it continues to make requests and consume resources so that it can be successfully autoscaled.
 
+First, we need to set resource requests and limits for the containers that will run. If a container requests a resource like CPU or memory, Kubernetes will only schedule it on a node that can give it that resource. On the other hand, limits prevent a container from consuming more than a certain amount of a resource.
+
+In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll limit the containers to 30 millicores and 100 MB. These numbers are contrived in order to ensure that the app scales.
+
+
+1. From the Topology view, click the `nodejs-ex-git` Deployment. Then click Actions > Edit Deployment.
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+2. In the template.spec.containers section, find resources: {}. Replace that with the following text. Make sure the spacing is correct as YAML uses strict indentation.
+
+```
+resources:
+            limits:
+              cpu: 30m
+              memory: 100Mi
+            requests:
+              cpu: 3m
+              memory: 40Mi
+```
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+3. Click Save.
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+4. Switch to the Administrator perspective.
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+5. Select Workloads > Horizontal Pod Autoscalers
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+6. Click Create Horizontal Pod Autoscaler
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+7. Paste the following YAML into the editor
+
+```
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nodejs-ex-git-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nodejs-ex-git
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 10
+```
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+This HPA indicates that we're going to scale based on CPU usage. Generally you want to scale when your CPU utilization is in the 50-90% range. For this example, we're going to use 1% so that the app is more likely to need scaling. The minReplicas and maxReplicas fields indicate that the Deployment should have between one and three replicas at any given time depending on load.
+
+
+8. Click Create
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+
+9. Run the below command on the terminal in Theia to spam the application so as to increase its load:
+
+```
+for i in `seq 1000`; do curl -L <your app URL>; done
+```
+> **Note:** Replace `<your app URL>` with the URL that you obtained in Step 9 of the previous section.
+
+<img src="images/week4_Step5.10.png" /> <br>
+
+10. If you wait, you'll see both Current Replicas and Desired Replicas become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the Last Scale Time as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up.
 
 
 Wow! OpenShift did some pretty incredible work on your behalf. All it needed was a code repository and it was able to build the code into a container image, push that image to a registry, create a Deployment that references that image, and also expose the application to the internet with a hostname.
@@ -201,9 +283,7 @@ Congratulations! You have completed the lab for the fourth module of this course
 
 | Date       | Version | Changed by     | Change Description                |
 | ---------- | ------- | -------------- | --------------------------------- |
-| 2022-04-08 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
-| 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
-| 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
-| 2022-04-19 | 1.4     | K Sundararajan | Updated Lab instructions          |
+| 2022-07-22 | 1.0     | K Sundararajan | Created Lab instructions          |
+
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
