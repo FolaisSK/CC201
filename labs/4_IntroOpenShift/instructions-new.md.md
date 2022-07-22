@@ -200,7 +200,7 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 2. In the template.spec.containers section, find resources: {}. Replace that with the following text. Make sure the spacing is correct as YAML uses strict indentation.
 
 ```
-resources:
+          resources:
             limits:
               cpu: 30m
               memory: 100Mi
@@ -208,6 +208,8 @@ resources:
               cpu: 3m
               memory: 40Mi
 ```
+{: codeblock}
+
 
 <img src="images/week4_Step5.10.png" /> <br>
 
@@ -233,20 +235,21 @@ resources:
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: nodejs-ex-git-hpa
+  name: guestbook-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: nodejs-ex-git
+    name: guestbook
   minReplicas: 1
   maxReplicas: 3
   metrics:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: 10
+        targetAverageUtilization: 1
 ```
+{: codeblock}
 
 <img src="images/week4_Step5.10.png" /> <br>
 
