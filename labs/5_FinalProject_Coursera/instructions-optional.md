@@ -2,7 +2,7 @@
 <img src="images/labs_module_1_images_IDSNlogo.png" width = "300">
 </center>
 
-# Final Project
+# Optional Project
 
 ## Objectives
 In this lab, you will:
