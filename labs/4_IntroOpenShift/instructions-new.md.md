@@ -217,19 +217,23 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 
 <img src="images/" /> <br>
 
-4. Switch to the Administrator perspective.
+4. Click Reload.
 
 <img src="images/" /> <br>
 
-5. Select Workloads > Horizontal Pod Autoscalers
+5. Switch to the Administrator perspective.
 
 <img src="images/" /> <br>
 
-6. Click Create Horizontal Pod Autoscaler
+6. Select Workloads > Horizontal Pod Autoscalers
 
 <img src="images/" /> <br>
 
-7. Paste the following YAML into the editor
+7. Click Create Horizontal Pod Autoscaler
+
+<img src="images/" /> <br>
+
+8. Paste the following YAML into the editor
 
 ```
 apiVersion: autoscaling/v2beta1
@@ -253,7 +257,7 @@ spec:
 
 <img src="images/" /> <br>
 
-This HPA indicates that we're going to scale based on CPU usage. Generally you want to scale when your CPU utilization is in the 50-90% range. For this example, we're going to use 1% so that the app is more likely to need scaling. The minReplicas and maxReplicas fields indicate that the Deployment should have between one and three replicas at any given time depending on load.
+## This HPA indicates that we're going to scale based on CPU usage. Generally you want to scale when your CPU utilization is in the 50-90% range. For this example, we're going to use 1% so that the app is more likely to need scaling. The minReplicas and maxReplicas fields indicate that the Deployment should have between one and three replicas at any given time depending on load.
 
 
 8. Click Create
@@ -270,13 +274,16 @@ for i in `seq 1000`; do curl -L <your app URL>; done
 
 <img src="images/" /> <br>
 
-10. If you wait, you'll see both Current Replicas and Desired Replicas become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the Last Scale Time as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up.
+10. Click on `nodejs-ex-git` under `Scale Target`.
 
+<img src="images/" /> <br>
+
+11. If you wait, you'll see both Current Replicas and Desired Replicas become three. This is because the HPA detected sufficient load to trigger a scale up to the maximum number of Pods, which is three. You can also view the Last Scale Time as well as the current and target CPU utilization. The target is obviously 1% since that's what we set it to. Note that it can take a few minutes to trigger the scale up.
+
+<img src="images/" /> <br>
 
 Wow! OpenShift did some pretty incredible work on your behalf. All it needed was a code repository and it was able to build the code into a container image, push that image to a registry, create a Deployment that references that image, and also expose the application to the internet with a hostname.
 
-
-<img src="images/" /> <br>
 
 Congratulations! You have completed the lab for the fourth module of this course.
 
