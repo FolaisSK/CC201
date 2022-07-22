@@ -257,7 +257,7 @@ spec:
 
 <img src="images/update-yaml-hpa.png" /> <br>
 
-## This HPA indicates that we're going to scale based on CPU usage. Generally you want to scale when your CPU utilization is in the 50-90% range. For this example, we're going to use 1% so that the app is more likely to need scaling. The minReplicas and maxReplicas fields indicate that the Deployment should have between one and three replicas at any given time depending on load.
+This HPA indicates that we're going to scale based on CPU usage. Generally you want to scale when your CPU utilization is in the 50-90% range. For this example, we're going to use 1% so that the app is more likely to need scaling. The minReplicas and maxReplicas fields indicate that the Deployment should have between one and three replicas at any given time depending on load.
 
 
 8. Click Create
@@ -297,7 +297,11 @@ Congratulations! You have completed the lab for the fourth module of this course
 
 | Date       | Version | Changed by     | Change Description                |
 | ---------- | ------- | -------------- | --------------------------------- |
-| 2022-07-22 | 1.0     | K Sundararajan | Created Lab instructions          |
+| 2022-04-08 | 1.1     | Samaah Sarang  | Updated Lab instructions & images |
+| 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
+| 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
+| 2022-04-19 | 1.4     | K Sundararajan | Updated Lab instructions          |
+| 2022-07-22 | 1.5     | K Sundararajan | Updated Lab instructions to include HPA         |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
