@@ -9,6 +9,7 @@ In this lab, you will:
 - Scale an application with a ReplicaSet
 - Apply rolling updates to an application
 - Use a ConfigMap to store application configuration
+- Autoscale the application using Horizontal Pod Autoscaler
 
 # Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
