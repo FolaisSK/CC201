@@ -6,30 +6,32 @@
 
 
 ## Project Overview
-In this final project, you will build and deploy a simple guestbook application. You will roll out updates using Openshift image streams. You will be rolling out a multi-tier version of the guestbook application. Finally, you will create and bind a tone analyzer service instance to your application and autoscale the guestbook.
+In this final project, you will build and deploy a simple guestbook application. The application consists of a web front end which will have a text input where you can enter any text and submit. For all of these we will create Kubernetes Deployments and Pods. Then we will apply Horizontal Pod Scaling to the Guestbook application and finally work on Rolling Updates and Rollbacks.
 
 ## Review Criteria
-After completing the hands-on lab: Build and Deploy a Simple Guestbook App, you will complete the peer-graded assignment and be graded on the following nine tasks.
+After completing the hands-on lab: Build and Deploy a Simple Guestbook App, you will complete the peer-graded assignment and be graded on the following ten tasks.
 
-For each of the nine tasks, provide a screenshot and upload the JPEG (.jpg) file for your peers to review when you submit your work.  
+For each of the ten tasks, provide a screenshot and upload the JPEG (.jpg) file for your peers to review when you submit your work.  
 
-**Task 1:** Deploy a simple v1 guestbook application. (**2 points**)
+**Task 1:** Updation of the `Dockerfile`.  (**5 points**)
 
-**Task 2:** Use an in-memory data store for the simple guestbook application. (**1 point**)
+**Task 2:** The `guestbook` image pushed to container registry correctly. (**1 point**)
 
-**Task 3:** Update the simple guestbook homepage to include your name. (**1 point**)
+**Task 3:** Index page of the deployed application. (**2 points**)
 
-**Task 4:** Automatically deploy the homepage update using a second image stream tag. (**1 point**)
+**Task 4:** Horizontal Pod Autoscaler creation. (**1 point**)
 
-**Task 5:** Deploy the second version of the guestbook application using an OpenShift build. (**5 points**)
+**Task 5:** The replicas in the Horizontal Pod Autoscaler being scaled correctly. (**2 points**)
 
-**Task 6:** Deploy a Redis master, a Redis slave, and an analyzer microservice.(**3 points**)
+**Task 6:** The Docker build and push commmands for updating the `guestbook`.(**2 points**)
 
-**Task 7:** Use Redis for the v2 guestbook application instead of an in-memory datastore.  (**1 point**)
+**Task 7:** Deployment configuration. (**1 point**)
 
-**Task 8:** Submit entries to the guestbook and have their tone analyzed. Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.(**2 points**)
+**Task 8:** Updated index page of the `guestbook` application after the Rolling Update. (**2 points**)
 
-**Task 9:** Create a Horizontal Pod Autoscaler that shows guestbook as the scale target, the current and desired replicas as three, and the last scale time as the time the deployment was scaled up to three replicas (**4 points**)
+**Task 9:** The revision history for the deployment after the Rolling Update. (**2 points**)
+
+**Task 10:** The udpated deployment after Rollback of the update. (**2 points**)
 
 ## Next Steps
 Be sure to take screenshots as per review criteria as you follow the step-by-step instructions.
@@ -42,8 +44,8 @@ Lavanya
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2021-05-01 | 0.1 | Lavanya | Initial version created |
-|   |   |   |   |
-|   |   |   |   |
+| 2021-07-25 | 0.2 | K Sundararajan | Updated as per the new project |
+
 
 
 ## <h3 align="center"> © IBM Corporation 2020. All rights reserved. <h3/>
