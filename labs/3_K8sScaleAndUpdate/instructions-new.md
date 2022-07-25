@@ -381,64 +381,106 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 
 # Autoscale the `hello-world` application using Horizontal Pod Autoscaler
 
-1. Autoscale the `hello-world` deployment using the below command:
+1. Please add the following section to the `deployment.yaml` file under the `template.spec.containers` section for increasing the CPU resource utilization
+
+```
+          name: http
+        resources:
+          limits:
+            cpu: 50m
+          requests:
+            cpu: 20m
+```
+The updated file will be as below:
+
+<img src="images/"><br/>
+
+2. Apply the deployment:
+
+```
+kubectl apply -f deployment.yaml
+```
+
+<img src="images/"><br/>
+
+3. Autoscale the `hello-world` deployment using the below command:
 
 ```
 kubectl autoscale deployment hello-world --cpu-percent=5 --min=1 --max=10
 ```
 
-2. You can check the current status of the newly-made HorizontalPodAutoscaler, by running:
+<img src="images/"><br/>
+
+
+4. You can check the current status of the newly-made HorizontalPodAutoscaler, by running:
 
 ```
 kubectl get hpa hello-world
 ```
 
-3. Open another new terminal and enter the below command to start a Kubernetes proxy:
+<img src="images/"><br/>
+
+5. Please ensure that the kubernetes proxy is still running in the 2nd terminal. If it is not, please start it again by running:
 
 ```
 kubectl proxy
 ```
 
+6. Open another new terminal and enter the below command to spam the app with multiple requests for increasing the load:
+
+```
+for i in `seq 100000`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy; done
+```
+<img src="images/"><br/>
+
 > Note: Continue further commands in the 1st terminal
 
-4. Run the below command to observe the replicas increase in accordance with the autoscaling:
+7. Run the below command to observe the number of replicas at the start:
+
+```
+kubectl get hpa hello-world
+```
+<img src="images/"><br/>
+
+8. Run the below command to observe the replicas increase in accordance with the autoscaling:
 
 ```
 kubectl get hpa hello-world --watch
 ```
 
-5. Run the above command again after 5-10 minutes and you will see an increase in the number of replicas which shows that your application has been autoscaled.
+<img src="images/"><br/>
 
-6. Run the below command to observe the details of the horizontal pod autoscaler:
+You will see an increase in the number of replicas which shows that your application has been autoscaled.
+
+Stop this command by pressing `CTRL + C`.
+
+9. Run the below command to observe the details of the horizontal pod autoscaler:
 
 ```
 kubectl get hpa hello-world
 ```
+<img src="images/"><br/>
 
-7. Delete the Deployment.
+You will notice that the number of replicas has increased now.
+
+10. Stop the proxy and the load generation commands running in the other 2 terminal by pressing `CTRL + C`.
+
+11. Delete the Deployment.
 ```
-kubectl delete -f deployment-configmap-env-var.yaml
+kubectl delete deployment hello-world
 ```
-{: codeblock}
+<img src="images/"><br/>
 
-<img src="images/step_6.11.png"><br/>
-
-8. Delete the Service.
+12. Delete the Service.
 ```
 kubectl delete service hello-world
 ```
-{: codeblock}
-
-<img src="images/step_6.12.png"><br/>
-
-9. Return to the other terminal window that is running the `proxy` command and kill it using `Ctrl+C`.
-<img src="images/step_6.13.png"><br/>
+<img src="images/"><br/>
 
 
 Congratulations! You have completed the lab for the third module of this course.
 
-> **Note:** Please delete your project from SN labs environment before signing out to ensure that further labs run correctly. To do the same, click on this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a>
-
+> **Note:** Please delete your project from SN labs environment before signing out to ensure that further labs run correctly without issues. To do the same, click on this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a>
 
 
 ## Changelog
