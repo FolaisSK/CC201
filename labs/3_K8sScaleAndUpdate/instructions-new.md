@@ -433,7 +433,7 @@ for i in `seq 100000`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USER
 ```
 <img src="images/curl-proxy cmd for autoscaling.png"><br/>
 
-> Note: Continue further commands in the 1st terminal
+**Continue further commands in the 1st terminal**
 
 7. Run the below command to observe the replicas increase in accordance with the autoscaling:
 
@@ -456,15 +456,15 @@ kubectl get hpa hello-world
 
 You will notice that the number of replicas has increased now.
 
-10. Stop the proxy and the load generation commands running in the other 2 terminal by pressing `CTRL + C`.
+9. Stop the proxy and the load generation commands running in the other 2 terminal by pressing `CTRL + C`.
 
-11. Delete the Deployment.
+10. Delete the Deployment.
 ```
 kubectl delete deployment hello-world
 ```
 <img src="images/delete_deployment.png"><br/>
 
-12. Delete the Service.
+11. Delete the Service.
 ```
 kubectl delete service hello-world
 ```
