@@ -397,6 +397,42 @@ kubectl delete service hello-world
 13. Return to the other terminal window that is running the `proxy` command and kill it using `Ctrl+C`.
 <img src="images/step_6.13.png"><br/>
 
+# Autoscale the `hello-world` application using Horizontal Pod Autoscaler
+
+1. Autoscale the `hello-world` deployment using the below command:
+
+```
+kubectl autoscale deployment hello-world --cpu-percent=5 --min=1 --max=10
+```
+
+2. You can check the current status of the newly-made HorizontalPodAutoscaler, by running:
+
+```
+kubectl get hpa hello-world
+```
+
+3. Open another new terminal and enter the below command to start a Kubernetes proxy:
+
+```
+kubectl proxy
+```
+
+> Note: Continue further commands in the 1st terminal
+
+4. Run the below command to observe the replicas increase in accordance with the autoscaling:
+
+```
+kubectl get hpa hello-world --watch
+```
+
+5. Run the above command again after 5-10 minutes and you will see an increase in the number of replicas which shows that your application has been autoscaled.
+
+6. Run the below command to observe the details of the horizontal pod autoscaler:
+
+```
+kubectl get hpa hello-world
+```
+
 Congratulations! You have completed the lab for the third module of this course.
 
 > **Note:** Please delete your project from SN labs environment before signing out to ensure that further labs run correctly. To do the same, click on this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a>
@@ -412,6 +448,7 @@ Congratulations! You have completed the lab for the third module of this course.
 | 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
 | 2022-04-18 | 1.4     | K Sundararajan | Updated Lab instructions          |
 | 2022-04-19 | 1.5     | K Sundararajan | Updated Lab instructions          |
-|            |         |                |                                   |
+| 2022-07-25 | 1.6     | K Sundararajan | Updated Lab instructionsto include HPA uisng kubectl|
+
 
 ## <h3 align="center"> Â© IBM Corporation 2022. All rights reserved. <h3/>
