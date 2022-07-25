@@ -393,7 +393,7 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 ```
 The updated file will be as below:
 
-<img src="images/"><br/>
+<img src="images/cpu_addn--deployment.yaml.png"><br/>
 
 2. Apply the deployment:
 
@@ -401,7 +401,7 @@ The updated file will be as below:
 kubectl apply -f deployment.yaml
 ```
 
-<img src="images/"><br/>
+<img src="images/apply_deployment.png"><br/>
 
 3. Autoscale the `hello-world` deployment using the below command:
 
@@ -409,7 +409,7 @@ kubectl apply -f deployment.yaml
 kubectl autoscale deployment hello-world --cpu-percent=5 --min=1 --max=10
 ```
 
-<img src="images/"><br/>
+<img src="images/autoscale command.png"><br/>
 
 
 4. You can check the current status of the newly-made HorizontalPodAutoscaler, by running:
@@ -418,7 +418,7 @@ kubectl autoscale deployment hello-world --cpu-percent=5 --min=1 --max=10
 kubectl get hpa hello-world
 ```
 
-<img src="images/"><br/>
+<img src="images/get-hpa-initial.png"><br/>
 
 5. Please ensure that the kubernetes proxy is still running in the 2nd terminal. If it is not, please start it again by running:
 
@@ -431,35 +431,28 @@ kubectl proxy
 ```
 for i in `seq 100000`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy; done
 ```
-<img src="images/"><br/>
+<img src="images/curl-proxy cmd for autoscaling.png"><br/>
 
 > Note: Continue further commands in the 1st terminal
 
-7. Run the below command to observe the number of replicas at the start:
-
-```
-kubectl get hpa hello-world
-```
-<img src="images/"><br/>
-
-8. Run the below command to observe the replicas increase in accordance with the autoscaling:
+7. Run the below command to observe the replicas increase in accordance with the autoscaling:
 
 ```
 kubectl get hpa hello-world --watch
 ```
 
-<img src="images/"><br/>
+<img src="images/get hpa --watch.png"><br/>
 
 You will see an increase in the number of replicas which shows that your application has been autoscaled.
 
 Stop this command by pressing `CTRL + C`.
 
-9. Run the below command to observe the details of the horizontal pod autoscaler:
+8. Run the below command to observe the details of the horizontal pod autoscaler:
 
 ```
 kubectl get hpa hello-world
 ```
-<img src="images/"><br/>
+<img src="images/get-hpa-after_autoscale.png"><br/>
 
 You will notice that the number of replicas has increased now.
 
@@ -469,13 +462,13 @@ You will notice that the number of replicas has increased now.
 ```
 kubectl delete deployment hello-world
 ```
-<img src="images/"><br/>
+<img src="images/delete_deployment.png"><br/>
 
 12. Delete the Service.
 ```
 kubectl delete service hello-world
 ```
-<img src="images/"><br/>
+<img src="images/delete_service.png"><br/>
 
 
 Congratulations! You have completed the lab for the third module of this course.
