@@ -379,25 +379,6 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 
 <img src="images/step_6.10.png"><br/>
 
-11. Delete the Deployment.
-```
-kubectl delete -f deployment-configmap-env-var.yaml
-```
-{: codeblock}
-
-<img src="images/step_6.11.png"><br/>
-
-12. Delete the Service.
-```
-kubectl delete service hello-world
-```
-{: codeblock}
-
-<img src="images/step_6.12.png"><br/>
-
-13. Return to the other terminal window that is running the `proxy` command and kill it using `Ctrl+C`.
-<img src="images/step_6.13.png"><br/>
-
 # Autoscale the `hello-world` application using Horizontal Pod Autoscaler
 
 1. Autoscale the `hello-world` deployment using the below command:
@@ -433,6 +414,26 @@ kubectl get hpa hello-world --watch
 ```
 kubectl get hpa hello-world
 ```
+
+7. Delete the Deployment.
+```
+kubectl delete -f deployment-configmap-env-var.yaml
+```
+{: codeblock}
+
+<img src="images/step_6.11.png"><br/>
+
+8. Delete the Service.
+```
+kubectl delete service hello-world
+```
+{: codeblock}
+
+<img src="images/step_6.12.png"><br/>
+
+9. Return to the other terminal window that is running the `proxy` command and kill it using `Ctrl+C`.
+<img src="images/step_6.13.png"><br/>
+
 
 Congratulations! You have completed the lab for the third module of this course.
 
