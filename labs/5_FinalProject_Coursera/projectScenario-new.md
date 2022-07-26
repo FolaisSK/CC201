@@ -15,9 +15,9 @@ For each of the ten tasks, provide a screenshot and upload the JPEG (.jpg) file 
 
 **Task 1:** Updation of the `Dockerfile`.  (**5 points**)
 
-**Task 2:** The `guestbook` image pushed to container registry correctly. (**1 point**)
+**Task 2:** The `guestbook` image being pushed to IBM Cloud Container Registry correctly. (**1 point**)
 
-**Task 3:** Index page of the deployed application. (**2 points**)
+**Task 3:** Index page of the deployed `Guestbook – v1` application. (**2 points**)
 
 **Task 4:** Horizontal Pod Autoscaler creation. (**1 point**)
 
@@ -25,11 +25,11 @@ For each of the ten tasks, provide a screenshot and upload the JPEG (.jpg) file 
 
 **Task 6:** The Docker build and push commmands for updating the `guestbook`.(**2 points**)
 
-**Task 7:** Deployment configuration. (**1 point**)
+**Task 7:** Deployment configuration for autoscaling. (**1 point**)
 
-**Task 8:** Updated index page of the `guestbook` application after the Rolling Update. (**2 points**)
+**Task 8:** Updated index page of the deployed `Guestbook – v2` application after rollout of the deployment. (**2 points**)
 
-**Task 9:** The revision history for the deployment after the Rolling Update. (**2 points**)
+**Task 9:** The revision history for the deployment after rollout of the deployment. (**2 points**)
 
 **Task 10:** The udpated deployment after Rollback of the update. (**2 points**)
 
@@ -44,8 +44,7 @@ Lavanya
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2021-05-01 | 0.1 | Lavanya | Initial version created |
-| 2021-07-25 | 0.2 | K Sundararajan | Updated as per the new project |
-
+| 2021-07-26 | 0.2 | K Sundararajan | Updated as per the new Final Project |
 
 
 ## <h3 align="center"> © IBM Corporation 2020. All rights reserved. <h3/>
