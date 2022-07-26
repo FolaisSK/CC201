@@ -35,12 +35,11 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab.
 ```
-[ ! -d 'CC201' ] && git clone https://github.com/Sklup55/guestbook.git
-
+[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
 ```
 {: codeblock}
 
-<img src="images/new-repo-clone.jpg"/> <br>
+<img src="images/env_cmd_3.png"/> <br>
 
 4. Change to the directory for this lab.
 ```
@@ -202,6 +201,8 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 <img src="images/guestbook-app-url.jpg"/> <br>
 
 >📷 Take a screenshot of your deployed application and save it as a .jpg or .png with the filename `app.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+
+12. Try out the guestbook by putting in a few entries. You should see them appear above the input box after you hit **Submit**.
 
 # Autoscale the Guestbook application using Horizontal Pod Autoscaler
 
@@ -404,6 +405,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-07-21 | 1.0 | K Sundararajan | Created Lab instructions |
+| 2022-07-25 | 1.1 | K Sundararajan | Updated Lab instructions |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
