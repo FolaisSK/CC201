@@ -3,7 +3,7 @@
 <div align="center"><b>Introduction to Containers, Kubernetes, and OpenShift</b>
 </div>
 
-<div align="center">Module 1 Glossary: Understanding the Benefits of Containers
+<div align="center">Module 4 Cheat Sheet: The Kubernetes Ecosystem
 </div>
 
 <div align="center">The oc CLI
