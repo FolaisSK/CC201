@@ -54,7 +54,7 @@ A cloud-native application is a program that is designed for a cloud computing a
 <tr>
 <td width="30%"valign="top"><b>Daemon-less</b></td>
 <td width="70%">
-A container runtime that does not any specific program (daemon) to create objects, such as images, containers, networks, and volumes.
+A container runtime that does not run any specific program (daemon) to create objects, such as images, containers, networks, and volumes.
 </td>
 </tr>
 
