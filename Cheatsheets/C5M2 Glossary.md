@@ -1,14 +1,11 @@
 <img src="images/IDSN.png" width="200">
 
 <div align="center">
-
 <b>Introduction to Containers, Kubernetes, and OpenShift</b>
 </div>
 
 <div align="center">
-
 Module 2 Glossary: Understanding Kubernetes Architecture
-
 </div>
 
 <table>
@@ -191,7 +188,7 @@ A finite or batch task that runs to completion.
 <tr>
 <td width="30%" valign="top"><b>Kubectl</b></td>
 <td width="70%">
-Also known as:kubectl Command line tool for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.
+Also known as kubectl Command line tool for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.
 </td>
 </tr>
 
