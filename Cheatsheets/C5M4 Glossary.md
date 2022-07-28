@@ -111,23 +111,19 @@ BuildConfig resource is created. </td> </tr>
 
 <tr> 
 <td width="30%"valign="top"><b>Man-in-the-middle attacks</b></td> 
-<td width="70%">A man-in-the-middle (MiTM) attack is a type of cyber-attack where the attacker secretly intercepts and relays messages between two parties who believe they are communicating directly with each other. The attack is a type of eavesdropping in which the attacker intercepts and then controls the entire conversation. 
-platform. </td> </tr> 
+<td width="70%">A man-in-the-middle (MiTM) attack is a type of cyber-attack where the attacker secretly intercepts and relays messages between two parties who believe they are communicating directly with each other. The attack is a type of eavesdropping in which the attacker intercepts and then controls the entire conversation. </td> </tr> 
 
 <tr> 
 <td width="30%"valign="top"><b>Observability</b></td> 
-<td width="70%">helps to observe the traffic flow in your mesh, trace call flows and dependencies, and view metrics such as latency and errors.
-platform. </td> </tr> 
+<td width="70%">helps to observe the traffic flow in your mesh, trace call flows and dependencies, and view metrics such as latency and errors. </td> </tr> 
 
 <tr> 
 <td width="30%"valign="top"><b>OpenShift</b></td> 
-<td width="70%"> A hybrid cloud, enterprise Kubernetes application
-platform. </td> </tr> 
+<td width="70%"> A hybrid cloud, enterprise Kubernetes application. </td> </tr> 
 
 <tr> 
 <td width="30%"valign="top"><b>OpenShift CI/CD process </b></td> 
-<td width="70%">automatically merges new code changes to the repository, builds, tests, approves, and deploys a new version to different environments. 
-platform. </td> </tr> 
+<td width="70%">automatically merges new code changes to the repository, builds, tests, approves, and deploys a new version to different environments. </td> </tr> 
 
 <tr> 
 <td width="30%"valign="top"><b>Operators</b></td> 
