@@ -1,7 +1,5 @@
 <img src="images/IDSN.png" width="200">
 
-<img src="images/IDSNlogo.png" width="100"><br>
-
 <div align="center"><b>Introduction to Containers, Kubernetes, and OpenShift</b>
 </div>
 
