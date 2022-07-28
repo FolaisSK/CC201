@@ -106,7 +106,7 @@ BuildConfig resource is created. </td> </tr>
 
 <tr> 
 <td width="30%"valign="top"><b>Istio</b></td> 
-<td width="70%">A platform-independent and used service mesh, often used with Kubernetes. It intelligently controls the flow of traffic and API calls between services, conducts a range of tests and . Istio secures services through authentication, authorization, and encryption. Istio provides control by defining policies that can be enforced across an entire fleet. With Istio, you can observe traffic flow in your mesh so you can trace call flows, dependencies, and you can view service communication metrics such as latency, traffic, errors and saturation. 
+<td width="70%">A platform-independent and popular service mesh platform, often used with Kubernetes. It intelligently controls the flow of traffic and API calls between services, conducts a range of tests and reduces the complexity of managing network services. Istio secures services through authentication, authorization, and encryption. Istio provides control by defining policies that can be enforced across an entire fleet. With Istio, you can observe traffic flow in your mesh so you can trace call flows, dependencies, and you can view service communication metrics such as latency, traffic, errors and saturation. 
 </td> </tr> 
 
 <tr> 
