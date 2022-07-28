@@ -1,13 +1,10 @@
 <img src="images/IDSN.png" width="200">
 
 <div align="center">
-
 <b>Introduction to Containers, Kubernetes, and OpenShift</b>
 </div>
 
 <div align="center">
-
-
 Module 1 Glossary: Understanding the Benefits of Containers
 </div>
 
