@@ -42,7 +42,7 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab.
 ```
-[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
+[ ! -d 'CC201' ] && git clone -b ver1 https://github.com/ibm-developer-skills-network/guestbook
 ```
 {: codeblock}
 
@@ -663,6 +663,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-04-13 | 1.2 | K Sundararajan | Updated Lab instructions |
 | 2022-04-14 | 1.3 | K Sundararajan | Updated Lab instructions |
 | 2022-04-19 | 1.4 | K Sundararajan | Updated Lab instructions |
+| 2022-08-01 | 1.5 | K Sundararajan | Updated Lab instructions |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
