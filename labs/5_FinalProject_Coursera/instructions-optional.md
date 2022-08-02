@@ -357,6 +357,6 @@ Notice that it now gives information on Redis since we're no longer using the in
 | 2022-04-14 | 1.3 | K Sundararajan | Updated Lab instructions |
 | 2022-04-19 | 1.4 | K Sundararajan | Updated Lab instructions |
 | 2022-07-25 | 1.5 | K Sundararajan | Updated Lab instructions |
-| 2022-08-02 | 1.6 | K Sundararajan | Added IDSN logo and copyright symbol |
+| 2022-08-02 | 1.6 | K Sundararajan | Added new IDSN logo |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
