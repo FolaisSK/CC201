@@ -8,11 +8,6 @@
 Cheat Sheet: Docker CLI
 </div>
 
-<div align="center">
-
-
-The Docker CLI
-</div>
 
 <table>
 <tr>
