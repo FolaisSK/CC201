@@ -1,5 +1,5 @@
 <center>
-<img src="images/labs_module_1_images_IDSNlogo.png" width = "300">
+<img src="images/IDSN-new-logo.png" width = "300">
 </center>
 
 # Introduction to Red Hat OpenShift
