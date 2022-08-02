@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-Module 2 Glossary: Understanding Kubernetes Architecture
+Glossary: Kubernetes Basics
 </div>
 
 <table>
