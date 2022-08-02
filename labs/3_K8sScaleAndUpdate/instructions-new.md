@@ -488,4 +488,4 @@ Congratulations! You have completed the lab for the third module of this course.
 | 2022-07-25 | 1.6     | K Sundararajan | Updated Lab instructionsto include HPA uisng kubectl|
 | 2022-08-02 | 1.7     | K Sundararajan | Added new IDSN logo|
 
-## <h3 align="center"> Â© IBM Corporation 2022. All rights reserved. <h3/>
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
