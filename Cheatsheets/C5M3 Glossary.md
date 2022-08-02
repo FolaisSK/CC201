@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-Module 3 Glossary: Managing Applications with Kubernetes
+Glossary: Managing Applications with Kubernetes
 </div>
 
 <table>
