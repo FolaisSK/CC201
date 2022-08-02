@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-Module 1 Cheat Sheet: Understanding the Benefits of Containers
+Cheat Sheet: Docker CLI
 </div>
 
 <div align="center">
