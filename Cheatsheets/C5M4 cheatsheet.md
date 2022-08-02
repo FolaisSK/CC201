@@ -6,8 +6,6 @@
 <div align="center"> Cheat Sheet: OpenShift CLI
 </div>
 
-<div align="center">The oc CLI
-</div>
 
 <table>
 <tr>
