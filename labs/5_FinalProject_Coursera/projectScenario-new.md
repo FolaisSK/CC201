@@ -1,4 +1,4 @@
-<img src="images/IDSNlogo.png" width="200" height="200"/>
+<img src="images/IDSN-new-logo.png" width="300"/>
 
 
 # Final Project: Scenario and Review Criteria
@@ -45,6 +45,7 @@ Lavanya
 |------|--------|--------|---------|
 | 2021-05-01 | 0.1 | Lavanya | Initial version created |
 | 2021-07-26 | 0.2 | K Sundararajan | Updated as per the new Final Project |
+| 2021-08-02 | 0.3 | K Sundararajan | Added new IDSN logo |
 
 
 ## <h3 align="center"> © IBM Corporation 2020. All rights reserved. <h3/>

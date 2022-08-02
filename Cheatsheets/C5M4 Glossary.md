@@ -3,7 +3,7 @@
 <div align="center"> 
 <b>Introduction to Containers, Kubernetes, and OpenShift</b> 
 </div> 
-<div align="center"> Module 4 Glossary: The Kubernetes Ecosystem</div>
+<div align="center"> Glossary: OpenShift Basics </div>
 <table> 
 <tr> 
 <th width="30%">Term</th width="70%"><th>Definition</th> 
@@ -203,3 +203,5 @@ source code into a container image to produce a ready-to-run image. </td> </tr>
 <td width="70%"> A trigger that sends a request to an OpenShift Container Platform API endpoint. Often this will be a GitHub webhook, though it can also be a generic webhook. If a GitHub webhook is utilized, GitHub can send the request to OpenShift when there is a new commit on a certain branch, or a pull request is merged, or under many more circumstances. Webhooks are a great way to automate development flows so that builds can occur automatically as new code is developed.
 </td> </tr>
 </table>
+
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

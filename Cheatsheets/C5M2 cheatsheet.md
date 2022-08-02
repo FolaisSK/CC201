@@ -3,10 +3,7 @@
 <div align="center"><b>Introduction to Containers, Kubernetes, and OpenShift</b>
 </div>
 
-<div align="center">Module 2 Cheat Sheet: Understanding Kubernetes Architecture
-</div>
-
-<div align="center">The kubectl CLI
+<div align="center"> Cheat Sheet: Understanding Kubernetes Architecture
 </div>
 
 <table>
@@ -120,5 +117,4 @@
 </table>
 
 
-
-
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

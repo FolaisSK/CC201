@@ -414,4 +414,4 @@ Congratulations! You have completed the lab for the third module of this course.
 | 2022-04-19 | 1.5     | K Sundararajan | Updated Lab instructions          |
 |            |         |                |                                   |
 
-## <h3 align="center"> Â© IBM Corporation 2022. All rights reserved. <h3/>
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

@@ -5,14 +5,9 @@
 </div>
 
 <div align="center">
-Module 1 Cheat Sheet: Understanding the Benefits of Containers
+Cheat Sheet: Docker CLI
 </div>
 
-<div align="center">
-
-
-The Docker CLI
-</div>
 
 <table>
 <tr>
@@ -199,5 +194,4 @@ Lists the contents of this directory to see the artifacts.
 </table>
 
 
-
-
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

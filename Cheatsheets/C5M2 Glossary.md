@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-Module 2 Glossary: Understanding Kubernetes Architecture
+Glossary: Kubernetes Basics
 </div>
 
 <table>
@@ -398,5 +398,4 @@ A workload is an application running on Kubernetes.
 </table>
 
 
-
-
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-Module 3 Glossary: Managing Applications with Kubernetes
+Glossary: Managing Applications with Kubernetes
 </div>
 
 <table>
@@ -98,5 +98,4 @@ Module 3 Glossary: Managing Applications with Kubernetes
 </table>
 
 
-
-
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
