@@ -6,9 +6,6 @@
 <div align="center"> Cheat Sheet: Understanding Kubernetes Architecture
 </div>
 
-<div align="center">The kubectl CLI
-</div>
-
 <table>
 <tr>
 <th width="30%">Command</th width="70%"><th>Description</th>
