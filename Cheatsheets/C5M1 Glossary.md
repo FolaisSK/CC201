@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-Module 1 Glossary: Understanding the Benefits of Containers
+Glossary: Container Basics
 </div>
 
 <table>
@@ -248,5 +248,4 @@ A tag is a label applied to a Docker image in a repository. Tags are how various
 </table>
 
 
-
-
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
