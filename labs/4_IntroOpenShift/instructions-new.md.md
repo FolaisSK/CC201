@@ -301,7 +301,8 @@ Congratulations! You have completed the lab for the fourth module of this course
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
 | 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
 | 2022-04-19 | 1.4     | K Sundararajan | Updated Lab instructions          |
-| 2022-07-22 | 1.5     | K Sundararajan | Updated Lab instructions to include HPA         |
+| 2022-07-22 | 1.5     | K Sundararajan | Updated Lab instructions to include HPA |
+| 2022-08-02 | 1.6     | K Sundararajan | Added new IDSN logo |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
