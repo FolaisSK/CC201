@@ -3,7 +3,7 @@
 <div align="center"><b>Introduction to Containers, Kubernetes, and OpenShift</b>
 </div>
 
-<div align="center">Module 4 Cheat Sheet: The Kubernetes Ecosystem
+<div align="center"> Cheat Sheet: OpenShift CLI
 </div>
 
 <div align="center">The oc CLI
@@ -36,6 +36,4 @@
 
 </table>
 
-
-
-
+## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
