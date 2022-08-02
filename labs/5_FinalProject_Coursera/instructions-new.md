@@ -406,7 +406,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 |------|--------|--------|---------|
 | 2022-07-21 | 1.0 | K Sundararajan | Created Lab instructions |
 | 2022-07-25 | 1.1 | K Sundararajan | Updated Lab instructions |
-| 2022-08-02 | 1.2 | K Sundararajan | Added new IDSN logo and copyright symbol |
+| 2022-08-02 | 1.2 | K Sundararajan | Added new IDSN logo |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
