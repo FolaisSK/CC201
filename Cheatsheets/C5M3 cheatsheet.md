@@ -3,8 +3,8 @@
 <div align="center"><b>Introduction to Containers, Kubernetes, and OpenShift</b>
 </div>
 
-<div align="center">Module 3 Cheat Sheet:
-Managing Applications with Kubernetes
+<div align="center">
+Cheat Sheet: Managing Applications with Kubernetes
 </div>
 
 </div>
