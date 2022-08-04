@@ -77,7 +77,7 @@ The EXPOSE instruction exposes a particular port with a specified protocol insid
 The CMD instruction provides a default for executing a container, or in other words, an executable that should run in your container.<br>
 </details>
 
->📷 Take a screenshot of your completed Dockerfile and save it as a .jpg or .png with the filename `Dockerfile.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+> Copy the code of your completed Dockerfile as text. You will be prompted to submit it the text box in the Peer Assignement.
 
 3. Export your namespace as an environment variable so that it can be used in subsequent commands. 
 ```
@@ -407,6 +407,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-07-21 | 1.0 | K Sundararajan | Created Lab instructions |
 | 2022-07-25 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-08-02 | 1.2 | K Sundararajan | Added new IDSN logo |
+| 2022-08-04 | 1.3 | K Sundararajan | Updated Task 1 (Dockerfile) instructions |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
