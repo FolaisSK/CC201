@@ -77,7 +77,7 @@ The EXPOSE instruction exposes a particular port with a specified protocol insid
 The CMD instruction provides a default for executing a container, or in other words, an executable that should run in your container.<br>
 </details>
 
-> Copy the code of your completed Dockerfile as text. You will be prompted to submit it in the text box in the Peer Assignment.
+> Copy the code of the completed dockerfile with you. You will be prompted to submit it in the text box in the Peer Assignment.
 
 3. Export your namespace as an environment variable so that it can be used in subsequent commands. 
 ```
