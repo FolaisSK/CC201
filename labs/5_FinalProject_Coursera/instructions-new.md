@@ -77,7 +77,7 @@ The EXPOSE instruction exposes a particular port with a specified protocol insid
 The CMD instruction provides a default for executing a container, or in other words, an executable that should run in your container.<br>
 </details>
 
-> Copy the code of your completed Dockerfile as text. You will be prompted to submit it in the text box in the Peer Assignement.
+> Copy the code of your completed Dockerfile as text. You will be prompted to submit it in the text box in the Peer Assignment.
 
 3. Export your namespace as an environment variable so that it can be used in subsequent commands. 
 ```
@@ -130,7 +130,7 @@ ibmcloud cr images
 
 > **Note:** If you see the status of the image as **'Scanning'**, please wait for 10 minutes & re-run the above command till the status gradually changes to **'No Issues'**. Even if status shows as **'1 issue'**, you can still proceed with lab.
 
->📷 Take a screenshot of the output of Step 6 and save it as a .jpg or .png with the filename `crimages.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of the output of Step 6 and save it as a .jpg or .png with the filename `crimages.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 7. Open the `deployment.yml` file in the `v1/guestbook` directory & view the code for the deployment of the application:
 
@@ -200,7 +200,7 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 
 <img src="images/guestbook-app-url.jpg"/> <br>
 
->📷 Take a screenshot of your deployed application and save it as a .jpg or .png with the filename `app.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of your deployed application and save it as a .jpg or .png with the filename `app.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 12. Try out the guestbook by putting in a few entries. You should see them appear above the input box after you hit **Submit**.
 
@@ -229,7 +229,7 @@ kubectl get hpa guestbook
 
 The current replicas is 0 as there is no load on the server.
 
->📷 Take a screenshot of your Horizontal Pod Autoscaler and save it as a .jpg or .png with the filename `hpa.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of your Horizontal Pod Autoscaler and save it as a .jpg or .png with the filename `hpa.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 
 2. Open another new terminal and enter the below command to generate load on the app to observe the autoscaling (Please ensure your port-forward command is running. In case you have stopped your application, please run the port-forward command to re-run the application at port 3000.)
@@ -265,7 +265,7 @@ kubectl get hpa guestbook --watch
 
 <img src="images/hpa-watch__increased-RS.jpg"/> <br>
 
->📷 Take a screenshot of your Autoscaler details and save it as a .jpg or .png with the filename `hpa2.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of your Autoscaler details and save it as a .jpg or .png with the filename `hpa2.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 5. Run the below command to observe the details of the horizontal pod autoscaler:
 
@@ -304,7 +304,7 @@ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/
 
 </details>
 
->📷 Take a screenshot of your updated image and save it as a .jpg or .png with the filename `upguestbook.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of your updated image and save it as a .jpg or .png with the filename `upguestbook.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 3. Update the values of the CPU in the `deployment.yml` to **cpu: 5m** and **cpu: 2m** as below:
 
@@ -327,7 +327,7 @@ kubectl apply -f deployment.yml
 
 </details>
 
->📷 Take a screenshot of the details of the output of Step 4 and save it as a .jpg or .png with the filename `deployment.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of the details of the output of Step 4 and save it as a .jpg or .png with the filename `deployment.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 5. Open a new terminal and run the port-forward command again to start the app:
 
@@ -347,7 +347,7 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 
 <img src="images/updated_guestbook--browser.png"/> <br>
 
->📷 Take a screenshot of your updated application and save it as a .jpg or .png with the filename `up-app.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of your updated application and save it as a .jpg or .png with the filename `up-app.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 > **Note:** Please stop the application before running the next steps.
 
@@ -367,7 +367,7 @@ kubectl rollout history deployments guestbook --revision=2
 
 <img src="images/rollout-history--rev2.jpg"/> <br>
 
->📷 Take a screenshot of the details of the correct Revision and save it as a .jpg or .png with the filename `rev.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of the details of the correct Revision and save it as a .jpg or .png with the filename `rev.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 7. Run the below command to get the replica sets and observe the deployment which is being used now:
 
@@ -394,7 +394,7 @@ kubectl get rs
 
 <img src="images/get replicaset--after undo rollout.png"/> <br>
 
->📷 Take a screenshot of the output of Step 9 and save it as a .jpg or .png with the filename `rs.png`. You will be prompted to upload the screenshot in the Peer Assignement.
+>📷 Take a screenshot of the output of Step 9 and save it as a .jpg or .png with the filename `rs.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
@@ -407,7 +407,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-07-21 | 1.0 | K Sundararajan | Created Lab instructions |
 | 2022-07-25 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-08-02 | 1.2 | K Sundararajan | Added new IDSN logo |
-| 2022-08-04 | 1.3 | K Sundararajan | Updated Task 1 (Dockerfile) instructions |
+| 2022-08-04 | 1.3 | K Sundararajan | Updated Lab instructions |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
