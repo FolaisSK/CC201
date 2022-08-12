@@ -35,7 +35,7 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab.
 ```
-[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
+[ ! -d 'guestbook' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
 ```
 {: codeblock}
 
