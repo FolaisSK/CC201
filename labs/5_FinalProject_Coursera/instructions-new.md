@@ -431,5 +431,4 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-08-04 | 1.3 | K Sundararajan | Updated Lab instructions |
 | 2022-08-12 | 1.4 | K Sundararajan | Updated Lab instructions |
 
-
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
