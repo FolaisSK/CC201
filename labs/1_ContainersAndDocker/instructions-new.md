@@ -129,7 +129,7 @@ Among other things, for this container you should see a container ID, the image 
 
 <img src="images/pullimg_ctr_5.png"> <br>
 
-6. Note the CONTAINER ID from the previous output and replace the **<container_id>** in the command below with this value. This command removes your container.
+6. Note the CONTAINER ID from the previous output and replace the `<container_id>` in the command below with this value. This command removes your container.
 ```
 docker container rm <container_id>
 ```
