@@ -403,6 +403,10 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
           requests:
             cpu: 20m
 ```
+{: codeblock}
+
+> **Note:** after making the changes, do not forget to save the file.
+
 The updated file will be as below:
 
 <img src="images/cpu_addn--deployment.yaml.png"><br/>
@@ -412,6 +416,7 @@ The updated file will be as below:
 ```
 kubectl apply -f deployment.yaml
 ```
+{: codeblock}
 
 <img src="images/apply_deployment.png"><br/>
 
@@ -420,6 +425,7 @@ kubectl apply -f deployment.yaml
 ```
 kubectl autoscale deployment hello-world --cpu-percent=5 --min=1 --max=10
 ```
+{: codeblock}
 
 <img src="images/autoscale command.png"><br/>
 
@@ -429,6 +435,7 @@ kubectl autoscale deployment hello-world --cpu-percent=5 --min=1 --max=10
 ```
 kubectl get hpa hello-world
 ```
+{: codeblock}
 
 <img src="images/get-hpa-initial.png"><br/>
 
@@ -437,12 +444,15 @@ kubectl get hpa hello-world
 ```
 kubectl proxy
 ```
+{: codeblock}
 
 6. Open another new terminal and enter the below command to spam the app with multiple requests for increasing the load:
 
 ```
 for i in `seq 100000`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy; done
 ```
+{: codeblock}
+
 <img src="images/curl-proxy cmd for autoscaling.png"><br/>
 
 **Continue further commands in the 1st terminal**
@@ -452,6 +462,7 @@ for i in `seq 100000`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USER
 ```
 kubectl get hpa hello-world --watch
 ```
+{: codeblock}
 
 <img src="images/get hpa --watch.png"><br/>
 
@@ -464,6 +475,8 @@ Stop this command by pressing `CTRL + C`.
 ```
 kubectl get hpa hello-world
 ```
+{: codeblock}
+
 <img src="images/get-hpa-after_autoscale.png"><br/>
 
 You will notice that the number of replicas has increased now.
@@ -474,12 +487,16 @@ You will notice that the number of replicas has increased now.
 ```
 kubectl delete deployment hello-world
 ```
+{: codeblock}
+
 <img src="images/delete_deployment.png"><br/>
 
 11. Delete the Service.
 ```
 kubectl delete service hello-world
 ```
+{: codeblock}
+
 <img src="images/delete_service.png"><br/>
 
 
