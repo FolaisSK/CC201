@@ -405,7 +405,7 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 ```
 {: codeblock}
 
-> **Note:** after making the changes, do not forget to save the file.
+> **Note:** After making the changes, do not forget to save the file.
 
 The updated file will be as below:
 
