@@ -124,7 +124,8 @@ kubectl proxy
 
 This command will continue running until it exits. Keep it running so that you can continue to access your app.
 
-7. Go back to your original terminal window, ping the application to get a response.
+7. Go back to your original terminal window, ping the application to get a response. 
+
 >> **NOTE:** Do not close the terminal window where the `proxy` command is still running.
 
 ```
@@ -132,7 +133,10 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 ```
 {: codeblock}
 
+Observe the message "Hello world from hello-world-xxxxxxxx-xxxx. Your app is up and running!
+
 <img src="images/step_3.7.png"><br/>
+
 
 # Scaling the application using a ReplicaSet
 In real-world situations, load on an application can vary over time. If our application begins experiencing heightened load, we want to scale it up to accommodate that load. There is a simple `kubectl` command for scaling.
