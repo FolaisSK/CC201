@@ -327,8 +327,9 @@ res.send(process.env.MESSAGE + '\n')
 ```
 {: codeblock}
 
-Make sure to save the file when you're done. This change indicates that requests to the app will return the environment variable `MESSAGE`.
 <img src="images/step_6.4.png"><br/>
+
+Make sure to save the file when you're done. This change indicates that requests to the app will return the environment variable `MESSAGE`.
 
 5. Build and push a new image that contains your new application code.
 ```
@@ -336,8 +337,9 @@ docker build -t us.icr.io/$MY_NAMESPACE/hello-world:3 . && docker push us.icr.io
 ```
 {: codeblock}
 
-The `deployment-configmap-env-var.yaml` file is already configured to use the tag `3`.
 <img src="images/step_6.5.png"><br/>
+
+The `deployment-configmap-env-var.yaml` file is already configured to use the tag `3`.
 
 
 6. Apply the new Deployment configuration.
@@ -356,8 +358,9 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 ```
 {: codeblock}
 
-If you see the message, "This message came from a ConfigMap!", then great job!
 <img src="images/step_6.7.png"><br/>
+
+If you see the message, "This message came from a ConfigMap!", then great job!
 
 > **NOTE:** If your previous session is still persisting, you might see the below output. If so, we would recommend you to move to the further steps of the lab.
 
