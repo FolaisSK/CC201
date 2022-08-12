@@ -120,8 +120,9 @@ kubectl proxy
 ```
 {: codeblock}
 
-This command will continue running until it exits. Keep it running so that you can continue to access your app.
 <img src="images/step_3.6.png"><br/>
+
+This command will continue running until it exits. Keep it running so that you can continue to access your app.
 
 7. Go back to your original terminal window, ping the application to get a response.
 >> **NOTE:** Do not close the terminal window where the `proxy` command is still running.
