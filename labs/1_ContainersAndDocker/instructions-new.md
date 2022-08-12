@@ -66,6 +66,8 @@ cd CC201/labs/1_ContainersAndDocker/
 ```
 {: codeblock}
 
+<img src="images/env-tools--cd-to-correct-dir.png"> <br>
+
 7. List the contents of this directory to see the artifacts for this lab.
 ```
 ls
