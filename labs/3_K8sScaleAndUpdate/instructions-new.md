@@ -165,7 +165,7 @@ for i in `seq 10`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME
 
 <img src="images/step_4.3.png"><br/>
 
-You should see that the queries are going to different Pods.
+You should see that the queries are going to different Pods because of the effect of load-balancing.
 
 4. Similarly, you can use the `scale` command to scale down your Deployment.
 ```
@@ -216,6 +216,8 @@ ibmcloud cr images
 
 <img src="images/step_5.3.png"><br/>
 
+Ensure that the new image shows `No Issues`, else re-run the image several times till there are no issues.
+
 4. Update the deployment to use this version instead.
 ```
 kubectl set image deployment/hello-world hello-world=us.icr.io/$MY_NAMESPACE/hello-world:2
@@ -230,8 +232,8 @@ kubectl rollout status deployment/hello-world
 ```
 {: codeblock}
 
-You should see an output like this, indicating that the rollout succeeded:
 <img src="images/step_5.5.png"><br/>
+
 
 6. You can also get the Deployment with the `wide` option to see that the new tag is used for the image.
 ```
@@ -239,8 +241,9 @@ kubectl get deployments -o wide
 ```
 {: codeblock}
 
-Look for the `IMAGES` column and ensure that the tag is `2`.
 <img src="images/step_5.6.png"><br/>
+
+Look for the `IMAGES` column and ensure that the tag is `2`.
 
 7. Ping your application to ensure that the new welcome message is displayed.
 ```
@@ -272,8 +275,9 @@ kubectl get deployments -o wide
 ```
 {: codeblock}
 
-Look for the `IMAGES` column and ensure that the tag is `1`.
 <img src="images/step_5.10.png"><br/>
+
+Look for the `IMAGES` column and ensure that the tag is `1`.
 
 11. Ping your application to ensure that the earlier '**Hello World..Your app is up & running!**' message is displayed.
 
