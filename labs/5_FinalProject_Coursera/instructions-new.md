@@ -35,7 +35,7 @@ cd /home/project
 
 3. Clone the git repository that contains the artifacts needed for this lab.
 ```
-[ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
+[ ! -d 'guestbook' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
 ```
 {: codeblock}
 
@@ -95,6 +95,8 @@ export MY_NAMESPACE=sn-labs-$USERNAME
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
+{: codeblock}
+
 <br>
 <img src="images/build_guestbook_4.png"/> <br>
 
@@ -170,6 +172,8 @@ spec:
             cpu: 20m  
   replicas: 1
 ```
+{: codeblock}
+
 > **Note:** Replace `<your sn labs namespace>` with your SN labs namespace. To check your SN labs namespace, please run the command `ibmcloud cr namespaces`
 
 - It should look as below:
@@ -181,6 +185,7 @@ spec:
 ```
 kubectl apply -f deployment.yml
 ```
+{: codeblock}
 
 <img src="images/deployment configuration--after updation.png"/> <br>
 
@@ -189,6 +194,7 @@ kubectl apply -f deployment.yml
 ```
 kubectl port-forward deployment.apps/guestbook 3000:3000
 ```
+{: codeblock}
 
 <img src="images/port-forward__inital-guestbook.jpg"/> <br>
 
@@ -215,6 +221,7 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 ```
 kubectl autoscale deployment guestbook --cpu-percent=5 --min=1 --max=10
 ```
+{: codeblock}
 
 <img src="images/autoscale1.jpg"/> <br>
 
@@ -226,6 +233,7 @@ kubectl autoscale deployment guestbook --cpu-percent=5 --min=1 --max=10
 ```
 kubectl get hpa guestbook
 ```
+{: codeblock}
 
 The current replicas is 0 as there is no load on the server.
 
@@ -237,6 +245,8 @@ The current replicas is 0 as there is no load on the server.
 ```
 kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- <your app URL>; done"
 ```
+{: codeblock}
+
 - Please replace your app URL in the `<your app URL>` part of the above command.
 
 > Note: Use the same copied URL which you obtained in step 11 of the previous task.
@@ -258,6 +268,7 @@ The command will be as below:
 ```
 kubectl get hpa guestbook --watch
 ```
+{: codeblock}
 
 <img src="images/hpa-watch-1.png"/> <br>
 
@@ -272,6 +283,7 @@ kubectl get hpa guestbook --watch
 ```
 kubectl get hpa guestbook
 ```
+{: codeblock}
 
 <img src="images/get-hpa-final.png"/> <br>
 
@@ -299,6 +311,7 @@ kubectl get hpa guestbook
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
+{: codeblock}
 
 <img src="images/updated-guestbook__docker-build.png"/> <br>
 
@@ -323,6 +336,8 @@ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/
 ```
 kubectl apply -f deployment.yml
 ```
+{: codeblock}
+
 <img src="images/deployment configuration--after updation.png"/> <br>
 
 </details>
@@ -334,6 +349,7 @@ kubectl apply -f deployment.yml
 ```
 kubectl port-forward deployment.apps/guestbook 3000:3000
 ```
+{: codeblock}
 
 <img src="images/get replicaset--after undo rollout.png"/> <br>
 
@@ -356,6 +372,7 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 ```
 kubectl rollout history deployment/guestbook
 ```
+{: codeblock}
 
 <img src="images/rollout-history_1.jpg"/> <br>
 
@@ -364,6 +381,7 @@ kubectl rollout history deployment/guestbook
 ```
 kubectl rollout history deployments guestbook --revision=2
 ```
+{: codeblock}
 
 <img src="images/rollout-history--rev2.jpg"/> <br>
 
@@ -374,6 +392,7 @@ kubectl rollout history deployments guestbook --revision=2
 ```
 kubectl get rs
 ```
+{: codeblock}
 
 <img src="images/get_replicaset__before-undo-rollout.jpg"/> <br>
 
@@ -382,6 +401,7 @@ kubectl get rs
 ```
 kubectl rollout undo deployment/guestbook --to-revision=1
 ```
+{: codeblock}
 
 <img src="images/undo rollout.png"/> <br>
 
@@ -391,6 +411,7 @@ kubectl rollout undo deployment/guestbook --to-revision=1
 ```
 kubectl get rs
 ```
+{: codeblock}
 
 <img src="images/get replicaset--after undo rollout.png"/> <br>
 
@@ -408,6 +429,6 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-07-25 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-08-02 | 1.2 | K Sundararajan | Added new IDSN logo |
 | 2022-08-04 | 1.3 | K Sundararajan | Updated Lab instructions |
-
+| 2022-08-12 | 1.4 | K Sundararajan | Updated Lab instructions |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

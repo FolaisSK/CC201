@@ -26,9 +26,10 @@ oc version
 ```
 {: codeblock}
 
-You should see output similar to this, although the versions may be different:
 
 <img src="images/week4_Step1.2.png" /> <br>
+
+You should see output similar to this, although the versions may be different.
 
 3. Change to your project folder.
 
@@ -58,9 +59,10 @@ oc get pods
 ```
 {: codeblock}
 
-You will likely see a few Pods that are part of the environment. You don't need to worry about these.
 
 <img src="images/week4_Step2.1.png" /> <br>
+
+You will likely see a few Pods that are part of the environment. You don't need to worry about these.
 
 2. In addition to Kubernetes objects, you can get OpenShift specific objects.
 ```
@@ -68,9 +70,10 @@ oc get buildconfigs
 ```
 {: codeblock}
 
-Because you haven't created a BuildConfig yet, this will not return any resources.
 
 <img src="images/week4_Step2.2.png" /> <br>
+
+Because you haven't created a BuildConfig yet, this will not return any resources.
 
 3. View the OpenShift project that is currently in use.
 ```
@@ -78,9 +81,10 @@ oc project
 ```
 {: codeblock}
 
-This project is specific to you and provides isolation within the cluster so that you can deploy your own applications.
 
 <img src="images/week4_Step2.3.png" /> <br>
+
+This project is specific to you and provides isolation within the cluster so that you can deploy your own applications.
 
 # Use the OpenShift web console
 In addition to the CLI, OpenShift provides an intuitive web console. This is a useful and powerful feature because it enables you to deploy applications, view resources, monitor applications and view logs, and much more right in the console.
@@ -303,6 +307,6 @@ Congratulations! You have completed the lab for the fourth module of this course
 | 2022-04-19 | 1.4     | K Sundararajan | Updated Lab instructions          |
 | 2022-07-22 | 1.5     | K Sundararajan | Updated Lab instructions to include HPA |
 | 2022-08-02 | 1.6     | K Sundararajan | Added new IDSN logo |
-
+| 2022-08-12 | 1.7     | K Sundararajan | Updated Lab instructions |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

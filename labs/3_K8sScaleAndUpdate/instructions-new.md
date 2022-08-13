@@ -120,10 +120,12 @@ kubectl proxy
 ```
 {: codeblock}
 
-This command will continue running until it exits. Keep it running so that you can continue to access your app.
 <img src="images/step_3.6.png"><br/>
 
-7. Go back to your original terminal window, ping the application to get a response.
+This command will continue running until it exits. Keep it running so that you can continue to access your app.
+
+7. Go back to your original terminal window, ping the application to get a response. 
+
 >> **NOTE:** Do not close the terminal window where the `proxy` command is still running.
 
 ```
@@ -131,7 +133,10 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 ```
 {: codeblock}
 
+Observe the message "Hello world from hello-world-xxxxxxxx-xxxx. Your app is up and running!
+
 <img src="images/step_3.7.png"><br/>
+
 
 # Scaling the application using a ReplicaSet
 In real-world situations, load on an application can vary over time. If our application begins experiencing heightened load, we want to scale it up to accommodate that load. There is a simple `kubectl` command for scaling.
@@ -160,7 +165,7 @@ for i in `seq 10`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME
 
 <img src="images/step_4.3.png"><br/>
 
-You should see that the queries are going to different Pods.
+You should see that the queries are going to different Pods because of the effect of load-balancing.
 
 4. Similarly, you can use the `scale` command to scale down your Deployment.
 ```
@@ -211,6 +216,8 @@ ibmcloud cr images
 
 <img src="images/step_5.3.png"><br/>
 
+Ensure that the new image shows `No Issues`, else re-run the image several times till there are no issues.
+
 4. Update the deployment to use this version instead.
 ```
 kubectl set image deployment/hello-world hello-world=us.icr.io/$MY_NAMESPACE/hello-world:2
@@ -225,8 +232,8 @@ kubectl rollout status deployment/hello-world
 ```
 {: codeblock}
 
-You should see an output like this, indicating that the rollout succeeded:
 <img src="images/step_5.5.png"><br/>
+
 
 6. You can also get the Deployment with the `wide` option to see that the new tag is used for the image.
 ```
@@ -234,8 +241,9 @@ kubectl get deployments -o wide
 ```
 {: codeblock}
 
-Look for the `IMAGES` column and ensure that the tag is `2`.
 <img src="images/step_5.6.png"><br/>
+
+Look for the `IMAGES` column and ensure that the tag is `2`.
 
 7. Ping your application to ensure that the new welcome message is displayed.
 ```
@@ -267,8 +275,9 @@ kubectl get deployments -o wide
 ```
 {: codeblock}
 
-Look for the `IMAGES` column and ensure that the tag is `1`.
 <img src="images/step_5.10.png"><br/>
+
+Look for the `IMAGES` column and ensure that the tag is `1`.
 
 11. Ping your application to ensure that the earlier '**Hello World..Your app is up & running!**' message is displayed.
 
@@ -318,8 +327,9 @@ res.send(process.env.MESSAGE + '\n')
 ```
 {: codeblock}
 
-Make sure to save the file when you're done. This change indicates that requests to the app will return the environment variable `MESSAGE`.
 <img src="images/step_6.4.png"><br/>
+
+Make sure to save the file when you're done. This change indicates that requests to the app will return the environment variable `MESSAGE`.
 
 5. Build and push a new image that contains your new application code.
 ```
@@ -327,8 +337,9 @@ docker build -t us.icr.io/$MY_NAMESPACE/hello-world:3 . && docker push us.icr.io
 ```
 {: codeblock}
 
-The `deployment-configmap-env-var.yaml` file is already configured to use the tag `3`.
 <img src="images/step_6.5.png"><br/>
+
+The `deployment-configmap-env-var.yaml` file is already configured to use the tag `3`.
 
 
 6. Apply the new Deployment configuration.
@@ -347,8 +358,9 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 ```
 {: codeblock}
 
-If you see the message, "This message came from a ConfigMap!", then great job!
 <img src="images/step_6.7.png"><br/>
+
+If you see the message, "This message came from a ConfigMap!", then great job!
 
 > **NOTE:** If your previous session is still persisting, you might see the below output. If so, we would recommend you to move to the further steps of the lab.
 
@@ -391,6 +403,10 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
           requests:
             cpu: 20m
 ```
+{: codeblock}
+
+> **Note:** After making the changes, do not forget to save the file.
+
 The updated file will be as below:
 
 <img src="images/cpu_addn--deployment.yaml.png"><br/>
@@ -400,6 +416,7 @@ The updated file will be as below:
 ```
 kubectl apply -f deployment.yaml
 ```
+{: codeblock}
 
 <img src="images/apply_deployment.png"><br/>
 
@@ -408,6 +425,7 @@ kubectl apply -f deployment.yaml
 ```
 kubectl autoscale deployment hello-world --cpu-percent=5 --min=1 --max=10
 ```
+{: codeblock}
 
 <img src="images/autoscale command.png"><br/>
 
@@ -417,6 +435,7 @@ kubectl autoscale deployment hello-world --cpu-percent=5 --min=1 --max=10
 ```
 kubectl get hpa hello-world
 ```
+{: codeblock}
 
 <img src="images/get-hpa-initial.png"><br/>
 
@@ -425,12 +444,15 @@ kubectl get hpa hello-world
 ```
 kubectl proxy
 ```
+{: codeblock}
 
 6. Open another new terminal and enter the below command to spam the app with multiple requests for increasing the load:
 
 ```
 for i in `seq 100000`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy; done
 ```
+{: codeblock}
+
 <img src="images/curl-proxy cmd for autoscaling.png"><br/>
 
 **Continue further commands in the 1st terminal**
@@ -440,6 +462,7 @@ for i in `seq 100000`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USER
 ```
 kubectl get hpa hello-world --watch
 ```
+{: codeblock}
 
 <img src="images/get hpa --watch.png"><br/>
 
@@ -452,6 +475,8 @@ Stop this command by pressing `CTRL + C`.
 ```
 kubectl get hpa hello-world
 ```
+{: codeblock}
+
 <img src="images/get-hpa-after_autoscale.png"><br/>
 
 You will notice that the number of replicas has increased now.
@@ -462,12 +487,16 @@ You will notice that the number of replicas has increased now.
 ```
 kubectl delete deployment hello-world
 ```
+{: codeblock}
+
 <img src="images/delete_deployment.png"><br/>
 
 11. Delete the Service.
 ```
 kubectl delete service hello-world
 ```
+{: codeblock}
+
 <img src="images/delete_service.png"><br/>
 
 
@@ -487,5 +516,6 @@ Congratulations! You have completed the lab for the third module of this course.
 | 2022-04-19 | 1.5     | K Sundararajan | Updated Lab instructions          |
 | 2022-07-25 | 1.6     | K Sundararajan | Updated Lab instructionsto include HPA uisng kubectl|
 | 2022-08-02 | 1.7     | K Sundararajan | Added new IDSN logo|
+| 2022-08-12 | 1.8     | K Sundararajan | Updated Lab instructions |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
