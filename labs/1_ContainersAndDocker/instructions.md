@@ -240,12 +240,13 @@ ibmcloud cr namespaces
 ```
 {: codeblock}
 
+<img src="images/push_img_2.png"> <br>
+
 You should see two namespaces listed starting with `sn-labs`:
 
 - The first one with your username is a namespace just for you. You have full _read_ and _write_ access to this namespace.
 - The second namespace, which is a shared namespace, provides you with only Read Access 
 
-<img src="images/push_img_2.png"> <br>
 
 3. Ensure that you are targeting the region appropriate to your cloud account, for instance `us-south` region where these namespaces reside as you saw in the output of the `ibmcloud target` command.
 ```
@@ -303,9 +304,10 @@ ibmcloud cr images --restrict $MY_NAMESPACE
 ```
 {: codeblock}
 
-You should see your image name in the output. Recall from the module videos that we discussed Vulnerability Advisor, which scans images in IBM Cloud Container Registry for common vulnerabilities and exposures. In the last column of the output, note that Vulnerability Advisor is either scanning your image or it has provided a security status, depending on how quickly you list the images and how long the scan takes.
-
 <img src="images/push_img_9.png"> <br>
+
+You should see your image name in the output.
+
 
 Congratulations! You have completed the second lab for the first module of this course.
 
