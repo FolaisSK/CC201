@@ -194,7 +194,9 @@ docker run -dp 8080:8080 myimage:v1
 ```
 {: codeblock}
 
-The output is a unique code for the application you are running. 
+<img src="images/run_img_as_detached_ctr_3.png"> <br>
+
+The output is a unique code allocated by docker for the application you are running. 
 
 2. Run the `curl` command to ping the application as given below.
 ```
@@ -202,9 +204,9 @@ curl localhost:8080
 ```
 {: codeblock}
 
-The output should indicate that **'Your app is up and running!'.**
-
 <img src="images/run_img_as_ctr_3.png"> <br>
+
+If you see the output as above, it indicates that **'Your app is up and running!'.**
 
 4. Now to stop the container we use `docker stop` followed by the container id. The following command uses `docker ps -q` to pass in the list of all running containers:
 ```
