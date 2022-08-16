@@ -26,7 +26,7 @@ Cheat Sheet: Docker CLI
 
 <tr>
 <td width="30%"><b>docker build . -t</b></td>
-<td width="70%">Builds the image.
+<td width="70%">Builds the image and tags the image id.
 </tr>
 
 <tr>
@@ -124,7 +124,7 @@ Displays the version of the Docker CLI.
 <tr>
 <td width="30%" valign="top"><b>exit</b></td>
 <td width="70%">
-Close the terminal session.
+Closes the terminal session.
 </td>
 </tr>
 
