@@ -150,7 +150,7 @@ Process of terminating one or more Pods on Nodes.
 <tr>
 <td width="30%"valign="top"><b>Imperative commands</b></td>
 <td width="70%">
-create, update, and delete live objects directly.
+Create, update, and delete live objects directly.
 </td>
 </tr>
 
@@ -322,7 +322,7 @@ object is modified or removed.
 <tr>
 <td width="30%" valign="top"><b>Preemption</b></td>
 <td width="70%">
-logic in Kubernetes helps a pending Pod to find a suitable Node by evicting low priority Pods existing on that Node.
+Logic in Kubernetes helps a pending Pod to find a suitable Node by evicting low priority Pods existing on that Node.
 </td>
 </tr>
 
