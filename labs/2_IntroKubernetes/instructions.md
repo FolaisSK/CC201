@@ -49,7 +49,7 @@ cd /home/project
 
 <img src="images/env_cmd_4.png"/> <br>
 
-5. Change to the directory for this lab.
+5. Change to the directory for this lab by running the following command. `cd` will change the working/current directory to the directory with the name specified, in this case **CC201/labs/2_IntroKubernetes**. 
 ```
 cd CC201/labs/2_IntroKubernetes/
 ```
@@ -160,9 +160,10 @@ kubectl delete pod hello-world
 ```
 {: codeblock}
 
+<img src="images/imp_cmd_7.png"/> <br>
+
 This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
 
-<img src="images/imp_cmd_7.png"/> <br>
 
 
 8. List the Pods to verify that none exist.
@@ -208,9 +209,10 @@ kubectl delete pod hello-world
 ```
 {: codeblock}
 
- This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
-
 <img src="images/imp_confg-5.png"/> <br>
+
+This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
+
 
 6. List the Pods to verify that none exist.
 ```
@@ -262,39 +264,33 @@ kubectl get pods
 
 With declarative management, we did not tell Kubernetes which actions to perform. Instead, `kubectl` inferred that this Deployment needed to be created. If you delete a Pod now, a new one will be created in its place to maintain three replicas.
 
-6. Note one of the Pod names from the previous step, and delete that Pod.
+6. Note one of the Pod names from the previous step, replace the &ltpod_name&gt in the following command with the pod name that you noted and delete that Pod and list the pods. To see one pod being terminated, there by having just 2 pods, we will follow the **delete**, immediately with **get**. 
 ```
-kubectl delete pod <pod_name>
+kubectl delete pod <pod_name> && kubectl get pods
 ```
 {: codeblock}
 
- This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
-
 <img src="images/create_pod_declr_6.png"/> <br>
 
-7. List the Pods to see a new one being created.
+This command takes a while to execute the deletion of the pod. Please wait till the terminal prompt appears again.
+
+
+7. List the Pods to see a new one being created. 
+
+> You may have to run this command a few times as it may take a while to create the new pod.
+
 ```
 kubectl get pods
 ```
 {: codeblock}
 
-If you do this quickly enough, you can see one Pod being terminated and another Pod being created.
-```
-NAME                    READY   STATUS              RESTARTS   AGE
-hello-world-774ddf45b5-86gn6   0/1     Terminating         0          35s
-hello-world-774ddf45b5-9cbv2   1/1     Running             0          35s
-hello-world-774ddf45b5-28k7j   0/1     ContainerCreating   0          8s
-hello-world-774ddf45b5-svpf7   1/1     Running             0          35s
-```
->>** Note: In case you are not able to see the above output, you can move on to the next step**
-
-Otherwise, the status of each will be the same, but the age of one Pod will be less than the others and the Pod name will be a new name.
 ```
 NAME                    READY   STATUS    RESTARTS   AGE
 hello-world-774ddf45b5-28k7j   1/1     Running   0          36s
 hello-world-774ddf45b5-9cbv2   1/1     Running   0          112s
 hello-world-774ddf45b5-svpf7   1/1     Running   0          112s
 ```
+The output should reflect three pods running. 
 
 # Load balancing the application
 Since there are three replicas of this application deployed in the cluster, Kubernetes will load balance requests across these three instances. Let's expose our application to the internet and see how Kubernetes load balances requests.
@@ -305,9 +301,10 @@ kubectl expose deployment/hello-world
 ```
 {: codeblock}
 
+<img src="images/load_balancing_1.png"/> <br>
+
 This command creates what is called a ClusterIP Service. This creates an IP address that accessible within the cluster.
 
-<img src="images/load_balancing_1.png"/> <br>
 
 2. List Services in order to see that this service was created.
 ```
@@ -327,9 +324,10 @@ kubectl proxy
 ```
 {: codeblock}
 
+<img src="images/load_balancing_4.png"/> <br>
+
 This command doesn't terminate until you terminate it. Keep it running so that you can continue to access your app.
 
-<img src="images/load_balancing_4.png"/> <br>
 
 5. In the original terminal window, ping the application to get a response.
 ```
@@ -341,15 +339,16 @@ curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/
 
 Notice that this output includes the Pod name.
 
-6. Run the command ten times and note the different Pod names in each line of output.
+6. Run the command which runs a for loop ten times creating 10 different pods and note names for each new pod.
 ```
 for i in `seq 10`; do curl -L localhost:8001/api/v1/namespaces/sn-labs-$USERNAME/services/hello-world/proxy; done
 ```
 {: codeblock}
 
+<img src="images/load_balancing_6.png"/> <br>
+
 You should see more than one Pod name, and quite possibly all three Pod names, in the output. This is because Kubernetes load balances the requests across the three replicas, so each request could hit a different instance of our application.
 
-<img src="images/load_balancing_6.png"/> <br>
 
 7. Delete the Deployment and Service. This can be done in a single command by using slashes.
 ```
