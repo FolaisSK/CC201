@@ -33,7 +33,7 @@ Glossary: Container Basics
 <td width="70%">
 Used for the storage and distribution of named 
 container images. While many features can be built on 
-top of a registry, its most basic function are to store images and retrieve them.
+top of a registry, its most basic functions are to store images and retrieve them.
 </td>
 </tr>
 

@@ -60,7 +60,7 @@ cd /home/project
 <img src="images/env&cmdlinetools_5.png"> <br>
 
 
-6. Change to the directory for this lab.
+6. Change to the directory for this lab by running the following command. `cd` will change the working/current directory to the directory with the name specified, in this case **CC201/labs/1_ContainersAndDcoker**. 
 ```
 cd CC201/labs/1_ContainersAndDocker/
 ```
@@ -127,7 +127,7 @@ Among other things, for this container you should see a container ID, the image 
 
 <img src="images/pullimg_ctr_5.png"> <br>
 
-6. Note the CONTAINER ID from the previous output and replace the **<container_id>** in the command below with this value. This command removes your container.
+6. Note the CONTAINER ID from the previous output and replace the **&ltcontainer_id&gt** in the command below with this value. This command removes your container.
 ```
 docker container rm <container_id>
 ```
@@ -181,38 +181,34 @@ docker images
 ```
 {: codeblock}
 
+<img src="images/buildimg_4.png"> <br>
+
 Note that compared to the `hello-world` image, this image has a different image ID. This means that the two images consist of different layers -- in other words, they're not the same image.
 
 You should also see a `node` image in the images output. This is because the `docker build` command pulled `node:9.4.0-alpine` to use it as the base image for the image you built.
 
-<img src="images/buildimg_4.png"> <br>
-
 # Run the image as a container
 1. Now that your image is built, run it as a container with the following command:
 ```
-docker run -p 8080:8080 myimage:v1
+docker run -dp 8080:8080 myimage:v1
 ```
 {: codeblock}
 
-The output should indicate that your application is listening on port 8080. This command will continue running until it exits, since the container runs a web app that continually listens for requests. To query the app, we need to open another terminal window.
+<img src="images/run_img_as_detached_ctr_3.png"> <br>
 
-<img src="images/run_img_as_ctr_1.png"> <br>
+The output is a unique code allocated by docker for the application you are running. 
 
-2. To split the terminal, click `Terminal > Split Terminal`.
-
-<img src="images/run_img_as_ctr_2.png"> <br>
-
-3. In the second terminal window, use the `curl` command to ping the application.
+2. Run the `curl` command to ping the application as given below.
 ```
 curl localhost:8080
 ```
 {: codeblock}
 
-The output should indicate that **'Your app is up and running!'.**
-
 <img src="images/run_img_as_ctr_3.png"> <br>
 
-4. In the second terminal window, stop the container. The following command uses `docker ps -q` to pass in the list of all running containers:
+If you see the output as above, it indicates that **'Your app is up and running!'.**
+
+4. Now to stop the container we use `docker stop` followed by the container id. The following command uses `docker ps -q` to pass in the list of all running containers:
 ```
 docker stop $(docker ps -q)
 ```
@@ -220,24 +216,13 @@ docker stop $(docker ps -q)
 
 <img src="images/run_img_as_ctr_4.png"> <br>
 
-5. In the second terminal window, check if the container has stopped by running the following command.
+5. Check if the container has stopped by running the following command.
 ```
 docker ps
 ```
-<img src="images/run_img_as_ctr_5.png"> <br>
-
-6. Close the second terminal window, as it is no longer needed.
-```
-exit
-```
 {: codeblock}
 
-<img src="images/run_img_as_ctr_6.png"> <br>
-
-In the original terminal window, the `docker run` command has exited and you are able to type commands in that terminal window again.
->>**Note: If you face any issues in typing further commands in the terminal, press Enter.**
-
-<img src="images/run_img_as_ctr_7.png"> <br>
+<img src="images/run_img_as_ctr_5.png"> <br>
 
 
 # Push the image to IBM Cloud Container Registry
@@ -255,12 +240,13 @@ ibmcloud cr namespaces
 ```
 {: codeblock}
 
+<img src="images/push_img_2.png"> <br>
+
 You should see two namespaces listed starting with `sn-labs`:
 
 - The first one with your username is a namespace just for you. You have full _read_ and _write_ access to this namespace.
 - The second namespace, which is a shared namespace, provides you with only Read Access 
 
-<img src="images/push_img_2.png"> <br>
 
 3. Ensure that you are targeting the region appropriate to your cloud account, for instance `us-south` region where these namespaces reside as you saw in the output of the `ibmcloud target` command.
 ```
@@ -318,9 +304,10 @@ ibmcloud cr images --restrict $MY_NAMESPACE
 ```
 {: codeblock}
 
-You should see your image name in the output. Recall from the module videos that we discussed Vulnerability Advisor, which scans images in IBM Cloud Container Registry for common vulnerabilities and exposures. In the last column of the output, note that Vulnerability Advisor is either scanning your image or it has provided a security status, depending on how quickly you list the images and how long the scan takes.
-
 <img src="images/push_img_9.png"> <br>
+
+You should see your image name in the output.
+
 
 Congratulations! You have completed the second lab for the first module of this course.
 
