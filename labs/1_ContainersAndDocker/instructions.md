@@ -60,7 +60,7 @@ cd /home/project
 <img src="images/env&cmdlinetools_5.png"> <br>
 
 
-6. Change to the directory for this lab by running the following command. `cd` will change the working/current directory to the name specified. This command does not return any output. 
+6. Change to the directory for this lab by running the following command. `cd` will change the working/current directory to the directory with the name specified, in this case **CC201/labs/1_ContainersAndDcoker**. 
 ```
 cd CC201/labs/1_ContainersAndDocker/
 ```
