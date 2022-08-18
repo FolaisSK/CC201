@@ -1,6 +1,6 @@
 <img src="images/IDSN.png" width="200">
 
-<div align="center"> ,b>Cheat Sheet: Understanding Kubernetes Architecture</b>
+<div align="center"> <b>Cheat Sheet: Understanding Kubernetes Architecture</b>
 </div>
 
 <table>
