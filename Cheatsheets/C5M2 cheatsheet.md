@@ -1,9 +1,6 @@
 <img src="images/IDSN.png" width="200">
 
-<div align="center"><b>Introduction to Containers, Kubernetes, and OpenShift</b>
-</div>
-
-<div align="center"> Cheat Sheet: Understanding Kubernetes Architecture
+<div align="center"> ,b>Cheat Sheet: Understanding Kubernetes Architecture</b>
 </div>
 
 <table>
