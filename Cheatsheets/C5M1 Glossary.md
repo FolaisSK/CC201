@@ -1,11 +1,8 @@
 <img src="images/IDSN.png" width="200">
 
-<div align="center">
-<b>Introduction to Containers, Kubernetes, and OpenShift</b>
-</div>
 
-<div align="center">
-Glossary: Container Basics
+<div align="center"></b>
+<b>Glossary: Container Basics
 </div>
 
 <table>
@@ -68,7 +65,7 @@ is a set of practices, tools, and a cultural philosophy that automate and integr
 <tr>
 <td width="30%"valign="top"><b>Docker</b></td>
 <td width="70%">
-An open container platform today for developing, shipping and running applications in containers. 
+An open container platform for developing, shipping and running applications in containers. 
 </td>
 </tr>
 
