@@ -1,11 +1,8 @@
 <img src="images/IDSN.png" width="200">
 
-<div align="center">
-<b>Introduction to Containers, Kubernetes, and OpenShift</b>
-</div>
 
 <div align="center">
-Glossary: Kubernetes Basics
+<b>Glossary: Kubernetes Basics</b>
 </div>
 
 <table>
