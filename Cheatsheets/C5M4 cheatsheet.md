@@ -1,9 +1,7 @@
 <img src="images/IDSN.png" width="200">
 
-<div align="center"><b>Introduction to Containers, Kubernetes, and OpenShift</b>
-</div>
 
-<div align="center"> Cheat Sheet: OpenShift CLI
+<div align="center"> <b>Cheat Sheet: OpenShift CLI</b>
 </div>
 
 

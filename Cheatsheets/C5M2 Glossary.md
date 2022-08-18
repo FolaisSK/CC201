@@ -1,11 +1,8 @@
 <img src="images/IDSN.png" width="200">
 
-<div align="center">
-<b>Introduction to Containers, Kubernetes, and OpenShift</b>
-</div>
 
 <div align="center">
-Glossary: Kubernetes Basics
+<b>Glossary: Kubernetes Basics</b>
 </div>
 
 <table>
@@ -225,7 +222,7 @@ The Kubernetes API server validates and configures data for the api objects whic
 <td width="30%" valign="top"><b>Kubernetes Controller 
 Manager</b></td>
 <td width="70%">
-Runs all the controller processes that monitor the cluster state and ensures that the actual state of a cluster matches the desired state. Examples of controllers that ship with Kubernetes today are the replication controller, endpoints controller, namespace controller, and service accounts controller.
+Runs all the controller processes that monitor the cluster state and ensures that the actual state of a cluster matches the desired state. Examples of controllers that ship with Kubernetes are the replication controller, endpoints controller, namespace controller, and service accounts controller.
 </td>
 </tr>
 

@@ -1,11 +1,8 @@
 <img src="images/IDSN.png" width="200">
 
-<div align="center">
-<b>Introduction to Containers, Kubernetes, and OpenShift</b>
-</div>
 
 <div align="center">
-Glossary: Managing Applications with Kubernetes
+<b>Glossary: Managing Applications with Kubernetes</b>
 </div>
 
 <table>

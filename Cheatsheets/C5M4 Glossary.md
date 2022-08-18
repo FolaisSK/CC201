@@ -1,9 +1,7 @@
 <img src="images/IDSN.png" width="200">
 
-<div align="center"> 
-<b>Introduction to Containers, Kubernetes, and OpenShift</b> 
-</div> 
-<div align="center"> Glossary: OpenShift Basics </div>
+
+<div align="center"> <b>Glossary: OpenShift Basics</b> </div>
 <table> 
 <tr> 
 <th width="30%">Term</th width="70%"><th>Definition</th> 
