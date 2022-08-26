@@ -376,7 +376,6 @@ Congratulations! You have completed the lab for the second module of this course
 | 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-04-12 | 1.2 | K Sundararajan | Updated Lab instructions |
 | 2022-04-19 | 1.3 | K Sundararajan | Updated Lab instructions |
-|            |     |                |                          |
-
+| 2022-08-26 | 1.4 | K Sundararajan | Updated Lab instructions |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
