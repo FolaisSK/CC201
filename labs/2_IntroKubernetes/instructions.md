@@ -55,7 +55,7 @@ cd CC201/labs/2_IntroKubernetes/
 ```
 {: codeblock}
 
-<img src="images/"/> <br>
+<img src="images/env-tools-05.png"/> <br>
 
 
 6. List the contents of this directory to see the artifacts for this lab.
