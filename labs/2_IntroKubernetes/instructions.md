@@ -55,6 +55,8 @@ cd CC201/labs/2_IntroKubernetes/
 ```
 {: codeblock}
 
+<img src="images/env-tools-05.png"/> <br>
+
 
 6. List the contents of this directory to see the artifacts for this lab.
 ```
@@ -264,7 +266,7 @@ kubectl get pods
 
 With declarative management, we did not tell Kubernetes which actions to perform. Instead, `kubectl` inferred that this Deployment needed to be created. If you delete a Pod now, a new one will be created in its place to maintain three replicas.
 
-6. Note one of the Pod names from the previous step, replace the &ltpod_name&gt in the following command with the pod name that you noted and delete that Pod and list the pods. To see one pod being terminated, there by having just 2 pods, we will follow the **delete**, immediately with **get**. 
+6. Note one of the Pod names from the previous step, replace the `pod_name` in the following command with the pod name that you noted and delete that Pod and list the pods. To see one pod being terminated, there by having just 2 pods, we will follow the **delete**, immediately with **get**. 
 ```
 kubectl delete pod <pod_name> && kubectl get pods
 ```
@@ -374,7 +376,6 @@ Congratulations! You have completed the lab for the second module of this course
 | 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-04-12 | 1.2 | K Sundararajan | Updated Lab instructions |
 | 2022-04-19 | 1.3 | K Sundararajan | Updated Lab instructions |
-|            |     |                |                          |
-
+| 2022-08-26 | 1.4 | K Sundararajan | Updated Lab instructions |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>

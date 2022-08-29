@@ -127,7 +127,7 @@ Among other things, for this container you should see a container ID, the image 
 
 <img src="images/pullimg_ctr_5.png"> <br>
 
-6. Note the CONTAINER ID from the previous output and replace the **&ltcontainer_id&gt** in the command below with this value. This command removes your container.
+6. Note the CONTAINER ID from the previous output and replace the **<container_id>** tag in the command below with this value. This command removes your container.
 ```
 docker container rm <container_id>
 ```
@@ -318,6 +318,7 @@ Congratulations! You have completed the second lab for the first module of this 
 |------|--------|--------|---------|
 | 2022-04-08 | 1.1 | K Sundararajan | Updated Lab instructions |
 | 2022-04-19 | 1.2 | K Sundararajan | Updated Lab instructions |
+| 2022-08-26 | 1.3 | K Sundararajan | Updated Lab instructions |
 
 
 
