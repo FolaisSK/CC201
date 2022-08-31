@@ -93,10 +93,9 @@ Let's open up the console and have a look around.
 
 1. To open openshift web console, click on the Skills Network button on the right, it will open the “Skills Network Toolbox”. Then click the **Cloud** then **Open OpenShift console**. 
 
-<img src="images/openshift.pngg" /> <br>
+<img src="images/openshift.png" /> <br>
 
 It can take a few minutes to become available after opening the lab environment, so if you get an error, wait a minute and try again.
-![Open OpenShift web console](images/open-web-console.png)
 
 2. The console should open to the project details for the project you have been assigned. Take a look at all the information OpenShift provides you in an intuitive, visual manner. Click through the Dashboard, Overview, and other tabs for this project to see additional information. You should see inventory on the resources that currently exist in this project, the YAML that defines this project, and much more.
 
