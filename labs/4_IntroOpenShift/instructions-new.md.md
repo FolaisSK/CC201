@@ -91,7 +91,7 @@ In addition to the CLI, OpenShift provides an intuitive web console. This is a u
 
 Let's open up the console and have a look around.
 
-1. To open openshift web console, click on the Skills Network button on the right, it will open the “Skills Network Toolbox”. Then click the **Cloud** then **Open OpenShift console**. 
+1. To open openshift web console, click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Cloud** then **Open OpenShift console** as shown in the following image. 
 
 <img src="images/openshift.png" /> <br>
 
