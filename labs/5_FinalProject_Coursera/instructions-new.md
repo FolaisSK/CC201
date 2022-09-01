@@ -198,9 +198,9 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 
 <img src="images/port-forward__inital-guestbook.jpg"/> <br>
 
-10. Launch your application on port 3000 as below:
+10. Launch your application on port 3000. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
 
-<img src="images/launchapp-port3000.jpg"/> <br>
+<img src="images/Launch_Application.PNG"/> <br>
 
 11. Now you should be able to see your running application. Please copy the app URL which will be given as below:
 
@@ -354,9 +354,9 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 <img src="images/get replicaset--after undo rollout.png"/> <br>
 
 
-6. Launch the app on port 3000 as below:
+6. Launch your application on port 3000. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
 
-<img src="images/launchapp-port3000.jpg"/> <br>
+<img src="images/Launch_Application.PNG"/> <br>
 
 
 7. You will notice the updated app content as below:
