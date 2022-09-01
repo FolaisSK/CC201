@@ -131,9 +131,9 @@ With the `--reference-policy=local` option, a copy of the image from IBM Cloud C
 
 Now let's head over to the OpenShift web console to deploy the guestbook app using this image stream.
 
-2. Open the OpenShift web console using the link at the top of the lab environment.
+2. To open openshift web console, click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Cloud** then **Open OpenShift console** as shown in the following image.
 
-<img src="images/deploy_app_osr_2.png" width='500'/> <br>
+<img src="images/openshift.png" /> <br>
 
 > **Note:** Currently we are experiencing certain difficulties with the OpenShift console . If your screen takes time in loading, please close the OpenShift console browser tab & re-launch the same. It may take upto 10 mins to load the screen.
 
