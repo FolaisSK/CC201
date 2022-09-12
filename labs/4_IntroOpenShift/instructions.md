@@ -1,5 +1,5 @@
 <center>
-<img src="images/labs_module_1_images_IDSNlogo.png" width = "300">
+<img src="images/IDSN-new-logo.png" width = "300">
 </center>
 
 # Introduction to Red Hat OpenShift
@@ -88,7 +88,7 @@ Let's open up the console and have a look around.
 
 1. To open openshift web console, click on the Skills Network button on the left, it will open the **“Skills Network Toolbox”**. Then click the **Cloud** then **Open OpenShift console** as shown in the following image. 
 
-<img src="images/openshift.png" /> <br>
+<img src="images/LaunchOpenShift.png" /> <br>
 
 It can take a few minutes to become available after opening the lab environment, so if you get an error, wait a minute and try again.
 
