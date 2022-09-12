@@ -86,8 +86,11 @@ In addition to the CLI, OpenShift provides an intuitive web console. This is a u
 
 Let's open up the console and have a look around.
 
-1. Open the OpenShift web console using the link at the top of the lab environment. It can take a few minutes to become available after opening the lab environment, so if you get an error, wait a minute and try again.
-![Open OpenShift web console](images/open-web-console.png)
+1. To open openshift web console, click on the Skills Network button on the left, it will open the **“Skills Network Toolbox”**. Then click the **Cloud** then **Open OpenShift console** as shown in the following image. 
+
+<img src="images/openshift.png" /> <br>
+
+It can take a few minutes to become available after opening the lab environment, so if you get an error, wait a minute and try again.
 
 2. The console should open to the project details for the project you have been assigned. Take a look at all the information OpenShift provides you in an intuitive, visual manner. Click through the Dashboard, Overview, and other tabs for this project to see additional information. You should see inventory on the resources that currently exist in this project, the YAML that defines this project, and much more.
 
@@ -198,5 +201,6 @@ Congratulations! You have completed the lab for the fourth module of this course
 | 2022-04-13 | 1.2     | Samaah Sarang  | Updated Lab instructions & images |
 | 2022-04-14 | 1.3     | K Sundararajan | Updated Lab instructions & images |
 | 2022-04-19 | 1.4     | K Sundararajan | Updated Lab instructions          |
+| 2022-09-12 | 1.5     | Lavanya Rajalingam      | Updated Lab instructions & images |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
