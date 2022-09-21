@@ -39,7 +39,7 @@ cd /home/project
 ```
 {: codeblock}
 
-<img src="images/env_cmd_3.png"/> <br>
+<img src="images/new_clone_command.png"/> <br>
 
 4. Change to the directory for this lab.
 ```
@@ -430,5 +430,6 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-08-02 | 1.2 | K Sundararajan | Added new IDSN logo |
 | 2022-08-04 | 1.3 | K Sundararajan | Updated Lab instructions |
 | 2022-08-12 | 1.4 | K Sundararajan | Updated Lab instructions |
+| 2022-09-21 | 1.5 | K Sundararajan | Updated screenshot for Git clone command |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
