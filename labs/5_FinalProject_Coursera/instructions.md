@@ -664,7 +664,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-04-14 | 1.3 | K Sundararajan | Updated Lab instructions |
 | 2022-04-19 | 1.4 | K Sundararajan | Updated Lab instructions |
 | 2022-08-01 | 1.5 | K Sundararajan | Updated Lab instructions |
-| 2022-09-21 | 1.6 | K Sundararajan | Updated git clone instructions & screenshot |
+| 2022-09-21 | 1.6 | K Sundararajan | Updated Git clone command & screenshot |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
