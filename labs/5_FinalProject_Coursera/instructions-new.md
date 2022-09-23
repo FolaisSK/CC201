@@ -10,7 +10,6 @@ In this lab, you will:
 - Autoscale the Guestbook application using Horizontal Pod Autoscaler
 - Perform Rolling Updates and Rollbacks
 
-> **Note:** Please follow this link <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a> to delete any existing projects to avoid issues with the lab. Otherwise, you are all set to perform the lab.<br>
 
 # Project Overview
 
