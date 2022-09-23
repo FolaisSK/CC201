@@ -418,7 +418,7 @@ kubectl get rs
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
-> **Note:** Please delete your project from SN labs environment before signing out to ensure that further labs run correctly without issues. To do the same, click on this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a>
+
 
 
 ## Changelog
