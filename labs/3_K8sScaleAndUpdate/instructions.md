@@ -399,7 +399,7 @@ kubectl delete service hello-world
 
 Congratulations! You have completed the lab for the third module of this course.
 
-> **Note:** Please delete your project from SN labs environment before signing out to ensure that further labs run correctly. To do the same, click on this <a href='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/oc___snlabs_proj_deletion.md.html'>link</a>
+
 
 
 
