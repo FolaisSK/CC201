@@ -5,7 +5,7 @@ branch: lab-1641-instruction
 version-history-start-date: 2022-09-28T10:22:44.000Z
 ---
 # Session parameters deletion
-**Estimated time needed:** X minutes
+**Estimated Time needed:** 20 minutes
 
 Provide a brief  Scenario or Overview or a few introductory sentences
 
