@@ -21,7 +21,7 @@ In this lab, you will delete the below parameters from the current session so as
 
 
 
-## Deleting the current deployment
+## Deleting the current Image Stream
 
 1. Click on the deployment, then on `Actions` and then `Delete Deployment`.
 
