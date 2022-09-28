@@ -5,8 +5,6 @@ branch: lab-1641-instruction
 version-history-start-date: 2022-09-28T10:22:44.000Z
 ---
 # Session parameters deletion
-
-# Title of your lab
 **Estimated time needed:** X minutes
 
 Provide a brief  Scenario or Overview or a few introductory sentences
