@@ -2,9 +2,9 @@
 markdown-version: v1
 tool-type: instructional-lab
 branch: lab-1641-instruction
-version-history-start-date: 2022-09-28T10:22:44Z
+version-history-start-date: 2022-09-28T10:22:44.000Z
 ---
-# Everything you need to know to create an instructional lab
+# Session parameters deletion
 
 Welcome to your instructional lab!
 
