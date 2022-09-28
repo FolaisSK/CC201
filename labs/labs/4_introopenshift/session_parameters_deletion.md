@@ -29,7 +29,7 @@ In this lab, you will delete the below parameters from the current session so as
 
 ![img_stream_deletion](images/img_stream_deletion.jpg)
 
-3. Click on Delete in the confirmation pop-up that you get.
+3. Click on **Delete** in the confirmation pop-up.
 
 ![img_stream_deletion_confirmation](images/img_stream_deletion_confirmation.jpg)
 
