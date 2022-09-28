@@ -14,6 +14,10 @@ In this lab, you will delete the below parameters from the current session so as
 
 - Deployment
 - Service
+- Secrets
+- Build Config
+- Image Stream
+- Routes
 
 
 
