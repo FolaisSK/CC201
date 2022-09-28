@@ -21,12 +21,17 @@ In this lab, you will delete the below parameters from the current session so as
 
 
 
-## Deleting the current Image Stream
+## Deleting the `guestbook` Image Stream
 
-1. Click on the deployment, then on `Actions` and then `Delete Deployment`.
+1. Go to the **Administrator Perspective** >> **Builds** >> **Image Streams**.
+
+2. Click on the 3 dots at the right of the `guestbook` Image Stream and click on **Delete Image Stream**.
 
 ![delete_deployment](images/)
 
+3. Click on Delete in the confirmation pop-up that you get.
+
+![delete_deployment](images/)
 
 ## Exercise 2 : < Title of Exercise 2 >
 In this exercise, you will ...
