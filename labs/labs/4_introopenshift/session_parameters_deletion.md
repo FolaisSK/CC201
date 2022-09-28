@@ -21,14 +21,11 @@ In this lab, you will delete the below parameters from the current session so as
 
 
 
-## Exercise 1 : Deleting the current deployment
+## Deleting the current deployment
 In this exercise, you will < short sentence describing what’s done in this exercise >.
 
 1. Step 1 details ...
 
-1. Step 2 details with sample screenshot...
-
-1. Step 3 details...
 
 ## Exercise 2 : < Title of Exercise 2 >
 In this exercise, you will ...
