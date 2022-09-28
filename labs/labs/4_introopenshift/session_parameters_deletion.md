@@ -28,7 +28,6 @@ In this lab, you will delete the below parameters from the current session so as
 ![delete_deployment](images/)
 
 
-
 ## Exercise 2 : < Title of Exercise 2 >
 In this exercise, you will ...
 
