@@ -8,18 +8,6 @@ version-history-start-date: 2022-09-28T10:22:44.000Z
 
 Welcome to your instructional lab!
 
-The environment you are in right now is called Author IDE.
-> Author-IDE is a tool for creating and managing instructions for your labs and guided projects.
-
-Instructional labs are meant to be one stream of instructions that don't require learners to use Cloud IDE.
-
-> Cloud-IDE is a fully-online integrated development environment that supports numerous popular programming languages, allowing your learners to code, develop, and learn in one location.
-
-IBM Skills Network provides you with Author-IDE, Cloud-IDE, as well as other tools, so you can create amazing courses with labs and guided projects for your learners.
-
-If you want your learners to use your instructions together with the Cloud IDE, consider changing the type of this lab from **instructional Lab** to either of the three available **Cloud IDE** versions.
-
-Let's get started with building your instructional lab!
 
 # Best practices for creating instructions for an instructional lab
 
