@@ -23,7 +23,9 @@ In this lab, you will delete the below parameters from the current session so as
 
 ## Deleting the current deployment
 
-1. Click on the deployment.
+1. Click on the deployment, then on `Actions` and then `Delete Deployment`.
+
+![delete_deployment](images/ex7-GET-byID-URL%20entry.png)
 
 
 ## Exercise 2 : < Title of Exercise 2 >
