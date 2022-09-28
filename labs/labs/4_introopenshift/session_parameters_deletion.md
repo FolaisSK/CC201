@@ -10,10 +10,11 @@ version-history-start-date: 2022-09-28T10:22:44.000Z
 Provide a brief  Scenario or Overview or a few introductory sentences
 
 ## Objectives
-After completing this lab, you will be able to:
-1. Objective for Exercise 1
-1. Objective for Exercise 2
-1. etc.
+In this lab, you will delete the below parameters from the current session so as to be able to create them again.
+
+- Deployment
+- Service
+
 
 
 ## Exercise 1 : < Title of Exercise 1 >
