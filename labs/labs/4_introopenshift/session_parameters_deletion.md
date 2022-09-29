@@ -49,6 +49,12 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 ## Deleting the `guestbook` Route
 
+1. In the **Administrator Perspective** select **Networking** >> **Routes**.
+
+2. Click on the 3 dots at the right of the `guestbook` service and click on **Delete Route**.
+
+![route_deletion](images/route_deletion.jpg)
+
 
 ## (Optional) Summary / Conclusion / Next Steps
 Add ending info here, if required, and rename the title accordingly. Otherwise, remove this optional section.
