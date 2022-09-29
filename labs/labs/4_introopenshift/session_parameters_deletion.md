@@ -22,7 +22,7 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 - Secret
 
 
-## Deleting the `guestbook` Image Stream
+## Deleting the Image Stream
 
 1. In the **Administrator Perspective** select **Builds** >> **Image Streams**.
 
@@ -35,7 +35,7 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 ![img_stream_deletion_confirmation](images/img_stream_deletion_confirmation.jpg)
 
 
-## Deleting the `guestbook` Service
+## Deleting the Service
 
 1. In the **Administrator Perspective** select **Networking** >> **Services**.
 
@@ -47,7 +47,7 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 ![service_deletion_confirmation](images/service_deletion_confirmation.jpg)
 
-## Deleting the `guestbook` Route
+## Deleting the Route
 
 1. In the **Administrator Perspective** select **Networking** >> **Routes**.
 
@@ -55,7 +55,7 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 ![route_deletion](images/route_deletion.jpg)
 
-## Deleting the `guestbook` Build Config
+## Deleting the Build Config
 
 1. In the **Developer Perspective** click on **Builds**.
 
@@ -64,7 +64,7 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 ![service_deletion](images/service_deletion.jpg)
 
 
-## Deleting the `guestbook` Deployment
+## Deleting the Deployment
 
 1. In the **Developer Perspective** go to **Topology** and click on the `guestbook` deployment.
 
@@ -72,10 +72,15 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 ![deployment_deletion](images/deployment_deletion.jpg)
 
-## Deleting the `guestbook` Secrets
+## Deleting the Secrets
 
+1. In the **Developer Perspective** click on **Secrets**.
 
+2. Click the **Filter** option. Type the name as **GUESTBOOK** under `Name` and press `Enter` to retrieve the secrets pertaining to the `guestbook` image.
 
+3. Click on the 3 dots at the right of the first secret and click on **Delete Build Config**. Do the same for all the `guestbook` secrets.
+
+![secret_deletion](images/secret_deletion.jpg)
 
 
 
