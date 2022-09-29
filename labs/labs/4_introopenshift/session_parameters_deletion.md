@@ -12,12 +12,12 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 ## Objectives
 In this lab, you will delete the below parameters from the current session so as to be able to create them again.
 
-- Deployment
-- Service
-- Secrets
-- Build Config
-- Image Stream
-- Routes
+- Image Stream(s)
+- Service(s)
+- Route(s)
+- Build Config(s)
+- Deployment(s)
+- Secret(s)
 
 
 
