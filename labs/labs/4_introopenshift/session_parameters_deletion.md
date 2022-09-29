@@ -4,13 +4,15 @@ tool-type: instructional-lab
 branch: lab-1641-instruction
 version-history-start-date: 2022-09-28T10:22:44.000Z
 ---
-# Session parameters deletion
-**Estimated Time needed:** 20 minutes
+# Session Parameters Deletion
+
+**Estimated Time Needed:** 20 minutes
 
 Provide a brief  Scenario or Overview or a few introductory sentences
 
 ## Objectives
-In this lab, you will delete the below parameters from the current session so as to be able to create them again.
+
+* In this lab, you will delete the below parameters of the `guestbook` image for creating the deployment again in the same session.
 
 - Image Stream(s)
 - Service(s)
@@ -22,7 +24,7 @@ In this lab, you will delete the below parameters from the current session so as
 
 ## Deleting the `guestbook` Image Stream(s)
 
-1. Go to the **Administrator Perspective** >> **Builds** >> **Image Streams**.
+1. In the **Administrator Perspective** select **Builds** >> **Image Streams**.
 
 2. Click on the 3 dots at the right of the `guestbook` Image Stream and click on **Delete Image Stream**.
 
@@ -35,7 +37,9 @@ In this lab, you will delete the below parameters from the current session so as
 
 ## Deleting the `guestbook` Service(s)
 
-1. 
+1. In the **Administrator Perspective** select **Networking** >> **Services**.
+
+2. Click on the 3 dots at the right of the `guestbook` service and click on **Delete Service**.
 
 
 ## (Optional) Summary / Conclusion / Next Steps
