@@ -55,11 +55,9 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 ![route_deletion](images/route_deletion.jpg)
 
+## Deleting the `guestbook` Build Config
 
-
-
-
-
+1. In the **Developer Perspective** click on **Builds**.
 
 
 
