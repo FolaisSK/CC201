@@ -41,6 +41,11 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 2. Click on the 3 dots at the right of the `guestbook` service and click on **Delete Service**.
 
+![img_stream_deletion](images/img_stream_deletion.jpg)
+
+3. Click on **Delete** in the confirmation pop-up.
+
+![img_stream_deletion_confirmation](images/img_stream_deletion_confirmation.jpg)
 
 ## (Optional) Summary / Conclusion / Next Steps
 Add ending info here, if required, and rename the title accordingly. Otherwise, remove this optional section.
