@@ -68,11 +68,11 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 1. In the **Developer Perspective** go to **Topology** and click on the `guestbook` deployment.
 
-2. 
+2. Click on **Actions** and then click on **Delete Deployment**.
 
+![deployment_deletion](images/deployment_deletion.jpg)
 
-
-
+## Deleting the `guestbook` Secrets
 
 
 
