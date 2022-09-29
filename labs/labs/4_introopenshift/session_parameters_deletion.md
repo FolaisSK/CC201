@@ -83,6 +83,9 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 ![secret_deletion](images/secret_deletion.jpg)
 
 
+## Next Steps
+
+- The above session paramters pertaining to your current `guestbook` image will be deleted after the above steps. You can create the `guestbook` deployment again and proceed further.
 
 * If you do not see any route to your `guestbook` app  after creating the deployment again, please run the below command in the terminal to get the route:
 
@@ -93,20 +96,10 @@ oc status
 ![oc-status-cmd_for-route](images/oc-status-cmd_for-route.jpg)
 
 
-
-## (Optional) Summary / Conclusion / Next Steps
-Add ending info here, if required, and rename the title accordingly. Otherwise, remove this optional section.
-
-## Author(s)
-[Author1 Name](optional link to profile) 
-[Author2 Name](optional link to profile) 
-
-### Other Contributor(s) 
-< Contributor 1 Name >, < Contributor 2 Name >, etc.
+## Author
+K Sundararajan
 
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
-| yyyy-mm-dd | 0.1 | changer name | Initial version created |
-|   |   |   |   |
-|   |   |   |   |
+| 29-09-2022 | 1.0 | K Sundararajan | Initial version created |
