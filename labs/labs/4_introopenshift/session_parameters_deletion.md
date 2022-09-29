@@ -8,8 +8,6 @@ version-history-start-date: 2022-09-28T10:22:44.000Z
 
 **Estimated Time Needed:** 20 minutes
 
-Provide a brief  Scenario or Overview or a few introductory sentences
-
 ## Objectives
 
 * In this lab, you will delete the below parameters of the `guestbook` image for creating the deployment again in the same session.
