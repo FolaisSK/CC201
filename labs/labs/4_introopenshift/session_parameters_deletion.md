@@ -64,6 +64,12 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 ![service_deletion](images/service_deletion.jpg)
 
 
+## Deleting the `guestbook` Deployment
+
+1. In the **Developer Perspective** go to **Topology** and click on the `guestbook` deployment.
+
+2. 
+
 
 
 
