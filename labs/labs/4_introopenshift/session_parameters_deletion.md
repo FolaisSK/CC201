@@ -20,7 +20,6 @@ In this lab, you will delete the below parameters from the current session so as
 - Secret(s)
 
 
-
 ## Deleting the `guestbook` Image Stream
 
 1. Go to the **Administrator Perspective** >> **Builds** >> **Image Streams**.
@@ -33,21 +32,10 @@ In this lab, you will delete the below parameters from the current session so as
 
 ![img_stream_deletion_confirmation](images/img_stream_deletion_confirmation.jpg)
 
-## Exercise 2 : < Title of Exercise 2 >
-In this exercise, you will ...
 
-### Task A : < Title of Task A in Ex 2 >
-
-1. Step 1 in Task A in Ex 2
-
-1. Step 2 in Task A in Ex 2
-
-### Task B : < Title of Task B in Ex2 >
-
-1. Step 1 details
+## Deleting the `guestbook` Image Stream
 
 
-1. Step 2 details
 
 
 ## (Optional) Summary / Conclusion / Next Steps
