@@ -56,6 +56,31 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 ![route_deletion](images/route_deletion.jpg)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* If you do not see any route to your `guestbook` app  after creating the deployment again, please run the below command in the terminal to get the route:
+
+```sh
+oc status
+```
+
+![oc-status-cmd_for-route](images/oc-status-cmd_for-route.jpg)
+
+
+
 ## (Optional) Summary / Conclusion / Next Steps
 Add ending info here, if required, and rename the title accordingly. Otherwise, remove this optional section.
 
