@@ -14,15 +14,15 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 * In this lab, you will delete the below parameters of the `guestbook` image for creating the deployment again in the same session.
 
-- Image Stream(s)
-- Service(s)
-- Route(s)
-- Build Config(s)
-- Deployment(s)
-- Secret(s)
+- Image Stream
+- Service
+- Route
+- Build Config
+- Deployment
+- Secret
 
 
-## Deleting the `guestbook` Image Stream(s)
+## Deleting the `guestbook` Image Stream
 
 1. In the **Administrator Perspective** select **Builds** >> **Image Streams**.
 
@@ -35,7 +35,7 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 ![img_stream_deletion_confirmation](images/img_stream_deletion_confirmation.jpg)
 
 
-## Deleting the `guestbook` Service(s)
+## Deleting the `guestbook` Service
 
 1. In the **Administrator Perspective** select **Networking** >> **Services**.
 
@@ -46,6 +46,9 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 3. Click on **Delete** in the confirmation pop-up.
 
 ![service_deletion_confirmation](images/service_deletion_confirmation.jpg)
+
+## Deleting the `guestbook` Route
+
 
 ## (Optional) Summary / Conclusion / Next Steps
 Add ending info here, if required, and rename the title accordingly. Otherwise, remove this optional section.
