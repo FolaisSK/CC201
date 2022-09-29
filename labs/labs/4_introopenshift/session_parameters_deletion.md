@@ -59,6 +59,10 @@ Provide a brief  Scenario or Overview or a few introductory sentences
 
 1. In the **Developer Perspective** click on **Builds**.
 
+2. Click on the 3 dots at the right of the `guestbook` Build Config and click on **Delete Build Config**.
+
+![service_deletion](images/service_deletion.jpg)
+
 
 
 
