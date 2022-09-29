@@ -76,7 +76,7 @@ version-history-start-date: 2022-09-28T10:22:44.000Z
 
 2. Click the **Filter** option. Type the name as **GUESTBOOK** under `Name` and press `Enter` to retrieve the secrets pertaining to the `guestbook` image.
 
-3. Click on the 3 dots at the right of the first secret and click on **Delete Build Config**. Do the same for all the `guestbook` secrets.
+3. Click on the 3 dots at the right of  **guestbook-generic-webhook-secret** and click on **Delete Build Config**. Do the same for **guestbook-github-webhook-secret** & other `guestbook` secrets, if any.
 
 ![secret_deletion](images/secret_deletion.jpg)
 
