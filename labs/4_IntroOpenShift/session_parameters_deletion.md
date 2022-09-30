@@ -1,8 +1,8 @@
 ---
 markdown-version: v1
 tool-type: instructional-lab
-branch: lab-1641-instruction
-version-history-start-date: 2022-09-28T10:22:44.000Z
+branch: lab-1647-instruction
+version-history-start-date: 2022-09-30T07:47:11Z
 ---
 # Session Parameters Deletion
 
