@@ -26,7 +26,7 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 
 2. Click on the 3 dots at the right of the `guestbook` Image Stream and click on **Delete Image Stream**.
 
-
+![img_stream_deletion](images/img_stream_deletion.jpg)
 
 3. Click on **Delete** in the confirmation pop-up.
 
