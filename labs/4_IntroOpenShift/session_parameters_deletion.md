@@ -28,6 +28,7 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 
 ![img_stream_deletion](images/img_stream_deletion.jpg)
 
+
 3. Click on **Delete** in the confirmation pop-up.
 
 ![img_stream_deletion_confirmation](images/img_stream_deletion_confirmation.jpg)
