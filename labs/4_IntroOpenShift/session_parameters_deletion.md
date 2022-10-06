@@ -4,13 +4,13 @@ tool-type: instructional-lab
 branch: lab-1647-instruction
 version-history-start-date: 2022-09-30T07:47:11.000Z
 ---
-# Session Parameters Deletion
+# Restarting your Openshift Session
 
-**Estimated Time Needed:** 20 minutes
+**Estimated Time Needed:** 30 minutes
 
 ## Objectives
 
-* In this lab, you will delete the below parameters of the `guestbook` image for creating the deployment again in the same session.
+In this lab, you will delete the below parameters of the `guestbook` image for creating the deployment again in the same session.
 
 - Image Stream
 - Service
@@ -20,7 +20,7 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 - Secret
 
 
-## Deleting the Image Stream
+## Step 1: Deleting the Image Stream
 
 1. In the **Administrator Perspective** select **Builds** >> **Image Streams**.
 
@@ -33,7 +33,7 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 ![img_stream_deletion_confirmation](images/img_stream_deletion_confirmation.jpg)
 
 
-## Deleting the Service
+## Step 2: Deleting the Service
 
 1. In the **Administrator Perspective** select **Networking** >> **Services**.
 
@@ -46,7 +46,7 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 ![service_deletion_confirmation](images/service_deletion_confirmation.jpg)
 
 
-## Deleting the Route
+## Step 3: Deleting the Route
 
 1. In the **Administrator Perspective** select **Networking** >> **Routes**.
 
@@ -57,7 +57,7 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 3. Please select `Delete` from the confirmation prompt that appears to delete the Route.
 
 
-## Deleting the Build Config
+## Step 4: Deleting the Build Config
 
 1. In the **Developer Perspective** click on **Builds**.
 
@@ -68,7 +68,7 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 3. Please select `Delete` from the confirmation prompt that appears to delete the Build Config.
 
 
-## Deleting the Deployment
+## Step 5: Deleting the Deployment
 
 1. In the **Developer Perspective** go to **Topology** and click on the `guestbook` deployment.
 
@@ -77,7 +77,7 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 ![deployment_deletion](images/deployment_deletion.jpg)
 
 
-## Deleting the Secrets
+## Step 6: Deleting the Secrets
 
 1. In the **Developer Perspective** click on **Secrets**.
 
@@ -91,21 +91,8 @@ version-history-start-date: 2022-09-30T07:47:11.000Z
 5. Repeat steps 3 & 4 for the **guestbook-github-webhook-secret** & any other `guestbook` secrets.
 
 
-## Next Steps
+## With these steps, the above paramters pertaining to your `guestbook` image will be deleted from Openshift Console. You can create the image streams and continue with the labs.
 
-- With these steps, the above paramters pertaining to your `guestbook` image will be deleted. You can create the image streams and continue with the labs.
-
-## Additional (Keep/Remove)
-
-- If you do not see any route to your `guestbook` app  after creating the deployment again, please run the below command in the terminal to get the route:
-
-```sh
-oc status
-```
-
-![oc-status-cmd_for-route](images/oc-status-cmd_for-route.jpg)
-
-- The guestbook app may show a 'Waiting for Database connection' status for some time. You need to wait for sometime for putting the guestbook entries and seeing them appear correctly.
 
 ## Author
 K Sundararajan
@@ -113,4 +100,4 @@ K Sundararajan
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
-| 04-10-2022 | 1.0 | K Sundararajan | Initial version created |
+| 06-10-2022 | 1.0 | K Sundararajan | Initial version created |
