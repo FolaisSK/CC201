@@ -91,7 +91,7 @@ In this lab, you will delete the below parameters of the `guestbook` image for r
 5. Repeat steps 3 & 4 for the **guestbook-github-webhook-secret** & any other `guestbook` secrets.
 
 
-## With these steps, the above paramters pertaining to your `guestbook` image will be deleted from Openshift Console. You can create the image streams and continue further with the labs.
+## With these steps, the above paramters pertaining to your `guestbook` image will be deleted from Openshift Console. You can then create the image streams and proceed further with the labs.
 
 
 ## Author
