@@ -4,13 +4,13 @@ tool-type: instructional-lab
 branch: lab-1647-instruction
 version-history-start-date: 2022-09-30T07:47:11.000Z
 ---
-# Restarting your Openshift Session
+# Deletion & Redeployment to Openshift
 
 **Estimated Time Needed:** 30 minutes
 
 ## Objectives
 
-In this lab, you will delete the below parameters of the `guestbook` image for creating the deployment again in the same session.
+In this lab, you will delete the below parameters of the `guestbook` image for re-deploying your `guestbook` app again.
 
 - Image Stream
 - Service
@@ -91,7 +91,7 @@ In this lab, you will delete the below parameters of the `guestbook` image for c
 5. Repeat steps 3 & 4 for the **guestbook-github-webhook-secret** & any other `guestbook` secrets.
 
 
-## With these steps, the above paramters pertaining to your `guestbook` image will be deleted from Openshift Console. You can create the image streams and continue with the labs.
+## With these steps, the above paramters pertaining to your `guestbook` image will be deleted from Openshift Console. You can create the image streams and continue further with the labs.
 
 
 ## Author
