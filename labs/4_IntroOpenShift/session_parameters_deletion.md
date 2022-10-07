@@ -2,15 +2,15 @@
 markdown-version: v1
 tool-type: instructional-lab
 branch: lab-1647-instruction
-version-history-start-date: 2022-09-30T07:47:11Z
+version-history-start-date: 2022-09-30T07:47:11.000Z
 ---
-# Session Parameters Deletion
+# Deletion & Redeployment to Openshift
 
-**Estimated Time Needed:** 20 minutes
+**Estimated Time Needed:** 30 minutes
 
 ## Objectives
 
-* In this lab, you will delete the below parameters of the `guestbook` image for creating the deployment again in the same session.
+In this lab, you will delete the below parameters of the `guestbook` image for re-deploying your `guestbook` app again.
 
 - Image Stream
 - Service
@@ -20,7 +20,7 @@ version-history-start-date: 2022-09-30T07:47:11Z
 - Secret
 
 
-## Deleting the Image Stream
+## Step 1: Deleting the Image Stream
 
 1. In the **Administrator Perspective** select **Builds** >> **Image Streams**.
 
@@ -28,14 +28,12 @@ version-history-start-date: 2022-09-30T07:47:11Z
 
 ![img_stream_deletion](images/img_stream_deletion.jpg)
 
-
-
-3. Click on **Delete** in the confirmation pop-up.
+3. Please select `Delete` from the confirmation prompt that appears to delete the Image Stream.
 
 ![img_stream_deletion_confirmation](images/img_stream_deletion_confirmation.jpg)
 
 
-## Deleting the Service
+## Step 2: Deleting the Service
 
 1. In the **Administrator Perspective** select **Networking** >> **Services**.
 
@@ -43,11 +41,12 @@ version-history-start-date: 2022-09-30T07:47:11Z
 
 ![service_deletion](images/service_deletion.jpg)
 
-3. Click on **Delete** in the confirmation pop-up.
+3. Please select `Delete` from the confirmation prompt that appears to delete the Service.
 
 ![service_deletion_confirmation](images/service_deletion_confirmation.jpg)
 
-## Deleting the Route
+
+## Step 3: Deleting the Route
 
 1. In the **Administrator Perspective** select **Networking** >> **Routes**.
 
@@ -55,7 +54,10 @@ version-history-start-date: 2022-09-30T07:47:11Z
 
 ![route_deletion](images/route_deletion.jpg)
 
-## Deleting the Build Config
+3. Please select `Delete` from the confirmation prompt that appears to delete the Route.
+
+
+## Step 4: Deleting the Build Config
 
 1. In the **Developer Perspective** click on **Builds**.
 
@@ -63,8 +65,10 @@ version-history-start-date: 2022-09-30T07:47:11Z
 
 ![service_deletion](images/service_deletion.jpg)
 
+3. Please select `Delete` from the confirmation prompt that appears to delete the Build Config.
 
-## Deleting the Deployment
+
+## Step 5: Deleting the Deployment
 
 1. In the **Developer Perspective** go to **Topology** and click on the `guestbook` deployment.
 
@@ -72,28 +76,22 @@ version-history-start-date: 2022-09-30T07:47:11Z
 
 ![deployment_deletion](images/deployment_deletion.jpg)
 
-## Deleting the Secrets
+
+## Step 6: Deleting the Secrets
 
 1. In the **Developer Perspective** click on **Secrets**.
 
 2. Click the **Filter** option. Type the name as **GUESTBOOK** under `Name` and press `Enter` to retrieve the secrets pertaining to the `guestbook` image.
 
-3. Click on the 3 dots at the right of  **guestbook-generic-webhook-secret** and click on **Delete Build Config**. Do the same for **guestbook-github-webhook-secret** & other `guestbook` secrets, if any.
-
+3. Click on the 3 dots at the right of  **guestbook-generic-webhook-secret** and click on **Delete Build Config**. 
 ![secret_deletion](images/secret_deletion.jpg)
 
+4. Please select `Delete` from the confirmation prompt that appears to delete the secret.
 
-## Next Steps
+5. Repeat steps 3 & 4 for the **guestbook-github-webhook-secret** & any other `guestbook` secrets.
 
-- The above session paramters pertaining to your current `guestbook` image will be deleted after the above steps. You can create the `guestbook` deployment again and proceed further.
 
-* If you do not see any route to your `guestbook` app  after creating the deployment again, please run the below command in the terminal to get the route:
-
-```sh
-oc status
-```
-
-![oc-status-cmd_for-route](images/oc-status-cmd_for-route.jpg)
+## With these steps, the above paramters pertaining to your `guestbook` image will be deleted from Openshift Console. You can then create the image streams and proceed further with the labs.
 
 
 ## Author
@@ -102,4 +100,4 @@ K Sundararajan
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
-| 29-09-2022 | 1.0 | K Sundararajan | Initial version created |
+| 06-10-2022 | 1.0 | K Sundararajan | Initial version created |
