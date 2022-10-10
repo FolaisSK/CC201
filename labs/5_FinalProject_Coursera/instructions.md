@@ -674,7 +674,7 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 <img src="images/autoscale_10.png" width='800'/> <br>
 
-> If you wish to delete & redeploy your app on Openshift due to session persistence or any other errors, please follow the steps given <a href = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/session_parameters_deletion.md.html">here</a>
+* If you wish to delete & redeploy your app on Openshift due to session persistence or any other errors, please follow the steps given <a href = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/session_parameters_deletion.md.html">here</a>
 
 > After doing the above, if you do not see any route to your `guestbook` app, please run the below command in the terminal to get the route:
 
