@@ -1,17 +1,19 @@
 ---
-markdown-version: 
+markdown-version: v1
 tool-type: theiaopenshift
 branch: lab-1729-instruction
-version-history-start-date: 2022-10-07T06:52:27Z
+version-history-start-date: 2022-10-07T06:52:27.000Z
 ---
 <center>
 <img src="images/labs_module_1_images_IDSNlogo.png" width = "300">
 </center>
 
-# Final Project
+::page{title="Final Project"}
 
 ## Objectives
+
 In this lab, you will:
+
 - Build and deploy a simple guestbook application
 - Use OpenShift image streams to roll out an update
 - Deploy a multi-tier version of the guestbook application
@@ -19,17 +21,18 @@ In this lab, you will:
 - Bind the Natural Language Understanding service instance to your application
 - Autoscale the guestbook app
 
-
-# Project Overview
+::page{title="Project Overview"}
 
 ## Guestbook application
+
 Guestbook is a simple, multi-tier web application that we will build and deploy with Docker and Kubernetes. The application consists of a web front end, a Redis master for storage, a replicated set of Redis slaves, and a Natural Language Understanding service that will analyze the tone of the comments left in the guestbook. For all of these we will create Kubernetes Deployments, Pods, and Services.
 
 There are two versions of this application. Version 1 (in the v1 directory) is the simple application itself, while version 2 (in the v2 directory) extends the application by adding additional features that leverage the Watson Natural Language Understanding service.
 
 We will deploy and manage this entire application on OpenShift.
 
-# Verify the environment and command line tools
+::page{title="Verify the environment and command line tools"}
+
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 
 > **Note:** Please wait for some time for the terminal prompt to appear.
@@ -43,92 +46,93 @@ We will deploy and manage this entire application on OpenShift.
 ```
 cd /home/project
 ```
-{: codeblock}
 
 3. Clone the git repository that contains the artifacts needed for this lab.
+
 ```
 [ ! -d 'guestbook' ] && git clone -b ver1 https://github.com/ibm-developer-skills-network/guestbook
 ```
-{: codeblock}
 
 <img src="images/env_cmd_3.png"/> <br>
 
 4. Change to the directory for this lab.
+
 ```
 cd guestbook
 ```
-{: codeblock}
 
 5. List the contents of this directory to see the artifacts for this lab.
+
 ```
 ls
 ```
-{: codeblock}
 
 <img src="images/env_cmd_5.png"/> <br>
 
-# Build the guestbook app
+::page{title="Build the guestbook app"}
+
 To begin, we will build and deploy the web front end for the guestbook app.
 
 1. Change to the `v1/guestbook` directory.
+
 ```
 cd v1/guestbook
 ```
-{: codeblock}
 
 2. Run the following command or open the Dockerfile in the Explorer to familiarize yourself with it. The path to this file is `guestbook/v1/guestbook/Dockerfile`. This Dockerfile incorporates a more advanced strategy called multi-stage builds, so feel free to read more about that [here](https://docs.docker.com/develop/develop-images/multistage-build/).
+
 ```
 cat Dockerfile
 ```
-{: codeblock}
 
 <img src="images/build_guestbook_2.png"/> <br>
 
-3. Export your namespace as an environment variable so that it can be used in subsequent commands. 
+3. Export your namespace as an environment variable so that it can be used in subsequent commands.
+ 
+
 ```
 export MY_NAMESPACE=sn-labs-$USERNAME
 ```
-{: codeblock}
 
 <img src="images/build_guestbook_3.png"/> <br>
 
 4. Build the guestbook app.
+
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
-{: codeblock}
 
 <img src="images/build_guestbook_4.png"/> <br>
 
-
 5. Push the image to IBM Cloud Container Registry.
+
 ```
 docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
-{: codeblock}
 
 <img src="images/build_guestbook_5.png"/> <br>
 
 > **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
 6. Verify that the image was pushed successfully.
+
 ```
 ibmcloud cr images
 ```
-{: codeblock}
 
 <img src="images/build_guestbook_6.png"/> <br>
 
 > **Note:** If you see the status of the image as **'Scanning'**, please wait for 10 minutes & re-run the above command till the status gradually changes to **'No Issues'**. Even if status shows as **'1 issue'**, you can still proceed with lab.
 
-# Deploy guestbook app from the OpenShift internal registry
+::page{title="Deploy guestbook app from the OpenShift internal registry"}
+
 As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
 
 1. Create an image stream that points to your image in IBM Cloud Container Registry.
+
 ```
 oc tag us.icr.io/$MY_NAMESPACE/guestbook:v1 guestbook:v1 --reference-policy=local --scheduled
 ```
-{: codeblock}
 
 With the `--reference-policy=local` option, a copy of the image from IBM Cloud Container Registry is imported into the local cache of the internal registry and made available to the cluster's projects as an image stream. The `--schedule` option sets up periodic importing of the image from IBM Cloud Container Registry into the internal registry. The default frequency is 15 minutes.
 
@@ -169,7 +173,8 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 >> **Note: Kindly do not delete the `opensh.console` deployment in the Topography view as this is essential for the OpenShift console to function properly.**
 
-9. Click the Route location (the link) to view the guestbook in action. 
+9. Click the Route location (the link) to view the guestbook in action.
+ 
 
 > **Note:** Please wait for status of the pod to change to **'Running'** before launching the app.
 
@@ -181,7 +186,8 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 <img src="images/deploy_app_osr_10.png"/> <br>
 
-# Update the guestbook
+::page{title="Update the guestbook"}
+
 Let's update the guestbook and see how OpenShift's image streams can help us update our apps with ease.
 
 1. Use the Explorer to edit `index.html` in the `public` directory. The path to this file is `guestbook/v1/guestbook/public/index.html`.
@@ -193,18 +199,18 @@ Let's update the guestbook and see how OpenShift's image streams can help us upd
 <img src="images/update_guestbook_2.png"/> <br>
 
 3. Build and push the app again using the same tag. This will overwrite the previous image.
+
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
-{: codeblock}
 
 <img src="images/update_guestbook_3.png"/> <br>
 
 4. Recall the `--schedule` option we specified when we imported our image into the OpenShift internal registry. As a result, OpenShift will regularly import new images pushed to the specified tag. Since we pushed our newly built image to the same tag, OpenShift will import the updated image within about 15 minutes. If you don't want to wait for OpenShift to automatically import the image, run the following command.
+
 ```
 oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confirm
 ```
-{: codeblock}
 
 <img src="images/update_guestbook_4.png"/> <br>
 
@@ -237,12 +243,14 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 <img src="images/update_guestbook_10.png"/> <br>
 
-# Guestbook storage
+::page{title="Guestbook storage"}
+
 1. From the guestbook in the browser, click the `/info` link beneath the input box. This is an information endpoint for the guestbook.
 
 <img src="images/storage_1a.png"/> <br> <br>
 
 Notice that it says "In-memory datastore (not redis)". Currently, we have only deployed the guestbook web front end, so it is using in-memory datastore to keep track of the entries. This is not very resilient, however, because any update or even a restart of the Pod will cause the entries to be lost. But let's confirm this.
+
 >📷**Kindly take the screenshot of the In-memory datastore for the final assignment.**
 
 <img src="images/storage_1b.png"/> <br>
@@ -253,7 +261,8 @@ Notice that it says "In-memory datastore (not redis)". Currently, we have only d
 
 > **Note:** Currently we are experiencing certain difficulties with the OpenShift console. There is a possibility that you will see your old entries because the image stream takes time in updating. You may move ahead with the further steps of lab.
 
-# Delete the guestbook
+::page{title="Delete the guestbook"}
+
 In order to deploy a more complex version of the guestbook, delete this simple version.
 
 1. From the Topology view, click the `guestbook-app` application. This is the light gray circle that surrounds the `guestbook` Deployment.
@@ -268,7 +277,8 @@ In order to deploy a more complex version of the guestbook, delete this simple v
 
 <img src="images/delete_3.png"/> <br>
 
-# Deploy Redis master and slave
+::page{title="Deploy Redis master and slave"}
+
 We've demonstrated that we need persistent storage in order for the guestbook to be effective. Let's deploy Redis so that we get just that. Redis is an open source, in-memory data structure store, used as a database, cache and message broker.
 
 This application uses the v2 version of the guestbook web front end and adds on 1) a Redis master for storage, 2) a replicated set of Redis slaves, and 3) a Python Flask application that calls a Watson Natural Language Understanding service deployed in IBM Cloud to analyze the tone. For all of these components, there are Kubernetes Deployments, Pods, and Services. One of the main concerns with building a multi-tier application on Kubernetes is resolving dependencies between all of these separately deployed components.
@@ -278,62 +288,62 @@ In a multi-tier application, there are two primary ways that service dependencie
 > **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message when you run the **Apply** command for creating deployments. We recommend you to proceed with the next steps of the lab.
 
 1. From the terminal in the lab environment, change to the v2 directory.
+
 ```
 cd ../../v2
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_1.png"/> <br>
 
 2. Run the following command or open the `redis-master-deployment.yaml` in the Explorer to familiarize yourself with the Deployment configuration for the Redis master.
+
 ```
 cat redis-master-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_2.png"/> <br>
 
 3. Create the Redis master Deployment.
+
 ```
 oc apply -f redis-master-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_3.png"/> <br>
 
 4. Verify that the Deployment was created.
+
 ```
 oc get deployments
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_4.png"/> <br>
 
 5. List Pods to see the Pod created by the Deployment.
+
 ```
 oc get pods
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_5.png"/> <br>
 
 You can also return to the Topology view in the OpenShift web console and see that the Deployment has appeared there.
 
 6. Run the following command or open the `redis-master-service.yaml` in the Explorer to familiarize yourself with the Service configuration for the Redis master.
+
 ```
 cat redis-master-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_6.png"/> <br>
 
 Services find the Pods to load balance based on Pod labels. The Pod that you created in previous step has the labels `app=redis` and `role=master`. The selector field of the Service determines which Pods will receive the traffic sent to the Service.
 
 7. Create the Redis master Service.
+
 ```
 oc apply -f redis-master-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_7a.png"/> <br>
 
@@ -342,52 +352,52 @@ If you click on the `redis-master` Deployment in the Topology view, you should n
 <img src="images/deploy_redis_7b.png"/> <br>
 
 8. Run the following command or open the `redis-slave-deployment.yaml` in the Explorer to familiarize yourself with the Deployment configuration for the Redis slave.
+
 ```
 cat redis-slave-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_8.png"/> <br>
 
 9. Create the Redis slave Deployment.
+
 ```
 oc apply -f redis-slave-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_9.png"/> <br>
 
 10. Verify that the Deployment was created.
+
 ```
 oc get deployments
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_10.png"/> <br>
 
 11. List Pods to see the Pod created by the Deployment.
+
 ```
 oc get pods
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_11.png"/> <br>
 
 You can also return to the Topology view in the OpenShift web console and see that the Deployment has appeared there.
 
 12. Run the following command or open the `redis-slave-service.yaml` in the Explorer to familiarize yourself with the Service configuration for the Redis slave.
+
 ```
 cat redis-slave-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_12.png"/> <br>
 
 13. Create the Redis slave Service.
+
 ```
 oc apply -f redis-slave-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_13a.png"/> <br>
 
@@ -395,7 +405,8 @@ If you click on the `redis-slave` Deployment in the Topology view, you should no
 
 <img src="images/deploy_redis_13b.png"/> <br>
 
-# Deploy v2 guestbook app
+::page{title="Deploy v2 guestbook app"}
+
 Now it's time to deploy the second version of the guestbook app, which will leverage Redis for persistent storage.
 
 1. Click the **+Add** button to add a new application to this project.
@@ -408,12 +419,12 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 
 <img src="images/v2app_2.png"/> <br>
 
-3. Paste the below URL in the **Git Repo URL** box. 
+3. Paste the below URL in the **Git Repo URL** box.
+ 
 
 ```
 https://github.com/ibm-developer-skills-network/guestbook
 ```
-{: codeblock}
 
 You should see a validated checkmark once you click out of the box.
 
@@ -439,7 +450,8 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 <img src="images/deployv2s7.jpg" width="800"> <br><br>
 
 8. From the Topology view, click the `guestbook` Deployment.
->📷**Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.** 
+>📷**Kindly take the screenshot of the guestbook deployment showing Build along with Service and Route for the final assignment.**
+ 
 
 In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
 
@@ -447,7 +459,8 @@ In the **Resources** tab, click the Route location to load the guestbook in the 
 
 <img src="images/v2app_8.png"/> <br> 
 
-9. From the guestbook in the browser, click the `/info` link beneath the input box. 
+9. From the guestbook in the browser, click the `/info` link beneath the input box.
+ 
 
 <img src="images/v2app_9a.png"/> <br> <br>
 
@@ -457,25 +470,25 @@ Notice that it now gives information on Redis since we're no longer using the in
 
 <img src="images/v2app_9b.png"/> <br>
 
-# Login to IBM CLOUD
+::page{title="Login to IBM CLOUD"}
 
 >**Note:** In the prework you have already created an Natural Language Understanding service instance. Kindly note the service name as it will be required.
 
 1. We need to store these credentials in a Kubernetes secret in order for our analyzer microservice to utilize them. From the terminal in the lab environment, login to your IBM Cloud account with your username. When prompted enter you password to login.
+
 ```
 ibmcloud login -u <your_email_address> 
 ```
-{: codeblock}
 
 <img src="images/login_ibmcloud_1.png"/> <br>
 
 >If you are a federated user that uses a corporate or enterprise single sign-on ID, you can log in to IBM Cloud® from the console by using a federated ID and password. Use the provided URL in your CLI output to retrieve your one-time passcode. You know you have a federated ID when the login fails without the `--sso` and succeeds with the `--sso` option.
 
 2. Ensure that you target the resource group in which you created the Natural Language Understanding service. Remember that you noted this resource group in a previous step.
+
 ```
 ibmcloud target -g <resource_group>
 ```
-{: codeblock}
 
 <img src="images/login_ibmcloud_2.png"/> <br>
 
@@ -488,10 +501,10 @@ ibmcloud target -g <resource_group>
  <img src="images/login_ibmcloud_3b.png"/> <br>
 
 4. Run the script to create a Secret containing credentials for your Natural Language Understanding  service.
+
 ```
 ./binding-hack.sh
 ```
-{: codeblock}
 
 You should see the following output: `secret/tone-binding created`.
 
@@ -500,29 +513,30 @@ You should see the following output: `secret/tone-binding created`.
 > **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Configured'** message in the above output. We recommend you to proceed with the next steps of the lab.
 
 5. Log back into the lab account.
+
 ```
 ibmcloud login --apikey $IBMCLOUD_API_KEY
 ```
-{: codeblock}
 
 <img src="images/login_ibmcloud_5.png"/> <br>
 
-# Deploy the analyzer microservice
+::page{title="Deploy the analyzer microservice"}
+
 Now that the Natural Language Understanding service is created and its credentials are provided in a Kubernetes Secret, we can deploy the analyzer microservice.
 
 1. Change to the `analyzer` directory.
+
 ```
 cd analyzer
 ```
-{: codeblock}
 
 <img src="images/deploy_analyzer_1.png"/> <br>
 
 2. Build and push the analyzer image.
+
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/analyzer:v1 && docker push us.icr.io/$MY_NAMESPACE/analyzer:v1
 ```
-{: codeblock}
 
 >> **Note:** If the above step doesn’t run in the first time, please logout from the lab environment and clear your browser cache and cookies & relaunch the lab. Kindly do the lab from the beginning to get the correct output.
 
@@ -531,12 +545,13 @@ docker build . -t us.icr.io/$MY_NAMESPACE/analyzer:v1 && docker push us.icr.io/$
 <img src="images/deploy_analyzer_2b.png"/> <br>
 
 3. Return to the `v2` directory.
+
 ```
 cd ..
 ```
-{: codeblock}
 
-4. Use the Explorer to edit `analyzer-deployment.yaml`. The path to this file is `guestbook/v2/analyzer-deployment.yaml`. You need to insert your Container Registry namespace where it says `<my_namespace>`. 
+4. Use the Explorer to edit `analyzer-deployment.yaml`. The path to this file is `guestbook/v2/analyzer-deployment.yaml`. You need to insert your Container Registry namespace where it says `<my_namespace>`.
+ 
 
 <img src="images/deploy_analyzer_4a.png"/> <br>
 
@@ -545,26 +560,27 @@ If you don't remember your namespace, run `echo $MY_NAMESPACE`. Make sure to sav
 <img src="images/deploy_analyzer_4b.png"/> <br>
 
 5. Create the `analyzer` Deployment.
+
 ```
 oc apply -f analyzer-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_analyzer_5.png"/> <br>
 
 > **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
 6. Create the `analyzer` Service.
+
 ```
 oc apply -f analyzer-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_analyzer_6.png"/> <br>
 
 > **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
-7. >📷**Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**. 
+7. >📷**Kindly take the screenshot of the topology showing "redis-master,redis slave and analyzer microservices" for the final assignment**.
+ 
 
 <img src="images/deploy_analyzer_7a.png"/> <br>
 
@@ -578,7 +594,8 @@ Return to the guestbook in the browser, refresh the page, and submit a new entry
 
 >> **Note: Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.**
 
-# Autoscale guestbook
+::page{title="Autoscale guestbook"}
+
 Now that guestbook is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way. Make sure to keep the guestbook open in a browser tab so that it continues to make requests and consume resources so that it can be successfully autoscaled.
 
 First, we need to set resource requests and limits for the containers that will run. If a container requests a resource like CPU or memory, Kubernetes will only schedule it on a node that can give it that resource. On the other hand, limits prevent a container from consuming more than a certain amount of a resource.
@@ -590,6 +607,7 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 <img src="images/autoscale_1.png"/> <br>
 
 2. In the **template.spec.containers** section, find `resources: {}`. Replace that with the following text. Make sure the spacing is correct as YAML uses strict indentation.
+
 ```
           resources:
             limits:
@@ -599,7 +617,6 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
               cpu: 3m
               memory: 40Mi
 ```
-{: codeblock}
 
 <img src="images/autoscale_2.png"/> <br>
 
@@ -620,6 +637,7 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 <img src="images/autoscale_6.png"/> <br>
 
 7. Paste the following YAML into the editor.
+
 ```
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -638,7 +656,6 @@ spec:
         name: cpu
         targetAverageUtilization: 1
 ```
-{: codeblock}
 
 <img src="images/autoscale_7.png"/> <br>
 
@@ -657,11 +674,21 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 <img src="images/autoscale_10.png" width='800'/> <br>
 
+> If you wish to delete & redeploy your app on Openshift due to session persistence or any other errors, please follow the steps given <a href = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/session_parameters_deletion.md.html">here</a>
+
+> After doing the above, if you do not see any route to your `guestbook` app, please run the below command in the terminal to get the route:
+
+```sh
+oc status
+```
+
+
+> The guestbook app may show a 'Waiting for Database connection' status for some time after clicking on the route. Due to this the entries you add in the box will not appear. You may have to wait for sometime for the app to be ready and then add your entries to see them appear correctly.
+
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
-
-
 ## Changelog
+
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-04-12 | 1.1 | K Sundararajan | Updated Lab instructions |
@@ -670,6 +697,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-04-19 | 1.4 | K Sundararajan | Updated Lab instructions |
 | 2022-08-01 | 1.5 | K Sundararajan | Updated Lab instructions |
 | 2022-09-21 | 1.6 | K Sundararajan | Updated Git clone command & screenshot |
-
+| 2022-10-10 | 1.7 | K Sundararajan | Updated instructions for OC session deletion and redeployment |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
+
