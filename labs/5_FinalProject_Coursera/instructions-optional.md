@@ -1,34 +1,36 @@
 ---
-markdown-version: 
+markdown-version: v1
 tool-type: theiaopenshift
 branch: lab-1730-instruction
-version-history-start-date: 2022-10-07T06:53:37Z
+version-history-start-date: 2022-10-07T06:53:37.000Z
 ---
 <center>
 <img src="images/IDSN-new-logo.png" width = "300">
 </center>
 
-# Optional: Deploy guestbook app from the OpenShift internal registry
+::page{title="Optional: Deploy guestbook app from the OpenShift internal registry"}
 
 ## Objectives
+
 In this lab, you will:
+
 - Build and deploy a simple guestbook application
 - Use OpenShift image streams to roll out an update
 - Deploy a multi-tier version of the guestbook application
 
 ## Pre-requisite
-You must have built and pushed the Guestbook application using the Docker commands as given in the Final Assignment.
 
+You must have built and pushed the Guestbook application using the Docker commands as given in the Final Assignment.
 
 ## Deploy guestbook app from the OpenShift internal registry
 
 As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
 
 1. Create an image stream that points to your image in IBM Cloud Container Registry.
+
 ```
 oc tag us.icr.io/$MY_NAMESPACE/guestbook:v1 guestbook:v1 --reference-policy=local --scheduled
 ```
-{: codeblock}
 
 With the `--reference-policy=local` option, a copy of the image from IBM Cloud Container Registry is imported into the local cache of the internal registry and made available to the cluster's projects as an image stream. The `--schedule` option sets up periodic importing of the image from IBM Cloud Container Registry into the internal registry. The default frequency is 15 minutes.
 
@@ -69,7 +71,8 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 >> **Note: Kindly do not delete the `opensh.console` deployment in the Topography view as this is essential for the OpenShift console to function properly.**
 
-9. Click the Route location (the link) to view the guestbook in action. 
+9. Click the Route location (the link) to view the guestbook in action.
+ 
 
 > **Note:** Please wait for status of the pod to change to **'Running'** before launching the app.
 
@@ -79,7 +82,8 @@ Now let's head over to the OpenShift web console to deploy the guestbook app usi
 
 <img src="images/deploy_app_osr_10.png"/> <br>
 
-# Update the guestbook
+::page{title="Update the guestbook"}
+
 Let's update the guestbook and see how OpenShift's image streams can help us update our apps with ease.
 
 1. Use the Explorer to edit `index.html` in the `public` directory. The path to this file is `guestbook/v1/guestbook/public/index.html`.
@@ -91,18 +95,18 @@ Let's update the guestbook and see how OpenShift's image streams can help us upd
 <img src="images/update_guestbook_2.png"/> <br>
 
 3. Build and push the app again using the same tag. This will overwrite the previous image.
+
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
-{: codeblock}
 
 <img src="images/update_guestbook_3.png"/> <br>
 
 4. Recall the `--schedule` option we specified when we imported our image into the OpenShift internal registry. As a result, OpenShift will regularly import new images pushed to the specified tag. Since we pushed our newly built image to the same tag, OpenShift will import the updated image within about 15 minutes. If you don't want to wait for OpenShift to automatically import the image, run the following command.
+
 ```
 oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confirm
 ```
-{: codeblock}
 
 <img src="images/update_guestbook_4.png"/> <br>
 
@@ -118,7 +122,8 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 <img src="images/update_guestbook_7.png"/> <br>
 
-8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes. 
+8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes.
+ 
 
 <img src="images/update_guestbook_8.png"/> <br>
 
@@ -130,10 +135,10 @@ oc import-image guestbook:v1 --from=us.icr.io/$MY_NAMESPACE/guestbook:v1 --confi
 
 10. View the guestbook in the browser again. If you still have the tab open, go there. If not, click the Route again from the `guestbook` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well.
 
-
 <img src="images/update_guestbook_10.png"/> <br>
 
-# Guestbook storage
+::page{title="Guestbook storage"}
+
 1. From the guestbook in the browser, click the `/info` link beneath the input box. This is an information endpoint for the guestbook.
 
 <img src="images/storage_1a.png"/> <br> <br>
@@ -148,7 +153,8 @@ Notice that it says "In-memory datastore (not redis)". Currently, we have only d
 
 > **Note:** Currently we are experiencing certain difficulties with the OpenShift console. There is a possibility that you will see your old entries because the image stream takes time in updating. You may move ahead with the further steps of lab.
 
-# Delete the guestbook
+::page{title="Delete the guestbook"}
+
 In order to deploy a more complex version of the guestbook, delete this simple version.
 
 1. From the Topology view, click the `guestbook-app` application. This is the light gray circle that surrounds the `guestbook` Deployment.
@@ -163,7 +169,8 @@ In order to deploy a more complex version of the guestbook, delete this simple v
 
 <img src="images/delete_3.png"/> <br>
 
-# Deploy Redis master and slave
+::page{title="Deploy Redis master and slave"}
+
 We've demonstrated that we need persistent storage in order for the guestbook to be effective. Let's deploy Redis so that we get just that. Redis is an open source, in-memory data structure store, used as a database, cache and message broker.
 
 This application uses the v2 version of the guestbook web front end and adds on 1) a Redis master for storage and 2) a replicated set of Redis slaves. For all of these components, there are Kubernetes Deployments, Pods, and Services. One of the main concerns with building a multi-tier application on Kubernetes is resolving dependencies between all of these separately deployed components.
@@ -173,62 +180,62 @@ In a multi-tier application, there are two primary ways that service dependencie
 > **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message when you run the **Apply** command for creating deployments. We recommend you to proceed with the next steps of the lab.
 
 1. From the terminal in the lab environment, change to the v2 directory.
+
 ```
 cd ../../v2
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_1.png"/> <br>
 
 2. Run the following command or open the `redis-master-deployment.yaml` in the Explorer to familiarize yourself with the Deployment configuration for the Redis master.
+
 ```
 cat redis-master-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_2.png"/> <br>
 
 3. Create the Redis master Deployment.
+
 ```
 oc apply -f redis-master-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_3.png"/> <br>
 
 4. Verify that the Deployment was created.
+
 ```
 oc get deployments
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_4.png"/> <br>
 
 5. List Pods to see the Pod created by the Deployment.
+
 ```
 oc get pods
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_5.png"/> <br>
 
 You can also return to the Topology view in the OpenShift web console and see that the Deployment has appeared there.
 
 6. Run the following command or open the `redis-master-service.yaml` in the Explorer to familiarize yourself with the Service configuration for the Redis master.
+
 ```
 cat redis-master-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_6.png"/> <br>
 
 Services find the Pods to load balance based on Pod labels. The Pod that you created in previous step has the labels `app=redis` and `role=master`. The selector field of the Service determines which Pods will receive the traffic sent to the Service.
 
 7. Create the Redis master Service.
+
 ```
 oc apply -f redis-master-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_7a.png"/> <br>
 
@@ -237,52 +244,52 @@ If you click on the `redis-master` Deployment in the Topology view, you should n
 <img src="images/deploy_redis_7b.png"/> <br>
 
 8. Run the following command or open the `redis-slave-deployment.yaml` in the Explorer to familiarize yourself with the Deployment configuration for the Redis slave.
+
 ```
 cat redis-slave-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_8.png"/> <br>
 
 9. Create the Redis slave Deployment.
+
 ```
 oc apply -f redis-slave-deployment.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_9.png"/> <br>
 
 10. Verify that the Deployment was created.
+
 ```
 oc get deployments
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_10.png"/> <br>
 
 11. List Pods to see the Pod created by the Deployment.
+
 ```
 oc get pods
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_11.png"/> <br>
 
 You can also return to the Topology view in the OpenShift web console and see that the Deployment has appeared there.
 
 12. Run the following command or open the `redis-slave-service.yaml` in the Explorer to familiarize yourself with the Service configuration for the Redis slave.
+
 ```
 cat redis-slave-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_12.png"/> <br>
 
 13. Create the Redis slave Service.
+
 ```
 oc apply -f redis-slave-service.yaml
 ```
-{: codeblock}
 
 <img src="images/deploy_redis_13a.png"/> <br>
 
@@ -290,7 +297,8 @@ If you click on the `redis-slave` Deployment in the Topology view, you should no
 
 <img src="images/deploy_redis_13b.png"/> <br>
 
-# Deploy v2 guestbook app
+::page{title="Deploy v2 guestbook app"}
+
 Now it's time to deploy the second version of the guestbook app, which will leverage Redis for persistent storage.
 
 1. Click the **+Add** button to add a new application to this project.
@@ -303,12 +311,12 @@ To demonstrate the various options available in OpenShift, we'll deploy this gue
 
 <img src="images/v2app_2.png"/> <br>
 
-3. Paste the below URL in the **Git Repo URL** box. 
+3. Paste the below URL in the **Git Repo URL** box.
+ 
 
 ```
 https://github.com/ibm-developer-skills-network/guestbook
 ```
-{: codeblock}
 
 You should see a validated checkmark once you click out of the box.
 
@@ -335,25 +343,34 @@ Since we gave OpenShift a Dockerfile, it will create a BuildConfig and a Build t
 
 8. From the Topology view, click the `guestbook` Deployment.
 
-
 In the **Resources** tab, click the Route location to load the guestbook in the browser. Notice that the header says "Guestbook - v2" instead of "Guestbook - v1".
 
 >> **Note: Please wait for the Builds to complete before clicking on the route link**
 
 <img src="images/v2app_8.png"/> <br> 
 
-9. From the guestbook in the browser, click the `/info` link beneath the input box. 
+9. From the guestbook in the browser, click the `/info` link beneath the input box.
+ 
 
 <img src="images/v2app_9a.png"/> <br> <br>
 
 Notice that it now gives information on Redis since we're no longer using the in-memory datastore.
 
-
 <img src="images/v2app_9b.png"/> <br>
 
 
+* If you wish to delete & redeploy your app on Openshift due to session persistence or other errors, please follow the steps given <a href = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/session_parameters_deletion.md.html">here</a>
+
+> After doing the above, if you do not see any route to your `guestbook` app, please run the below command in the terminal to get the app route:
+
+```sh
+oc status
+```
+
+> The guestbook app may show a 'Waiting for Database connection' status for some time after clicking on the route, due to which, the entries added in the box will not appear. You may have to wait for sometime for the app to be ready and then add your entries to see them appear correctly.
 
 ## Changelog
+
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-04-12 | 1.1 | K Sundararajan | Updated Lab instructions |
@@ -362,5 +379,8 @@ Notice that it now gives information on Redis since we're no longer using the in
 | 2022-04-19 | 1.4 | K Sundararajan | Updated Lab instructions |
 | 2022-07-25 | 1.5 | K Sundararajan | Updated Lab instructions |
 | 2022-08-02 | 1.6 | K Sundararajan | Added new IDSN logo |
+| 2022-10-10 | 1.7 | K Sundararajan | Added link to new OC redeployment lab with additional notes |
+
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
+
