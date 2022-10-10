@@ -1,17 +1,19 @@
 ---
-markdown-version: 
+markdown-version: v1
 tool-type: theiaopenshift
 branch: lab-1590-instruction
-version-history-start-date: 2022-09-26T10:41:30Z
+version-history-start-date: 2022-09-26T10:41:30.000Z
 ---
 <center>
 <img src="images/labs_module_1_images_IDSNlogo.png" width = "300">
 </center>
 
-# Final Project
+::page{title="Final Project"}
 
 ## Objectives
+
 In this lab, you will:
+
 - Build and deploy a simple health application
 - Use OpenShift image streams to roll out an update
 - Redeploy the health app using an OpenShift build
@@ -19,85 +21,89 @@ In this lab, you will:
 - Bind the Cloudant service instance to your application
 - Autoscale the health app
 
-# Project Overview
+::page{title="Project Overview"}
 
 ## Health application
+
 The health application is a simple, multi-tier web application that we will build and deploy with Docker and Kubernetes. The application consists of a web front end and an adapter that serves data from a Cloudant database to the front end application. For both of these we will create Kubernetes Deployments, Pods, and Services.
 
 We will deploy and manage this entire application on OpenShift.
 
-# Verify the environment and command line tools
+::page{title="Verify the environment and command line tools"}
+
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 ![New terminal](images/new-terminal.png)
 
 2. Change to your project folder.
+
 ```
 cd /home/project
 ```
-{: codeblock}
 
 3. Clone the git repository that contains the artifacts needed for this lab.
+
 ```
 git clone https://github.com/ajp-io/patient-ui.git
 ```
-{: codeblock}
 
 4. Change to the directory for this lab.
+
 ```
 cd patient-ui
 ```
-{: codeblock}
 
 5. List the contents of this directory to see the artifacts for this lab.
+
 ```
 ls
 ```
-{: codeblock}
 
-# Build the health app
+::page{title="Build the health app"}
+
 To begin, we will build and deploy the web front end for the health app.
 
 1. Run the following command or open the Dockerfile in the Explorer to familiarize yourself with it. The path to this file is `patient-ui/Dockerfile`.
+
 ```
 cat Dockerfile
 ```
-{: codeblock}
 
 2. Export your namespace as an environment variable so that it can be used in subsequent commands.
+
 ```
 export MY_NAMESPACE=sn-labs-$USERNAME
 
 ```
-{: codeblock}
 
 3. Build the health app.
+
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/patient-ui:v1
 ```
-{: codeblock}
 
 4. Push the image to IBM Cloud Container Registry.
+
 ```
 docker push us.icr.io/$MY_NAMESPACE/patient-ui:v1
 ```
-{: codeblock}
 
 5. Verify that the image was pushed successfully.
+
 ```
 ibmcloud cr images
 ```
-{: codeblock}
 
 <img src="images/buildapp_6.png">
 
-# Deploy health app from the OpenShift internal registry
+::page{title="Deploy health app from the OpenShift internal registry"}
+
 As discussed in the course, IBM Cloud Container Registry scans images for common vulnerabilities and exposures to ensure that images are secure. But OpenShift also provides an internal registry -- recall the discussion of image streams and image stream tags. Using the internal registry has benefits too. For example, there is less latency when pulling images for deployments. What if we could use both—use IBM Cloud Container Registry to scan our images and then automatically import those images to the internal registry for lower latency?
 
 1. Create an image stream that points to your image in IBM Cloud Container Registry.
+
 ```
 oc tag us.icr.io/$MY_NAMESPACE/patient-ui:v1 patient-ui:v1 --reference-policy=local --scheduled
 ```
-{: codeblock}
 
 With the `--reference-policy=local` option, a copy of the image from IBM Cloud Container Registry is imported into the local cache of the internal registry and made available to the cluster's projects as an image stream. The `--schedule` option sets up periodic importing of the image from IBM Cloud Container Registry into the internal registry. The default frequency is 15 minutes.
 
@@ -125,7 +131,8 @@ Now let's head over to the OpenShift web console to deploy the health app using 
 
 <img src="images/deploy_osreg_10.png">
 
-# Update the health app
+::page{title="Update the health app"}
+
 Let's update the health app and see how OpenShift's image streams can help us update our apps with ease.
 
 1. Use the Explorer to edit `login.html` in the `public` directory. The path to this file is `patient-ui/public/login.html`.
@@ -135,16 +142,16 @@ Let's update the health app and see how OpenShift's image streams can help us up
 <img src="images/update_app_2.png">
 
 3. Build and push the app again using the same tag. This will overwrite the previous image.
+
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/patient-ui:v1 && docker push us.icr.io/$MY_NAMESPACE/patient-ui:v1
 ```
-{: codeblock}
 
 4. Recall the `--schedule` option we specified when we imported our image into the OpenShift internal registry. As a result, OpenShift will regularly import new images pushed to the specified tag. Since we pushed our newly built image to the same tag, OpenShift will import the updated image within about 15 minutes. If you don't want to wait for OpenShift to automatically import the updated image, run the following command.
+
 ```
 oc import-image patient-ui:v1 --from=us.icr.io/$MY_NAMESPACE/patient-ui:v1 --confirm
 ```
-{: codeblock}
 
 5. Switch to the Administrator perspective so that you can view image streams.
 
@@ -154,15 +161,16 @@ oc import-image patient-ui:v1 --from=us.icr.io/$MY_NAMESPACE/patient-ui:v1 --con
 
 8. Click the **History** menu. If you only see one entry listed here, it means OpenShift hasn't imported your new image yet. Wait a few minutes and refresh the page. Eventually you should see a second entry, indicating that a new version of this image stream tag has been imported. This can take some time as the default frequency for importing is 15 minutes.
 
-
 9. Return to the Developer perspective.
 
 10. View the health app in the browser again. If you still have the tab open, go there. If not, click the Route again from the `patient-ui` Deployment. You should see your new title on this page! OpenShift imported the new version of our image, and since the Deployment points to the image stream, it began running this new version as well.
 
-# Health app storage
+::page{title="Health app storage"}
+
 1. From the health app in the browser, click the **Settings** link. If you're on the login page, this is beneath the login box. If you have already logged in, this is in the top navigation. This shows the current settings for the health app. Currently, the app is running in demo mode, which means that it serves static information on one mock patient. We want the app to require valid login credentials and to store patient details in a database instead of in memory.
 
-# Create a Cloudant service instance
+::page{title="Create a Cloudant service instance"}
+
 We've demonstrated that we need persistent storage in order for the health app to be effective. Let's deploy Cloudant so that we get just that. IBM Cloudant is a fully managed, distributed database that is optimized for handling heavy workloads that are typical of large, fast-growing web and mobile apps. Cloudant is built on open source Apache CouchDB.
 
 1. Go to the [IBM Cloud catalog](https://cloud.ibm.com/catalog).
@@ -185,45 +193,46 @@ We've demonstrated that we need persistent storage in order for the health app t
 <img src="images/cloudant_8.png">
 
 9. We need to store this credential in a Kubernetes secret in order for our patient database microservice to utilize it. From the terminal in the lab environment, login to your IBM Cloud account with your username and password.
+
 ```
 ibmcloud login -u <your_email_address>
 ```
-{: codeblock}
 
 >If you are a federated user that uses a corporate or enterprise single sign-on ID, you can log in to IBM Cloud® from the console by using a federated ID and password. Use the provided URL in your CLI output to retrieve your one-time passcode. You know you have a federated ID when the login fails without the `--sso` and succeeds with the `--sso` option.
 
 10. Ensure that you target the resource group in which you created the Cloudant service. Remember that you noted this resource group in a previous step.
+
 ```
 ibmcloud target -g <resource_group>
 ```
-{: codeblock}
 
 11. Use the Explorer to edit `binding-hack.sh`. The path to this file is `patient-ui/binding-hack.sh`. You need to insert your OpenShift project where it says `<my_project>`. Your project is `sn-labs-` followed by your username. If you don't remember your project name, run `oc project`. Make sure to save the file when you're done.
 
 12. Run the script to create a Secret containing credentials for your Cloudant service.
+
 ```
 ./binding-hack.sh
 ```
-{: codeblock}
 
 You should see the following output: `secret/cloudant-binding created`.
 
 13. Log back into the lab account. You have to use your lab account to use the Open Shift console; it will not work with your IBM Cloud credentials.
+
 ```
 ibmcloud login --apikey $IBMCLOUD_API_KEY
 ```
-{: codeblock}
 
 <img src="images/cloudant_13.png">
 
-# Deploy the patient database microservice
+::page{title="Deploy the patient database microservice"}
+
 Now that the Cloudant service instance is created and its credentials are provided in a Kubernetes Secret, we can deploy the patient database microservice. This microservice populates your Cloudant instance with patient data on startup, and it also serves that data to the front end application that you have already deployed.
 
 1. Create the patient database application. This will start a source-to-image build.
+
 ```
 oc new-app --name=patient-db centos/nodejs-10-centos7~https://github.com/ajp-io/patient-db-adapter
 ```
-{: codeblock}
 
 2. From the Topology view, wait for the build to complete, and then click the new `patient-db` DeploymentConfig that was created.
 
@@ -247,7 +256,8 @@ oc new-app --name=patient-db centos/nodejs-10-centos7~https://github.com/ajp-io/
 
 11. Click the **Logs** tab. If you have set up everything correctly so far, you should see in the logs that the patient db adapter connected to Cloudant and created a bunch of databases like "allergies", "appointments", etc.
 
-# Configure health app to use Cloudant
+::page{title="Configure health app to use Cloudant"}
+
 Now that the database adapter has populated the database with patient data, we need to configure the front end applciation to use that application to serve patient data.
 
 1. View the health app in the browser again. If you still have the tab open, go there. If not, click the Route again from the `patient-ui` Deployment.
@@ -274,28 +284,29 @@ Now that the database adapter has populated the database with patient data, we n
 
 11. Return to the login page and test out these credentials. You should get logged in and see this patient's data appear in the health app.
 
-# Autoscale health app
+::page{title="Autoscale health app"}
+
 Now that the health app is successfully up and running, let's set up a horizontal pod autoscaler (HPA) so that it can handle any load that comes its way.
 
 To start, we need to generate load on the application so that it consumes resources.
 
 1. Get the Route to your application. The Route is in the **HOST/PORT** field.
+
 ```
 oc get routes
 ```
-{: codeblock}
 
 2. Export the Route as a variable. Make sure to substitute in your Route.
+
 ```
 export HEALTH_ROUTE=<route>
 ```
-{: codeblock}
 
 3. Endlessly spam the app with requests in order to generate load. Leave this command running.
+
 ```
 while sleep 1; do curl -s http://$HEALTH_ROUTE > /dev/null; done
 ```
-{: codeblock}
 
 <img src="images/autoscale_3.png">
 
@@ -306,6 +317,7 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 4. From the Topology view, click the `patient-ui` Deployment. Then click **Actions** > **Edit Deployment**.
 
 5. In the **template.spec.containers** section, find `resources: {}`. Replace that with the following text. Make sure the spacing is correct as YAML uses strict indentation.
+
 ```
           resources:
             limits:
@@ -315,7 +327,6 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
               cpu: 3m
               memory: 40Mi
 ```
-{: codeblock}
 
 6. Click **Save**. Then click on **Reload** to view the updated YAML file.
 
@@ -328,6 +339,7 @@ In this case, we're going to request 3 millicores of CPU and 40 MB of RAM. We'll
 9. Click **Create Horizontal Pod Autoscaler**.
 
 10. Paste the following YAML into the editor.
+
 ```
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
@@ -346,7 +358,6 @@ spec:
         name: cpu
         targetAverageUtilization: 1
 ```
-{: codeblock}
 
 This HPA indicates that we're going to scale based on CPU usage. Generally you want to scale when your CPU utilization is in the 50-90% range. For this example, we're going to use 1% so that the app is more likely to need scaling. The `minReplicas` and `maxReplicas` fields indicate that the Deployment should have between one and three replicas at any given time depending on load.
 
@@ -356,4 +367,16 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 13. If you click the `patient-ui` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
 
+* If you wish to delete & redeploy your app on Openshift due to session persistence or any other errors, please follow the steps given <a href = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/session_parameters_deletion.md.html">here</a>
+
+> After doing the above, if you do not see any route to your `guestbook` app, please run the below command in the terminal to get the route:
+
+```sh
+oc status
+```
+
+
+> The guestbook app may show a 'Waiting for Database connection' status for some time after clicking on the route. Due to this the entries you add in the box will not appear. You may have to wait for sometime for the app to be ready and then add your entries to see them appear correctly.
+
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
+
