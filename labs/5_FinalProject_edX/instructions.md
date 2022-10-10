@@ -367,16 +367,6 @@ This HPA indicates that we're going to scale based on CPU usage. Generally you w
 
 13. If you click the `patient-ui` Deployment under **Scale Target**, you'll be directed to the Deployment where you can verify that there are now three Pods.
 
-* If you wish to delete & redeploy your app on Openshift due to session persistence or any other errors, please follow the steps given <a href = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/session_parameters_deletion.md.html">here</a>
-
-> After doing the above, if you do not see any route to your `guestbook` app, please run the below command in the terminal to get the route:
-
-```sh
-oc status
-```
-
-
-> The guestbook app may show a 'Waiting for Database connection' status for some time after clicking on the route. Due to this the entries you add in the box will not appear. You may have to wait for sometime for the app to be ready and then add your entries to see them appear correctly.
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
