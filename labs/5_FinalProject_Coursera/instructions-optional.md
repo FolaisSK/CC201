@@ -175,7 +175,7 @@ We've demonstrated that we need persistent storage in order for the guestbook to
 
 This application uses the v2 version of the guestbook web front end and adds on 1) a Redis master for storage and 2) a replicated set of Redis slaves. For all of these components, there are Kubernetes Deployments, Pods, and Services. One of the main concerns with building a multi-tier application on Kubernetes is resolving dependencies between all of these separately deployed components.
 
-In a multi-tier application, there are two primary ways that service dependencies can be resolved. The `v2/guestbook/main.go` code provides examples of each. For Redis, the master endpoint is discovered through environment variables. These environment variables are set when the Redis services are started, so the service resources need to be created before the guestbook Pods start. For the analyzer service, an HTTP request is made to a hostname, which allows for resource discovery at the time when the request is made. Consequently, we'll follow a specific order when creating the application components. First, the Redis components will be created, then the guestbook application, and finally the analyzer microservice.
+In a multi-tier application, there are two primary ways that service dependencies can be resolved. The `v2/guestbook/main.go` code provides examples of each. For Redis, the master endpoint is discovered through environment variables. These environment variables are set when the Redis services are started, so the service resources need to be created before the guestbook Pods start. Consequently, we'll follow a specific order when creating the application components. First, the Redis components will be created, then the guestbook application.
 
 > **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see an **'Unchanged'** message instead of the **'Created'** message when you run the **Apply** command for creating deployments. We recommend you to proceed with the next steps of the lab.
 
@@ -359,7 +359,7 @@ Notice that it now gives information on Redis since we're no longer using the in
 <img src="images/v2app_9b.png"/> <br>
 
 
-* If you wish to delete & redeploy your app on Openshift due to session persistence or other errors, please follow the steps given <a href = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/session_parameters_deletion.md.html">here</a>
+* If you wish to delete & redeploy your app on Openshift due to session persistence or other errors, please follow the steps given <a href = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/cc201/labs/4_IntroOpenShift/session_parameters_deletion.md.html" target="_blank">here</a>
 
 > After doing the above, if you do not see any route to your `guestbook` app, please run the below command in the terminal to get the app route:
 
@@ -380,6 +380,7 @@ oc status
 | 2022-07-25 | 1.5 | K Sundararajan | Updated Lab instructions |
 | 2022-08-02 | 1.6 | K Sundararajan | Added new IDSN logo |
 | 2022-10-10 | 1.7 | K Sundararajan | Added link to new OC redeployment lab with additional notes |
+| 2022-10-11 | 1.8 | Lavanya Rajalingam | Updated Lab instructions |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
