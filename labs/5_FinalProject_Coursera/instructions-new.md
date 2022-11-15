@@ -1,5 +1,5 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: theiaopenshift
 branch: lab-2240-instruction
 version-history-start-date: '2022-11-15T08:43:09Z'
@@ -8,26 +8,29 @@ version-history-start-date: '2022-11-15T08:43:09Z'
 <img src="images/IDSN-new-logo.png" width = "300">
 </center>
 
-# Final Project
+::page{title="Final Project"}
 
 ## Objectives
+
 In this lab, you will:
+
 - Build and deploy a simple Guestbook application
 - Autoscale the Guestbook application using Horizontal Pod Autoscaler
 - Perform Rolling Updates and Rollbacks
 
-
-# Project Overview
+::page{title="Project Overview"}
 
 ## Guestbook application
+
 Guestbook is a simple web application that we will build and deploy with Docker and Kubernetes. The application consists of a web front end which will have a text input where you can enter any text and submit. For all of these we will create Kubernetes Deployments and Pods. Then we will apply Horizontal Pod Scaling to the Guestbook application and finally work on Rolling Updates and Rollbacks.
 
-# Verify the environment and command line tools
+::page{title="Verify the environment and command line tools"}
+
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 
 > **Note:** Please wait for some time for the terminal prompt to appear.
 
-<img src="images/env_cmd_1.png"/> <br>
+![](/images/Screenshot1.jpg) <br>
 
 2. Change to your project folder.
 
@@ -36,37 +39,36 @@ Guestbook is a simple web application that we will build and deploy with Docker 
 ```
 cd /home/project
 ```
-{: codeblock}
 
 3. Clone the git repository that contains the artifacts needed for this lab.
+
 ```
 [ ! -d 'guestbook' ] && git clone https://github.com/ibm-developer-skills-network/guestbook
 ```
-{: codeblock}
 
 <img src="images/new_clone_command.png"/> <br>
 
 4. Change to the directory for this lab.
+
 ```
 cd guestbook
 ```
-{: codeblock}
 
 5. List the contents of this directory to see the artifacts for this lab.
+
 ```
 ls
 ```
-{: codeblock}
 
+::page{title="Build the guestbook app"}
 
-# Build the guestbook app
 To begin, we will build and deploy the web front end for the guestbook app.
 
 1. Change to the `v1/guestbook` directory.
+
 ```
 cd v1/guestbook
 ```
-{: codeblock}
 
 2. Dockerfile incorporates a more advanced strategy called multi-stage builds, so feel free to read more about that [here](https://docs.docker.com/develop/develop-images/multistage-build/).
 
@@ -84,11 +86,12 @@ The CMD instruction provides a default for executing a container, or in other wo
 
 > Copy the code of the completed dockerfile with you. You will be prompted to submit it in the text box in the Peer Assignment.
 
-3. Export your namespace as an environment variable so that it can be used in subsequent commands. 
+3. Export your namespace as an environment variable so that it can be used in subsequent commands.
+ 
+
 ```
 export MY_NAMESPACE=sn-labs-$USERNAME
 ```
-{: codeblock}
 
 <img src="images/build_guestbook_3.png"/> <br>
 
@@ -100,11 +103,9 @@ export MY_NAMESPACE=sn-labs-$USERNAME
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
-{: codeblock}
 
 <br>
 <img src="images/build_guestbook_4.png"/> <br>
-
 
 </details>
 
@@ -114,28 +115,25 @@ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1
 
 <summary>Hint!</summary>
 
-
 ```
 docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
-{: codeblock}
 
 <img src="images/build_guestbook_5.png"/> <br>
-
 
 </details>
 
 > **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We recommend you to proceed with the next steps of the lab.
 
 6. Verify that the image was pushed successfully.
+
 ```
 ibmcloud cr images
 ```
-{: codeblock}
 
-<img src="images/build_guestbook_6.png"/> <br>
+![](/images/Screenshot6.jpg) <br>
 
-> **Note:** If you see the status of the image as **'Scanning'**, please wait for 10 minutes & re-run the above command till the status gradually changes to **'No Issues'**. Even if status shows as **'1 issue'**, you can still proceed with lab.
+
 
 >📷 Take a screenshot of the output of Step 6 and save it as a .jpg or .png with the filename `crimages.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
@@ -177,7 +175,6 @@ spec:
             cpu: 20m  
   replicas: 1
 ```
-{: codeblock}
 
 > **Note:** Replace `<your sn labs namespace>` with your SN labs namespace. To check your SN labs namespace, please run the command `ibmcloud cr namespaces`
 
@@ -190,7 +187,6 @@ spec:
 ```
 kubectl apply -f deployment.yml
 ```
-{: codeblock}
 
 <img src="images/deployment configuration--after updation.png"/> <br>
 
@@ -199,7 +195,6 @@ kubectl apply -f deployment.yml
 ```
 kubectl port-forward deployment.apps/guestbook 3000:3000
 ```
-{: codeblock}
 
 <img src="images/port-forward__inital-guestbook.jpg"/> <br>
 
@@ -209,13 +204,13 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 
 11. Now you should be able to see your running application. Please copy the app URL which will be given as below:
 
-<img src="images/guestbook-app-url.jpg"/> <br>
+![](/images/Screenshot11.jpg) <br>
 
 >📷 Take a screenshot of your deployed application and save it as a .jpg or .png with the filename `app.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
 12. Try out the guestbook by putting in a few entries. You should see them appear above the input box after you hit **Submit**.
 
-# Autoscale the Guestbook application using Horizontal Pod Autoscaler
+::page{title="Autoscale the Guestbook application using Horizontal Pod Autoscaler"}
 
 1. Autoscale the Guestbook deployment using `kubectl autoscale deployment`
 
@@ -226,31 +221,26 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 ```
 kubectl autoscale deployment guestbook --cpu-percent=5 --min=1 --max=10
 ```
-{: codeblock}
 
 <img src="images/autoscale1.jpg"/> <br>
 
 </details>
-
 
 2. You can check the current status of the newly-made HorizontalPodAutoscaler, by running:
 
 ```
 kubectl get hpa guestbook
 ```
-{: codeblock}
 
 The current replicas is 0 as there is no load on the server.
 
 >📷 Take a screenshot of your Horizontal Pod Autoscaler and save it as a .jpg or .png with the filename `hpa.png`. You will be prompted to upload the screenshot in the Peer Assignment.
-
 
 2. Open another new terminal and enter the below command to generate load on the app to observe the autoscaling (Please ensure your port-forward command is running. In case you have stopped your application, please run the port-forward command to re-run the application at port 3000.)
 
 ```
 kubectl run -i --tty load-generator --rm --image=busybox:1.35.0 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- <your app URL>; done"
 ```
-{: codeblock}
 
 - Please replace your app URL in the `<your app URL>` part of the above command.
 
@@ -273,7 +263,6 @@ The command will be as below:
 ```
 kubectl get hpa guestbook --watch
 ```
-{: codeblock}
 
 <img src="images/hpa-watch-1.png"/> <br>
 
@@ -288,14 +277,12 @@ kubectl get hpa guestbook --watch
 ```
 kubectl get hpa guestbook
 ```
-{: codeblock}
 
 <img src="images/get-hpa-final.png"/> <br>
 
 - Please close the other terminals where load generator and port-forward commands are running.
 
-
-# Perform Rolling Updates and Rollbacks on the Guestbook application
+::page{title="Perform Rolling Updates and Rollbacks on the Guestbook application"}
 
 > **Note:** Please run all the commands in the 1st terminal unless mentioned to use a new terminal.
 
@@ -316,7 +303,6 @@ kubectl get hpa guestbook
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/$MY_NAMESPACE/guestbook:v1
 ```
-{: codeblock}
 
 <img src="images/updated-guestbook__docker-build.png"/> <br>
 
@@ -341,7 +327,6 @@ docker build . -t us.icr.io/$MY_NAMESPACE/guestbook:v1 && docker push us.icr.io/
 ```
 kubectl apply -f deployment.yml
 ```
-{: codeblock}
 
 <img src="images/deployment configuration--after updation.png"/> <br>
 
@@ -354,15 +339,12 @@ kubectl apply -f deployment.yml
 ```
 kubectl port-forward deployment.apps/guestbook 3000:3000
 ```
-{: codeblock}
 
 <img src="images/get replicaset--after undo rollout.png"/> <br>
-
 
 6. Launch your application on port 3000. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
 
 <img src="images/Launch_Application.PNG"/> <br>
-
 
 7. You will notice the updated app content as below:
 
@@ -377,7 +359,6 @@ kubectl port-forward deployment.apps/guestbook 3000:3000
 ```
 kubectl rollout history deployment/guestbook
 ```
-{: codeblock}
 
 <img src="images/rollout-history_1.jpg"/> <br>
 
@@ -386,7 +367,6 @@ kubectl rollout history deployment/guestbook
 ```
 kubectl rollout history deployments guestbook --revision=2
 ```
-{: codeblock}
 
 <img src="images/rollout-history--rev2.jpg"/> <br>
 
@@ -397,7 +377,6 @@ kubectl rollout history deployments guestbook --revision=2
 ```
 kubectl get rs
 ```
-{: codeblock}
 
 <img src="images/get_replicaset__before-undo-rollout.jpg"/> <br>
 
@@ -406,17 +385,14 @@ kubectl get rs
 ```
 kubectl rollout undo deployment/guestbook --to-revision=1
 ```
-{: codeblock}
 
 <img src="images/undo rollout.png"/> <br>
-
 
 9. Run the below command to get the replica sets after the Rollout has been undone. The deployment being used would have changed as below:
 
 ```
 kubectl get rs
 ```
-{: codeblock}
 
 <img src="images/get replicaset--after undo rollout.png"/> <br>
 
@@ -424,10 +400,8 @@ kubectl get rs
 
 Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
-
-
-
 ## Changelog
+
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-07-21 | 1.0 | K Sundararajan | Created Lab instructions |
@@ -436,5 +410,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 | 2022-08-04 | 1.3 | K Sundararajan | Updated Lab instructions |
 | 2022-08-12 | 1.4 | K Sundararajan | Updated Lab instructions |
 | 2022-09-21 | 1.5 | K Sundararajan | Updated screenshot for Git clone command |
+| 2022-11-15 | 1.6 | Lavanya Rajalingam | Updated screenshots |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
+
