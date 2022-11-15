@@ -2,7 +2,7 @@
 markdown-version: v1
 tool-type: theiaopenshift
 branch: lab-1730-instruction
-version-history-start-date: 2022-10-07T06:53:37.000Z
+version-history-start-date: '2022-10-07T06:53:37.000Z'
 ---
 <center>
 <img src="images/IDSN-new-logo.png" width = "300">
@@ -38,9 +38,9 @@ With the `--reference-policy=local` option, a copy of the image from IBM Cloud C
 
 Now let's head over to the OpenShift web console to deploy the guestbook app using this image stream.
 
-2. Open the OpenShift web console using the link at the top of the lab environment.
+2. Click on the `Skills Network Tool` and select `Cloud` which will open a drop-down. Click on `Open OpenShift console` which will open the Open Shift Web console in a new window.
 
-<img src="images/deploy_app_osr_2.png" width='500'/> <br>
+![](/images/optionallabOC%20Launch.jpg)
 
 > **Note:** Currently we are experiencing certain difficulties with the OpenShift console . If your screen takes time in loading, please close the OpenShift console browser tab & re-launch the same. It may take upto 10 mins to load the screen.
 
