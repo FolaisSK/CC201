@@ -193,7 +193,7 @@ kubectl port-forward deployment.apps/patient-ui 8080:8080
 
 10. Launch your application on port 8080. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
 
-<img src="images/Launch_Application.png"/> <br>
+<img src="images/MicrosoftTeams-image__6_.png"/> <br>
 
 11. Now you should be able to see your running application. Please copy the app URL which will be given as below:
 
@@ -347,7 +347,7 @@ kubectl port-forward deployment.apps/patient-ui 8080:808
 
 6. Launch your application on port 3000. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
 
-<img src="images/Launch_Application.png"/> <br>
+<img src="images/MicrosoftTeams-image__6_.png"/> <br>
 
 
 7. You will notice the updated app content as below:
@@ -413,7 +413,7 @@ Congratulations! You have completed the final project for this course. Do not lo
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
-| 2022-11-16 | 1.0 | Saptahshree K s | Created Lab instructions |
+| 2022-11-16 | 1.0 | Sapthashree K s | Created Lab instructions |
 
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
