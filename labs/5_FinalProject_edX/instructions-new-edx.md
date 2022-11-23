@@ -2,7 +2,7 @@
 markdown-version: v1
 tool-type: theia
 branch: lab-2472-instruction
-version-history-start-date: '2022-11-22T11:09:43Z'
+version-history-start-date: 2022-11-22T11:09:43Z
 ---
 <center>
 <img src="images/IDSN-new-logo.png" width = "300">
