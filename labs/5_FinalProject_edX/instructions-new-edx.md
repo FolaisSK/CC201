@@ -1,5 +1,5 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: theia
 branch: lab-2472-instruction
 version-history-start-date: '2022-11-22T11:09:43Z'
@@ -8,22 +8,22 @@ version-history-start-date: '2022-11-22T11:09:43Z'
 <img src="images/IDSN-new-logo.png" width = "300">
 </center>
 
-# Final Project
+::page{title="Final Project"}
 
 ## Objectives
+
 In this lab, you will:
 
 - Build and deploy a simple health application
-- Autoscale the Health application using Horizontal Pod    Autoscaler
+- Autoscale the Health application using Horizontal Pod Autoscaler
 - Perform Rolling Updates and Rollbacks
 
+::page{title="Project Overview"}
 
-# Project Overview
+Health application is a simple web application that we will build and deploy with Docker and Kubernetes. The application consists of a web front end which will have a text input where you can enter login details. We will create Kubernetes Pods and Deployments in order to deploy our application. Then we will apply Horizontal Pod Scaling to the health application and finally work on Rolling Updates and Rollbacks.
 
-## Health application
-Health application is a simple web application that we will build and deploy with Docker and Kubernetes. The application consists of a web front end which will have a text input where you can enter login details. For all of these we will create Kubernetes Deployments and Pods. Then we will apply Horizontal Pod Scaling to the health application and finally work on Rolling Updates and Rollbacks.
+::page{title="Set-up : Cloning the git repository "}
 
-# Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 
 > **Note:** Please wait for some time for the terminal prompt to appear.
@@ -32,45 +32,44 @@ Health application is a simple web application that we will build and deploy wit
 
 2. Change to your project folder.
 
->> **Note: If you are already on the `/home/project` folder, please skip this step.**
+> **Note: If you are already on the `/home/project` folder, please skip this step.**
 
 ```
 cd /home/project
 ```
-{: codeblock}
 
 3. Clone the git repository that contains the artifacts needed for this lab.
+
 ```
 git clone https://github.com/ajp-io/patient-ui.git
 ```
-{: codeblock}
 
 <img src="images/clone.jpg"/> <br>
 
 4. Change to the directory for this lab.
+
 ```
 cd patient-ui
 ```
-{: codeblock}
 
 5. List the contents of this directory to see the artifacts for this lab.
+
 ```
 ls
 ```
-{: codeblock}
 
+::page{title="Build the health app"}
 
-# Build the health app
-To begin, we will build and deploy the web front end for the health app.
+Let's build and deploy the web front end for the health app.
 
-1. Open the Dockerfile from the file explorer.
+Dockerfile incorporates a more advanced strategy called multi-stage builds, so feel free to read more about that [here](https://docs.docker.com/develop/develop-images/multistage-build/)
+ 
+1. Open the Dockerfile from its last saved or downloaded location in File Explorer. The path to this file is `patient-ui/Dockerfile`.
 
-2. Dockerfile incorporates a more advanced strategy called multi-stage builds, so feel free to read more about that [here](https://docs.docker.com/develop/develop-images/multistage-build/).
-
-Complete the Dockerfile with the necessary Docker commands to build and push your image. The path to this file is `patient-ui/Dockerfile`.
+2. Complete the Dockerfile with the necessary Docker commands to build and push your image. 
 
 <details>
-<summary>Hint!</summary>
+<summary>Tip!</summary>
 The FROM instruction initializes a new build stage and specifies the base image that subsequent instructions will build upon.<br>
 The COPY command enables us to copy files to our image. <br>
 The COPY command enables us to copy files to our image. <br>
@@ -78,56 +77,55 @@ The RUN instruction executes commands.<br>
 The CMD instruction provides a default for executing a container, or in other words, an executable that should run in your container.<br>
 </details>
 
-> Copy the code of the completed dockerfile with you. You will be prompted to submit it in the text box in the Peer Assignment.
+> Note: Copy the code of the completed dockerfile with you. You will be prompted to submit it in the text box in the Peer Assignment.
 
-3. Export your namespace as an environment variable so that it can be used in subsequent commands. 
+3. Export your namespace as an environment variable so that it can be used in subsequent commands.
+
+Note: Identify your namespace by running **echo $MY_USERNAME** in the terminal window.
+
 ```
 export MY_NAMESPACE=sn-labs-$USERNAME
 ```
-{: codeblock}
 
 <img src="images/export-sn.jpg"/> <br>
 
 4. Build the health app using the Docker Build command.
+
 <details>
 
-<summary>Hint!</summary>
+<summary>Tip!</summary>
 
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/patient-ui:v1
 ```
-{: codeblock}
 
 <br>
 <img src="images/docker-build.jpg"/> <br>
 
-
 </details>
 
-5. Push the image to IBM Cloud Container Registry.
+5. Push the image to IBM Cloud Container Registry
+
 
 <details>
 
-<summary>Hint!</summary>
-
+<summary>Tip!</summary>
 
 ```
 docker push us.icr.io/$MY_NAMESPACE/patient-ui:v1
 ```
-{: codeblock}
 
 <img src="images/docker-push.jpg"/> <br>
 
-
 </details>
 
-> **Note:** If you have tried this lab earlier, there might be a possibility that the previous session is still persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. We recommend you to proceed with the next steps of the lab.
+> **Note:** If you have tried this lab earlier,the previous session might still be persistent. In such a case, you will see a **'Layer already Exists'** message instead of the **'Pushed'** message  in the above output. If that happens,proceed with the next steps of the lab.
 
-6. Verify that the image was pushed successfully.
+6.	Verify that the image was pushed successfully.
+
 ```
 ibmcloud cr images
 ```
-{: codeblock}
 
 <img src="images/cr-image.jpg"/> <br>
 
@@ -173,7 +171,6 @@ spec:
             cpu: 20m  
   
 ```
-{: codeblock}
 
 > **Note:** Replace `<your sn labs namespace>` with your SN labs namespace. To check your SN labs namespace, please run the command `ibmcloud cr namespaces`
 
@@ -186,14 +183,12 @@ spec:
 ```
 kubectl apply -f deployment.yml
 ```
-{: codeblock}
 
 9. Open a New Terminal and enter the below command to view your application:
 
 ```
 kubectl port-forward deployment.apps/patient-ui 8080:8080
 ```
-{: codeblock}
 
 <img src="images/portforward.jpg"/> <br>
 
@@ -209,42 +204,37 @@ kubectl port-forward deployment.apps/patient-ui 8080:8080
 
 12. Log into the health app using any credentials. Since the app is in demo mode right now, it will accept any credentials you enter.
 
-# Autoscale the Health application using Horizontal Pod Autoscaler
+::page{title="Autoscale the Health application using Horizontal Pod Autoscaler"}
 
 1. Autoscale the health application deployment using `kubectl autoscale deployment`
 
 <details>
 
-<summary>Hint!</summary>
+<summary>Tip!</summary>
 
 ```
 kubectl autoscale deployment patient-ui --cpu-percent=5 --min=1 --max=10
 ```
-{: codeblock}
 
 <img src="images/autoscaled.jpg"/> <br>
 
 </details>
-
 
 2. You can check the current status of the newly-made HorizontalPodAutoscaler, by running:
 
 ```
 kubectl get hpa patient-ui
 ```
-{: codeblock}
 
 The current replicas is 0 as there is no load on the server.
 
 >📷 Take a screenshot of your Horizontal Pod Autoscaler and save it as a .jpg or .png with the filename `hpa.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
-
-2. Open another new terminal and enter the below command to generate load on the app to observe the autoscaling (Please ensure your port-forward command is running. In case you have stopped your application, please run the port-forward command to re-run the application at port 3000.)
+3. Open another new terminal and enter the below command to generate load on the app to observe the autoscaling (Please ensure your port-forward command is running. In case you have stopped your application, please run the port-forward command to re-run the application at port 3000.)
 
 ```
 kubectl run -i --tty load-generator --rm --image=busybox:1.35.0 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- <your app URL>; done"
 ```
-{: codeblock}
 
 - Please replace your app URL in the `<your app URL>` part of the above command.
 
@@ -262,101 +252,93 @@ The command will be as below:
 
 > **Note:** Continue further commands in the 1st terminal
 
-3. Run the below command to observe the replicas increase in accordance with the autoscaling:
+4. Run the below command to observe the replicas increase in accordance with the autoscaling:
 
 ```
 kubectl get hpa patient-ui --watch
 ```
-{: codeblock}
 
-4. Run the above command again after 5-10 minutes and you will see an increase in the number of replicas which shows that your application has been autoscaled.
+5. Run the above command again after 5-10 minutes and you will see an increase in the number of replicas which shows that your application has been autoscaled.
 
 <img src="images/relicas.jpg"/> <br>
 
 >📷 Take a screenshot of your Autoscaler details and save it as a .jpg or .png with the filename `hpa2.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
-5. Run the below command to observe the details of the horizontal pod autoscaler:
+6. Run the below command to observe the details of the horizontal pod autoscaler:
 
 ```
 kubectl get hpa patient-ui
 ```
-{: codeblock}
 
 <img src="images/relicascaled.jpg"/> <br>
 
 - Please close the other terminals where load generator and port-forward commands are running.
 
-
-# Perform Rolling Updates and Rollbacks on the Health application
+::page{title="Perform Rolling Updates and Rollbacks on the Health application"}
 
 > **Note:** Please run all the commands in the 1st terminal unless mentioned to use a new terminal.
 
-1. Use the Explorer to edit login.html in the public directory. The path to this file is patient-ui/public/login.html.
+1. Use the Explorer to edit login.html in the public directory. The path to this file is **patient-ui/public/login.html**.
 
 2. Let’s edit the name beneath the logo to be more specific. On the line that says `<div class="Fictionalname">Example Health</div>`, change it to include your name. Something like `<div class="Fictionalname">Alex's Example Health</div>`. Make sure to save the file when you’re done.
 
 <details>
-<summary>Hint!</summary>
+<summary>Tip!</summary>
 
 <img src="images/update_app_2.png"/> <br>
 
 </details>
 
-2. Run the below command to build and push your updated app image:
+3. Run the below command to build and push your updated app image:
 
 <details>
-<summary>Hint!</summary>
+<summary>Tip!</summary>
 
 ```
 docker build . -t us.icr.io/$MY_NAMESPACE/patient-ui:v1 && docker push us.icr.io/$MY_NAMESPACE/patient-ui:v1
 ```
-{: codeblock}
 
 </details>
 
 >📷 Take a screenshot of your updated image and save it as a .jpg or .png with the filename `uphealth.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
-3. Update the values of the CPU in the `deployment.yml` to **cpu: 5m** and **cpu: 2m** as below:
+4. Update the values of the CPU in the `deployment.yml` to **cpu: 5m** and **cpu: 2m** as below:
 
 <details>
-<summary>Hint!</summary>
+<summary>Tip!</summary>
 
 <img src="images/cpu.jpg"/> <br>
 
 </details>
 
-4. Apply the changes to the `deployment.yml` file.
+5. Apply the changes to the `deployment.yml` file.
 
 <details>
-<summary>Hint!</summary>
+<summary>Tip!</summary>
 
 ```
 kubectl apply -f deployment.yml
 ```
-{: codeblock}
 
 <img src="images/deploy1.jpg"/> <br>
 
 </details>
 
->📷 Take a screenshot of the details of the output of Step 4 and save it as a .jpg or .png with the filename `deployment.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+>📷 Take a screenshot of the details of the output of Step 5 and save it as a .jpg or .png with the filename `deployment.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
-5. Open a new terminal and run the port-forward command again to start the app:
+6. Open a new terminal and run the port-forward command again to start the app:
 
 ```
-kubectl port-forward deployment.apps/patient-ui 8080:808
+kubectl port-forward deployment.apps/patient-ui 8080:8080
 ```
-{: codeblock}
 
 <img src="images/portforward.jpg"/> <br>
 
-
-6. Launch your application on port 3000. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
+7. Launch your application on port 3000. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
 
 <img src="images/MicrosoftTeams-image__6_.png"/> <br>
 
-
-7. You will notice the updated app content as below:
+8. You will notice the updated app content as below:
 
 <img src="images/v2-patient-ui.jpg"/> <br>
 
@@ -364,62 +346,55 @@ kubectl port-forward deployment.apps/patient-ui 8080:808
 
 > **Note:** Please stop the application before running the next steps.
 
-8. Run the below command to see the history of deployment rollouts:
+9. Run the below command to see the history of deployment rollouts:
 
 ```
 kubectl rollout history deployment/patient-ui
 ```
-{: codeblock}
 
 <img src="images/rollou-history.jpg"/> <br>
 
-6. Run the below command to see the details of Revision of the deployment rollout:
+10. Run the below command to see the details of Revision of the deployment rollout:
 
 ```
 kubectl rollout history deployments patient-ui --revision=2
 ```
-{: codeblock}
 
 <img src="images/rollout-history2.jpg"/> <br>
 
 >📷 Take a screenshot of the details of the correct Revision and save it as a .jpg or .png with the filename `rev.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
-7. Run the below command to get the replica sets and observe the deployment which is being used now:
+11. Run the below command to get the replica sets and observe the deployment which is being used now:
 
 ```
 kubectl get rs
 ```
-{: codeblock}
 
 <img src="images/rs.jpg"/> <br>
 
-8. Run the below command to undo the deploymnent and set it to Revision 1:
+12. Run the below command to undo the deploymnent and set it to Revision 1:
 
 ```
 kubectl rollout undo deployment/patient-ui --to-revision=1
 ```
-{: codeblock}
 
-
-9. Run the below command to get the replica sets after the Rollout has been undone. The deployment being used would have changed as below:
+13. Run the below command to get the replica sets after the Rollout has been undone. The deployment being used would have changed as below:
 
 ```
 kubectl get rs
 ```
-{: codeblock}
 
+>📷 Take a screenshot of the output of Step 12 and save it as a .jpg or .png with the filename `rs.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
->📷 Take a screenshot of the output of Step 9 and save it as a .jpg or .png with the filename `rs.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+Congratulations! You have completed the final project for this course. 
 
-Congratulations! You have completed the final project for this course. Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
-
-
-
+Note: Do not log out of the lab environment (you can close the browser though) or delete any of the artifacts created during the lab, as these will be needed for grading.
 
 ## Changelog
+
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
-| 2022-11-16 | 1.0 | Sapthashree K s | Created Lab instructions |
-
+| 2022-11-16 | 1.0 | Sapthashree K S | Created Lab instructions |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
+
