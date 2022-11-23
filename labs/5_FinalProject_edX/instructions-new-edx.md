@@ -131,9 +131,9 @@ ibmcloud cr images
 
 > **Note:** If you see the status of the image as **'Scanning'**, please wait for 10 minutes & re-run the above command till the status gradually changes to **'No Issues'**. Even if status shows as **'1 issue'**, you can still proceed with lab.
 
->📷 Take a screenshot of the output of Step 5 and save it as a .jpg or .png with the filename `crimages.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+>📷 Take a screenshot of the output of Step 6 and save it as a .jpg or .png with the filename `crimages.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
-6. Create a new file with `deployment.yml` file in the `patient-ui` directory & paste the code for the deployment of the application:
+7. Create a new file with `deployment.yml` file in the `patient-ui` directory & paste the code for the deployment of the application:
 
 ```
 apiVersion: apps/v1
@@ -178,13 +178,13 @@ spec:
 
 <img src="images/deployment.jpg"/> <br>
 
-7. Apply the deployment using:
+8. Apply the deployment using:
 
 ```
 kubectl apply -f deployment.yml
 ```
 
-8. Open a New Terminal and enter the below command to view your application:
+9. Open a New Terminal and enter the below command to view your application:
 
 ```
 kubectl port-forward deployment.apps/patient-ui 8080:8080
@@ -192,17 +192,17 @@ kubectl port-forward deployment.apps/patient-ui 8080:8080
 
 <img src="images/portforward.jpg"/> <br>
 
-9. Launch your application on port 8080. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
+10. Launch your application on port 8080. Click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Other** then **Launch Application**. From there you should be able to enter the port and launch.
 
 <img src="images/MicrosoftTeams-image__6_.png"/> <br>
 
-10. Now you should be able to see your running application. Please copy the app URL which will be given as below:
+11. Now you should be able to see your running application. Please copy the app URL which will be given as below:
 
 <img src="images/v1output.jpg"/> <br>
 
 >📷 Take a screenshot of your deployed application and save it as a .jpg or .png with the filename `app.png`. You will be prompted to upload the screenshot in the Peer Assignment.
 
-11. Log into the health app using any credentials. Since the app is in demo mode right now, it will accept any credentials you enter.
+12. Log into the health app using any credentials. Since the app is in demo mode right now, it will accept any credentials you enter.
 
 ::page{title="Autoscale the Health application using Horizontal Pod Autoscaler"}
 
