@@ -1,49 +1,53 @@
-<img src="images/IDSNlogo.png" width="200" height="200"/>
+<img src="images/IDSN-new-logo.png" width="300"/>
 
 
 # Final Project: Scenario and Review Criteria
-## **Estimated time needed:** 2+ hours
+## **Estimated time needed:** 10 mins
 
+## Objective:
 
-## Project Overview
-In this final project, you will build and deploy a simple guestbook application. You will roll out updates using Openshift image streams. You will be rolling out a multi-tier version of the guestbook application. Finally, you will create and bind a tone analyzer service instance to your application and autoscale the guestbook.
+This final project will encourage you to use many of the tools and concepts that you have learned in this course. As you complete the project, you will need to take screenshots of your work to verify what you have done so that it can be graded. 
+
+## Project Overview:Build and Deploy a Simple Health Application
+
+The health application is a simple, multi-tier web application that you will build and deploy with Docker and Kubernetes. To start, you will deploy a simple health application that will have a text input where you can enter login details and submit it.To deploy our application you will create Kubernetes Deployments and Pods. Then you will apply Horizontal Pod Scaling to the health application, and finally, work on Rolling Updates and Rollbacks.
 
 ## Review Criteria
-After completing the hands-on lab: Build and Deploy a Simple Guestbook App, you will complete the peer-graded assignment and be graded on the following nine tasks.
 
-For each of the nine tasks, provide a screenshot and upload the JPEG (.jpg) file for your peers to review when you submit your work.  
+After completing the Hands-on Lab: Build and Deploy a Simple Health App, you will complete Peer-graded Assignment below.For each of the 10 tasks you will be required to upload a screenshot in JPEG (.jpg) format for your peers to review. This project is worth 20% of your total grade.
+  
+**Task 1:**  Update the Dockerfile (**5 points**)
 
-**Task 1:** Deploy a simple v1 guestbook application. (**2 points**)
+**Task 2:**  Confirm the Health image is correctly pushed to IBM Cloud Container Registry. (**1 point**)
 
-**Task 2:** Use an in-memory data store for the simple guestbook application. (**1 point**)
+**Task 3:**  Access the proper login page of the deployed Patient-UI – v1 application. (**2 point**)
 
-**Task 3:** Update the simple guestbook homepage to include your name. (**1 point**)
+**Task 4:**  Create a Horizontal Pod Autoscaler. (**1 point**)
 
-**Task 4:** Automatically deploy the homepage update using a second image stream tag. (**1 point**)
+**Task 5:**  Correctly scale the Horizontal Pod Autoscaler replicas. (**2 points**)
 
-**Task 5:** Deploy the second version of the guestbook application using an OpenShift build. (**5 points**)
+**Task 6:**  Use the Docker build and push commands to update the Health App. (**2 points**)
 
-**Task 6:** Deploy a Redis master, a Redis slave, and an analyzer microservice.(**3 points**)
+**Task 7:**  Confirm you are using the proper deployment configuration for autoscaling. (**1 point**)
 
-**Task 7:** Use Redis for the v2 guestbook application instead of an in-memory datastore.  (**1 point**)
+**Task 8:**  Access the updated Login page of the deployed Patient-UI – v2 application after the rollout of the deployment. (**2 points**)
 
-**Task 8:** Submit entries to the guestbook and have their tone analyzed. Some simple sentences will not have a tone detected. Ensure that you submit something complex enough so that its tone is detected.(**2 points**)
+**Task 9:**  Check the revision history for the deployment after rollout of the deployment. (**2 points**)
 
-**Task 9:** Create a Horizontal Pod Autoscaler that shows guestbook as the scale target, the current and desired replicas as three, and the last scale time as the time the deployment was scaled up to three replicas (**4 points**)
+**Task 10:**  Review the updated deployment after rollback of the update. (**2 points**)
 
 ## Next Steps
 Be sure to take screenshots as per review criteria as you follow the step-by-step instructions.
 
 ## Author(s)
-Lavanya
+Sapthashree K S
 
 
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
-| 2021-05-01 | 0.1 | Lavanya | Initial version created |
-|   |   |   |   |
-|   |   |   |   |
+| 2022-11-23 | 0.1 | Sapthashree K S | Initial version created |
+
 
 
 ## <h3 align="center"> © IBM Corporation 2020. All rights reserved. <h3/>
