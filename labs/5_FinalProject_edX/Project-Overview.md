@@ -14,7 +14,7 @@ The health application is a simple, multi-tier web application that you will bui
 
 After completing the Hands-on Lab: Build and Deploy a Simple Health App, you will complete Peer-graded Assignment below.For each of the 10 tasks you will be required to upload a screenshot in JPEG (.jpg) format for your peers to review. This project is worth 20% of your total grade.
   
-**Task 1:**  Update the Dockerfile (**5 points**)
+**Task 1:**  Complete the missing commands in the Dockerfile (**5 points**)
 
 **Task 2:**  Confirm the Health image is correctly pushed to IBM Cloud Container Registry. (**1 point**)
 
