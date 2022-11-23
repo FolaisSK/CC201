@@ -4,8 +4,6 @@
 # Final Project: Scenario and Review Criteria
 ## **Estimated time needed:** 10 mins
 
-## Objective:
-
 This final project will encourage you to use many of the tools and concepts that you have learned in this course. As you complete the project, you will need to take screenshots of your work to verify what you have done so that it can be graded. 
 
 ## Project Overview:Build and Deploy a Simple Health Application
