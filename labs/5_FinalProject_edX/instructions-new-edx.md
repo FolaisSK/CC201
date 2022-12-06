@@ -18,7 +18,7 @@ In this lab, you will:
 - Autoscale the Health application using Horizontal Pod Autoscaler
 - Perform Rolling Updates and Rollbacks
 
-::page{title="Project Overview"}
+## Project Overview
 
 Health application is a simple web application that we will build and deploy with Docker and Kubernetes. The application consists of a web front end which will have a text input where you can enter login details. We will create Kubernetes Pods and Deployments in order to deploy our application. Then we will apply Horizontal Pod Scaling to the health application and finally work on Rolling Updates and Rollbacks.
 
@@ -30,9 +30,7 @@ Health application is a simple web application that we will build and deploy wit
 
 <img src="images/new_terminal.jpg"/> <br>
 
-2. Change to your project folder.
-
-> **Note: If you are already on the `/home/project` folder, please skip this step.**
+2. Change to your project folder, if you are not already in it.
 
 ```
 cd /home/project
@@ -41,7 +39,7 @@ cd /home/project
 3. Clone the git repository that contains the artifacts needed for this lab.
 
 ```
-git clone https://github.com/ajp-io/patient-ui.git
+git clone https://github.com/ibm-developer-skills-network/vuotu-containers-project.git
 ```
 
 <img src="images/clone.jpg"/> <br>
@@ -49,7 +47,7 @@ git clone https://github.com/ajp-io/patient-ui.git
 4. Change to the directory for this lab.
 
 ```
-cd patient-ui
+cd vuotu-containers-project
 ```
 
 5. List the contents of this directory to see the artifacts for this lab.
@@ -64,20 +62,21 @@ Let's build and deploy the web front end for the health app.
 
 Dockerfile incorporates a more advanced strategy called multi-stage builds, so feel free to read more about that [here](https://docs.docker.com/develop/develop-images/multistage-build/)
  
-1. Open the Dockerfile from its last saved or downloaded location in File Explorer. The path to this file is `patient-ui/Dockerfile`.
+1. Open the Dockerfile from its last saved or downloaded location by clicking on the button below or through the File Explorer. The path to this file is `vuotu-containers-project/Dockerfile`.
+
+::openFile{path="/home/project/vuotu-containers-project/Dockerfile"}
 
 2. Complete the Dockerfile with the necessary Docker commands to build and push your image. 
 
 <details>
 <summary>Tip!</summary>
 The FROM instruction initializes a new build stage and specifies the base image that subsequent instructions will build upon.<br>
-The COPY command enables us to copy files to our image. <br>
-The COPY command enables us to copy files to our image. <br>
+The COPY command enables us to copy files and folders to our image. <br>
 The RUN instruction executes commands.<br>
 The CMD instruction provides a default for executing a container, or in other words, an executable that should run in your container.<br>
 </details>
 
-> Note: Copy the code of the completed dockerfile with you. You will be prompted to submit it in the text box in the Peer Assignment.
+📷 Take a screenshot of the completed dockerfile and save it as **dockerfile.png**.
 
 3. Export your namespace as an environment variable so that it can be used in subsequent commands.
 
@@ -131,9 +130,9 @@ ibmcloud cr images
 
 > **Note:** If you see the status of the image as **'Scanning'**, please wait for 10 minutes & re-run the above command till the status gradually changes to **'No Issues'**. Even if status shows as **'1 issue'**, you can still proceed with lab.
 
->📷 Take a screenshot of the output of Step 6 and save it as a .jpg or .png with the filename `crimages.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of the output of `ibmcloud cr images` command that you just ran and save it as **crimages.png**.
 
-7. Create a new file with `deployment.yml` file in the `patient-ui` directory & paste the code for the deployment of the application:
+7. Create a new file with `deployment.yml` file in the `vuotu-containers-project` directory & paste the code for the deployment of the application:
 
 ```
 apiVersion: apps/v1
@@ -200,7 +199,7 @@ kubectl port-forward deployment.apps/patient-ui 8080:8080
 
 <img src="images/v1output.jpg"/> <br>
 
->📷 Take a screenshot of your deployed application and save it as a .jpg or .png with the filename `app.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of your deployed application and save it as **app.png**.
 
 12. Log into the health app using any credentials. Since the app is in demo mode right now, it will accept any credentials you enter.
 
@@ -228,7 +227,7 @@ kubectl get hpa patient-ui
 
 The current replicas is 0 as there is no load on the server.
 
->📷 Take a screenshot of your Horizontal Pod Autoscaler and save it as a .jpg or .png with the filename `hpa.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of your Horizontal Pod Autoscaler and save it as **hpa.png**.
 
 3. Open another new terminal and enter the below command to generate load on the app to observe the autoscaling (Please ensure your port-forward command is running. In case you have stopped your application, please run the port-forward command to re-run the application at port 3000.)
 
@@ -262,7 +261,7 @@ kubectl get hpa patient-ui --watch
 
 <img src="images/relicas.jpg"/> <br>
 
->📷 Take a screenshot of your Autoscaler details and save it as a .jpg or .png with the filename `hpa2.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of your Autoscaler details and save it as **hpa2.png**.
 
 6. Run the below command to observe the details of the horizontal pod autoscaler:
 
@@ -300,7 +299,7 @@ docker build . -t us.icr.io/$MY_NAMESPACE/patient-ui:v1 && docker push us.icr.io
 
 </details>
 
->📷 Take a screenshot of your updated image and save it as a .jpg or .png with the filename `uphealth.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of your updated image and save it as **uphealth.png**.
 
 4. Update the values of the CPU in the `deployment.yml` to **cpu: 5m** and **cpu: 2m** as below:
 
@@ -324,7 +323,7 @@ kubectl apply -f deployment.yml
 
 </details>
 
->📷 Take a screenshot of the details of the output of Step 5 and save it as a .jpg or .png with the filename `deployment.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of the details of the output of `kubectl apply -f deployment.yml` command that you just ran and save it as **deployment.png**.
 
 6. Open a new terminal and run the port-forward command again to start the app:
 
@@ -342,7 +341,7 @@ kubectl port-forward deployment.apps/patient-ui 8080:8080
 
 <img src="images/v2-patient-ui.jpg"/> <br>
 
->📷 Take a screenshot of your updated application and save it as a .jpg or .png with the filename `up-app.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of your updated application and save it as up-app.png**.
 
 > **Note:** Please stop the application before running the next steps.
 
@@ -362,7 +361,7 @@ kubectl rollout history deployments patient-ui --revision=2
 
 <img src="images/rollout-history2.jpg"/> <br>
 
->📷 Take a screenshot of the details of the correct Revision and save it as a .jpg or .png with the filename `rev.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of the details of the correct Revision and save it as **rev.png**.
 
 11. Run the below command to get the replica sets and observe the deployment which is being used now:
 
@@ -384,7 +383,7 @@ kubectl rollout undo deployment/patient-ui --to-revision=1
 kubectl get rs
 ```
 
->📷 Take a screenshot of the output of Step 12 and save it as a .jpg or .png with the filename `rs.png`. You will be prompted to upload the screenshot in the Peer Assignment.
+📷 Take a screenshot of the output of `kubectl get rs` command that you just ran and save it as **rs.png**
 
 Congratulations! You have completed the final project for this course. 
 
