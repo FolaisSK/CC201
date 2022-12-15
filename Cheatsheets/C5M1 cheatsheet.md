@@ -1,16 +1,18 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2817-instruction
 version-history-start-date: '2022-12-15T12:21:40Z'
 ---
-<img src="images/IDSN.png" width="200">
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
 
+##
 
 <div align="center">
 <b>Cheat Sheet: Docker CLI</b>
 </div>
 
+<br>
 
 <table>
 <tr>
@@ -195,6 +197,5 @@ Lists the contents of this directory to see the artifacts.
 </tr>
 
 </table>
-
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
