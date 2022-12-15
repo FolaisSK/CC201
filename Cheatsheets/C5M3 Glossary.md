@@ -1,15 +1,17 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2820-instruction
 version-history-start-date: '2022-12-15T12:25:31Z'
 ---
-<img src="images/IDSN.png" width="200">
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
 
+##
 
 <div align="center">
 <b>Glossary: Managing Applications with Kubernetes</b>
 </div>
+<br>
 
 <table>
 <tr>
@@ -56,7 +58,6 @@ version-history-start-date: '2022-12-15T12:25:31Z'
 </td>
 </tr>
 
-
 <tr>
 <td width="30%"valign="top"><b>Rolling Updates</b></td>
 <td width="70%"> Provide a way to roll out application changes in an automated and controlled fashion throughout your pods. Rolling updates work with pod templates such as deployments. Rolling updates allow for rollback if something goes wrong.</td>
@@ -97,8 +98,6 @@ version-history-start-date: '2022-12-15T12:25:31Z'
 <td width="70%">A Volume Plugin enables integration of storage within a Pod.</td>
 </tr>
 
-
 </table>
-
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
