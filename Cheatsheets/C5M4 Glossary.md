@@ -1,13 +1,16 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2822-instruction
 version-history-start-date: '2022-12-15T12:28:15Z'
 ---
-<img src="images/IDSN.png" width="200">
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
 
+##
 
 <div align="center"> <b>Glossary: OpenShift Basics</b> </div>
+<br>
+
 <table> 
 <tr> 
 <th width="30%">Term</th width="70%"><th>Definition</th> 
@@ -106,7 +109,6 @@ BuildConfig resource is created. </td> </tr>
 <tr> 
 <td width="30%"valign="top"><b>ImageStream Tag</b></td> 
 <td width="70%">An identity to the pointer in an ImageStream that points to a certain image in a registry.  </td> </tr> 
-
 
 <tr> 
 <td width="30%"valign="top"><b>Istio</b></td> 
