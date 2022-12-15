@@ -1,15 +1,17 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2818-instruction
 version-history-start-date: '2022-12-15T12:23:17Z'
 ---
-<img src="images/IDSN.png" width="200">
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
 
+##
 
 <div align="center">
 <b>Glossary: Kubernetes Basics</b>
 </div>
+<br>
 
 <table>
 <tr>
@@ -35,7 +37,6 @@ version-history-start-date: '2022-12-15T12:23:17Z'
 <td width="30%"><b>Cluster</b></td>
 <td width="70%">A set of worker machines, called nodes, that run containerized applications. Every cluster has at least one worker node.
 </tr>
-
 
 <tr>
 <td width="30%"valign="top"><b>Container 
@@ -135,7 +136,6 @@ A composition of services, support and tools that are widely available. The Kube
 </td>
 </tr>
 
-
 <tr>
 <td width="30%"valign="top"><b>etcd</b></td>
 <td width="70%">
@@ -165,14 +165,12 @@ Defining steps and actions to get to a desired state.
 </td>
 </tr>
 
-
 <tr>
 <td width="30%" valign="top"><b>Ingress</b></td>
 <td width="70%">
 An API object that manages external access to the services in a cluster, typically HTTP.
 </td>
 </tr>
-
 
 <tr>
 <td width="30%" valign="top"><b>IPv4/IPv6 dual stack</b></td>
@@ -223,7 +221,6 @@ The Kubernetes API server validates and configures data for the api objects whic
 </td>
 </tr>
 
-
 <tr>
 <td width="30%" valign="top"><b>Kubernetes Controller 
 Manager</b></td>
@@ -238,7 +235,6 @@ Runs all the controller processes that monitor the cluster state and ensures tha
 A Kubernetes control plane component that embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster.
 </td>
 </tr>
-
 
 <tr>
 <td width="30%" valign="top"><b>Kubernetes Proxy </b></td>
@@ -281,7 +277,6 @@ Balances traffic across Pods for better performance and high availability.
 is an Apache Mesos framework. Apache Mesos is an open-source cluster manager developed by UC Berkeley. It lets users scale container infrastructure through the automaton of most management and monitoring tasks.
 </td>
 </tr>
-
 
 <tr>
 <td width="30%" valign="top"><b>Namespace</b></td>
@@ -399,6 +394,5 @@ A workload is an application running on Kubernetes.
 </td>
 </tr>
 </table>
-
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
