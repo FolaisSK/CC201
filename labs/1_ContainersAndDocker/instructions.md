@@ -4,10 +4,12 @@ tool-type: theia
 branch: lab-2689-instruction
 version-history-start-date: '2022-12-12T15:18:34Z'
 ---
-<img src="/images/IDSN-logo.png" width = "300">
-</center>
-
 ::page{title="Introduction to Containers, Docker, and IBM Cloud Container Registry"}
+
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
+
 
 ## Objectives
 
