@@ -1,13 +1,16 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2819-instruction
 version-history-start-date: '2022-12-15T12:24:23Z'
 ---
-<img src="images/IDSN.png" width="200">
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
 
 <div align="center"> <b>Cheat Sheet: Understanding Kubernetes Architecture</b>
 </div>
+<br>
 
 <table>
 <tr>
@@ -24,7 +27,6 @@ version-history-start-date: '2022-12-15T12:24:23Z'
 <td width="70%">Applies a configuration to a resource.
 </tr>
 
-
 <tr>
 <td width="30%"valign="top"><b>kubectl config get-clusters </b></td>
 <td width="70%">Displays clusters defined in the kubeconfig.
@@ -38,7 +40,6 @@ version-history-start-date: '2022-12-15T12:24:23Z'
 </td>
 </tr>
 
-
 <tr>
 <td width="30%"valign="top"><b>kubectl create
 </b></td>
@@ -46,20 +47,17 @@ version-history-start-date: '2022-12-15T12:24:23Z'
 </td>
 </tr>
 
-
 <tr>
 <td width="30%"valign="top"><b>kubectl delete</b></td>
 <td width="70%">Deletes resources.
 </td>
 </tr>
 
-
 <tr>
 <td width="30%"valign="top"><b>kubectl describe </b></td>
 <td width="70%">Shows details of a resource or group of resources.
 </td>
 </tr>
-
 
 <tr>
 <td width="30%"valign="top"><b>kubectl expose</b></td>
@@ -103,7 +101,6 @@ version-history-start-date: '2022-12-15T12:24:23Z'
 </td>
 </tr>
 
-
 <tr>
 <td width="30%"valign="top"><b>kubectl run</b></td>
 <td width="70%">Creates and runs a particular image in a pod.
@@ -116,8 +113,6 @@ version-history-start-date: '2022-12-15T12:24:23Z'
 </td>
 </tr>
 
-
 </table>
-
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
