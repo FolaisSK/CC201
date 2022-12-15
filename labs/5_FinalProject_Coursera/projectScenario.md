@@ -1,15 +1,16 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2814-instruction
 version-history-start-date: '2022-12-15T12:12:11Z'
 ---
-<img src="images/IDSNlogo.png" width="200" height="200"/>
-
-
 # Final Project: Scenario and Review Criteria
-## **Estimated time needed:** 2+ hours
 
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
+
+## **Estimated time needed:** 2+ hours
 
 ## Project Overview
 In this final project, you will build and deploy a simple guestbook application. You will roll out updates using Openshift image streams. You will be rolling out a multi-tier version of the guestbook application. Finally, you will create and bind a tone analyzer service instance to your application and autoscale the guestbook.
@@ -43,14 +44,12 @@ Be sure to take screenshots as per review criteria as you follow the step-by-ste
 ## Author(s)
 Lavanya
 
-
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2021-05-01 | 0.1 | Lavanya | Initial version created |
 |   |   |   |   |
 |   |   |   |   |
-
 
 ## <h3 align="center"> © IBM Corporation 2020. All rights reserved. <h3/>
 
