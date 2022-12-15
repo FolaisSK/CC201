@@ -2,13 +2,13 @@
 markdown-version: v1
 tool-type: theiaopenshift
 branch: lab-1590-instruction
-version-history-start-date: 2022-09-26T10:41:30.000Z
+version-history-start-date: '2022-09-26T10:41:30.000Z'
 ---
-<center>
-<img src="images/labs_module_1_images_IDSNlogo.png" width = "300">
-</center>
-
 ::page{title="Final Project"}
+
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
 
 ## Objectives
 
