@@ -4,11 +4,11 @@ tool-type: theiaopenshift
 branch: lab-1730-instruction
 version-history-start-date: '2022-10-07T06:53:37.000Z'
 ---
-<center>
-<img src="images/IDSN-new-logo.png" width = "300">
-</center>
-
 ::page{title="Optional: Deploy guestbook app from the OpenShift internal registry"}
+
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
 
 ## Objectives
 
