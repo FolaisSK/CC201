@@ -1,34 +1,36 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: theiaopenshift
 branch: lab-2809-instruction
 version-history-start-date: '2022-12-15T12:02:23Z'
 ---
-<center>
-<img src="images/IDSN-new-logo.png" width = "300">
-</center>
+::page{title="Introduction to Red Hat OpenShift"}
 
-# Introduction to Red Hat OpenShift
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
 
 ## Objectives
+
 In this lab, you will:
+
 - Use the `oc` CLI (OpenShift command line interface)
 - Use the OpenShift web console
 - Build and deploy an application using s2i ('Source-to-image' build strategy)
 - Inspect a BuildConfig and an ImageStream
 
+::page{title="Verify the environment and command line tools"}
 
-# Verify the environment and command line tools
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
 ![New terminal](images/new-terminal.png)
 
 > **Note:** Please wait for some time for the terminal prompt to appear.
 
 2. Verify that `oc` CLI is installed.
+
 ```
 oc version
 ```
-{: codeblock}
 
 You should see output similar to this, although the versions may be different:
 
@@ -41,57 +43,59 @@ You should see output similar to this, although the versions may be different:
 ```
 cd /home/project
 ```
-{: codeblock}
 
 4. Clone the git repository that contains the artifacts needed for this lab, if it doesn't already exist.
+
 ```
 [ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
-{: codeblock}
 
 <img src="images/week4_Step1.4.png" /> <br>
 
-# Use the `oc` CLI
+::page{title="Use the `oc` CLI"}
+
 OpenShift projects are Kubernetes namespaces with additional administrative functions. Therefore, projects also provide isolation within an OpenShift cluster. You already have access to one project in an OpenShift cluster, and `oc` is already set to target that cluster and project.
 
 Let's look at some basic `oc` commands. Recall that `oc` comes with a copy of `kubectl`, so all the `kubectl` commands can be run with `oc`.
 
 1. List the Pods in this namespace.
+
 ```
 oc get pods
 ```
-{: codeblock}
 
 You will likely see a few Pods that are part of the environment. You don't need to worry about these.
 
 <img src="images/week4_Step2.1.png" /> <br>
 
 2. In addition to Kubernetes objects, you can get OpenShift specific objects.
+
 ```
 oc get buildconfigs
 ```
-{: codeblock}
 
 Because you haven't created a BuildConfig yet, this will not return any resources.
 
 <img src="images/week4_Step2.2.png" /> <br>
 
 3. View the OpenShift project that is currently in use.
+
 ```
 oc project
 ```
-{: codeblock}
 
 This project is specific to you and provides isolation within the cluster so that you can deploy your own applications.
 
 <img src="images/week4_Step2.3.png" /> <br>
 
-# Use the OpenShift web console
+::page{title="Use the OpenShift web console"}
+
 In addition to the CLI, OpenShift provides an intuitive web console. This is a useful and powerful feature because it enables you to deploy applications, view resources, monitor applications and view logs, and much more right in the console.
 
 Let's open up the console and have a look around.
 
-1. To open openshift web console, click on the Skills Network button on the left, it will open the **“Skills Network Toolbox”**. Then click the **Cloud** then **Open OpenShift console** as shown in the following image. 
+1. To open openshift web console, click on the Skills Network button on the left, it will open the **“Skills Network Toolbox”**. Then click the **Cloud** then **Open OpenShift console** as shown in the following image.
+ 
 
 <img src="images/LaunchOpenShift.png" /> <br>
 
@@ -105,8 +109,8 @@ It can take a few minutes to become available after opening the lab environment,
 
 <img src="images/console-perspectives.png" /> <br>
 
+::page{title="Deploy an application in the web console"}
 
-# Deploy an application in the web console
 The Developer perspective provides workflows specific to developer use cases, such as the ability to create and deploy applications. Let's start here! You are likely in the "Topology" view, which provides a visual representation of applications. If not, switch to it to take a look.
 
 1. Let us add a new application to this project. There are several ways to add a new application in Openshift.
@@ -115,33 +119,33 @@ The Developer perspective provides workflows specific to developer use cases, su
 
 3. Select **From Git** among the options.
 
-
 <img src="images/week4_Step4.3.png" /> <br>
-
 
 4. You will be redirected to **Import from Git** window. OpenShift will deploy an application using only one input from you: the application source.
 
-5. In the **Git Repo URL** box, paste the sample one mentioned below. 
+5. In the **Git Repo URL** box, paste the sample one mentioned below.
+ 
 
 ```
 https://github.com/sclorg/nodejs-ex.git
 ```
-{: codeblock}
 
 In the Builder section, scroll down to see the various builder images. We shall be using the Node.js image for our application. Ensure that this image has been selected.
 
 <img src="images/week4_Step4.5.png" /> <br>
 
-
 6. Keep the rest of the default options as they already are. Then scroll down and click **Create**.
 
 In the Topology view, you should now see your newly created application.
+
 > **NOTE:** It will take several minutes for the application to appear. Refresh the browser if within 3 minutes, you don't see any application.
 
 <img src="images/week4_Step4.6.png" /> <br>
 
-# View application in the web console
+::page{title="View application in the web console"}
+
 The Topology view provides quick links to a lot of important parts of an application:
+
 * The outer circle gets the information on the application.
 * The inner circle with the Node.js logo gives information about the Deployment.
 * The GitHub icon is used to access the code repository.
@@ -149,13 +153,14 @@ The Topology view provides quick links to a lot of important parts of an applica
 * The arrow coming out of a box can be used to view the application in the browser if the application is externally available.
 
 Let's try some specific steps:
+
 <!-- Step 1 and 2 combined -->
+
 1. Click the inner circle with the Node.js logo to bring up information on the Deployment and observe the four resources associated with this Deployment: a Pod that runs the containerized application; a Build that uses the s2i strategy to build the application into a container image; a Service that exposes the application as a network service; and a Route that provides an externally reachable hostname.
 
 <img src="images/week4_Step5.2.png" /> <br>
 
 > **Note:** Please wait for status of the pod to change to 'Running' and for the Build to complete.
-
 
 2. Click **View logs** on the line that says **Build #1**.
 
@@ -191,12 +196,9 @@ Let's try some specific steps:
 
 Wow! OpenShift did some pretty incredible work on your behalf. All it needed was a code repository and it was able to build the code into a container image, push that image to a registry, create a Deployment that references that image, and also expose the application to the internet with a hostname.
 
-
 <img src="images/week4_Step5.11.png" /> <br>
 
 Congratulations! You have completed the lab for the fourth module of this course.
-
-
 
 ## Changelog
 
@@ -209,3 +211,4 @@ Congratulations! You have completed the lab for the fourth module of this course
 | 2022-09-12 | 1.5     | Lavanya Rajalingam      | Updated Lab instructions & images |
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
+
