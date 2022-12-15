@@ -1,15 +1,18 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2816-instruction
 version-history-start-date: '2022-12-15T12:15:50Z'
 ---
-<img src="images/IDSN.png" width="200">
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
 
+##
 
-<div align="center"></b>
-<b>Glossary: Container Basics
+<div align="center">
+<b>Glossary: Container Basics</b>
 </div>
+
+<br>
 
 <table>
 <tr>
@@ -249,6 +252,5 @@ A tag is a label applied to a Docker image in a repository. Tags are how various
 </tr>
 
 </table>
-
 
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
