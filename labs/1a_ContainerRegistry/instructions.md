@@ -1,14 +1,14 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2803-instruction
 version-history-start-date: '2022-12-15T11:00:22Z'
 ---
-<center>
-<img src="images/labs_module_1_images_IDSNlogo.png" width = "300">
-</center>
-
 # Creating an IBM Cloud Container Registry Namespace
+
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
 
 ## Objectives
 
@@ -77,7 +77,6 @@ IBM Cloud® Container Registry provides a multi-tenant, encrypted private image 
 12. Click **Create** at the bottom of the panel to create the namespace.
 
 <img src="images/createns_12.png"/>
-
 
 You now have a namespace (as below) to which you can push images.
 
