@@ -1,15 +1,16 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2812-instruction
 version-history-start-date: '2022-12-15T12:09:00Z'
 ---
-<img src="images/IDSN-new-logo.png" width="300"/>
-
-
 # Final Project: Scenario and Review Criteria
-## **Estimated time needed:** 2+ hours
 
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
+
+## **Estimated time needed:** 2+ hours
 
 ## Project Overview
 In this final project, you will build and deploy a simple guestbook application. The application consists of a web front end which will have a text input where you can enter any text and submit. For all of these we will create Kubernetes Deployments and Pods. Then we will apply Horizontal Pod Scaling to the Guestbook application and finally work on Rolling Updates and Rollbacks.
@@ -45,14 +46,12 @@ Be sure to take screenshots as per review criteria as you follow the step-by-ste
 ## Author(s)
 Lavanya
 
-
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2021-05-01 | 0.1 | Lavanya | Initial version created |
 | 2021-07-26 | 0.2 | K Sundararajan | Updated as per the new Final Project |
 | 2021-08-02 | 0.3 | K Sundararajan | Added new IDSN logo |
-
 
 ## <h3 align="center"> © IBM Corporation 2020. All rights reserved. <h3/>
 
