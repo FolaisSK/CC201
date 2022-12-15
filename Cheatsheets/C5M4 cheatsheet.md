@@ -1,15 +1,16 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2823-instruction
 version-history-start-date: '2022-12-15T12:29:24Z'
 ---
-<img src="images/IDSN.png" width="200">
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
 
+##
 
 <div align="center"> <b>Cheat Sheet: OpenShift CLI</b>
 </div>
-
+<br>
 
 <table>
 <tr>
@@ -20,7 +21,6 @@ version-history-start-date: '2022-12-15T12:29:24Z'
 <td width="30%"><b>oc get</b></td>
 <td width="70%">Displays a resource.
 </tr>
-
 
 <tr>
 <td width="30%"valign="top"><b>oc project</b></td>
@@ -34,7 +34,6 @@ version-history-start-date: '2022-12-15T12:29:24Z'
 <td width="70%">Displays version information
 </td>
 </tr>
-
 
 </table>
 
