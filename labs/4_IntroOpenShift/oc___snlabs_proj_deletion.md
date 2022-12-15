@@ -1,21 +1,24 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: theiaopenshift
 branch: lab-2810-instruction
 version-history-start-date: '2022-12-15T12:04:13Z'
 ---
-<center>
-<img src="images/labs_module_1_images_IDSNlogo.png" width = "300">
-</center>
+::page{title="Deletion of project from OpenShift console & SN labs"}
 
-# Deletion of project from OpenShift console & SN labs
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
 
 ## Objectives
+
 In this lab, you will:
+
 - Delete your existing project from OpenShift console.
 - Delete your existing project from SN labs.
 
 **For OpenShift project deletion:**
+
 >> **Note: This is only for the lab in week 4. For weeks 1-3 and 5, this can be skipped & only SN labs project deletion needs to be done.**
 
 1. Go to the `Project` tab on the OpenShift console. Click on `Actions` & select `Delete Project`.
@@ -32,7 +35,6 @@ In this lab, you will:
 
 <img src="images/app_console_11c.png" /> <br>
 
-
 ## Changelog
 
 | Date       | Version | Changed by       | Change Description             |
@@ -40,5 +42,5 @@ In this lab, you will:
 | 2022-04-14 | 1.1     | K Sundararajan   | Initial version created        |
 | 2022-06-29 | 1.2     | K Sundararajan   | Updated instructions           |
 
-
 ## <h3 align="center"> © IBM Corporation 2022. All rights reserved. <h3/>
+
