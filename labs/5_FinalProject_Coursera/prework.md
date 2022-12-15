@@ -1,12 +1,14 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2811-instruction
 version-history-start-date: '2022-12-15T12:07:18Z'
 ---
-<img src="images/IDSNlogo.png" width = "300">
-
 # Prework: Creating an IBM Cloud account and NLU service
+
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
 
 **Estimated time needed:** 30 minutes
 
@@ -33,7 +35,6 @@ You will need an IBM Cloud account to do this lab. If you have not created one a
 2. On the Natural Language Understanding page, select **DALLAS** as the Region, verify that the **Lite** plan is selected, and then click **Create**.
 
 ![](./images/10.png)
-
 
 # Checklist for lab completion
 
