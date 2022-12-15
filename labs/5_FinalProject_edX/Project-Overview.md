@@ -1,13 +1,15 @@
 ---
-markdown-version:
+markdown-version: v1
 tool-type: instructional-lab
 branch: lab-2815-instruction
 version-history-start-date: '2022-12-15T12:14:12Z'
 ---
-<img src="images/IDSN-new-logo.png" width="300"/>
-
-
 # Final Project: Scenario and Review Criteria
+
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
+
 ## **Estimated time needed:** 10 mins
 
 This final project will encourage you to use many of the tools and concepts that you have learned in this course. As you complete the project, you will need to take screenshots of your work to verify what you have done so that it can be graded. 
@@ -46,13 +48,10 @@ Be sure to take screenshots as per review criteria as you follow the step-by-ste
 ## Author(s)
 Sapthashree K S
 
-
 ## Changelog
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
 | 2022-11-23 | 0.1 | Sapthashree K S | Initial version created |
-
-
 
 ## <h3 align="center"> © IBM Corporation 2020. All rights reserved. <h3/>
 
