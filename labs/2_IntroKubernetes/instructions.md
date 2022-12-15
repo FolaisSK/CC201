@@ -4,11 +4,11 @@ tool-type: theia
 branch: lab-2688-instruction
 version-history-start-date: '2022-12-12T15:04:04Z'
 ---
-<center>
-<img src="images/IDSN-logo.png" width = "300">
-</center>
-
 ::page{title="Introduction to Kubernetes"}
+
+<img src="/images/IDSN-logo.png" width="200" alt="cognitiveclass.ai logo"  />
+
+##
 
 ## Objectives
 
