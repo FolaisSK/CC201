@@ -23,13 +23,13 @@ In this lab, you will:
 ::page{title="Verify the environment and command line tools"}
 
 1. If a terminal is not already open, open a terminal window by using the menu in the editor: `Terminal > New Terminal`.
-![New terminal](images/new-terminal.png)
+![New terminal](images/new_terminal.png)
 
 > **Note:** Please wait for some time for the terminal prompt to appear.
 
 2. Verify that `oc` CLI is installed.
 
-```
+```bash
 oc version
 ```
 
@@ -41,13 +41,13 @@ You should see output similar to this, although the versions may be different.
 
 > **NOTE:** If you are already on `home/project` please skip this step
 
-```
+```bash
 cd /home/project
 ```
 
 4. Clone the git repository that contains the artifacts needed for this lab, if it doesn't already exist.
 
-```
+```bash
 [ ! -d 'CC201' ] && git clone https://github.com/ibm-developer-skills-network/CC201.git
 ```
 
@@ -61,7 +61,7 @@ Let's look at some basic `oc` commands. Recall that `oc` comes with a copy of `k
 
 1. List the Pods in this namespace.
 
-```
+```bash
 oc get pods
 ```
 
@@ -71,7 +71,7 @@ You will likely see a few Pods that are part of the environment. You don't need 
 
 2. In addition to Kubernetes objects, you can get OpenShift specific objects.
 
-```
+```bash
 oc get buildconfigs
 ```
 
@@ -81,7 +81,7 @@ Because you haven't created a BuildConfig yet, this will not return any resource
 
 3. View the OpenShift project that is currently in use.
 
-```
+```bash
 oc project
 ```
 
@@ -96,7 +96,7 @@ In addition to the CLI, OpenShift provides an intuitive web console. This is a u
 Let's open up the console and have a look around.
 
 1. To open openshift web console, click on the Skills Network button on the right, it will open the **“Skills Network Toolbox”**. Then click the **Cloud** then **Open OpenShift console** as shown in the following image.
- 
+
 
 <img src="images/openshift.png" /> <br>
 
@@ -125,7 +125,7 @@ The Developer perspective provides workflows specific to developer use cases, su
 4. You will be redirected to **Import from Git** window. OpenShift will deploy an application using only one input from you: the application source.
 
 5. In the **Git Repo URL** box, paste the sample one mentioned below.
- 
+
 
 ```
 https://github.com/sclorg/nodejs-ex.git
