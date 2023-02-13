@@ -1,6 +1,6 @@
 ---
 markdown-version: v1
-tool-type: theia
+tool-type: theiadocker
 branch: lab-2804-instruction
 version-history-start-date: '2022-12-15T11:03:59Z'
 ---
